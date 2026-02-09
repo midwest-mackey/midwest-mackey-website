@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-{{color}} fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="./assets/mm-logo.svg" alt="Midwest Mackey Logo" width="45">
+    </a>
+    <div id="social-links" class="d-flex order-lg-2 rounded-pill">
+      <ul class="nav col gap-2">
+        <li class="nav-item">
+          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{githubBaseURL}}"  title="Github" target="_blank" rel="noopener">
+            <fa-icon [icon]="faGithub"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{linkedinURL}}" title="linkedin" target="_blank" rel="noopener">
+            <fa-icon [icon]="faLinkedinIn"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{twitchURL}}" title="Twitch" target="_blank" rel="noopener">
+            <fa-icon [icon]="faTwitch"></fa-icon>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{instagramURL}}" title="Instagram" target="_blank" rel="noopener">
+            <fa-icon [icon]="faInstagram"></fa-icon>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+      <div id="navbar-links" class="mt-4 mt-lg-0">
+        <ul class="nav nav-pills col gap-2">
+          <li class="nav-item">
+            <a class="nav-link link-light" routerLink="/home" routerLinkActive="active">midwest.mackey</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" routerLink="/projects" routerLinkActive="active">projects</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link link-light" routerLink="/skills" routerLinkActive="active">skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" routerLink="/projects" routerLinkActive="active">projects</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link link-light" routerLink="/logos" routerLinkActive="active">logos</a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

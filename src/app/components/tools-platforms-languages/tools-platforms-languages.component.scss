@@ -1,0 +1,57 @@
+@import 'styles';
+
+.bg-primary {
+    padding-top: $spacer-size * 4;
+    padding-bottom: $spacer-size * 4;
+    // margin-top: $spacer-size;
+    clip-path: shape(from 0% 17%,
+    smooth to 100% 0% with 50% 33%,
+    line to 100% 76%,
+    smooth to 0% 90% with 50% 94%);
+    a {
+        overflow: visible;
+        #to-show {
+            position: relative;
+            top: -40px;
+            opacity: 0;
+            transition: all 0.2s;
+
+        }
+        &:hover #to-show {
+            top: 0;
+            opacity: 1;
+            transition: all 0.2s;
+        }
+    }
+    .ng-fa-icon {
+        padding: .5rem;
+    }
+}
+.ticker {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+.ticker-track {
+    width: max-content;
+    will-change: transform;
+    animation: tickerScroll linear infinite;
+    animation-duration: clamp(16s, 20s, 28s);
+}
+@keyframes tickerScroll {
+   from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+  }
+  .animate-scroll { animation: tickerScroll linear 5s infinite; }
+  .animate-scroll:hover { animation-play-state: paused; }

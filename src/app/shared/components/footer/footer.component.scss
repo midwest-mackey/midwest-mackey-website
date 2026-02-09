@@ -1,0 +1,143 @@
+@import 'styles';
+
+section {
+    // &.fixed-height {
+    //     height: 320px;
+    //     margin-bottom: -5px;
+    // }
+    &.bg-footer-color {
+        // -webkit-clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+        // clip-path: polygon(0 60%, 100% 0, 100% 100%, 0 100%);
+        background: linear-gradient($gray-700 -25%, $black 95%);
+        overflow: visible;
+        clip-path: shape(from 100% 100%,
+            line to 100% 0%,
+            smooth to 55% 66% with 75% 5%,
+            smooth to 0% 27% with 23% 42%,
+            line to 0% 100%);
+        animation: morph 60s linear infinite;
+    }
+    @keyframes morph {
+        0% {
+            clip-path: shape(from 100% 100%,
+            line to 100% 0%,
+            smooth to 55% 66% with 75% 5%,
+            smooth to 0% 27% with 23% 42%,
+            line to 0% 100%);
+        }
+        50% {
+            clip-path: shape(from 100% 100%,
+            line to 100% 0%,
+            smooth to 69% 82% with 85% 10%,
+            smooth to 0% 80% with 25% -125%,
+            line to 0% 100%);
+        }
+        100% {
+            clip-path: shape(from 100% 100%,
+            line to 100% 100%,
+            smooth to 42% 62% with 120% 0%,
+            smooth to 0% 0% with 50% 0%,
+            line to 0% 100%);
+        }
+        // 75% {
+        //     clip-path: shape(from 100% 100%,
+        //     line to 100% 0%,
+        //     smooth to 55% 66% with 75% 5%,
+        //     smooth to 0% 27% with 23% 42%,
+        //     line to 0% 100%);
+        // }
+    }
+    &.primary {
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color: $primary;
+                }
+                &.active {
+                    background-color: $primary;
+                }
+            }
+        }
+
+    }
+    &.purple {
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color: $purple;
+                }
+                &.active {
+                    background-color: $purple;
+                }
+            }
+        }
+
+    }
+    &.orange {
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color: $orange;
+                }
+                &.active {
+                    background-color: $orange;
+                }
+            }
+        }
+    }
+    &.green {
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color: $green;
+                }
+                &.active {
+                    background-color: $green;
+                }
+            }
+        }
+    }
+    &.secondary {
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color: $secondary;
+                }
+                &.active {
+                    background-color: $secondary;
+                }
+            }
+        }
+    }
+    &.info {
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color: $info;
+                }
+                &.active {
+                    background-color: $info;
+                }
+            }
+        }
+    }
+    .top-margin {
+        margin-top: $spacer-size * 2;
+    }
+    .display-0 {
+            font-size: 60px;
+        }
+    .footer-img {
+        height: 100px;
+        width: 100px;
+        .svg-dark {
+            fill: #212529;
+        }
+        .svg-white {
+            fill: $white;
+        }
+    }
+    &.sub-footer {
+        margin-top: -1px;
+    }
+}

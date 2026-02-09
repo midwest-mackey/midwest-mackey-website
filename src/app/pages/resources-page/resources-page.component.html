@@ -1,0 +1,16 @@
+<mm-app-navbar [color]="currentColor"></mm-app-navbar>
+<mm-app-header [id]="currentID" [color]="currentColor" [title]="currentTitle" [img]="currentImg" [bodyText]="currentBodyText" [textArray]="currentArrayText" [buttonText]="currentButtonText"></mm-app-header>
+<div id="appHeaderScrollTarget"></div>
+<div class="container">
+    <div class="card overflow-hidden">
+        <iframe
+            class="linkstack"
+            [src]="iframeUrl"
+            width="100%"
+            height="1000"
+            frameborder="0"
+            loading="lazy">
+        </iframe>
+    </div>
+</div>
+<mm-footer [color]="currentColor"></mm-footer>

@@ -1,0 +1,10 @@
+@import 'styles';
+
+section {
+    padding: 0;
+    overflow: hidden;
+    background: radial-gradient(circle, #151826 28%, #0d0f18 100%);
+    iframe {
+       transform: skewY(-5deg);
+    }
+}

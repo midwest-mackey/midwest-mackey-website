@@ -1,0 +1,162 @@
+@use 'sass:color';
+@import 'styles';
+
+section {
+    top: 88px;
+    margin-bottom: $spacer-size * 2;
+
+    &.bg-color {
+        opacity: 1;
+        // -webkit-clip-path: polygon(0 0, 100% 0, 100% 20%, 0 75%);
+        // clip-path: polygon(0 0, 100% 0, 100% 20%, 0 75%);
+
+        clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 5%,
+            smooth to 55% 66% with 75% 5%,
+            smooth to 0% 65% with 10% 50%,
+            line to 0% 0%);
+        animation: morph 120s linear infinite;
+
+        &.bg-primary {
+            background: linear-gradient(color.adjust($primary, $lightness: $color-adjust-amount), $primary);
+            // #0044BA
+        }
+        &.bg-orange {
+            background: linear-gradient(color.adjust($orange, $lightness: $color-adjust-amount), $orange);
+            // #FC7E14
+        }
+        &.bg-green {
+            background: linear-gradient(color.adjust($green, $lightness: $color-adjust-amount), $green);
+            // #005440
+        }
+        &.bg-purple {
+            background: linear-gradient(color.adjust($purple, $lightness: $color-adjust-amount), $purple);
+            // #6610F2
+        }
+        &.bg-secondary {
+            background: linear-gradient(color.adjust($secondary, $lightness: $color-adjust-amount), $secondary);
+        }
+        &.bg-info {
+            background: linear-gradient(color.adjust($info, $lightness: $color-adjust-amount), $info);
+        }
+    }
+    @keyframes morph {
+        0%, 100% {
+            clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 5%,
+            smooth to 55% 66% with 75% 5%,
+            smooth to 0% 65% with 10% 50%,
+            line to 0% 0%);
+        }
+        25% {
+            clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 45%,
+            smooth to 45% 55% with 58% 100%,
+            smooth to 0% 50% with 10% 10%,
+            line to 0% 0%);
+        }
+        50% {
+            // clip-path: shape(from 0% 0%,
+            // line to 100% 0%,
+            // line to 100% 100%,
+            // smooth to 20% 60% with 40% 68%,
+            // smooth to 0% 5% with 36% 0%,
+            // line to 0% 0%);
+            clip-path: shape(from 0% 0%, 
+            line to 100% 0%,
+            line to 100% 90%,
+            smooth to 20% 57% with -45% 104%,
+            smooth to 0% 5% with 36% 0%,
+            line to 0% 0%);
+        }
+        75% {
+            // clip-path: shape(from 0% 0%,
+            // line to 100% 0%,
+            // line to 100% 25%,
+            // smooth to 19% 67% with 60% 75%,
+            // smooth to 0% 25% with 50% 0%,
+            // line to 0% 0%);
+            clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 25%,
+            smooth to 20% 90% with 30% 126%, 
+            smooth to 0% 25% with 84% -30%,
+            line to 0% 0%);
+        }
+    }
+    .container {
+        margin-top: -$spacer-size;
+        .display-0 {
+            font-size: clamp(80px, calc(100% + 20vw), 300px);
+        }
+    }
+    &#panel {
+        button {
+            left: 3rem;
+        }
+        h2 {
+            white-space: pre-line;
+        }
+        .body-img {
+            max-height: 200px;
+            max-width: 200px;
+            margin-bottom: $spacer-size;
+        .svg-primary {
+            fill: $primary
+            }
+        .svg-purple {
+            fill: $purple
+            }
+        .svg-orange {
+            fill: $orange
+            }
+        .svg-green {
+            fill: $green
+            }
+        .svg-info {
+            fill: $info;
+            }    
+        }
+        h1 {
+            font-size: 3em;
+            font-family: 'Sigmar', sans-serif;
+        }
+    }
+}
+
+// Media Breakpoints
+@include media-breakpoint-down(md) {
+    section {
+        top: 56px;
+        text-align: center;
+        &.bg-color {
+            // -webkit-clip-path: polygon(0 0, 100% 0, 100% 20%, 0 75%);
+            // clip-path: polygon(0 0, 100% 0, 100% 100px, 0 275px);
+            clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 5%,
+            smooth to 55% 66% with 75% 5%,
+            smooth to 0% 65% with 10% 50%,
+            line to 0% 0%);
+        }
+    }
+    #title {
+        .top-50 {
+            top: 130px !important;
+        }
+    }
+    #panel {
+        .top-50 {
+            top: 400px !important;
+        }
+    }
+    .vh-100 {
+        height: 150vh !important;
+    }
+    .translate-middle-y {
+        transform: translateY(0) !important;
+    }
+}

@@ -1,0 +1,24 @@
+@use 'sass:color';
+@import 'styles';
+
+
+.inset img {
+    margin-right: -$spacer-size;
+    margin-left: -$spacer-size;
+    height: 300px;
+    width: 300px;
+}
+.container {
+    margin-bottom: -$spacer-size;
+}
+.bmc svg {
+    width: 24px;
+    height: 24px;
+}
+.btn-warning {
+    --bs-btn-bg: #ffdd00;
+    --bs-btn-border-color: #ffdd00;
+}
+a.btn {
+    padding: 0.5rem 0.65rem;
+}

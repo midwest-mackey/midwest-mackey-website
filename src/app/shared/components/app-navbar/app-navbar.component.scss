@@ -1,0 +1,103 @@
+@use 'sass:color';
+@import 'styles';
+
+.navbar {
+    #navbar-links .nav-link {
+        background: color.adjust($white, $alpha: -0.9);
+        &.active {
+            background: $white;
+        }
+    }
+    #social-links {
+        background: color.adjust($white, $alpha: -0.9);
+        .nav-link {
+            padding: 0.5rem 0.75rem;
+        }
+    }
+    &.bg-primary {
+        background-color: color.adjust($primary, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $primary;
+                }
+                &.active {
+                    color: $primary !important;
+                }
+            }
+        }
+    }
+    &.bg-purple {
+        background-color: color.adjust($purple, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $purple;
+                }
+                &.active {
+                    color: $purple !important;
+                }
+            }
+        }
+    }
+    &.bg-orange {
+        background-color: color.adjust($orange, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $orange;
+                }
+                &.active {
+                    color: $orange !important;
+                }
+            }
+        }
+    }
+    &.bg-green {
+        background-color: color.adjust($green, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $green;
+                }
+                &.active {
+                    color: $green !important;
+                }
+            }
+        }
+    }
+    &.bg-secondary {
+        background-color: color.adjust($secondary, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $secondary;
+                }
+                &.active {
+                    color: $secondary !important;
+                }
+            }
+        }
+    }
+    &.bg-info {
+        background-color: color.adjust($info, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $info;
+                }
+                &.active {
+                    color: $info !important;
+                }
+            }
+        }
+    }
+}
+
+// Media Breakpoints
+@include media-breakpoint-down(md) {
+   .navbar {
+       padding-top: .5rem;
+       padding-bottom: .5rem;
+   }
+}

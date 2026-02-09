@@ -1,0 +1,77 @@
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+@import "variables";
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+
+// 5. Include remainder of required parts
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+// 6. Include any other optional stylesheet partials as desired; list below is not inclusive of all available stylesheets
+@import "bootstrap/scss/utilities";
+
+// ...
+@import "utilities";
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "bootstrap/scss/utilities/api";
+
+
+// 8. Add additional custom code here
+@import 'bootstrap/scss/bootstrap';
+
+
+//bootstrap overrides
+@import 'buttons';
+@import 'card';
+@import 'type';
+@import 'section';
+@import 'icons';
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Sigmar&display=swap');
+
+// Custom Global Styles
+
+// :root {
+//     --bs-body-font-family: 'Poppins', sans-serif;
+// }
+body {
+    // Needed to hide overflow of summary-panel divs
+    overflow-x: hidden;
+    // Needed for ViewportScroller scroll to anchor
+    // scroll-behavior: smooth !important;
+}
+.mirror img {
+    transform: scaleX(-1);
+}
+.spacer {
+    height: $spacer-size * 3;
+}
+.opacity-10 {
+    opacity: 0.10 !important
+}
+
+.position-sticky {
+    z-index: 1000;
+    top: 0;
+}
+
+
+// Fix Map Merge Utility and remove this class
+// .bg-white {
+//     background-color: $white;
+// }
+// .bg-black {
+//     background-color: $black;
+// }

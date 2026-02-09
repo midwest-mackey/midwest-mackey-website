@@ -1,0 +1,28 @@
+@import 'styles';
+
+.section-skew {
+    margin-top: 0;
+    &:first-of-type {
+        transform: skewY(-($section-angle * 3));
+        padding-bottom: 350px;
+        margin-bottom: -250px;
+        
+    }
+    &:nth-of-type(2) {
+        transform: skewY((-$section-angle * 3));
+        padding-bottom: 550px;
+        margin-bottom: -200px;
+    }
+    img {
+        height: 300px;
+        width: 300px;
+    }
+    .inset img {
+        margin-right: -$spacer-size;
+        margin-left: -$spacer-size;
+    }
+    .coming-soon {
+        margin-bottom: -($spacer-size * 1.5);
+        margin-top: -50px;
+    }
+}

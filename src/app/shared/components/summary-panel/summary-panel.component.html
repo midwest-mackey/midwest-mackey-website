@@ -1,0 +1,67 @@
+<section class="container-fluid">
+    <div class="container">
+        <div class="row d-flex {{css}}">
+            <div class="col-11 order-2 order-lg-1" [ngClass]="img ? 'col-lg-8' : 'col-lg-9'">
+                <div id="side-text-wrapper" class="position-relative">
+                    <div id="side-text-outer" class="position-absolute">
+                        <h1 id="side-text" class="text-{{color}} fw-black">{{sideText}}</h1>
+                    </div>
+                </div>
+                <div id="summary-panel" class="card bg-{{color}} text-white p-5">
+                    <div class="card-body pb-5">
+                        <h1 class="display-4">{{title}}</h1>
+                        <p class="fs-5">{{bodyText}}</p>
+                        <br>
+                        <p>{{subText}}</p>
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="img">
+                <div class="d-flex col justify-content-center align-items-center order-1 order-lg-2 mb-sm-5">
+                    <img src="{{img}}" class="">
+                </div>
+            </ng-container>
+        </div>
+        <div id="summary-buttons" class="row justify-content-center">
+            <div class="col-12 col-md-auto d-grid gap-2 gap-lg-4 d-md-flex">
+                <a *ngFor="let button of buttons let i=index" href="{{button.link}}" target="_blank"
+                class="btn btn-light card p-0">
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="col-auto me-1">
+                                <fa-layers [fixedWidth]="true" size="3x">
+                                <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
+                                <fa-icon class="text-primary" [icon]="button.icon" transform="shrink-8"></fa-icon>
+                                </fa-layers>
+                            </div>
+                            <div class="col-auto text-start me-2">
+                                <div class="h6 mb-0">
+                                <span class="fw-bold">{{button.text}}</span>
+                                </div>
+                            </div>
+                            <div class="col-auto ms-auto">
+                                <fa-icon class="text-primary" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+                    <!-- <button (click)="onClick('appHeaderScrollTarget')" class="float-end btn btn-{{color}} btn-card">
+                        <div class="card-body">
+                            <div class="align-items-center g-0">
+                            <span class="text-start fs-5">{{buttonText}}</span>
+                            <span class="ms-4">
+                                <fa-icon [fixedWidth]="true" [icon]="faArrowDown"></fa-icon>
+                            </span>
+                            </div>
+                        </div>
+                    </button> -->
+
+
+        </div>
+    </div>
+</section>
+

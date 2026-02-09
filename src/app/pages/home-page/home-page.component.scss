@@ -1,0 +1,10 @@
+@use 'sass:color';
+@import 'styles';
+
+section#social-links {
+    margin-bottom: -225px;
+    padding-bottom: 200px;
+}
+.bg-gradient-primary {
+    background: linear-gradient(#f8f9fa, $primary);
+}

@@ -1,0 +1,61 @@
+@import 'styles';
+
+.container {
+    transform: skewY(0deg);
+    margin-top: 0;
+    padding-top: $spacer-size;
+    &.first {
+        transform: skewY($section-angle * 3);
+        > .row > .col {
+        }
+    }
+    &.second {
+        transform: skewY($section-angle * 3);
+        > :first-of-type.row {
+            margin-top: -($spacer-size * 2);
+            // transform: skewY(-5deg);
+        }
+    }
+    &.third {
+        margin-top: -400px;
+        padding-top: $spacer-size * 2;
+        padding-bottom: 300px;
+        > .row > .col {
+            transform: skewY(-5deg);
+        }
+    }
+    .teammate.col {
+        margin-bottom: $spacer-size;
+    }
+    img {
+        height: 300px;
+        width: 300px;
+    }
+    p.about {
+        max-width: 400px;
+    }
+    .offset img {
+        margin-bottom: -($spacer-size *1.5);
+        margin-left: $spacer-size * 2.5;
+    }
+    .backset img {
+        margin-left: -($spacer-size * 2);
+    }
+    .inset img {
+        margin-right: -$spacer-size;
+        margin-left: -$spacer-size;
+    }
+    .col.negative-margin {
+        margin-bottom: -200px;
+    }
+    a.btn {
+        padding: 0.5rem 0.65rem;
+    }
+}
+@include media-breakpoint-up(xl) {
+    .container {
+        .teammate.col {
+            min-width: 50%;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@use 'sass:color';
+// Colors
+$primary: #003BFF;
+$green:   #308D04;
+$purple:  #8540F5;
+$orange:  #FC7E14;
+
+
+$carousel-indicator-opacity:        .25;
+$box-shadow-lg:                     0 1rem 3rem rgba(#000000, .3);
+$navbar-padding-y:                  1rem * 1.5;
+
+
+// MM Site Variables
+$spacer-size:                       50px;
+$section-angle:                     5deg;
+$color-adjust-amount:               -25%;
+$font-family-alt:                   'Anton', sans-serif;

@@ -1,0 +1,35 @@
+<div class="container-fluid bg-primary text-white">
+    <div class="container mt-5">
+        <div class="row">
+            <h1 class="display-4 mb-3 mt-5">A few of the platforms, languages, and tools I have worked with</h1>
+        </div>
+        <div class="row">
+            <div class="col-auto">
+                <a href="{{githubBaseURL}}" class="btn btn-link fw-bold text-white mb-5">checkout my github <fa-icon [icon]="faArrowRight" [fixedWidth]="true"></fa-icon></a>
+            </div>
+        </div>
+    </div>
+    <div class="text-nowrap overflow-hidden text-center">
+        <div class="ticker width-100">
+            <div class="ticker-track d-flex gap-4">
+                <ng-container *ngFor="let icon of icons">
+                    <a href="{{icon.link}}" target="_blank" id="to-hover" class="btn btn-link text-white rounded-pill">
+                    <h1 class="display-4">
+                        <fa-icon [icon]="icon.icon"></fa-icon>
+                    </h1>
+                    <fa-icon [icon]="faArrowRight" id="to-show"></fa-icon>
+                    </a>
+                </ng-container>
+                <!-- duplicate -->
+                <ng-container *ngFor="let icon of icons">
+                    <a href="{{icon.link}}" target="_blank" id="to-hover" class="btn btn-link text-white rounded-pill">
+                    <h1 class="display-4">
+                        <fa-icon [icon]="icon.icon"></fa-icon>
+                    </h1>
+                    <fa-icon [icon]="faArrowRight" id="to-show"></fa-icon>
+                    </a>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+
+<div class="container {{containerCss}}">
+    <div class="row d-flex">
+    <ng-container *ngFor="let item of items | slice:start:end">
+        <div id="{{item.id}}" class="item {{item.css}} col d-md-flex d-sm-column pb-5 pb-xl-0">
+            <div class="col-auto">
+                <img src="./assets/me/{{item.id | lowercase}}.png" alt="{{item.firstName}} {{item.lastName}}"/>
+            </div>
+            <div class="col">
+                <h2 class="display-0 fs-2 text-primary mt-2 mb-1">{{item.firstName | uppercase}}<br>{{item.lastName | uppercase}}</h2>
+                <p class="text-secondary fw-lighter fs-4"><span>{{item.position}}</span></p>
+                <p class="about">{{item.about}}</p>
+                <div class="col d-grid gap-2 d-flex">
+                    <a *ngIf="item.email" href="mailto:{{item.email}}" class="btn btn-outline-primary rounded-pill" title="Email {{item.firstName}}"><fa-icon class="" [fixedWidth]="true" [icon]="faPaperPlane"></fa-icon></a>
+                    <a *ngIf="item.linkedIn" href="{{item.linkedIn}}" class="btn btn-outline-primary rounded-pill" target="linkedIn" title="Checkout {{item.firstName}}'s LinkedIn"><fa-icon class="" [fixedWidth]="true" [icon]="faLinkedIn"></fa-icon></a>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    </div>
+</div>
