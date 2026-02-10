@@ -1,4 +1,4 @@
-@import 'styles';
+@use 'styles' as *;
 
 .bg-primary {
     padding-top: $spacer-size * 4;

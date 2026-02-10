@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit {
   currentButtonText = 'get to know me';
   currentBodyText = 'Hey! 👋\nI\'m midwest mackey,'
   currentSubText = "from the midwest";
-  currentImg = 'assets/mm-logo-blue.svg';
+  currentImg = 'assets/me/mm-wave.png';
 
   faFontAwesome = faFontAwesomeFlag;
   faGithub = faGithub;

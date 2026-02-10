@@ -1,4 +1,4 @@
-@import 'styles';
+@use 'styles' as *;
 
 .container {
     transform: skewY(0deg);
@@ -6,8 +6,6 @@
     padding-top: $spacer-size;
     &.first {
         transform: skewY($section-angle * 3);
-        > .row > .col {
-        }
     }
     &.second {
         transform: skewY($section-angle * 3);
@@ -17,22 +15,26 @@
         }
     }
     &.third {
-        margin-top: -400px;
-        padding-top: $spacer-size * 2;
-        padding-bottom: 300px;
+        margin-top: -560px;
+        padding-top: 300px;
+        padding-bottom: 550px;
         > .row > .col {
             transform: skewY(-5deg);
         }
     }
+    &.fourth {
+        margin-top: -300px;
+    }
+
     .teammate.col {
         margin-bottom: $spacer-size;
     }
     img {
-        height: 300px;
-        width: 300px;
+        max-height: 400px;
+        max-width: 400px;
     }
     p.about {
-        max-width: 400px;
+        max-width: 500px;
     }
     .offset img {
         margin-bottom: -($spacer-size *1.5);

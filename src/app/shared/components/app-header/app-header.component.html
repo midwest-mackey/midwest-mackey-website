@@ -12,7 +12,7 @@
     <div class="container vh-100 position-relative">
         <div class="row">
             <div class="position-absolute top-50 start-0 translate-middle-y col text-start">
-                <h1 class="display-0 text-center text-md-start text-white">{{title | uppercase}}</h1>
+                <h1 class="display-0 text-center text-md-start theme-invert-text">{{title | uppercase}}</h1>
             </div>
         </div>
     </div>
@@ -22,15 +22,18 @@
         <div class="">
             <div class="col-xl-4 col-md-6 col-10 card shadow-lg position-absolute top-50 end-0 translate-middle-y me-5">
                 <div class="card-body px-5 pt-5">
-                    <ng-container *ngIf="img">
-                        <div class="text-center">
-                            <!-- <img src="./{{img}}" class="body-img> -->
+                    <div class="text-center">
+                        <ng-container *ngIf="img; then thenBlock else elseBlock"></ng-container>
+                        <ng-template #thenBlock>
+                            <img src="./{{img}}" class="body-img"> 
+                        </ng-template>
+                        <ng-template #elseBlock>
                             <svg class="body-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 204" fill="none">
-                                <path class="bg-dark" d="M12.132 129.289C-4.04401 113.113 -4.04401 86.8867 12.132 70.7107L70.7107 12.132C86.8867 -4.04401 113.113 -4.04401 129.289 12.132L187.868 70.7107C204.044 86.8867 204.044 113.113 187.868 129.289L129.289 187.868C113.113 204.044 86.8867 204.044 70.7107 187.868L12.132 129.289Z" fill="#003BFF"/>
-                                <path d="M84.3309 66.4417L100.022 92.4187L115.714 66.4417H134.976V133.559H116.83V95.0141L99.9999 121.287H99.6205L82.8801 95.1963V133.559H65.0237V77.8076L84.3309 66.4417Z" fill="white"/>
+                            <path class="svg-{{color}}" d="M12.132 129.289C-4.04401 113.113 -4.04401 86.8867 12.132 70.7107L70.7107 12.132C86.8867 -4.04401 113.113 -4.04401 129.289 12.132L187.868 70.7107C204.044 86.8867 204.044 113.113 187.868 129.289L129.289 187.868C113.113 204.044 86.8867 204.044 70.7107 187.868L12.132 129.289Z" fill="#003BFF"/>
+                            <path d="M84.3309 66.4417L100.022 92.4187L115.714 66.4417H134.976V133.559H116.83V95.0141L99.9999 121.287H99.6205L82.8801 95.1963V133.559H65.0237V77.8076L84.3309 66.4417Z" fill="white"/>
                             </svg>
-                        </div>
-                    </ng-container>
+                        </ng-template>
+                    </div>
                     <h2 class="text-center">{{bodyText}}</h2>
                     <ng-container>
                         <h1 class="text-center text-{{color}}">

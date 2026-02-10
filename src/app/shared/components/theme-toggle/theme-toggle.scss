@@ -1,0 +1,12 @@
+@use 'sass:color';
+@use 'styles' as *;
+
+.theme-icon {
+    transition: 0.5s ease;
+    &.bi-sun-fill {
+        color: $warning;
+    }
+    &.bi-moon-stars-fill {
+        color: $purple;
+    }
+}

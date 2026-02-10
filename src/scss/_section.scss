@@ -1,7 +1,7 @@
 @use 'sass:color';
 
 .section-skew {
-    background-color: $white;
+    background-color: var(--bs-body-bg);
     padding-bottom: $spacer-size;
     margin-top: $spacer-size * 2;
     transform: skewY($section-angle);

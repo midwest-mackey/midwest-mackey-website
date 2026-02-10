@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { ThemeService } from './theme-service';
 
 declare let gtag: Function;
 
@@ -10,4 +11,10 @@ declare let gtag: Function;
   standalone: false,
 })
 
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  constructor(private theme: ThemeService) {}
+
+  ngOnInit() {
+    this.theme.initTheme
+  }
+}

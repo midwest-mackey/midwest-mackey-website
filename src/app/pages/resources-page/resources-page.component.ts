@@ -23,7 +23,6 @@ export class ResourcesPageComponent implements OnInit {
   currentTitle = 'Projects';
   currentBodyText = 'Checkout my';
   currentButtonText = 'learn more';
-  currentImg = 'assets/mm-logo-blue.svg';
   iframeUrl!: SafeResourceUrl;
 
   constructor(private titleService:Title, private sanitizer:DomSanitizer) {

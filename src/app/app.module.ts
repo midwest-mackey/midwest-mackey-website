@@ -21,6 +21,7 @@ import { ToolsPlatformsLanguagesComponent } from './components/tools-platforms-l
 import { SummaryPanelComponent } from './shared/components/summary-panel/summary-panel.component';
 import { TeammateComponent } from './components/about-me/about-item/about-item.component';
 import { SocialLinksComponent } from './shared/components/social-links/social-links.component';
+import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SocialLinksComponent } from './shared/components/social-links/social-li
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    ThemeToggle
   ],
   providers: [],
   bootstrap: [

@@ -1,5 +1,5 @@
 @use 'sass:color';
-@import 'styles';
+@use 'styles' as *;
 
 section {
     top: 88px;
