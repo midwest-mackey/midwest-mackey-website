@@ -4,13 +4,6 @@
 
 <mm-about-me></mm-about-me>
 
-<div class="container">
-    <h1 class="display-4 section-title">What I do</h1>
-</div>
-<ux-summary-panel [id]="designID" [color]="designColor" [css]="designCss" [title]="designTitle" [sideText]="designSideText" [bodyText]="designBodyText" [subText]="designSubText" [buttons]="designButtons"></ux-summary-panel>
-<ux-summary-panel [id]="devID" [color]="devColor" [css]="devCss" [title]="devTitle" [sideText]="devSideText" [bodyText]="devBodyText" [subText]="devSubText" [buttons]="devButtons"></ux-summary-panel>
-<ux-summary-panel [id]="gamerID" [color]="gamerColor" [css]="gamerCss" [title]="gamerTitle" [sideText]="gamerSideText" [bodyText]="gamerBodyText" [subText]="gamerSubText" [buttons]="gamerButtons"></ux-summary-panel>
-
 <section id="social-links" class="container-fluid section-skew section-shadow-top bg-light-subtle">
     <div class="container py-5">
         <div class="row py-5">
@@ -22,6 +15,8 @@
             </div>
         </div>
     </div>
+    <ux-summary-panel [id]="gamerID" [color]="gamerColor" [css]="gamerCss" [title]="gamerTitle" [sideText]="gamerSideText" [bodyText]="gamerBodyText" [subText]="gamerSubText" [img]="gamerImg" [buttons]="gamerButtons"></ux-summary-panel>
+
 </section>
 <mm-tools-platforms-languages></mm-tools-platforms-languages>
 <mm-footer [color]="currentColor"></mm-footer>

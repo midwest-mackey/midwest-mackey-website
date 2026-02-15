@@ -12,13 +12,13 @@
         overflow: visible;
         #to-show {
             position: relative;
-            top: -40px;
+            left: -40px;
             opacity: 0;
             transition: all 0.2s;
 
         }
         &:hover #to-show {
-            top: 0;
+            left: 0;
             opacity: 1;
             transition: all 0.2s;
         }
@@ -53,5 +53,4 @@
     transform: translateX(-50%);
   }
   }
-  .animate-scroll { animation: tickerScroll linear 5s infinite; }
-  .animate-scroll:hover { animation-play-state: paused; }
+.ticker-track:hover { animation-play-state: paused; }

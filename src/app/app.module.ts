@@ -12,7 +12,8 @@ import { AppHeaderComponent } from './shared/components/app-header/app-header.co
 import { FooterComponent } from './shared/components/footer/footer.component';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { ResourcesPageComponent } from './pages/resources-page/resources-page.component';
+import { ProjectsPageComponent } from './pages/projects-page/projects-page.component';
+import { ServicesPageComponent } from './pages/services-page/services-page.component';
 
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { SupportMeComponent } from './shared/components/support-me/support-me.component';
@@ -30,7 +31,8 @@ import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
     AppHeaderComponent,
     FooterComponent,
     HomePageComponent,
-    ResourcesPageComponent,
+    ProjectsPageComponent,
+    ServicesPageComponent,
     AboutMeComponent,
     WhatIDoComponent,
     SupportMeComponent,

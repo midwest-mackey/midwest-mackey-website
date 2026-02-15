@@ -16,8 +16,8 @@
     }
     &.third {
         margin-top: -560px;
-        padding-top: 300px;
-        padding-bottom: 550px;
+        // padding-top: 300px;
+        // padding-bottom: 550px;
         > .row > .col {
             transform: skewY(-5deg);
         }
@@ -41,7 +41,7 @@
         margin-left: $spacer-size * 2.5;
     }
     .backset img {
-        margin-left: -($spacer-size * 2);
+        margin-right: ($spacer-size * 2.5);
     }
     .inset img {
         margin-right: -$spacer-size;
@@ -50,9 +50,9 @@
     .col.negative-margin {
         margin-bottom: -200px;
     }
-    a.btn {
-        padding: 0.5rem 0.65rem;
-    }
+    // a.btn {
+    //     padding: 0.5rem 0.5rem;
+    // }
 }
 @include media-breakpoint-up(xl) {
     .container {

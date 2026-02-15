@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { faMobile, faPaperPlane, faPhoneAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Items } from './about-item';
+import { faDiscord, faGithubAlt, faInstagram, faLinkedinIn, faTiktok, faTwitch } from '@fortawesome/free-brands-svg-icons';
+import { faBerkleyB, faBMC, faLT, faMumoSystems, faVermeer } from 'src/app/shared/custom-icons/custom-icons.module';
+import { faArrowRight, faGraduationCap, faList } from '@fortawesome/free-solid-svg-icons';
+import { GlobalConstants } from 'src/app/shared/global-constants';
 
 @Component({
   selector: 'mm-about-item',
@@ -15,11 +17,22 @@ export class TeammateComponent implements OnInit {
   @Input() containerCss: string;
 
   items = Items;
-  faPaperPlane = faPaperPlane;
-  faPhone = faPhoneAlt;
-  faMobile = faMobile;
-  faLinkedIn = faLinkedinIn;
+  linkstackURL = GlobalConstants.linkstackURL;
+  
   faArrowRight = faArrowRight;
+  faTwitch = faTwitch;
+  faInstagram = faInstagram;
+  faGithub = faGithubAlt;
+  faTikTok = faTiktok;
+  faDiscord = faDiscord;
+  faLinkedin = faLinkedinIn;
+  faLT = faLT;
+  faBerkleyB = faBerkleyB;
+  faVermeer = faVermeer;
+  faMumoSystems = faMumoSystems;
+  faGraduationCap = faGraduationCap;
+  faList = faList;
+  faBMC = faBMC;
 
   constructor() { }
 

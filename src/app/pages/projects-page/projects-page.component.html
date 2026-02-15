@@ -2,6 +2,9 @@
 <mm-app-header [id]="currentID" [color]="currentColor" [title]="currentTitle" [bodyText]="currentBodyText" [textArray]="currentArrayText" [buttonText]="currentButtonText"></mm-app-header>
 <div id="appHeaderScrollTarget"></div>
 <div class="container">
+    <h1 class="display-4 section-title">Projects</h1>
+</div>
+<div class="container iframe">
     <div class="card overflow-hidden">
         <iframe
             class="linkstack"
@@ -13,4 +16,5 @@
         </iframe>
     </div>
 </div>
+<ux-summary-panel [id]="projectsID" [color]="projectsColor" [css]="projectsCss" [title]="projectsTitle" [sideText]="projectsSideText" [bodyText]="projectsBodyText" [subText]="projectsSubText" [buttons]="projectsButtons"></ux-summary-panel>
 <mm-footer [color]="currentColor"></mm-footer>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faAngular, faBootstrap, faDiscord, faDocker } from '@fortawesome/free-brands-svg-icons';
 import { GlobalConstants } from '../../global-constants';
 import { ViewportScroller } from '@angular/common';
 import { faPaperPlane, faPhoneAlt, faArrowRight, faArrowUp } from '@fortawesome/free-solid-svg-icons';
@@ -17,11 +17,16 @@ export class FooterComponent implements OnInit {
   faArrowRight = faArrowRight;
   faDiscord = faDiscord;
   faPaperPlane = faPaperPlane;
-  faPhone = faPhoneAlt;
+  faDocker = faDocker;
+  faAngular = faAngular;
+  faBootstrap = faBootstrap;
+
   githubBaseURL = GlobalConstants.githubBaseURL;
   discordURL = GlobalConstants.discordURL;
   appVersion = GlobalConstants.appVersion;
   emailAddress = GlobalConstants.emailAddress;
+  linkstackURL = GlobalConstants.linkstackURL;
+  statusURL = GlobalConstants.statusURL;
 
   constructor(private viewportScroller: ViewportScroller) { }
 

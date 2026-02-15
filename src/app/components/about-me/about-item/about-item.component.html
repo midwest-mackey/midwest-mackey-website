@@ -4,15 +4,27 @@
     <ng-container *ngFor="let item of items | slice:start:end">
         <div id="{{item.id}}" class="item {{item.css}} col d-md-flex d-sm-column pb-5 pb-xl-0">
             <div class="col-auto">
-                <img src="./assets/me/{{item.id | lowercase}}.png" alt="{{item.firstName}} {{item.lastName}}"/>
+                <img src="./assets/me/{{item.id | lowercase}}.png" alt="{{item.firstTitle}} {{item.lastTitle}}"/>
             </div>
             <div class="col">
-                <h2 class="display-0 fs-2 text-primary mt-2 mb-1">{{item.firstName | uppercase}}<br>{{item.lastName | uppercase}}</h2>
-                <p class="text-secondary fw-lighter fs-4"><span>{{item.position}}</span></p>
-                <p class="about">{{item.about}}</p>
-                <div class="col d-grid gap-2 d-flex">
-                    <a *ngIf="item.email" href="mailto:{{item.email}}" class="btn btn-outline-primary rounded-pill" title="Email {{item.firstName}}"><fa-icon class="" [fixedWidth]="true" [icon]="faPaperPlane"></fa-icon></a>
-                    <a *ngIf="item.linkedIn" href="{{item.linkedIn}}" class="btn btn-outline-primary rounded-pill" target="linkedIn" title="Checkout {{item.firstName}}'s LinkedIn"><fa-icon class="" [fixedWidth]="true" [icon]="faLinkedIn"></fa-icon></a>
+                <h2 class="display-0 fs-2 text-primary mt-2 mb-1">{{item.firstTitle | uppercase}}<br>{{item.lastTitle | uppercase}}</h2>
+                <p class="text-secondary fw-lighter space-mono-regular"><span>{{item.subTitle}}</span></p>
+                <p class="about pre-wrap">{{item.about}}</p>
+                <div class="flex-wrap d-grid gap-2 d-flex">
+                    <a *ngIf="item.link1" href="{{item.link1}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link1}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faLinkedin"></fa-icon> Linkedin</a>
+                    <a *ngIf="item.link2" href="{{item.link2}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link2}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faGithub"></fa-icon> Github</a>
+                    <a *ngIf="item.link3" href="{{item.link3}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link3}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faTwitch"></fa-icon> Twitch</a>
+                    <a *ngIf="item.link4" href="{{item.link4}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link4}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faDiscord"></fa-icon> Discord</a>
+                    <a *ngIf="item.link5" href="{{item.link5}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link5}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faInstagram"></fa-icon> Instagram</a>
+                    <a *ngIf="item.link6" href="{{item.link6}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link6}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faTikTok"></fa-icon> TikTok</a>
+                    <a *ngIf="item.link7" href="{{item.link7}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link7}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faLT"></fa-icon> Lean Techniques</a>
+                    <a *ngIf="item.link8" href="{{item.link8}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link8}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faBerkleyB"></fa-icon> Berkley</a>
+                    <a *ngIf="item.link9" href="{{item.link9}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link9}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faVermeer"></fa-icon> Vermeer</a>
+                    <a *ngIf="item.link10" href="{{item.link10}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link10}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faMumoSystems"></fa-icon> Mumo</a>
+                    <a *ngIf="item.link11" href="{{item.link11}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link11}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faGraduationCap"></fa-icon> Iowa State University</a>
+                    <a *ngIf="item.link12" href="{{item.link12}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link12}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faList"></fa-icon> LinkStack</a>
+                    <a *ngIf="item.link13" href="{{item.link13}}" class="btn btn-outline-primary rounded-pill" title="Link to {{item.link13}}"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faBMC"></fa-icon> Buy me a coffee</a>
+                    <a *ngIf="item.link14" routerLink="{{item.link14}}" class="btn btn-outline-primary rounded-pill" title="Go to Projects">Projects <fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon></a>
                 </div>
             </div>
         </div>

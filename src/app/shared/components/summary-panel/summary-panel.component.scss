@@ -42,8 +42,35 @@ section {
             padding-right: 30vw !important;
             margin-left: $spacer-size;
         }
+        
     }
+    .img-container {
+        height: 0;
+        img {
+            height: 400px;
+            width: auto;
+            // margin-top: -200px;
+            // margin-bottom: -200;
+        }
+    }
+    
     #summary-buttons {
         margin-top: -40px;
     }
+}
+@include media-breakpoint-down(lg) {
+    section {
+        .img-container {
+        height: 200px;
+    }
+}
+}
+@include media-breakpoint-down(sm) {
+    section {
+        .img-container {
+        img {
+            transform: scaleX(-1);
+        }
+    }
+}
 }

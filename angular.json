@@ -35,16 +35,6 @@
               "src/favicon.ico",
               "src/assets",
               "src/web.config",
-              {
-                "glob": "*.svg",
-                "input": "./node_modules/@ux/logos/company",
-                "output": "./assets/@ux/logos/company"
-              },
-              {
-                "glob": "*.png",
-                "input": "./node_modules/@ux/logos/favicon/png",
-                "output": "./assets/@ux/logos/favicon"
-              }
             ],
             "styles": [
               "src/scss/styles.scss"
@@ -120,16 +110,6 @@
               "src/favicon.ico",
               "src/assets",
               "src/web.config",
-              {
-                "glob": "*.svg",
-                "input": "./node_modules/@ux/logos/company",
-                "output": "./assets/@ux/logos/company"
-              },
-              {
-                "glob": "*.png",
-                "input": "./node_modules/@ux/logos/favicon/png",
-                "output": "./assets/@ux/logos/favicon"
-              }
             ],
             "styles": [
               "src/scss/styles.scss"
