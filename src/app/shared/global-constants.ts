@@ -1,5 +1,4 @@
 import pkgApp from 'package.json';
-// import pkgLogos from '@ux/logos/package.json';
 // import pkgFA from '@fortawesome/fontawesome-svg-core/package.json';
 // import pkgBootstrap from 'bootstrap/package.json';
 
@@ -24,9 +23,8 @@ export class GlobalConstants {
 
     // Versions
     public static appVersion: string = 'v'+pkgApp.version;
-    public static uxLogosVersion: string = 'v1.0.0';
-    public static uxIconsVersion: string = 'v0.0.0';
+
     public static fontAwesomeVersion: string = 'v1.0.0';
     // public static fontAwesomeVersion: string = 'v'+pkgFA.version;
-    // public static uxBootstrapVersion: string = 'v'+pkgBootstrap.version;
+    // public static BootstrapVersion: string = 'v'+pkgBootstrap.version;
 }

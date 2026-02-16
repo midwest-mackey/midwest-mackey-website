@@ -9,8 +9,8 @@ export const SummaryPanelConfigs: Config[] = [
         bodyText: '',
         subText: '',
         buttons: [
-            {   buttonIcon: 'faBitbucket',
-                buttonText: 'Source & Install',
+            {   buttonIcon: 'faList',
+                buttonText: 'Text',
                 buttonLink: 'https://google.com',
             },
         ],

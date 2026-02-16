@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 import { ThemeService } from './theme-service';
 
 declare let gtag: Function;
