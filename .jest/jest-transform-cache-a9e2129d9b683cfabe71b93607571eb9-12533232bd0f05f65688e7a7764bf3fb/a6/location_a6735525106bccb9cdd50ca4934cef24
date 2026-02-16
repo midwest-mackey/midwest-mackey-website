@@ -1,0 +1,497 @@
+4c5640bb3a61c6cdf36e6ed02a3a1c23
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var location_exports = {};
+__export(location_exports, {
+  APP_BASE_HREF: () => APP_BASE_HREF,
+  BrowserPlatformLocation: () => BrowserPlatformLocation,
+  DomAdapter: () => DomAdapter,
+  LOCATION_INITIALIZED: () => LOCATION_INITIALIZED,
+  Location: () => Location,
+  LocationStrategy: () => LocationStrategy,
+  PathLocationStrategy: () => PathLocationStrategy,
+  PlatformLocation: () => PlatformLocation,
+  getDOM: () => getDOM,
+  joinWithSlash: () => joinWithSlash,
+  normalizeQueryParams: () => normalizeQueryParams,
+  setRootDomAdapter: () => setRootDomAdapter
+});
+module.exports = __toCommonJS(location_exports);
+var i0 = __toESM(require("@angular/core"), 1);
+var import_core = require("@angular/core");
+var import_rxjs = require("rxjs");
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+let _DOM = null;
+function getDOM() {
+  return _DOM;
+}
+function setRootDomAdapter(adapter) {
+  _DOM != null ? _DOM : _DOM = adapter;
+}
+class DomAdapter {
+}
+const _PlatformLocation = class _PlatformLocation {
+  historyGo(relativePosition) {
+    throw new Error(ngDevMode ? "Not implemented" : "");
+  }
+};
+__publicField(_PlatformLocation, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PlatformLocation, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_PlatformLocation, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PlatformLocation, providedIn: "platform", useFactory: () => (0, import_core.inject)(BrowserPlatformLocation) }));
+let PlatformLocation = _PlatformLocation;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: PlatformLocation, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "platform", useFactory: () => (0, import_core.inject)(BrowserPlatformLocation) }]
+}] });
+const LOCATION_INITIALIZED = new import_core.InjectionToken(ngDevMode ? "Location Initialized" : "");
+const _BrowserPlatformLocation = class _BrowserPlatformLocation extends PlatformLocation {
+  constructor() {
+    super();
+    __publicField(this, "_location");
+    __publicField(this, "_history");
+    __publicField(this, "_doc", (0, import_core.inject)(import_core.DOCUMENT));
+    this._location = window.location;
+    this._history = window.history;
+  }
+  getBaseHrefFromDOM() {
+    return getDOM().getBaseHref(this._doc);
+  }
+  onPopState(fn) {
+    const window2 = getDOM().getGlobalEventTarget(this._doc, "window");
+    window2.addEventListener("popstate", fn, false);
+    return () => window2.removeEventListener("popstate", fn);
+  }
+  onHashChange(fn) {
+    const window2 = getDOM().getGlobalEventTarget(this._doc, "window");
+    window2.addEventListener("hashchange", fn, false);
+    return () => window2.removeEventListener("hashchange", fn);
+  }
+  get href() {
+    return this._location.href;
+  }
+  get protocol() {
+    return this._location.protocol;
+  }
+  get hostname() {
+    return this._location.hostname;
+  }
+  get port() {
+    return this._location.port;
+  }
+  get pathname() {
+    return this._location.pathname;
+  }
+  get search() {
+    return this._location.search;
+  }
+  get hash() {
+    return this._location.hash;
+  }
+  set pathname(newPath) {
+    this._location.pathname = newPath;
+  }
+  pushState(state, title, url) {
+    this._history.pushState(state, title, url);
+  }
+  replaceState(state, title, url) {
+    this._history.replaceState(state, title, url);
+  }
+  forward() {
+    this._history.forward();
+  }
+  back() {
+    this._history.back();
+  }
+  historyGo(relativePosition = 0) {
+    this._history.go(relativePosition);
+  }
+  getState() {
+    return this._history.state;
+  }
+};
+__publicField(_BrowserPlatformLocation, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _BrowserPlatformLocation, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_BrowserPlatformLocation, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _BrowserPlatformLocation, providedIn: "platform", useFactory: () => new _BrowserPlatformLocation() }));
+let BrowserPlatformLocation = _BrowserPlatformLocation;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: BrowserPlatformLocation, decorators: [{
+  type: import_core.Injectable,
+  args: [{
+    providedIn: "platform",
+    useFactory: () => new BrowserPlatformLocation()
+  }]
+}], ctorParameters: () => [] });
+function joinWithSlash(start, end) {
+  if (!start)
+    return end;
+  if (!end)
+    return start;
+  if (start.endsWith("/")) {
+    return end.startsWith("/") ? start + end.slice(1) : start + end;
+  }
+  return end.startsWith("/") ? start + end : `${start}/${end}`;
+}
+function stripTrailingSlash(url) {
+  const pathEndIdx = url.search(/#|\?|$/);
+  return url[pathEndIdx - 1] === "/" ? url.slice(0, pathEndIdx - 1) + url.slice(pathEndIdx) : url;
+}
+function normalizeQueryParams(params) {
+  return params && params[0] !== "?" ? `?${params}` : params;
+}
+const _LocationStrategy = class _LocationStrategy {
+  historyGo(relativePosition) {
+    throw new Error(ngDevMode ? "Not implemented" : "");
+  }
+};
+__publicField(_LocationStrategy, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _LocationStrategy, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_LocationStrategy, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _LocationStrategy, providedIn: "root", useFactory: () => (0, import_core.inject)(PathLocationStrategy) }));
+let LocationStrategy = _LocationStrategy;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: LocationStrategy, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root", useFactory: () => (0, import_core.inject)(PathLocationStrategy) }]
+}] });
+const APP_BASE_HREF = new import_core.InjectionToken(ngDevMode ? "appBaseHref" : "");
+const _PathLocationStrategy = class _PathLocationStrategy extends LocationStrategy {
+  constructor(_platformLocation, href) {
+    var _a, _b, _c;
+    super();
+    __publicField(this, "_platformLocation");
+    __publicField(this, "_baseHref");
+    __publicField(this, "_removeListenerFns", []);
+    this._platformLocation = _platformLocation;
+    this._baseHref = (_c = (_b = href != null ? href : this._platformLocation.getBaseHrefFromDOM()) != null ? _b : (_a = (0, import_core.inject)(import_core.DOCUMENT).location) == null ? void 0 : _a.origin) != null ? _c : "";
+  }
+  /** @docs-private */
+  ngOnDestroy() {
+    while (this._removeListenerFns.length) {
+      this._removeListenerFns.pop()();
+    }
+  }
+  onPopState(fn) {
+    this._removeListenerFns.push(this._platformLocation.onPopState(fn), this._platformLocation.onHashChange(fn));
+  }
+  getBaseHref() {
+    return this._baseHref;
+  }
+  prepareExternalUrl(internal) {
+    return joinWithSlash(this._baseHref, internal);
+  }
+  path(includeHash = false) {
+    const pathname = this._platformLocation.pathname + normalizeQueryParams(this._platformLocation.search);
+    const hash = this._platformLocation.hash;
+    return hash && includeHash ? `${pathname}${hash}` : pathname;
+  }
+  pushState(state, title, url, queryParams) {
+    const externalUrl = this.prepareExternalUrl(url + normalizeQueryParams(queryParams));
+    this._platformLocation.pushState(state, title, externalUrl);
+  }
+  replaceState(state, title, url, queryParams) {
+    const externalUrl = this.prepareExternalUrl(url + normalizeQueryParams(queryParams));
+    this._platformLocation.replaceState(state, title, externalUrl);
+  }
+  forward() {
+    this._platformLocation.forward();
+  }
+  back() {
+    this._platformLocation.back();
+  }
+  getState() {
+    return this._platformLocation.getState();
+  }
+  historyGo(relativePosition = 0) {
+    var _a, _b;
+    (_b = (_a = this._platformLocation).historyGo) == null ? void 0 : _b.call(_a, relativePosition);
+  }
+};
+__publicField(_PathLocationStrategy, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PathLocationStrategy, deps: [{ token: PlatformLocation }, { token: APP_BASE_HREF, optional: true }], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_PathLocationStrategy, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PathLocationStrategy, providedIn: "root" }));
+let PathLocationStrategy = _PathLocationStrategy;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: PathLocationStrategy, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}], ctorParameters: () => [{ type: PlatformLocation }, { type: void 0, decorators: [{
+  type: import_core.Optional
+}, {
+  type: import_core.Inject,
+  args: [APP_BASE_HREF]
+}] }] });
+const _Location = class _Location {
+  constructor(locationStrategy) {
+    /** @internal */
+    __publicField(this, "_subject", new import_rxjs.Subject());
+    /** @internal */
+    __publicField(this, "_basePath");
+    /** @internal */
+    __publicField(this, "_locationStrategy");
+    /** @internal */
+    __publicField(this, "_urlChangeListeners", []);
+    /** @internal */
+    __publicField(this, "_urlChangeSubscription", null);
+    this._locationStrategy = locationStrategy;
+    const baseHref = this._locationStrategy.getBaseHref();
+    this._basePath = _stripOrigin(stripTrailingSlash(_stripIndexHtml(baseHref)));
+    this._locationStrategy.onPopState((ev) => {
+      this._subject.next({
+        "url": this.path(true),
+        "pop": true,
+        "state": ev.state,
+        "type": ev.type
+      });
+    });
+  }
+  /** @docs-private */
+  ngOnDestroy() {
+    var _a;
+    (_a = this._urlChangeSubscription) == null ? void 0 : _a.unsubscribe();
+    this._urlChangeListeners = [];
+  }
+  /**
+   * Normalizes the URL path for this location.
+   *
+   * @param includeHash True to include an anchor fragment in the path.
+   *
+   * @returns The normalized URL path.
+   */
+  // TODO: vsavkin. Remove the boolean flag and always include hash once the deprecated router is
+  // removed.
+  path(includeHash = false) {
+    return this.normalize(this._locationStrategy.path(includeHash));
+  }
+  /**
+   * Reports the current state of the location history.
+   * @returns The current value of the `history.state` object.
+   */
+  getState() {
+    return this._locationStrategy.getState();
+  }
+  /**
+   * Normalizes the given path and compares to the current normalized path.
+   *
+   * @param path The given URL path.
+   * @param query Query parameters.
+   *
+   * @returns True if the given URL path is equal to the current normalized path, false
+   * otherwise.
+   */
+  isCurrentPathEqualTo(path, query = "") {
+    return this.path() == this.normalize(path + normalizeQueryParams(query));
+  }
+  /**
+   * Normalizes a URL path by stripping any trailing slashes.
+   *
+   * @param url String representing a URL.
+   *
+   * @returns The normalized URL string.
+   */
+  normalize(url) {
+    return _Location.stripTrailingSlash(_stripBasePath(this._basePath, _stripIndexHtml(url)));
+  }
+  /**
+   * Normalizes an external URL path.
+   * If the given URL doesn't begin with a leading slash (`'/'`), adds one
+   * before normalizing. Adds a hash if `HashLocationStrategy` is
+   * in use, or the `APP_BASE_HREF` if the `PathLocationStrategy` is in use.
+   *
+   * @param url String representing a URL.
+   *
+   * @returns  A normalized platform-specific URL.
+   */
+  prepareExternalUrl(url) {
+    if (url && url[0] !== "/") {
+      url = "/" + url;
+    }
+    return this._locationStrategy.prepareExternalUrl(url);
+  }
+  // TODO: rename this method to pushState
+  /**
+   * Changes the browser's URL to a normalized version of a given URL, and pushes a
+   * new item onto the platform's history.
+   *
+   * @param path  URL path to normalize.
+   * @param query Query parameters.
+   * @param state Location history state.
+   *
+   */
+  go(path, query = "", state = null) {
+    this._locationStrategy.pushState(state, "", path, query);
+    this._notifyUrlChangeListeners(this.prepareExternalUrl(path + normalizeQueryParams(query)), state);
+  }
+  /**
+   * Changes the browser's URL to a normalized version of the given URL, and replaces
+   * the top item on the platform's history stack.
+   *
+   * @param path  URL path to normalize.
+   * @param query Query parameters.
+   * @param state Location history state.
+   */
+  replaceState(path, query = "", state = null) {
+    this._locationStrategy.replaceState(state, "", path, query);
+    this._notifyUrlChangeListeners(this.prepareExternalUrl(path + normalizeQueryParams(query)), state);
+  }
+  /**
+   * Navigates forward in the platform's history.
+   */
+  forward() {
+    this._locationStrategy.forward();
+  }
+  /**
+   * Navigates back in the platform's history.
+   */
+  back() {
+    this._locationStrategy.back();
+  }
+  /**
+   * Navigate to a specific page from session history, identified by its relative position to the
+   * current page.
+   *
+   * @param relativePosition  Position of the target page in the history relative to the current
+   *     page.
+   * A negative value moves backwards, a positive value moves forwards, e.g. `location.historyGo(2)`
+   * moves forward two pages and `location.historyGo(-2)` moves back two pages. When we try to go
+   * beyond what's stored in the history session, we stay in the current page. Same behaviour occurs
+   * when `relativePosition` equals 0.
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/History_API#Moving_to_a_specific_point_in_history
+   */
+  historyGo(relativePosition = 0) {
+    var _a, _b;
+    (_b = (_a = this._locationStrategy).historyGo) == null ? void 0 : _b.call(_a, relativePosition);
+  }
+  /**
+   * Registers a URL change listener. Use to catch updates performed by the Angular
+   * framework that are not detectible through "popstate" or "hashchange" events.
+   *
+   * @param fn The change handler function, which take a URL and a location history state.
+   * @returns A function that, when executed, unregisters a URL change listener.
+   */
+  onUrlChange(fn) {
+    var _a;
+    this._urlChangeListeners.push(fn);
+    (_a = this._urlChangeSubscription) != null ? _a : this._urlChangeSubscription = this.subscribe((v) => {
+      this._notifyUrlChangeListeners(v.url, v.state);
+    });
+    return () => {
+      var _a2;
+      const fnIndex = this._urlChangeListeners.indexOf(fn);
+      this._urlChangeListeners.splice(fnIndex, 1);
+      if (this._urlChangeListeners.length === 0) {
+        (_a2 = this._urlChangeSubscription) == null ? void 0 : _a2.unsubscribe();
+        this._urlChangeSubscription = null;
+      }
+    };
+  }
+  /** @internal */
+  _notifyUrlChangeListeners(url = "", state) {
+    this._urlChangeListeners.forEach((fn) => fn(url, state));
+  }
+  /**
+   * Subscribes to the platform's `popState` events.
+   *
+   * Note: `Location.go()` does not trigger the `popState` event in the browser. Use
+   * `Location.onUrlChange()` to subscribe to URL changes instead.
+   *
+   * @param value Event that is triggered when the state history changes.
+   * @param exception The exception to throw.
+   *
+   * @see [onpopstate](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate)
+   *
+   * @returns Subscribed events.
+   */
+  subscribe(onNext, onThrow, onReturn) {
+    return this._subject.subscribe({
+      next: onNext,
+      error: onThrow != null ? onThrow : void 0,
+      complete: onReturn != null ? onReturn : void 0
+    });
+  }
+};
+/**
+ * Normalizes URL parameters by prepending with `?` if needed.
+ *
+ * @param  params String of URL parameters.
+ *
+ * @returns The normalized URL parameters string.
+ */
+__publicField(_Location, "normalizeQueryParams", normalizeQueryParams);
+/**
+ * Joins two parts of a URL with a slash if needed.
+ *
+ * @param start  URL string
+ * @param end    URL string
+ *
+ *
+ * @returns The joined URL string.
+ */
+__publicField(_Location, "joinWithSlash", joinWithSlash);
+/**
+ * Removes a trailing slash from a URL string if needed.
+ * Looks for the first occurrence of either `#`, `?`, or the end of the
+ * line as `/` characters and removes the trailing slash if one exists.
+ *
+ * @param url URL string.
+ *
+ * @returns The URL string, modified if needed.
+ */
+__publicField(_Location, "stripTrailingSlash", stripTrailingSlash);
+__publicField(_Location, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _Location, deps: [{ token: LocationStrategy }], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_Location, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _Location, providedIn: "root", useFactory: createLocation }));
+let Location = _Location;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: Location, decorators: [{
+  type: import_core.Injectable,
+  args: [{
+    providedIn: "root",
+    // See #23917
+    useFactory: createLocation
+  }]
+}], ctorParameters: () => [{ type: LocationStrategy }] });
+function createLocation() {
+  return new Location((0, import_core.\u0275\u0275inject)(LocationStrategy));
+}
+function _stripBasePath(basePath, url) {
+  if (!basePath || !url.startsWith(basePath)) {
+    return url;
+  }
+  const strippedUrl = url.substring(basePath.length);
+  if (strippedUrl === "" || ["/", ";", "?", "#"].includes(strippedUrl[0])) {
+    return strippedUrl;
+  }
+  return url;
+}
+function _stripIndexHtml(url) {
+  return url.replace(/\/index.html$/, "");
+}
+function _stripOrigin(baseHref) {
+  const isAbsoluteUrl = new RegExp("^(https?:)?//").test(baseHref);
+  if (isAbsoluteUrl) {
+    const [, pathname] = baseHref.split(/\/\/[^\/]+/);
+    return pathname;
+  }
+  return baseHref;
+}

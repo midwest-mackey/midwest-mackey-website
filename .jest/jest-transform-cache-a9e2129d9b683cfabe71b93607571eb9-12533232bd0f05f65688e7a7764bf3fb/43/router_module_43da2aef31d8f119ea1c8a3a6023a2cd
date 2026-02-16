@@ -1,0 +1,1097 @@
+ff633206ddf11341723726459f1b74db
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from2, except, desc) => {
+  if (from2 && typeof from2 === "object" || typeof from2 === "function") {
+    for (let key of __getOwnPropNames(from2))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from2[key], enumerable: !(desc = __getOwnPropDesc(from2, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
+var router_module_exports = {};
+__export(router_module_exports, {
+  NoPreloading: () => NoPreloading,
+  PreloadAllModules: () => PreloadAllModules,
+  PreloadingStrategy: () => PreloadingStrategy,
+  ROUTER_INITIALIZER: () => ROUTER_INITIALIZER,
+  ROUTER_PROVIDERS: () => ROUTER_PROVIDERS,
+  RouterLink: () => RouterLink,
+  RouterLinkActive: () => RouterLinkActive,
+  RouterModule: () => RouterModule,
+  RouterPreloader: () => RouterPreloader,
+  provideRouter: () => provideRouter,
+  provideRoutes: () => provideRoutes,
+  withComponentInputBinding: () => withComponentInputBinding,
+  withDebugTracing: () => withDebugTracing,
+  withDisabledInitialNavigation: () => withDisabledInitialNavigation,
+  withEnabledBlockingInitialNavigation: () => withEnabledBlockingInitialNavigation,
+  withHashLocation: () => withHashLocation,
+  withInMemoryScrolling: () => withInMemoryScrolling,
+  withNavigationErrorHandler: () => withNavigationErrorHandler,
+  withPreloading: () => withPreloading,
+  withRouterConfig: () => withRouterConfig,
+  withViewTransitions: () => withViewTransitions
+});
+module.exports = __toCommonJS(router_module_exports);
+var i3 = __toESM(require("@angular/common"), 1);
+var import_common = require("@angular/common");
+var i0 = __toESM(require("@angular/core"), 1);
+var import_core = require("@angular/core");
+var import_router2 = require("./router2.mjs");
+var import_rxjs = require("rxjs");
+var import_operators = require("rxjs/operators");
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+const _RouterLink = class _RouterLink {
+  constructor(router, route, tabIndexAttribute, renderer, el, locationStrategy) {
+    __publicField(this, "router");
+    __publicField(this, "route");
+    __publicField(this, "tabIndexAttribute");
+    __publicField(this, "renderer");
+    __publicField(this, "el");
+    __publicField(this, "locationStrategy");
+    /** @nodoc */
+    __publicField(this, "reactiveHref", (0, import_core.signal)(null, ...ngDevMode ? [{ debugName: "reactiveHref" }] : []));
+    /**
+     * Represents the `target` attribute on a host element.
+     * This is only used when the host element is
+     * an `<a>`/`<area>` tag or a compatible custom element.
+     */
+    __publicField(this, "target");
+    /**
+     * Passed to {@link Router#createUrlTree} as part of the
+     * `UrlCreationOptions`.
+     * @see {@link UrlCreationOptions#queryParams}
+     * @see {@link Router#createUrlTree}
+     */
+    __publicField(this, "queryParams");
+    /**
+     * Passed to {@link Router#createUrlTree} as part of the
+     * `UrlCreationOptions`.
+     * @see {@link UrlCreationOptions#fragment}
+     * @see {@link Router#createUrlTree}
+     */
+    __publicField(this, "fragment");
+    /**
+     * Passed to {@link Router#createUrlTree} as part of the
+     * `UrlCreationOptions`.
+     * @see {@link UrlCreationOptions#queryParamsHandling}
+     * @see {@link Router#createUrlTree}
+     */
+    __publicField(this, "queryParamsHandling");
+    /**
+     * Passed to {@link Router#navigateByUrl} as part of the
+     * `NavigationBehaviorOptions`.
+     * @see {@link NavigationBehaviorOptions#state}
+     * @see {@link Router#navigateByUrl}
+     */
+    __publicField(this, "state");
+    /**
+     * Passed to {@link Router#navigateByUrl} as part of the
+     * `NavigationBehaviorOptions`.
+     * @see {@link NavigationBehaviorOptions#info}
+     * @see {@link Router#navigateByUrl}
+     */
+    __publicField(this, "info");
+    /**
+     * Passed to {@link Router#createUrlTree} as part of the
+     * `UrlCreationOptions`.
+     * Specify a value here when you do not want to use the default value
+     * for `routerLink`, which is the current activated route.
+     * Note that a value of `undefined` here will use the `routerLink` default.
+     * @see {@link UrlCreationOptions#relativeTo}
+     * @see {@link Router#createUrlTree}
+     */
+    __publicField(this, "relativeTo");
+    /** Whether a host element is an `<a>`/`<area>` tag or a compatible custom element. */
+    __publicField(this, "isAnchorElement");
+    __publicField(this, "subscription");
+    /** @internal */
+    __publicField(this, "onChanges", new import_rxjs.Subject());
+    __publicField(this, "applicationErrorHandler", (0, import_core.inject)(import_core.\u0275INTERNAL_APPLICATION_ERROR_HANDLER));
+    __publicField(this, "options", (0, import_core.inject)(import_router2.ROUTER_CONFIGURATION, { optional: true }));
+    /**
+     * Passed to {@link Router#createUrlTree} as part of the
+     * `UrlCreationOptions`.
+     * @see {@link UrlCreationOptions#preserveFragment}
+     * @see {@link Router#createUrlTree}
+     */
+    __publicField(this, "preserveFragment", false);
+    /**
+     * Passed to {@link Router#navigateByUrl} as part of the
+     * `NavigationBehaviorOptions`.
+     * @see {@link NavigationBehaviorOptions#skipLocationChange}
+     * @see {@link Router#navigateByUrl}
+     */
+    __publicField(this, "skipLocationChange", false);
+    /**
+     * Passed to {@link Router#navigateByUrl} as part of the
+     * `NavigationBehaviorOptions`.
+     * @see {@link NavigationBehaviorOptions#replaceUrl}
+     * @see {@link Router#navigateByUrl}
+     */
+    __publicField(this, "replaceUrl", false);
+    __publicField(this, "routerLinkInput", null);
+    var _a, _b, _c, _d;
+    this.router = router;
+    this.route = route;
+    this.tabIndexAttribute = tabIndexAttribute;
+    this.renderer = renderer;
+    this.el = el;
+    this.locationStrategy = locationStrategy;
+    this.reactiveHref.set((0, import_core.inject)(new import_core.HostAttributeToken("href"), { optional: true }));
+    const tagName = (_a = el.nativeElement.tagName) == null ? void 0 : _a.toLowerCase();
+    this.isAnchorElement = tagName === "a" || tagName === "area" || !!// Avoid breaking in an SSR context where customElements might not be defined.
+    (typeof customElements === "object" && // observedAttributes is an optional static property/getter on a custom element.
+    // The spec states that this must be an array of strings.
+    ((_d = (_c = (_b = customElements.get(tagName)) == null ? void 0 : _b.observedAttributes) == null ? void 0 : _c.includes) == null ? void 0 : _d.call(_c, "href")));
+    if (!this.isAnchorElement) {
+      this.subscribeToNavigationEventsIfNecessary();
+    } else {
+      this.setTabIndexIfNotOnNativeEl("0");
+    }
+  }
+  /**
+   * Represents an `href` attribute value applied to a host element,
+   * when a host element is an `<a>`/`<area>` tag or a compatible custom element.
+   * For other tags, the value is `null`.
+   */
+  get href() {
+    return (0, import_core.untracked)(this.reactiveHref);
+  }
+  /** @deprecated */
+  set href(value) {
+    this.reactiveHref.set(value);
+  }
+  subscribeToNavigationEventsIfNecessary() {
+    var _a;
+    if (this.subscription !== void 0 || !this.isAnchorElement) {
+      return;
+    }
+    let createSubcription = this.preserveFragment;
+    const dependsOnRouterState = (handling) => handling === "merge" || handling === "preserve";
+    createSubcription || (createSubcription = dependsOnRouterState(this.queryParamsHandling));
+    createSubcription || (createSubcription = !this.queryParamsHandling && !dependsOnRouterState((_a = this.options) == null ? void 0 : _a.defaultQueryParamsHandling));
+    if (!createSubcription) {
+      return;
+    }
+    this.subscription = this.router.events.subscribe((s) => {
+      if (s instanceof import_router2.NavigationEnd) {
+        this.updateHref();
+      }
+    });
+  }
+  /**
+   * Modifies the tab index if there was not a tabindex attribute on the element during
+   * instantiation.
+   */
+  setTabIndexIfNotOnNativeEl(newTabIndex) {
+    if (this.tabIndexAttribute != null || this.isAnchorElement) {
+      return;
+    }
+    this.applyAttributeValue("tabindex", newTabIndex);
+  }
+  /** @docs-private */
+  // TODO(atscott): Remove changes parameter in major version as a breaking change.
+  ngOnChanges(changes) {
+    if (ngDevMode && (0, import_router2.isUrlTree)(this.routerLinkInput) && (this.fragment !== void 0 || this.queryParams || this.queryParamsHandling || this.preserveFragment || this.relativeTo)) {
+      throw new import_core.\u0275RuntimeError(4017, "Cannot configure queryParams or fragment when using a UrlTree as the routerLink input value.");
+    }
+    if (this.isAnchorElement) {
+      this.updateHref();
+      this.subscribeToNavigationEventsIfNecessary();
+    }
+    this.onChanges.next(this);
+  }
+  /**
+   * Commands to pass to {@link Router#createUrlTree} or a `UrlTree`.
+   *   - **array**: commands to pass to {@link Router#createUrlTree}.
+   *   - **string**: shorthand for array of commands with just the string, i.e. `['/route']`
+   *   - **UrlTree**: a `UrlTree` for this link rather than creating one from the commands
+   *     and other inputs that correspond to properties of `UrlCreationOptions`.
+   *   - **null|undefined**: effectively disables the `routerLink`
+   * @see {@link Router#createUrlTree}
+   */
+  set routerLink(commandsOrUrlTree) {
+    if (commandsOrUrlTree == null) {
+      this.routerLinkInput = null;
+      this.setTabIndexIfNotOnNativeEl(null);
+    } else {
+      if ((0, import_router2.isUrlTree)(commandsOrUrlTree)) {
+        this.routerLinkInput = commandsOrUrlTree;
+      } else {
+        this.routerLinkInput = Array.isArray(commandsOrUrlTree) ? commandsOrUrlTree : [commandsOrUrlTree];
+      }
+      this.setTabIndexIfNotOnNativeEl("0");
+    }
+  }
+  /** @docs-private */
+  onClick(button, ctrlKey, shiftKey, altKey, metaKey) {
+    var _a;
+    const urlTree = this.urlTree;
+    if (urlTree === null) {
+      return true;
+    }
+    if (this.isAnchorElement) {
+      if (button !== 0 || ctrlKey || shiftKey || altKey || metaKey) {
+        return true;
+      }
+      if (typeof this.target === "string" && this.target != "_self") {
+        return true;
+      }
+    }
+    const extras = {
+      skipLocationChange: this.skipLocationChange,
+      replaceUrl: this.replaceUrl,
+      state: this.state,
+      info: this.info
+    };
+    (_a = this.router.navigateByUrl(urlTree, extras)) == null ? void 0 : _a.catch((e) => {
+      this.applicationErrorHandler(e);
+    });
+    return !this.isAnchorElement;
+  }
+  /** @docs-private */
+  ngOnDestroy() {
+    var _a;
+    (_a = this.subscription) == null ? void 0 : _a.unsubscribe();
+  }
+  updateHref() {
+    var _a, _b;
+    const urlTree = this.urlTree;
+    this.reactiveHref.set(urlTree !== null && this.locationStrategy ? (_b = (_a = this.locationStrategy) == null ? void 0 : _a.prepareExternalUrl(this.router.serializeUrl(urlTree))) != null ? _b : "" : null);
+  }
+  applyAttributeValue(attrName, attrValue) {
+    const renderer = this.renderer;
+    const nativeElement = this.el.nativeElement;
+    if (attrValue !== null) {
+      renderer.setAttribute(nativeElement, attrName, attrValue);
+    } else {
+      renderer.removeAttribute(nativeElement, attrName);
+    }
+  }
+  get urlTree() {
+    if (this.routerLinkInput === null) {
+      return null;
+    } else if ((0, import_router2.isUrlTree)(this.routerLinkInput)) {
+      return this.routerLinkInput;
+    }
+    return this.router.createUrlTree(this.routerLinkInput, {
+      // If the `relativeTo` input is not defined, we want to use `this.route` by default.
+      // Otherwise, we should use the value provided by the user in the input.
+      relativeTo: this.relativeTo !== void 0 ? this.relativeTo : this.route,
+      queryParams: this.queryParams,
+      fragment: this.fragment,
+      queryParamsHandling: this.queryParamsHandling,
+      preserveFragment: this.preserveFragment
+    });
+  }
+};
+__publicField(_RouterLink, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _RouterLink, deps: [{ token: import_router2.Router }, { token: import_router2.ActivatedRoute }, { token: "tabindex", attribute: true }, { token: i0.Renderer2 }, { token: i0.ElementRef }, { token: i3.LocationStrategy }], target: i0.\u0275\u0275FactoryTarget.Directive }));
+__publicField(_RouterLink, "\u0275dir", i0.\u0275\u0275ngDeclareDirective({ minVersion: "16.1.0", version: "20.3.16", type: _RouterLink, isStandalone: true, selector: "[routerLink]", inputs: { target: "target", queryParams: "queryParams", fragment: "fragment", queryParamsHandling: "queryParamsHandling", state: "state", info: "info", relativeTo: "relativeTo", preserveFragment: ["preserveFragment", "preserveFragment", import_core.booleanAttribute], skipLocationChange: ["skipLocationChange", "skipLocationChange", import_core.booleanAttribute], replaceUrl: ["replaceUrl", "replaceUrl", import_core.booleanAttribute], routerLink: "routerLink" }, host: { listeners: { "click": "onClick($event.button,$event.ctrlKey,$event.shiftKey,$event.altKey,$event.metaKey)" }, properties: { "attr.href": "reactiveHref()", "attr.target": "this.target" } }, usesOnChanges: true, ngImport: i0 }));
+let RouterLink = _RouterLink;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: RouterLink, decorators: [{
+  type: import_core.Directive,
+  args: [{
+    selector: "[routerLink]",
+    host: {
+      "[attr.href]": "reactiveHref()"
+    }
+  }]
+}], ctorParameters: () => [{ type: import_router2.Router }, { type: import_router2.ActivatedRoute }, { type: void 0, decorators: [{
+  type: import_core.Attribute,
+  args: ["tabindex"]
+}] }, { type: i0.Renderer2 }, { type: i0.ElementRef }, { type: i3.LocationStrategy }], propDecorators: { target: [{
+  type: import_core.HostBinding,
+  args: ["attr.target"]
+}, {
+  type: import_core.Input
+}], queryParams: [{
+  type: import_core.Input
+}], fragment: [{
+  type: import_core.Input
+}], queryParamsHandling: [{
+  type: import_core.Input
+}], state: [{
+  type: import_core.Input
+}], info: [{
+  type: import_core.Input
+}], relativeTo: [{
+  type: import_core.Input
+}], preserveFragment: [{
+  type: import_core.Input,
+  args: [{ transform: import_core.booleanAttribute }]
+}], skipLocationChange: [{
+  type: import_core.Input,
+  args: [{ transform: import_core.booleanAttribute }]
+}], replaceUrl: [{
+  type: import_core.Input,
+  args: [{ transform: import_core.booleanAttribute }]
+}], routerLink: [{
+  type: import_core.Input
+}], onClick: [{
+  type: import_core.HostListener,
+  args: ["click", [
+    "$event.button",
+    "$event.ctrlKey",
+    "$event.shiftKey",
+    "$event.altKey",
+    "$event.metaKey"
+  ]]
+}] } });
+const _RouterLinkActive = class _RouterLinkActive {
+  constructor(router, element, renderer, cdr, link) {
+    __publicField(this, "router");
+    __publicField(this, "element");
+    __publicField(this, "renderer");
+    __publicField(this, "cdr");
+    __publicField(this, "link");
+    __publicField(this, "links");
+    __publicField(this, "classes", []);
+    __publicField(this, "routerEventsSubscription");
+    __publicField(this, "linkInputChangesSubscription");
+    __publicField(this, "_isActive", false);
+    /**
+     * Options to configure how to determine if the router link is active.
+     *
+     * These options are passed to the `Router.isActive()` function.
+     *
+     * @see {@link Router#isActive}
+     */
+    __publicField(this, "routerLinkActiveOptions", { exact: false });
+    /**
+     * Aria-current attribute to apply when the router link is active.
+     *
+     * Possible values: `'page'` | `'step'` | `'location'` | `'date'` | `'time'` | `true` | `false`.
+     *
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-current}
+     */
+    __publicField(this, "ariaCurrentWhenActive");
+    /**
+     *
+     * You can use the output `isActiveChange` to get notified each time the link becomes
+     * active or inactive.
+     *
+     * Emits:
+     * true  -> Route is active
+     * false -> Route is inactive
+     *
+     * ```html
+     * <a
+     *  routerLink="/user/bob"
+     *  routerLinkActive="active-link"
+     *  (isActiveChange)="this.onRouterLinkActive($event)">Bob</a>
+     * ```
+     */
+    __publicField(this, "isActiveChange", new import_core.EventEmitter());
+    this.router = router;
+    this.element = element;
+    this.renderer = renderer;
+    this.cdr = cdr;
+    this.link = link;
+    this.routerEventsSubscription = router.events.subscribe((s) => {
+      if (s instanceof import_router2.NavigationEnd) {
+        this.update();
+      }
+    });
+  }
+  get isActive() {
+    return this._isActive;
+  }
+  /** @docs-private */
+  ngAfterContentInit() {
+    (0, import_rxjs.of)(this.links.changes, (0, import_rxjs.of)(null)).pipe((0, import_operators.mergeAll)()).subscribe((_) => {
+      this.update();
+      this.subscribeToEachLinkOnChanges();
+    });
+  }
+  subscribeToEachLinkOnChanges() {
+    var _a;
+    (_a = this.linkInputChangesSubscription) == null ? void 0 : _a.unsubscribe();
+    const allLinkChanges = [...this.links.toArray(), this.link].filter((link) => !!link).map((link) => link.onChanges);
+    this.linkInputChangesSubscription = (0, import_rxjs.from)(allLinkChanges).pipe((0, import_operators.mergeAll)()).subscribe((link) => {
+      if (this._isActive !== this.isLinkActive(this.router)(link)) {
+        this.update();
+      }
+    });
+  }
+  set routerLinkActive(data) {
+    const classes = Array.isArray(data) ? data : data.split(" ");
+    this.classes = classes.filter((c) => !!c);
+  }
+  /** @docs-private */
+  ngOnChanges(changes) {
+    this.update();
+  }
+  /** @docs-private */
+  ngOnDestroy() {
+    var _a;
+    this.routerEventsSubscription.unsubscribe();
+    (_a = this.linkInputChangesSubscription) == null ? void 0 : _a.unsubscribe();
+  }
+  update() {
+    if (!this.links || !this.router.navigated)
+      return;
+    queueMicrotask(() => {
+      const hasActiveLinks = this.hasActiveLinks();
+      this.classes.forEach((c) => {
+        if (hasActiveLinks) {
+          this.renderer.addClass(this.element.nativeElement, c);
+        } else {
+          this.renderer.removeClass(this.element.nativeElement, c);
+        }
+      });
+      if (hasActiveLinks && this.ariaCurrentWhenActive !== void 0) {
+        this.renderer.setAttribute(this.element.nativeElement, "aria-current", this.ariaCurrentWhenActive.toString());
+      } else {
+        this.renderer.removeAttribute(this.element.nativeElement, "aria-current");
+      }
+      if (this._isActive !== hasActiveLinks) {
+        this._isActive = hasActiveLinks;
+        this.cdr.markForCheck();
+        this.isActiveChange.emit(hasActiveLinks);
+      }
+    });
+  }
+  isLinkActive(router) {
+    const options = isActiveMatchOptions(this.routerLinkActiveOptions) ? this.routerLinkActiveOptions : (
+      // While the types should disallow `undefined` here, it's possible without strict inputs
+      this.routerLinkActiveOptions.exact || false
+    );
+    return (link) => {
+      const urlTree = link.urlTree;
+      return urlTree ? router.isActive(urlTree, options) : false;
+    };
+  }
+  hasActiveLinks() {
+    const isActiveCheckFn = this.isLinkActive(this.router);
+    return this.link && isActiveCheckFn(this.link) || this.links.some(isActiveCheckFn);
+  }
+};
+__publicField(_RouterLinkActive, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _RouterLinkActive, deps: [{ token: import_router2.Router }, { token: i0.ElementRef }, { token: i0.Renderer2 }, { token: i0.ChangeDetectorRef }, { token: RouterLink, optional: true }], target: i0.\u0275\u0275FactoryTarget.Directive }));
+__publicField(_RouterLinkActive, "\u0275dir", i0.\u0275\u0275ngDeclareDirective({ minVersion: "14.0.0", version: "20.3.16", type: _RouterLinkActive, isStandalone: true, selector: "[routerLinkActive]", inputs: { routerLinkActiveOptions: "routerLinkActiveOptions", ariaCurrentWhenActive: "ariaCurrentWhenActive", routerLinkActive: "routerLinkActive" }, outputs: { isActiveChange: "isActiveChange" }, queries: [{ propertyName: "links", predicate: RouterLink, descendants: true }], exportAs: ["routerLinkActive"], usesOnChanges: true, ngImport: i0 }));
+let RouterLinkActive = _RouterLinkActive;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: RouterLinkActive, decorators: [{
+  type: import_core.Directive,
+  args: [{
+    selector: "[routerLinkActive]",
+    exportAs: "routerLinkActive"
+  }]
+}], ctorParameters: () => [{ type: import_router2.Router }, { type: i0.ElementRef }, { type: i0.Renderer2 }, { type: i0.ChangeDetectorRef }, { type: RouterLink, decorators: [{
+  type: import_core.Optional
+}] }], propDecorators: { links: [{
+  type: import_core.ContentChildren,
+  args: [RouterLink, { descendants: true }]
+}], routerLinkActiveOptions: [{
+  type: import_core.Input
+}], ariaCurrentWhenActive: [{
+  type: import_core.Input
+}], isActiveChange: [{
+  type: import_core.Output
+}], routerLinkActive: [{
+  type: import_core.Input
+}] } });
+function isActiveMatchOptions(options) {
+  return !!options.paths;
+}
+class PreloadingStrategy {
+}
+const _PreloadAllModules = class _PreloadAllModules {
+  preload(route, fn) {
+    return fn().pipe((0, import_operators.catchError)(() => (0, import_rxjs.of)(null)));
+  }
+};
+__publicField(_PreloadAllModules, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PreloadAllModules, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_PreloadAllModules, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PreloadAllModules, providedIn: "root" }));
+let PreloadAllModules = _PreloadAllModules;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: PreloadAllModules, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}] });
+const _NoPreloading = class _NoPreloading {
+  preload(route, fn) {
+    return (0, import_rxjs.of)(null);
+  }
+};
+__publicField(_NoPreloading, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _NoPreloading, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_NoPreloading, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _NoPreloading, providedIn: "root" }));
+let NoPreloading = _NoPreloading;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: NoPreloading, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}] });
+const _RouterPreloader = class _RouterPreloader {
+  constructor(router, injector, preloadingStrategy, loader) {
+    __publicField(this, "router");
+    __publicField(this, "injector");
+    __publicField(this, "preloadingStrategy");
+    __publicField(this, "loader");
+    __publicField(this, "subscription");
+    this.router = router;
+    this.injector = injector;
+    this.preloadingStrategy = preloadingStrategy;
+    this.loader = loader;
+  }
+  setUpPreloading() {
+    this.subscription = this.router.events.pipe((0, import_operators.filter)((e) => e instanceof import_router2.NavigationEnd), (0, import_operators.concatMap)(() => this.preload())).subscribe(() => {
+    });
+  }
+  preload() {
+    return this.processRoutes(this.injector, this.router.config);
+  }
+  /** @docs-private */
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+  processRoutes(injector, routes) {
+    var _a, _b, _c;
+    const res = [];
+    for (const route of routes) {
+      if (route.providers && !route._injector) {
+        route._injector = (0, import_core.createEnvironmentInjector)(route.providers, injector, `Route: ${route.path}`);
+      }
+      const injectorForCurrentRoute = (_a = route._injector) != null ? _a : injector;
+      const injectorForChildren = (_b = route._loadedInjector) != null ? _b : injectorForCurrentRoute;
+      if (route.loadChildren && !route._loadedRoutes && route.canLoad === void 0 || route.loadComponent && !route._loadedComponent) {
+        res.push(this.preloadConfig(injectorForCurrentRoute, route));
+      }
+      if (route.children || route._loadedRoutes) {
+        res.push(this.processRoutes(injectorForChildren, (_c = route.children) != null ? _c : route._loadedRoutes));
+      }
+    }
+    return (0, import_rxjs.from)(res).pipe((0, import_operators.mergeAll)());
+  }
+  preloadConfig(injector, route) {
+    return this.preloadingStrategy.preload(route, () => {
+      let loadedChildren$;
+      if (route.loadChildren && route.canLoad === void 0) {
+        loadedChildren$ = this.loader.loadChildren(injector, route);
+      } else {
+        loadedChildren$ = (0, import_rxjs.of)(null);
+      }
+      const recursiveLoadChildren$ = loadedChildren$.pipe((0, import_operators.mergeMap)((config) => {
+        var _a;
+        if (config === null) {
+          return (0, import_rxjs.of)(void 0);
+        }
+        route._loadedRoutes = config.routes;
+        route._loadedInjector = config.injector;
+        return this.processRoutes((_a = config.injector) != null ? _a : injector, config.routes);
+      }));
+      if (route.loadComponent && !route._loadedComponent) {
+        const loadComponent$ = this.loader.loadComponent(injector, route);
+        return (0, import_rxjs.from)([recursiveLoadChildren$, loadComponent$]).pipe((0, import_operators.mergeAll)());
+      } else {
+        return recursiveLoadChildren$;
+      }
+    });
+  }
+};
+__publicField(_RouterPreloader, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _RouterPreloader, deps: [{ token: import_router2.Router }, { token: i0.EnvironmentInjector }, { token: PreloadingStrategy }, { token: import_router2.RouterConfigLoader }], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_RouterPreloader, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _RouterPreloader, providedIn: "root" }));
+let RouterPreloader = _RouterPreloader;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: RouterPreloader, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}], ctorParameters: () => [{ type: import_router2.Router }, { type: i0.EnvironmentInjector }, { type: PreloadingStrategy }, { type: import_router2.RouterConfigLoader }] });
+const ROUTER_SCROLLER = new import_core.InjectionToken("");
+const _RouterScroller = class _RouterScroller {
+  /** @docs-private */
+  constructor(urlSerializer, transitions, viewportScroller, zone, options = {}) {
+    __publicField(this, "urlSerializer");
+    __publicField(this, "transitions");
+    __publicField(this, "viewportScroller");
+    __publicField(this, "zone");
+    __publicField(this, "options");
+    __publicField(this, "routerEventsSubscription");
+    __publicField(this, "scrollEventsSubscription");
+    __publicField(this, "lastId", 0);
+    __publicField(this, "lastSource", import_router2.IMPERATIVE_NAVIGATION);
+    __publicField(this, "restoredId", 0);
+    __publicField(this, "store", {});
+    this.urlSerializer = urlSerializer;
+    this.transitions = transitions;
+    this.viewportScroller = viewportScroller;
+    this.zone = zone;
+    this.options = options;
+    options.scrollPositionRestoration || (options.scrollPositionRestoration = "disabled");
+    options.anchorScrolling || (options.anchorScrolling = "disabled");
+  }
+  init() {
+    if (this.options.scrollPositionRestoration !== "disabled") {
+      this.viewportScroller.setHistoryScrollRestoration("manual");
+    }
+    this.routerEventsSubscription = this.createScrollEvents();
+    this.scrollEventsSubscription = this.consumeScrollEvents();
+  }
+  createScrollEvents() {
+    return this.transitions.events.subscribe((e) => {
+      if (e instanceof import_router2.NavigationStart) {
+        this.store[this.lastId] = this.viewportScroller.getScrollPosition();
+        this.lastSource = e.navigationTrigger;
+        this.restoredId = e.restoredState ? e.restoredState.navigationId : 0;
+      } else if (e instanceof import_router2.NavigationEnd) {
+        this.lastId = e.id;
+        this.scheduleScrollEvent(e, this.urlSerializer.parse(e.urlAfterRedirects).fragment);
+      } else if (e instanceof import_router2.NavigationSkipped && e.code === import_router2.NavigationSkippedCode.IgnoredSameUrlNavigation) {
+        this.lastSource = void 0;
+        this.restoredId = 0;
+        this.scheduleScrollEvent(e, this.urlSerializer.parse(e.url).fragment);
+      }
+    });
+  }
+  consumeScrollEvents() {
+    return this.transitions.events.subscribe((e) => {
+      if (!(e instanceof import_router2.Scroll))
+        return;
+      const instantScroll = { behavior: "instant" };
+      if (e.position) {
+        if (this.options.scrollPositionRestoration === "top") {
+          this.viewportScroller.scrollToPosition([0, 0], instantScroll);
+        } else if (this.options.scrollPositionRestoration === "enabled") {
+          this.viewportScroller.scrollToPosition(e.position, instantScroll);
+        }
+      } else {
+        if (e.anchor && this.options.anchorScrolling === "enabled") {
+          this.viewportScroller.scrollToAnchor(e.anchor);
+        } else if (this.options.scrollPositionRestoration !== "disabled") {
+          this.viewportScroller.scrollToPosition([0, 0]);
+        }
+      }
+    });
+  }
+  scheduleScrollEvent(routerEvent, anchor) {
+    this.zone.runOutsideAngular(() => __async(this, null, function* () {
+      yield new Promise((resolve) => {
+        setTimeout(resolve);
+        if (typeof requestAnimationFrame !== "undefined") {
+          requestAnimationFrame(resolve);
+        }
+      });
+      this.zone.run(() => {
+        this.transitions.events.next(new import_router2.Scroll(routerEvent, this.lastSource === "popstate" ? this.store[this.restoredId] : null, anchor));
+      });
+    }));
+  }
+  /** @docs-private */
+  ngOnDestroy() {
+    var _a, _b;
+    (_a = this.routerEventsSubscription) == null ? void 0 : _a.unsubscribe();
+    (_b = this.scrollEventsSubscription) == null ? void 0 : _b.unsubscribe();
+  }
+};
+__publicField(_RouterScroller, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _RouterScroller, deps: "invalid", target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_RouterScroller, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _RouterScroller }));
+let RouterScroller = _RouterScroller;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: RouterScroller, decorators: [{
+  type: import_core.Injectable
+}], ctorParameters: () => [{ type: import_router2.UrlSerializer }, { type: import_router2.NavigationTransitions }, { type: i3.ViewportScroller }, { type: i0.NgZone }, { type: void 0 }] });
+function getLoadedRoutes(route) {
+  return route._loadedRoutes;
+}
+function getRouterInstance(injector) {
+  return injector.get(import_router2.Router, null, { optional: true });
+}
+function navigateByUrl(router, url) {
+  if (!(router instanceof import_router2.Router)) {
+    throw new Error("The provided router is not an Angular Router.");
+  }
+  return router.navigateByUrl(url);
+}
+function provideRouter(routes, ...features) {
+  if (typeof ngDevMode === "undefined" || ngDevMode) {
+    (0, import_core.\u0275publishExternalGlobalUtil)("\u0275getLoadedRoutes", getLoadedRoutes);
+    (0, import_core.\u0275publishExternalGlobalUtil)("\u0275getRouterInstance", getRouterInstance);
+    (0, import_core.\u0275publishExternalGlobalUtil)("\u0275navigateByUrl", navigateByUrl);
+  }
+  return (0, import_core.makeEnvironmentProviders)([
+    { provide: import_router2.ROUTES, multi: true, useValue: routes },
+    typeof ngDevMode === "undefined" || ngDevMode ? { provide: ROUTER_IS_PROVIDED, useValue: true } : [],
+    { provide: import_router2.ActivatedRoute, useFactory: rootRoute, deps: [import_router2.Router] },
+    { provide: import_core.APP_BOOTSTRAP_LISTENER, multi: true, useFactory: getBootstrapListener },
+    features.map((feature) => feature.\u0275providers)
+  ]);
+}
+function rootRoute(router) {
+  return router.routerState.root;
+}
+function routerFeature(kind, providers) {
+  return { \u0275kind: kind, \u0275providers: providers };
+}
+const ROUTER_IS_PROVIDED = new import_core.InjectionToken("", {
+  providedIn: "root",
+  factory: () => false
+});
+const routerIsProvidedDevModeCheck = {
+  provide: import_core.ENVIRONMENT_INITIALIZER,
+  multi: true,
+  useFactory() {
+    return () => {
+      if (!(0, import_core.inject)(ROUTER_IS_PROVIDED)) {
+        console.warn("`provideRoutes` was called without `provideRouter` or `RouterModule.forRoot`. This is likely a mistake.");
+      }
+    };
+  }
+};
+function provideRoutes(routes) {
+  return [
+    { provide: import_router2.ROUTES, multi: true, useValue: routes },
+    typeof ngDevMode === "undefined" || ngDevMode ? routerIsProvidedDevModeCheck : []
+  ];
+}
+function withInMemoryScrolling(options = {}) {
+  const providers = [
+    {
+      provide: ROUTER_SCROLLER,
+      useFactory: () => {
+        const viewportScroller = (0, import_core.inject)(import_common.ViewportScroller);
+        const zone = (0, import_core.inject)(import_core.NgZone);
+        const transitions = (0, import_core.inject)(import_router2.NavigationTransitions);
+        const urlSerializer = (0, import_core.inject)(import_router2.UrlSerializer);
+        return new RouterScroller(urlSerializer, transitions, viewportScroller, zone, options);
+      }
+    }
+  ];
+  return routerFeature(4, providers);
+}
+function getBootstrapListener() {
+  const injector = (0, import_core.inject)(import_core.Injector);
+  return (bootstrappedComponentRef) => {
+    var _a, _b;
+    const ref = injector.get(import_core.ApplicationRef);
+    if (bootstrappedComponentRef !== ref.components[0]) {
+      return;
+    }
+    const router = injector.get(import_router2.Router);
+    const bootstrapDone = injector.get(BOOTSTRAP_DONE);
+    if (injector.get(INITIAL_NAVIGATION) === 1) {
+      router.initialNavigation();
+    }
+    (_a = injector.get(ROUTER_PRELOADER, null, { optional: true })) == null ? void 0 : _a.setUpPreloading();
+    (_b = injector.get(ROUTER_SCROLLER, null, { optional: true })) == null ? void 0 : _b.init();
+    router.resetRootComponentType(ref.componentTypes[0]);
+    if (!bootstrapDone.closed) {
+      bootstrapDone.next();
+      bootstrapDone.complete();
+      bootstrapDone.unsubscribe();
+    }
+  };
+}
+const BOOTSTRAP_DONE = new import_core.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "bootstrap done indicator" : "", {
+  factory: () => {
+    return new import_rxjs.Subject();
+  }
+});
+const INITIAL_NAVIGATION = new import_core.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "initial navigation" : "", {
+  providedIn: "root",
+  factory: () => 1
+  /* InitialNavigation.EnabledNonBlocking */
+});
+function withEnabledBlockingInitialNavigation() {
+  const providers = [
+    { provide: import_core.\u0275IS_ENABLED_BLOCKING_INITIAL_NAVIGATION, useValue: true },
+    {
+      provide: INITIAL_NAVIGATION,
+      useValue: 0
+      /* InitialNavigation.EnabledBlocking */
+    },
+    (0, import_core.provideAppInitializer)(() => {
+      const injector = (0, import_core.inject)(import_core.Injector);
+      const locationInitialized = injector.get(import_common.LOCATION_INITIALIZED, Promise.resolve());
+      return locationInitialized.then(() => {
+        return new Promise((resolve) => {
+          const router = injector.get(import_router2.Router);
+          const bootstrapDone = injector.get(BOOTSTRAP_DONE);
+          (0, import_router2.afterNextNavigation)(router, () => {
+            resolve(true);
+          });
+          injector.get(import_router2.NavigationTransitions).afterPreactivation = () => {
+            resolve(true);
+            return bootstrapDone.closed ? (0, import_rxjs.of)(void 0) : bootstrapDone;
+          };
+          router.initialNavigation();
+        });
+      });
+    })
+  ];
+  return routerFeature(2, providers);
+}
+function withDisabledInitialNavigation() {
+  const providers = [
+    (0, import_core.provideAppInitializer)(() => {
+      (0, import_core.inject)(import_router2.Router).setUpLocationChangeListener();
+    }),
+    {
+      provide: INITIAL_NAVIGATION,
+      useValue: 2
+      /* InitialNavigation.Disabled */
+    }
+  ];
+  return routerFeature(3, providers);
+}
+function withDebugTracing() {
+  let providers = [];
+  if (typeof ngDevMode === "undefined" || ngDevMode) {
+    providers = [
+      {
+        provide: import_core.ENVIRONMENT_INITIALIZER,
+        multi: true,
+        useFactory: () => {
+          const router = (0, import_core.inject)(import_router2.Router);
+          return () => router.events.subscribe((e) => {
+            var _a, _b;
+            (_a = console.group) == null ? void 0 : _a.call(console, `Router Event: ${e.constructor.name}`);
+            console.log((0, import_router2.stringifyEvent)(e));
+            console.log(e);
+            (_b = console.groupEnd) == null ? void 0 : _b.call(console);
+          });
+        }
+      }
+    ];
+  } else {
+    providers = [];
+  }
+  return routerFeature(1, providers);
+}
+const ROUTER_PRELOADER = new import_core.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "router preloader" : "");
+function withPreloading(preloadingStrategy) {
+  const providers = [
+    { provide: ROUTER_PRELOADER, useExisting: RouterPreloader },
+    { provide: PreloadingStrategy, useExisting: preloadingStrategy }
+  ];
+  return routerFeature(0, providers);
+}
+function withRouterConfig(options) {
+  const providers = [{ provide: import_router2.ROUTER_CONFIGURATION, useValue: options }];
+  return routerFeature(5, providers);
+}
+function withHashLocation() {
+  const providers = [{ provide: import_common.LocationStrategy, useClass: import_common.HashLocationStrategy }];
+  return routerFeature(6, providers);
+}
+function withNavigationErrorHandler(handler) {
+  const providers = [
+    {
+      provide: import_router2.NAVIGATION_ERROR_HANDLER,
+      useValue: handler
+    }
+  ];
+  return routerFeature(7, providers);
+}
+function withComponentInputBinding() {
+  const providers = [
+    import_router2.RoutedComponentInputBinder,
+    { provide: import_router2.INPUT_BINDER, useExisting: import_router2.RoutedComponentInputBinder }
+  ];
+  return routerFeature(8, providers);
+}
+function withViewTransitions(options) {
+  (0, import_core.\u0275performanceMarkFeature)("NgRouterViewTransitions");
+  const providers = [
+    { provide: import_router2.CREATE_VIEW_TRANSITION, useValue: import_router2.createViewTransition },
+    {
+      provide: import_router2.VIEW_TRANSITION_OPTIONS,
+      useValue: __spreadValues({ skipNextTransition: !!(options == null ? void 0 : options.skipInitialTransition) }, options)
+    }
+  ];
+  return routerFeature(9, providers);
+}
+const ROUTER_DIRECTIVES = [import_router2.RouterOutlet, RouterLink, RouterLinkActive, import_router2.\u0275EmptyOutletComponent];
+const ROUTER_FORROOT_GUARD = new import_core.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "router duplicate forRoot guard" : "");
+const ROUTER_PROVIDERS = [
+  import_common.Location,
+  { provide: import_router2.UrlSerializer, useClass: import_router2.DefaultUrlSerializer },
+  import_router2.Router,
+  import_router2.ChildrenOutletContexts,
+  { provide: import_router2.ActivatedRoute, useFactory: rootRoute, deps: [import_router2.Router] },
+  import_router2.RouterConfigLoader,
+  // Only used to warn when `provideRoutes` is used without `RouterModule` or `provideRouter`. Can
+  // be removed when `provideRoutes` is removed.
+  typeof ngDevMode === "undefined" || ngDevMode ? { provide: ROUTER_IS_PROVIDED, useValue: true } : []
+];
+const _RouterModule = class _RouterModule {
+  constructor() {
+    if (typeof ngDevMode === "undefined" || ngDevMode) {
+      (0, import_core.inject)(ROUTER_FORROOT_GUARD, { optional: true });
+    }
+  }
+  /**
+   * Creates and configures a module with all the router providers and directives.
+   * Optionally sets up an application listener to perform an initial navigation.
+   *
+   * When registering the NgModule at the root, import as follows:
+   *
+   * ```ts
+   * @NgModule({
+   *   imports: [RouterModule.forRoot(ROUTES)]
+   * })
+   * class MyNgModule {}
+   * ```
+   *
+   * @param routes An array of `Route` objects that define the navigation paths for the application.
+   * @param config An `ExtraOptions` configuration object that controls how navigation is performed.
+   * @return The new `NgModule`.
+   *
+   */
+  static forRoot(routes, config) {
+    return {
+      ngModule: _RouterModule,
+      providers: [
+        ROUTER_PROVIDERS,
+        typeof ngDevMode === "undefined" || ngDevMode ? (config == null ? void 0 : config.enableTracing) ? withDebugTracing().\u0275providers : [] : [],
+        { provide: import_router2.ROUTES, multi: true, useValue: routes },
+        typeof ngDevMode === "undefined" || ngDevMode ? {
+          provide: ROUTER_FORROOT_GUARD,
+          useFactory: provideForRootGuard,
+          deps: [[import_router2.Router, new import_core.Optional(), new import_core.SkipSelf()]]
+        } : [],
+        (config == null ? void 0 : config.errorHandler) ? {
+          provide: import_router2.NAVIGATION_ERROR_HANDLER,
+          useValue: config.errorHandler
+        } : [],
+        { provide: import_router2.ROUTER_CONFIGURATION, useValue: config ? config : {} },
+        (config == null ? void 0 : config.useHash) ? provideHashLocationStrategy() : providePathLocationStrategy(),
+        provideRouterScroller(),
+        (config == null ? void 0 : config.preloadingStrategy) ? withPreloading(config.preloadingStrategy).\u0275providers : [],
+        (config == null ? void 0 : config.initialNavigation) ? provideInitialNavigation(config) : [],
+        (config == null ? void 0 : config.bindToComponentInputs) ? withComponentInputBinding().\u0275providers : [],
+        (config == null ? void 0 : config.enableViewTransitions) ? withViewTransitions().\u0275providers : [],
+        provideRouterInitializer()
+      ]
+    };
+  }
+  /**
+   * Creates a module with all the router directives and a provider registering routes,
+   * without creating a new Router service.
+   * When registering for submodules and lazy-loaded submodules, create the NgModule as follows:
+   *
+   * ```ts
+   * @NgModule({
+   *   imports: [RouterModule.forChild(ROUTES)]
+   * })
+   * class MyNgModule {}
+   * ```
+   *
+   * @param routes An array of `Route` objects that define the navigation paths for the submodule.
+   * @return The new NgModule.
+   *
+   */
+  static forChild(routes) {
+    return {
+      ngModule: _RouterModule,
+      providers: [{ provide: import_router2.ROUTES, multi: true, useValue: routes }]
+    };
+  }
+};
+__publicField(_RouterModule, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _RouterModule, deps: [], target: i0.\u0275\u0275FactoryTarget.NgModule }));
+__publicField(_RouterModule, "\u0275mod", i0.\u0275\u0275ngDeclareNgModule({ minVersion: "14.0.0", version: "20.3.16", ngImport: i0, type: _RouterModule, imports: [import_router2.RouterOutlet, RouterLink, RouterLinkActive, import_router2.\u0275EmptyOutletComponent], exports: [import_router2.RouterOutlet, RouterLink, RouterLinkActive, import_router2.\u0275EmptyOutletComponent] }));
+__publicField(_RouterModule, "\u0275inj", i0.\u0275\u0275ngDeclareInjector({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _RouterModule }));
+let RouterModule = _RouterModule;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: RouterModule, decorators: [{
+  type: import_core.NgModule,
+  args: [{
+    imports: ROUTER_DIRECTIVES,
+    exports: ROUTER_DIRECTIVES
+  }]
+}], ctorParameters: () => [] });
+function provideRouterScroller() {
+  return {
+    provide: ROUTER_SCROLLER,
+    useFactory: () => {
+      const viewportScroller = (0, import_core.inject)(import_common.ViewportScroller);
+      const zone = (0, import_core.inject)(import_core.NgZone);
+      const config = (0, import_core.inject)(import_router2.ROUTER_CONFIGURATION);
+      const transitions = (0, import_core.inject)(import_router2.NavigationTransitions);
+      const urlSerializer = (0, import_core.inject)(import_router2.UrlSerializer);
+      if (config.scrollOffset) {
+        viewportScroller.setOffset(config.scrollOffset);
+      }
+      return new RouterScroller(urlSerializer, transitions, viewportScroller, zone, config);
+    }
+  };
+}
+function provideHashLocationStrategy() {
+  return { provide: import_common.LocationStrategy, useClass: import_common.HashLocationStrategy };
+}
+function providePathLocationStrategy() {
+  return { provide: import_common.LocationStrategy, useClass: import_common.PathLocationStrategy };
+}
+function provideForRootGuard(router) {
+  if (router) {
+    throw new import_core.\u0275RuntimeError(4007, `The Router was provided more than once. This can happen if 'forRoot' is used outside of the root injector. Lazy loaded modules should use RouterModule.forChild() instead.`);
+  }
+  return "guarded";
+}
+function provideInitialNavigation(config) {
+  return [
+    config.initialNavigation === "disabled" ? withDisabledInitialNavigation().\u0275providers : [],
+    config.initialNavigation === "enabledBlocking" ? withEnabledBlockingInitialNavigation().\u0275providers : []
+  ];
+}
+const ROUTER_INITIALIZER = new import_core.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "Router Initializer" : "");
+function provideRouterInitializer() {
+  return [
+    // ROUTER_INITIALIZER token should be removed. It's public API but shouldn't be. We can just
+    // have `getBootstrapListener` directly attached to APP_BOOTSTRAP_LISTENER.
+    { provide: ROUTER_INITIALIZER, useFactory: getBootstrapListener },
+    { provide: import_core.APP_BOOTSTRAP_LISTENER, multi: true, useExisting: ROUTER_INITIALIZER }
+  ];
+}

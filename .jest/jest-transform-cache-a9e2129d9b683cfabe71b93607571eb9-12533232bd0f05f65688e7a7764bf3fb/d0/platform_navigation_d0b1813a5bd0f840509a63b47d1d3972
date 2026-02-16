@@ -1,0 +1,51 @@
+af63d29a8d8cb7826ead391df5c93b8b
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var platform_navigation_exports = {};
+__export(platform_navigation_exports, {
+  PlatformNavigation: () => PlatformNavigation
+});
+module.exports = __toCommonJS(platform_navigation_exports);
+var i0 = __toESM(require("@angular/core"), 1);
+var import_core = require("@angular/core");
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+const _PlatformNavigation = class _PlatformNavigation {
+};
+__publicField(_PlatformNavigation, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PlatformNavigation, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_PlatformNavigation, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PlatformNavigation, providedIn: "platform", useFactory: () => window.navigation }));
+let PlatformNavigation = _PlatformNavigation;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: PlatformNavigation, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "platform", useFactory: () => window.navigation }]
+}] });

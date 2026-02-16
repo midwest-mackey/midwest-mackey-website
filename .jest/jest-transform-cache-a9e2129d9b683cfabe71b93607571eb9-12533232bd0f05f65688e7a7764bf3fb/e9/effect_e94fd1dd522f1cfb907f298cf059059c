@@ -1,0 +1,154 @@
+bb6c5bc312c59b77b5041fd81aaf3bf9
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var effect_exports = {};
+__export(effect_exports, {
+  BASE_EFFECT_NODE: () => BASE_EFFECT_NODE,
+  createLinkedSignal: () => createLinkedSignal,
+  linkedSignalSetFn: () => linkedSignalSetFn,
+  linkedSignalUpdateFn: () => linkedSignalUpdateFn,
+  runEffect: () => runEffect,
+  untracked: () => untracked
+});
+module.exports = __toCommonJS(effect_exports);
+var import_signal = require("./signal.mjs");
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+function createLinkedSignal(sourceFn, computationFn, equalityFn) {
+  const node = Object.create(LINKED_SIGNAL_NODE);
+  node.source = sourceFn;
+  node.computation = computationFn;
+  if (equalityFn != void 0) {
+    node.equal = equalityFn;
+  }
+  const linkedSignalGetter = () => {
+    (0, import_signal.producerUpdateValueVersion)(node);
+    (0, import_signal.producerAccessed)(node);
+    if (node.value === import_signal.ERRORED) {
+      throw node.error;
+    }
+    return node.value;
+  };
+  const getter = linkedSignalGetter;
+  getter[import_signal.SIGNAL] = node;
+  if (typeof ngDevMode !== "undefined" && ngDevMode) {
+    const debugName = node.debugName ? " (" + node.debugName + ")" : "";
+    getter.toString = () => `[LinkedSignal${debugName}: ${node.value}]`;
+  }
+  (0, import_signal.runPostProducerCreatedFn)(node);
+  return getter;
+}
+function linkedSignalSetFn(node, newValue) {
+  (0, import_signal.producerUpdateValueVersion)(node);
+  (0, import_signal.signalSetFn)(node, newValue);
+  (0, import_signal.producerMarkClean)(node);
+}
+function linkedSignalUpdateFn(node, updater) {
+  (0, import_signal.producerUpdateValueVersion)(node);
+  (0, import_signal.signalUpdateFn)(node, updater);
+  (0, import_signal.producerMarkClean)(node);
+}
+const LINKED_SIGNAL_NODE = /* @__PURE__ */ (() => {
+  return __spreadProps(__spreadValues({}, import_signal.REACTIVE_NODE), {
+    value: import_signal.UNSET,
+    dirty: true,
+    error: null,
+    equal: import_signal.defaultEquals,
+    kind: "linkedSignal",
+    producerMustRecompute(node) {
+      return node.value === import_signal.UNSET || node.value === import_signal.COMPUTING;
+    },
+    producerRecomputeValue(node) {
+      if (node.value === import_signal.COMPUTING) {
+        throw new Error(typeof ngDevMode !== "undefined" && ngDevMode ? "Detected cycle in computations." : "");
+      }
+      const oldValue = node.value;
+      node.value = import_signal.COMPUTING;
+      const prevConsumer = (0, import_signal.consumerBeforeComputation)(node);
+      let newValue;
+      try {
+        const newSourceValue = node.source();
+        const prev = oldValue === import_signal.UNSET || oldValue === import_signal.ERRORED ? void 0 : {
+          source: node.sourceValue,
+          value: oldValue
+        };
+        newValue = node.computation(newSourceValue, prev);
+        node.sourceValue = newSourceValue;
+      } catch (err) {
+        newValue = import_signal.ERRORED;
+        node.error = err;
+      } finally {
+        (0, import_signal.consumerAfterComputation)(node, prevConsumer);
+      }
+      if (oldValue !== import_signal.UNSET && newValue !== import_signal.ERRORED && node.equal(oldValue, newValue)) {
+        node.value = oldValue;
+        return;
+      }
+      node.value = newValue;
+      node.version++;
+    }
+  });
+})();
+function untracked(nonReactiveReadsFn) {
+  const prevConsumer = (0, import_signal.setActiveConsumer)(null);
+  try {
+    return nonReactiveReadsFn();
+  } finally {
+    (0, import_signal.setActiveConsumer)(prevConsumer);
+  }
+}
+const BASE_EFFECT_NODE = /* @__PURE__ */ (() => __spreadProps(__spreadValues({}, import_signal.REACTIVE_NODE), {
+  consumerIsAlwaysLive: true,
+  consumerAllowSignalWrites: true,
+  dirty: true,
+  kind: "effect"
+}))();
+function runEffect(node) {
+  node.dirty = false;
+  if (node.version > 0 && !(0, import_signal.consumerPollProducersForChange)(node)) {
+    return;
+  }
+  node.version++;
+  const prevNode = (0, import_signal.consumerBeforeComputation)(node);
+  try {
+    node.cleanup();
+    node.fn();
+  } finally {
+    (0, import_signal.consumerAfterComputation)(node, prevNode);
+  }
+}

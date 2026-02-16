@@ -1,0 +1,1500 @@
+52b72d79a885ea9fe120b9f181eee201
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
+var common_exports = {};
+__export(common_exports, {
+  APP_BASE_HREF: () => import_location.APP_BASE_HREF,
+  AsyncPipe: () => import_common_module.AsyncPipe,
+  BrowserPlatformLocation: () => import_location.BrowserPlatformLocation,
+  CommonModule: () => import_common_module.CommonModule,
+  CurrencyPipe: () => import_common_module.CurrencyPipe,
+  DATE_PIPE_DEFAULT_OPTIONS: () => import_common_module.DATE_PIPE_DEFAULT_OPTIONS,
+  DATE_PIPE_DEFAULT_TIMEZONE: () => import_common_module.DATE_PIPE_DEFAULT_TIMEZONE,
+  DOCUMENT: () => import_core2.DOCUMENT,
+  DatePipe: () => import_common_module.DatePipe,
+  DecimalPipe: () => import_common_module.DecimalPipe,
+  FormStyle: () => import_common_module.FormStyle,
+  FormatWidth: () => import_common_module.FormatWidth,
+  HashLocationStrategy: () => import_common_module.HashLocationStrategy,
+  I18nPluralPipe: () => import_common_module.I18nPluralPipe,
+  I18nSelectPipe: () => import_common_module.I18nSelectPipe,
+  IMAGE_CONFIG: () => import_core2.\u0275IMAGE_CONFIG,
+  IMAGE_LOADER: () => IMAGE_LOADER,
+  JsonPipe: () => import_common_module.JsonPipe,
+  KeyValuePipe: () => import_common_module.KeyValuePipe,
+  LOCATION_INITIALIZED: () => import_location.LOCATION_INITIALIZED,
+  Location: () => import_location.Location,
+  LocationStrategy: () => import_location.LocationStrategy,
+  LowerCasePipe: () => import_common_module.LowerCasePipe,
+  NgClass: () => import_common_module.NgClass,
+  NgComponentOutlet: () => import_common_module.NgComponentOutlet,
+  NgFor: () => import_common_module.NgForOf,
+  NgForOf: () => import_common_module.NgForOf,
+  NgForOfContext: () => import_common_module.NgForOfContext,
+  NgIf: () => import_common_module.NgIf,
+  NgIfContext: () => import_common_module.NgIfContext,
+  NgLocaleLocalization: () => import_common_module.NgLocaleLocalization,
+  NgLocalization: () => import_common_module.NgLocalization,
+  NgOptimizedImage: () => NgOptimizedImage,
+  NgPlural: () => import_common_module.NgPlural,
+  NgPluralCase: () => import_common_module.NgPluralCase,
+  NgStyle: () => import_common_module.NgStyle,
+  NgSwitch: () => import_common_module.NgSwitch,
+  NgSwitchCase: () => import_common_module.NgSwitchCase,
+  NgSwitchDefault: () => import_common_module.NgSwitchDefault,
+  NgTemplateOutlet: () => import_common_module.NgTemplateOutlet,
+  NumberFormatStyle: () => import_common_module.NumberFormatStyle,
+  NumberSymbol: () => import_common_module.NumberSymbol,
+  PRECONNECT_CHECK_BLOCKLIST: () => PRECONNECT_CHECK_BLOCKLIST,
+  PathLocationStrategy: () => import_location.PathLocationStrategy,
+  PercentPipe: () => import_common_module.PercentPipe,
+  PlatformLocation: () => import_location.PlatformLocation,
+  Plural: () => import_common_module.Plural,
+  SlicePipe: () => import_common_module.SlicePipe,
+  TitleCasePipe: () => import_common_module.TitleCasePipe,
+  TranslationWidth: () => import_common_module.TranslationWidth,
+  UpperCasePipe: () => import_common_module.UpperCasePipe,
+  VERSION: () => VERSION,
+  ViewportScroller: () => ViewportScroller,
+  WeekDay: () => import_common_module.WeekDay,
+  XhrFactory: () => import_xhr.XhrFactory,
+  formatCurrency: () => import_common_module.formatCurrency,
+  formatDate: () => import_common_module.formatDate,
+  formatNumber: () => import_common_module.formatNumber,
+  formatPercent: () => import_common_module.formatPercent,
+  getCurrencySymbol: () => import_common_module.getCurrencySymbol,
+  getLocaleCurrencyCode: () => import_common_module.getLocaleCurrencyCode,
+  getLocaleCurrencyName: () => import_common_module.getLocaleCurrencyName,
+  getLocaleCurrencySymbol: () => import_common_module.getLocaleCurrencySymbol,
+  getLocaleDateFormat: () => import_common_module.getLocaleDateFormat,
+  getLocaleDateTimeFormat: () => import_common_module.getLocaleDateTimeFormat,
+  getLocaleDayNames: () => import_common_module.getLocaleDayNames,
+  getLocaleDayPeriods: () => import_common_module.getLocaleDayPeriods,
+  getLocaleDirection: () => import_common_module.getLocaleDirection,
+  getLocaleEraNames: () => import_common_module.getLocaleEraNames,
+  getLocaleExtraDayPeriodRules: () => import_common_module.getLocaleExtraDayPeriodRules,
+  getLocaleExtraDayPeriods: () => import_common_module.getLocaleExtraDayPeriods,
+  getLocaleFirstDayOfWeek: () => import_common_module.getLocaleFirstDayOfWeek,
+  getLocaleId: () => import_common_module.getLocaleId,
+  getLocaleMonthNames: () => import_common_module.getLocaleMonthNames,
+  getLocaleNumberFormat: () => import_common_module.getLocaleNumberFormat,
+  getLocaleNumberSymbol: () => import_common_module.getLocaleNumberSymbol,
+  getLocalePluralCase: () => import_common_module.getLocalePluralCase,
+  getLocaleTimeFormat: () => import_common_module.getLocaleTimeFormat,
+  getLocaleWeekEndRange: () => import_common_module.getLocaleWeekEndRange,
+  getNumberOfCurrencyDigits: () => import_common_module.getNumberOfCurrencyDigits,
+  isPlatformBrowser: () => isPlatformBrowser,
+  isPlatformServer: () => isPlatformServer,
+  provideCloudflareLoader: () => provideCloudflareLoader,
+  provideCloudinaryLoader: () => provideCloudinaryLoader,
+  provideImageKitLoader: () => provideImageKitLoader,
+  provideImgixLoader: () => provideImgixLoader,
+  provideNetlifyLoader: () => provideNetlifyLoader,
+  registerLocaleData: () => registerLocaleData,
+  \u0275DomAdapter: () => import_location.DomAdapter,
+  \u0275NullViewportScroller: () => NullViewportScroller,
+  \u0275PLATFORM_BROWSER_ID: () => PLATFORM_BROWSER_ID,
+  \u0275PLATFORM_SERVER_ID: () => PLATFORM_SERVER_ID,
+  \u0275PlatformNavigation: () => import_platform_navigation.PlatformNavigation,
+  \u0275getDOM: () => import_location.getDOM,
+  \u0275normalizeQueryParams: () => import_location.normalizeQueryParams,
+  \u0275parseCookieValue: () => import_xhr.parseCookieValue,
+  \u0275setRootDomAdapter: () => import_location.setRootDomAdapter
+});
+module.exports = __toCommonJS(common_exports);
+var import_common_module = require("./common_module.mjs");
+var i0 = __toESM(require("@angular/core"), 1);
+var import_core = require("@angular/core");
+var import_core2 = require("@angular/core");
+var import_xhr = require("./xhr.mjs");
+var import_location = require("./location.mjs");
+var import_platform_navigation = require("./platform_navigation.mjs");
+var import_rxjs = require("rxjs");
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+function registerLocaleData(data, localeId, extraData) {
+  return (0, import_core.\u0275registerLocaleData)(data, localeId, extraData);
+}
+const PLATFORM_BROWSER_ID = "browser";
+const PLATFORM_SERVER_ID = "server";
+function isPlatformBrowser(platformId) {
+  return platformId === PLATFORM_BROWSER_ID;
+}
+function isPlatformServer(platformId) {
+  return platformId === PLATFORM_SERVER_ID;
+}
+const VERSION = /* @__PURE__ */ new import_core.Version("20.3.16");
+const _ViewportScroller = class _ViewportScroller {
+};
+// De-sugared tree-shakable injection
+// See #23917
+/** @nocollapse */
+__publicField(
+  _ViewportScroller,
+  "\u0275prov",
+  /** @pureOrBreakMyCode */
+  /* @__PURE__ */ (0, import_core.\u0275\u0275defineInjectable)({
+    token: _ViewportScroller,
+    providedIn: "root",
+    factory: () => typeof ngServerMode !== "undefined" && ngServerMode ? new NullViewportScroller() : new BrowserViewportScroller((0, import_core.inject)(import_core.DOCUMENT), window)
+  })
+);
+let ViewportScroller = _ViewportScroller;
+class BrowserViewportScroller {
+  constructor(document, window2) {
+    __publicField(this, "document");
+    __publicField(this, "window");
+    __publicField(this, "offset", () => [0, 0]);
+    this.document = document;
+    this.window = window2;
+  }
+  /**
+   * Configures the top offset used when scrolling to an anchor.
+   * @param offset A position in screen coordinates (a tuple with x and y values)
+   * or a function that returns the top offset position.
+   *
+   */
+  setOffset(offset) {
+    if (Array.isArray(offset)) {
+      this.offset = () => offset;
+    } else {
+      this.offset = offset;
+    }
+  }
+  /**
+   * Retrieves the current scroll position.
+   * @returns The position in screen coordinates.
+   */
+  getScrollPosition() {
+    return [this.window.scrollX, this.window.scrollY];
+  }
+  /**
+   * Sets the scroll position.
+   * @param position The new position in screen coordinates.
+   */
+  scrollToPosition(position, options) {
+    this.window.scrollTo(__spreadProps(__spreadValues({}, options), { left: position[0], top: position[1] }));
+  }
+  /**
+   * Scrolls to an element and attempts to focus the element.
+   *
+   * Note that the function name here is misleading in that the target string may be an ID for a
+   * non-anchor element.
+   *
+   * @param target The ID of an element or name of the anchor.
+   *
+   * @see https://html.spec.whatwg.org/#the-indicated-part-of-the-document
+   * @see https://html.spec.whatwg.org/#scroll-to-fragid
+   */
+  scrollToAnchor(target, options) {
+    const elSelected = findAnchorFromDocument(this.document, target);
+    if (elSelected) {
+      this.scrollToElement(elSelected, options);
+      elSelected.focus();
+    }
+  }
+  /**
+   * Disables automatic scroll restoration provided by the browser.
+   */
+  setHistoryScrollRestoration(scrollRestoration) {
+    try {
+      this.window.history.scrollRestoration = scrollRestoration;
+    } catch (e) {
+      console.warn((0, import_core.\u0275formatRuntimeError)(2400, ngDevMode && "Failed to set `window.history.scrollRestoration`. This may occur when:\n\u2022 The script is running inside a sandboxed iframe\n\u2022 The window is partially navigated or inactive\n\u2022 The script is executed in an untrusted or special context (e.g., test runners, browser extensions, or content previews)\nScroll position may not be preserved across navigation."));
+    }
+  }
+  /**
+   * Scrolls to an element using the native offset and the specified offset set on this scroller.
+   *
+   * The offset can be used when we know that there is a floating header and scrolling naively to an
+   * element (ex: `scrollIntoView`) leaves the element hidden behind the floating header.
+   */
+  scrollToElement(el, options) {
+    const rect = el.getBoundingClientRect();
+    const left = rect.left + this.window.pageXOffset;
+    const top = rect.top + this.window.pageYOffset;
+    const offset = this.offset();
+    this.window.scrollTo(__spreadProps(__spreadValues({}, options), {
+      left: left - offset[0],
+      top: top - offset[1]
+    }));
+  }
+}
+function findAnchorFromDocument(document, target) {
+  const documentResult = document.getElementById(target) || document.getElementsByName(target)[0];
+  if (documentResult) {
+    return documentResult;
+  }
+  if (typeof document.createTreeWalker === "function" && document.body && typeof document.body.attachShadow === "function") {
+    const treeWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_ELEMENT);
+    let currentNode = treeWalker.currentNode;
+    while (currentNode) {
+      const shadowRoot = currentNode.shadowRoot;
+      if (shadowRoot) {
+        const result = shadowRoot.getElementById(target) || shadowRoot.querySelector(`[name="${target}"]`);
+        if (result) {
+          return result;
+        }
+      }
+      currentNode = treeWalker.nextNode();
+    }
+  }
+  return null;
+}
+class NullViewportScroller {
+  /**
+   * Empty implementation
+   */
+  setOffset(offset) {
+  }
+  /**
+   * Empty implementation
+   */
+  getScrollPosition() {
+    return [0, 0];
+  }
+  /**
+   * Empty implementation
+   */
+  scrollToPosition(position) {
+  }
+  /**
+   * Empty implementation
+   */
+  scrollToAnchor(anchor) {
+  }
+  /**
+   * Empty implementation
+   */
+  setHistoryScrollRestoration(scrollRestoration) {
+  }
+}
+const PLACEHOLDER_QUALITY = "20";
+function getUrl(src, win) {
+  return isAbsoluteUrl(src) ? new URL(src) : new URL(src, win.location.href);
+}
+function isAbsoluteUrl(src) {
+  return /^https?:\/\//.test(src);
+}
+function extractHostname(url) {
+  return isAbsoluteUrl(url) ? new URL(url).hostname : url;
+}
+function isValidPath(path) {
+  const isString = typeof path === "string";
+  if (!isString || path.trim() === "") {
+    return false;
+  }
+  try {
+    const url = new URL(path);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+function normalizePath(path) {
+  return path.endsWith("/") ? path.slice(0, -1) : path;
+}
+function normalizeSrc(src) {
+  return src.startsWith("/") ? src.slice(1) : src;
+}
+const noopImageLoader = (config) => config.src;
+const IMAGE_LOADER = new import_core.InjectionToken(ngDevMode ? "ImageLoader" : "", {
+  providedIn: "root",
+  factory: () => noopImageLoader
+});
+function createImageLoader(buildUrlFn, exampleUrls) {
+  return function provideImageLoader(path) {
+    if (!isValidPath(path)) {
+      throwInvalidPathError(path, exampleUrls || []);
+    }
+    path = normalizePath(path);
+    const loaderFn = (config) => {
+      if (isAbsoluteUrl(config.src)) {
+        throwUnexpectedAbsoluteUrlError(path, config.src);
+      }
+      return buildUrlFn(path, __spreadProps(__spreadValues({}, config), { src: normalizeSrc(config.src) }));
+    };
+    const providers = [{ provide: IMAGE_LOADER, useValue: loaderFn }];
+    return providers;
+  };
+}
+function throwInvalidPathError(path, exampleUrls) {
+  throw new import_core.\u0275RuntimeError(2959, ngDevMode && `Image loader has detected an invalid path (\`${path}\`). To fix this, supply a path using one of the following formats: ${exampleUrls.join(" or ")}`);
+}
+function throwUnexpectedAbsoluteUrlError(path, url) {
+  throw new import_core.\u0275RuntimeError(2959, ngDevMode && `Image loader has detected a \`<img>\` tag with an invalid \`ngSrc\` attribute: ${url}. This image loader expects \`ngSrc\` to be a relative URL - however the provided value is an absolute URL. To fix this, provide \`ngSrc\` as a path relative to the base URL configured for this loader (\`${path}\`).`);
+}
+const provideCloudflareLoader = createImageLoader(createCloudflareUrl, ngDevMode ? ["https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>"] : void 0);
+function createCloudflareUrl(path, config) {
+  let params = `format=auto`;
+  if (config.width) {
+    params += `,width=${config.width}`;
+  }
+  if (config.isPlaceholder) {
+    params += `,quality=${PLACEHOLDER_QUALITY}`;
+  }
+  return `${path}/cdn-cgi/image/${params}/${config.src}`;
+}
+const cloudinaryLoaderInfo = {
+  name: "Cloudinary",
+  testUrl: isCloudinaryUrl
+};
+const CLOUDINARY_LOADER_REGEX = /https?\:\/\/[^\/]+\.cloudinary\.com\/.+/;
+function isCloudinaryUrl(url) {
+  return CLOUDINARY_LOADER_REGEX.test(url);
+}
+const provideCloudinaryLoader = createImageLoader(createCloudinaryUrl, ngDevMode ? [
+  "https://res.cloudinary.com/mysite",
+  "https://mysite.cloudinary.com",
+  "https://subdomain.mysite.com"
+] : void 0);
+function createCloudinaryUrl(path, config) {
+  var _a;
+  const quality = config.isPlaceholder ? "q_auto:low" : "q_auto";
+  let params = `f_auto,${quality}`;
+  if (config.width) {
+    params += `,w_${config.width}`;
+  }
+  if ((_a = config.loaderParams) == null ? void 0 : _a["rounded"]) {
+    params += `,r_max`;
+  }
+  return `${path}/image/upload/${params}/${config.src}`;
+}
+const imageKitLoaderInfo = {
+  name: "ImageKit",
+  testUrl: isImageKitUrl
+};
+const IMAGE_KIT_LOADER_REGEX = /https?\:\/\/[^\/]+\.imagekit\.io\/.+/;
+function isImageKitUrl(url) {
+  return IMAGE_KIT_LOADER_REGEX.test(url);
+}
+const provideImageKitLoader = createImageLoader(createImagekitUrl, ngDevMode ? ["https://ik.imagekit.io/mysite", "https://subdomain.mysite.com"] : void 0);
+function createImagekitUrl(path, config) {
+  const { src, width } = config;
+  const params = [];
+  if (width) {
+    params.push(`w-${width}`);
+  }
+  if (config.isPlaceholder) {
+    params.push(`q-${PLACEHOLDER_QUALITY}`);
+  }
+  const urlSegments = params.length ? [path, `tr:${params.join(",")}`, src] : [path, src];
+  const url = new URL(urlSegments.join("/"));
+  return url.href;
+}
+const imgixLoaderInfo = {
+  name: "Imgix",
+  testUrl: isImgixUrl
+};
+const IMGIX_LOADER_REGEX = /https?\:\/\/[^\/]+\.imgix\.net\/.+/;
+function isImgixUrl(url) {
+  return IMGIX_LOADER_REGEX.test(url);
+}
+const provideImgixLoader = createImageLoader(createImgixUrl, ngDevMode ? ["https://somepath.imgix.net/"] : void 0);
+function createImgixUrl(path, config) {
+  const url = new URL(`${path}/${config.src}`);
+  url.searchParams.set("auto", "format");
+  if (config.width) {
+    url.searchParams.set("w", config.width.toString());
+  }
+  if (config.isPlaceholder) {
+    url.searchParams.set("q", PLACEHOLDER_QUALITY);
+  }
+  return url.href;
+}
+const netlifyLoaderInfo = {
+  name: "Netlify",
+  testUrl: isNetlifyUrl
+};
+const NETLIFY_LOADER_REGEX = /https?\:\/\/[^\/]+\.netlify\.app\/.+/;
+function isNetlifyUrl(url) {
+  return NETLIFY_LOADER_REGEX.test(url);
+}
+function provideNetlifyLoader(path) {
+  if (path && !isValidPath(path)) {
+    throw new import_core.\u0275RuntimeError(2959, ngDevMode && `Image loader has detected an invalid path (\`${path}\`). To fix this, supply either the full URL to the Netlify site, or leave it empty to use the current site.`);
+  }
+  if (path) {
+    const url = new URL(path);
+    path = url.origin;
+  }
+  const loaderFn = (config) => {
+    return createNetlifyUrl(config, path);
+  };
+  const providers = [{ provide: IMAGE_LOADER, useValue: loaderFn }];
+  return providers;
+}
+const validParams = /* @__PURE__ */ new Map([
+  ["height", "h"],
+  ["fit", "fit"],
+  ["quality", "q"],
+  ["q", "q"],
+  ["position", "position"]
+]);
+function createNetlifyUrl(config, path) {
+  var _a, _b, _c, _d;
+  const url = new URL(path != null ? path : "https://a/");
+  url.pathname = "/.netlify/images";
+  if (!isAbsoluteUrl(config.src) && !config.src.startsWith("/")) {
+    config.src = "/" + config.src;
+  }
+  url.searchParams.set("url", config.src);
+  if (config.width) {
+    url.searchParams.set("w", config.width.toString());
+  }
+  const configQuality = (_c = (_a = config.loaderParams) == null ? void 0 : _a["quality"]) != null ? _c : (_b = config.loaderParams) == null ? void 0 : _b["q"];
+  if (config.isPlaceholder && !configQuality) {
+    url.searchParams.set("q", PLACEHOLDER_QUALITY);
+  }
+  for (const [param, value] of Object.entries((_d = config.loaderParams) != null ? _d : {})) {
+    if (validParams.has(param)) {
+      url.searchParams.set(validParams.get(param), value.toString());
+    } else {
+      if (ngDevMode) {
+        console.warn((0, import_core.\u0275formatRuntimeError)(2959, `The Netlify image loader has detected an \`<img>\` tag with the unsupported attribute "\`${param}\`".`));
+      }
+    }
+  }
+  return url.hostname === "a" ? url.href.replace(url.origin, "") : url.href;
+}
+function imgDirectiveDetails(ngSrc, includeNgSrc = true) {
+  const ngSrcInfo = includeNgSrc ? `(activated on an <img> element with the \`ngSrc="${ngSrc}"\`) ` : "";
+  return `The NgOptimizedImage directive ${ngSrcInfo}has detected that`;
+}
+function assertDevMode(checkName) {
+  if (!ngDevMode) {
+    throw new import_core.\u0275RuntimeError(2958, `Unexpected invocation of the ${checkName} in the prod mode. Please make sure that the prod mode is enabled for production builds.`);
+  }
+}
+const _LCPImageObserver = class _LCPImageObserver {
+  constructor() {
+    // Map of full image URLs -> original `ngSrc` values.
+    __publicField(this, "images", /* @__PURE__ */ new Map());
+    __publicField(this, "window", (0, import_core.inject)(import_core.DOCUMENT).defaultView);
+    __publicField(this, "observer", null);
+    assertDevMode("LCP checker");
+    if ((typeof ngServerMode === "undefined" || !ngServerMode) && typeof PerformanceObserver !== "undefined") {
+      this.observer = this.initPerformanceObserver();
+    }
+  }
+  /**
+   * Inits PerformanceObserver and subscribes to LCP events.
+   * Based on https://web.dev/lcp/#measure-lcp-in-javascript
+   */
+  initPerformanceObserver() {
+    const observer = new PerformanceObserver((entryList) => {
+      var _a, _b;
+      const entries = entryList.getEntries();
+      if (entries.length === 0)
+        return;
+      const lcpElement = entries[entries.length - 1];
+      const imgSrc = (_b = (_a = lcpElement.element) == null ? void 0 : _a.src) != null ? _b : "";
+      if (imgSrc.startsWith("data:") || imgSrc.startsWith("blob:"))
+        return;
+      const img = this.images.get(imgSrc);
+      if (!img)
+        return;
+      if (!img.priority && !img.alreadyWarnedPriority) {
+        img.alreadyWarnedPriority = true;
+        logMissingPriorityError(imgSrc);
+      }
+      if (img.modified && !img.alreadyWarnedModified) {
+        img.alreadyWarnedModified = true;
+        logModifiedWarning(imgSrc);
+      }
+    });
+    observer.observe({ type: "largest-contentful-paint", buffered: true });
+    return observer;
+  }
+  registerImage(rewrittenSrc, originalNgSrc, isPriority) {
+    if (!this.observer)
+      return;
+    const newObservedImageState = {
+      priority: isPriority,
+      modified: false,
+      alreadyWarnedModified: false,
+      alreadyWarnedPriority: false
+    };
+    this.images.set(getUrl(rewrittenSrc, this.window).href, newObservedImageState);
+  }
+  unregisterImage(rewrittenSrc) {
+    if (!this.observer)
+      return;
+    this.images.delete(getUrl(rewrittenSrc, this.window).href);
+  }
+  updateImage(originalSrc, newSrc) {
+    if (!this.observer)
+      return;
+    const originalUrl = getUrl(originalSrc, this.window).href;
+    const img = this.images.get(originalUrl);
+    if (img) {
+      img.modified = true;
+      this.images.set(getUrl(newSrc, this.window).href, img);
+      this.images.delete(originalUrl);
+    }
+  }
+  ngOnDestroy() {
+    if (!this.observer)
+      return;
+    this.observer.disconnect();
+    this.images.clear();
+  }
+};
+__publicField(_LCPImageObserver, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _LCPImageObserver, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_LCPImageObserver, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _LCPImageObserver, providedIn: "root" }));
+let LCPImageObserver = _LCPImageObserver;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: LCPImageObserver, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}], ctorParameters: () => [] });
+function logMissingPriorityError(ngSrc) {
+  const directiveDetails = imgDirectiveDetails(ngSrc);
+  console.error((0, import_core.\u0275formatRuntimeError)(2955, `${directiveDetails} this image is the Largest Contentful Paint (LCP) element but was not marked "priority". This image should be marked "priority" in order to prioritize its loading. To fix this, add the "priority" attribute.`));
+}
+function logModifiedWarning(ngSrc) {
+  const directiveDetails = imgDirectiveDetails(ngSrc);
+  console.warn((0, import_core.\u0275formatRuntimeError)(2964, `${directiveDetails} this image is the Largest Contentful Paint (LCP) element and has had its "ngSrc" attribute modified. This can cause slower loading performance. It is recommended not to modify the "ngSrc" property on any image which could be the LCP element.`));
+}
+const INTERNAL_PRECONNECT_CHECK_BLOCKLIST = /* @__PURE__ */ new Set(["localhost", "127.0.0.1", "0.0.0.0", "[::1]"]);
+const PRECONNECT_CHECK_BLOCKLIST = new import_core.InjectionToken(ngDevMode ? "PRECONNECT_CHECK_BLOCKLIST" : "");
+const _PreconnectLinkChecker = class _PreconnectLinkChecker {
+  constructor() {
+    __publicField(this, "document", (0, import_core.inject)(import_core.DOCUMENT));
+    /**
+     * Set of <link rel="preconnect"> tags found on this page.
+     * The `null` value indicates that there was no DOM query operation performed.
+     */
+    __publicField(this, "preconnectLinks", null);
+    /*
+     * Keep track of all already seen origin URLs to avoid repeating the same check.
+     */
+    __publicField(this, "alreadySeen", /* @__PURE__ */ new Set());
+    __publicField(this, "window", this.document.defaultView);
+    __publicField(this, "blocklist", new Set(INTERNAL_PRECONNECT_CHECK_BLOCKLIST));
+    assertDevMode("preconnect link checker");
+    const blocklist = (0, import_core.inject)(PRECONNECT_CHECK_BLOCKLIST, { optional: true });
+    if (blocklist) {
+      this.populateBlocklist(blocklist);
+    }
+  }
+  populateBlocklist(origins) {
+    if (Array.isArray(origins)) {
+      deepForEach(origins, (origin) => {
+        this.blocklist.add(extractHostname(origin));
+      });
+    } else {
+      this.blocklist.add(extractHostname(origins));
+    }
+  }
+  /**
+   * Checks that a preconnect resource hint exists in the head for the
+   * given src.
+   *
+   * @param rewrittenSrc src formatted with loader
+   * @param originalNgSrc ngSrc value
+   */
+  assertPreconnect(rewrittenSrc, originalNgSrc) {
+    var _a;
+    if (typeof ngServerMode !== "undefined" && ngServerMode)
+      return;
+    const imgUrl = getUrl(rewrittenSrc, this.window);
+    if (this.blocklist.has(imgUrl.hostname) || this.alreadySeen.has(imgUrl.origin))
+      return;
+    this.alreadySeen.add(imgUrl.origin);
+    (_a = this.preconnectLinks) != null ? _a : this.preconnectLinks = this.queryPreconnectLinks();
+    if (!this.preconnectLinks.has(imgUrl.origin)) {
+      console.warn((0, import_core.\u0275formatRuntimeError)(2956, `${imgDirectiveDetails(originalNgSrc)} there is no preconnect tag present for this image. Preconnecting to the origin(s) that serve priority images ensures that these images are delivered as soon as possible. To fix this, please add the following element into the <head> of the document:
+  <link rel="preconnect" href="${imgUrl.origin}">`));
+    }
+  }
+  queryPreconnectLinks() {
+    const preconnectUrls = /* @__PURE__ */ new Set();
+    const links = this.document.querySelectorAll("link[rel=preconnect]");
+    for (const link of links) {
+      const url = getUrl(link.href, this.window);
+      preconnectUrls.add(url.origin);
+    }
+    return preconnectUrls;
+  }
+  ngOnDestroy() {
+    var _a;
+    (_a = this.preconnectLinks) == null ? void 0 : _a.clear();
+    this.alreadySeen.clear();
+  }
+};
+__publicField(_PreconnectLinkChecker, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PreconnectLinkChecker, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_PreconnectLinkChecker, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PreconnectLinkChecker, providedIn: "root" }));
+let PreconnectLinkChecker = _PreconnectLinkChecker;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: PreconnectLinkChecker, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}], ctorParameters: () => [] });
+function deepForEach(input, fn) {
+  for (let value of input) {
+    Array.isArray(value) ? deepForEach(value, fn) : fn(value);
+  }
+}
+const DEFAULT_PRELOADED_IMAGES_LIMIT = 5;
+const PRELOADED_IMAGES = new import_core.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "NG_OPTIMIZED_PRELOADED_IMAGES" : "", {
+  providedIn: "root",
+  factory: () => /* @__PURE__ */ new Set()
+});
+const _PreloadLinkCreator = class _PreloadLinkCreator {
+  constructor() {
+    __publicField(this, "preloadedImages", (0, import_core.inject)(PRELOADED_IMAGES));
+    __publicField(this, "document", (0, import_core.inject)(import_core.DOCUMENT));
+    __publicField(this, "errorShown", false);
+  }
+  /**
+   * @description Add a preload `<link>` to the `<head>` of the `index.html` that is served from the
+   * server while using Angular Universal and SSR to kick off image loads for high priority images.
+   *
+   * The `sizes` (passed in from the user) and `srcset` (parsed and formatted from `ngSrcset`)
+   * properties used to set the corresponding attributes, `imagesizes` and `imagesrcset`
+   * respectively, on the preload `<link>` tag so that the correctly sized image is preloaded from
+   * the CDN.
+   *
+   * {@link https://web.dev/preload-responsive-images/#imagesrcset-and-imagesizes}
+   *
+   * @param renderer The `Renderer2` passed in from the directive
+   * @param src The original src of the image that is set on the `ngSrc` input.
+   * @param srcset The parsed and formatted srcset created from the `ngSrcset` input
+   * @param sizes The value of the `sizes` attribute passed in to the `<img>` tag
+   */
+  createPreloadLinkTag(renderer, src, srcset, sizes) {
+    if (ngDevMode && !this.errorShown && this.preloadedImages.size >= DEFAULT_PRELOADED_IMAGES_LIMIT) {
+      this.errorShown = true;
+      console.warn((0, import_core.\u0275formatRuntimeError)(2961, `The \`NgOptimizedImage\` directive has detected that more than ${DEFAULT_PRELOADED_IMAGES_LIMIT} images were marked as priority. This might negatively affect an overall performance of the page. To fix this, remove the "priority" attribute from images with less priority.`));
+    }
+    if (this.preloadedImages.has(src)) {
+      return;
+    }
+    this.preloadedImages.add(src);
+    const preload = renderer.createElement("link");
+    renderer.setAttribute(preload, "as", "image");
+    renderer.setAttribute(preload, "href", src);
+    renderer.setAttribute(preload, "rel", "preload");
+    renderer.setAttribute(preload, "fetchpriority", "high");
+    if (sizes) {
+      renderer.setAttribute(preload, "imageSizes", sizes);
+    }
+    if (srcset) {
+      renderer.setAttribute(preload, "imageSrcset", srcset);
+    }
+    renderer.appendChild(this.document.head, preload);
+  }
+};
+__publicField(_PreloadLinkCreator, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PreloadLinkCreator, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_PreloadLinkCreator, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _PreloadLinkCreator, providedIn: "root" }));
+let PreloadLinkCreator = _PreloadLinkCreator;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: PreloadLinkCreator, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}] });
+const BASE64_IMG_MAX_LENGTH_IN_ERROR = 50;
+const VALID_WIDTH_DESCRIPTOR_SRCSET = /^((\s*\d+w\s*(,|$)){1,})$/;
+const VALID_DENSITY_DESCRIPTOR_SRCSET = /^((\s*\d+(\.\d+)?x\s*(,|$)){1,})$/;
+const ABSOLUTE_SRCSET_DENSITY_CAP = 3;
+const RECOMMENDED_SRCSET_DENSITY_CAP = 2;
+const DENSITY_SRCSET_MULTIPLIERS = [1, 2];
+const VIEWPORT_BREAKPOINT_CUTOFF = 640;
+const ASPECT_RATIO_TOLERANCE = 0.1;
+const OVERSIZED_IMAGE_TOLERANCE = 1e3;
+const FIXED_SRCSET_WIDTH_LIMIT = 1920;
+const FIXED_SRCSET_HEIGHT_LIMIT = 1080;
+const PLACEHOLDER_DIMENSION_LIMIT = 1e3;
+const DATA_URL_WARN_LIMIT = 4e3;
+const DATA_URL_ERROR_LIMIT = 1e4;
+const BUILT_IN_LOADERS = [
+  imgixLoaderInfo,
+  imageKitLoaderInfo,
+  cloudinaryLoaderInfo,
+  netlifyLoaderInfo
+];
+const PRIORITY_COUNT_THRESHOLD = 10;
+let IMGS_WITH_PRIORITY_ATTR_COUNT = 0;
+const _NgOptimizedImage = class _NgOptimizedImage {
+  constructor() {
+    __publicField(this, "imageLoader", (0, import_core.inject)(IMAGE_LOADER));
+    __publicField(this, "config", processConfig((0, import_core.inject)(import_core.\u0275IMAGE_CONFIG)));
+    __publicField(this, "renderer", (0, import_core.inject)(import_core.Renderer2));
+    __publicField(this, "imgElement", (0, import_core.inject)(import_core.ElementRef).nativeElement);
+    __publicField(this, "injector", (0, import_core.inject)(import_core.Injector));
+    __publicField(this, "destroyRef", (0, import_core.inject)(import_core.DestroyRef));
+    // An LCP image observer should be injected only in development mode.
+    // Do not assign it to `null` to avoid having a redundant property in the production bundle.
+    __publicField(this, "lcpObserver");
+    /**
+     * Calculate the rewritten `src` once and store it.
+     * This is needed to avoid repetitive calculations and make sure the directive cleanup in the
+     * `ngOnDestroy` does not rely on the `IMAGE_LOADER` logic (which in turn can rely on some other
+     * instance that might be already destroyed).
+     */
+    __publicField(this, "_renderedSrc", null);
+    /**
+     * Name of the source image.
+     * Image name will be processed by the image loader and the final URL will be applied as the `src`
+     * property of the image.
+     */
+    __publicField(this, "ngSrc");
+    /**
+     * A comma separated list of width or density descriptors.
+     * The image name will be taken from `ngSrc` and combined with the list of width or density
+     * descriptors to generate the final `srcset` property of the image.
+     *
+     * Example:
+     * ```html
+     * <img ngSrc="hello.jpg" ngSrcset="100w, 200w" />  =>
+     * <img src="path/hello.jpg" srcset="path/hello.jpg?w=100 100w, path/hello.jpg?w=200 200w" />
+     * ```
+     */
+    __publicField(this, "ngSrcset");
+    /**
+     * The base `sizes` attribute passed through to the `<img>` element.
+     * Providing sizes causes the image to create an automatic responsive srcset.
+     */
+    __publicField(this, "sizes");
+    /**
+     * For responsive images: the intrinsic width of the image in pixels.
+     * For fixed size images: the desired rendered width of the image in pixels.
+     */
+    __publicField(this, "width");
+    /**
+     * For responsive images: the intrinsic height of the image in pixels.
+     * For fixed size images: the desired rendered height of the image in pixels.
+     */
+    __publicField(this, "height");
+    /**
+     * The desired decoding behavior for the image. Defaults to `auto`
+     * if not explicitly set, matching native browser behavior.
+     *
+     * Use `async` to decode the image off the main thread (non-blocking),
+     * `sync` for immediate decoding (blocking), or `auto` to let the
+     * browser decide the optimal strategy.
+     *
+     * [Spec](https://html.spec.whatwg.org/multipage/images.html#image-decoding-hint)
+     */
+    __publicField(this, "decoding");
+    /**
+     * The desired loading behavior (lazy, eager, or auto). Defaults to `lazy`,
+     * which is recommended for most images.
+     *
+     * Warning: Setting images as loading="eager" or loading="auto" marks them
+     * as non-priority images and can hurt loading performance. For images which
+     * may be the LCP element, use the `priority` attribute instead of `loading`.
+     */
+    __publicField(this, "loading");
+    /**
+     * Indicates whether this image should have a high priority.
+     */
+    __publicField(this, "priority", false);
+    /**
+     * Data to pass through to custom loaders.
+     */
+    __publicField(this, "loaderParams");
+    /**
+     * Disables automatic srcset generation for this image.
+     */
+    __publicField(this, "disableOptimizedSrcset", false);
+    /**
+     * Sets the image to "fill mode", which eliminates the height/width requirement and adds
+     * styles such that the image fills its containing element.
+     */
+    __publicField(this, "fill", false);
+    /**
+     * A URL or data URL for an image to be used as a placeholder while this image loads.
+     */
+    __publicField(this, "placeholder");
+    /**
+     * Configuration object for placeholder settings. Options:
+     *   * blur: Setting this to false disables the automatic CSS blur.
+     */
+    __publicField(this, "placeholderConfig");
+    /**
+     * Value of the `src` attribute if set on the host `<img>` element.
+     * This input is exclusively read to assert that `src` is not set in conflict
+     * with `ngSrc` and that images don't start to load until a lazy loading strategy is set.
+     * @internal
+     */
+    __publicField(this, "src");
+    /**
+     * Value of the `srcset` attribute if set on the host `<img>` element.
+     * This input is exclusively read to assert that `srcset` is not set in conflict
+     * with `ngSrcset` and that images don't start to load until a lazy loading strategy is set.
+     * @internal
+     */
+    __publicField(this, "srcset");
+    if (ngDevMode) {
+      this.lcpObserver = this.injector.get(LCPImageObserver);
+      this.destroyRef.onDestroy(() => {
+        if (!this.priority && this._renderedSrc !== null) {
+          this.lcpObserver.unregisterImage(this._renderedSrc);
+        }
+      });
+    }
+  }
+  /** @docs-private */
+  ngOnInit() {
+    (0, import_core.\u0275performanceMarkFeature)("NgOptimizedImage");
+    if (ngDevMode) {
+      const ngZone = this.injector.get(import_core.NgZone);
+      assertNonEmptyInput(this, "ngSrc", this.ngSrc);
+      assertValidNgSrcset(this, this.ngSrcset);
+      assertNoConflictingSrc(this);
+      if (this.ngSrcset) {
+        assertNoConflictingSrcset(this);
+      }
+      assertNotBase64Image(this);
+      assertNotBlobUrl(this);
+      if (this.fill) {
+        assertEmptyWidthAndHeight(this);
+        ngZone.runOutsideAngular(() => assertNonZeroRenderedHeight(this, this.imgElement, this.renderer, this.destroyRef));
+      } else {
+        assertNonEmptyWidthAndHeight(this);
+        if (this.height !== void 0) {
+          assertGreaterThanZero(this, this.height, "height");
+        }
+        if (this.width !== void 0) {
+          assertGreaterThanZero(this, this.width, "width");
+        }
+        ngZone.runOutsideAngular(() => assertNoImageDistortion(this, this.imgElement, this.renderer, this.destroyRef));
+      }
+      assertValidLoadingInput(this);
+      assertValidDecodingInput(this);
+      if (!this.ngSrcset) {
+        assertNoComplexSizes(this);
+      }
+      assertValidPlaceholder(this, this.imageLoader);
+      assertNotMissingBuiltInLoader(this.ngSrc, this.imageLoader);
+      assertNoNgSrcsetWithoutLoader(this, this.imageLoader);
+      assertNoLoaderParamsWithoutLoader(this, this.imageLoader);
+      ngZone.runOutsideAngular(() => {
+        this.lcpObserver.registerImage(this.getRewrittenSrc(), this.ngSrc, this.priority);
+      });
+      if (this.priority) {
+        const checker = this.injector.get(PreconnectLinkChecker);
+        checker.assertPreconnect(this.getRewrittenSrc(), this.ngSrc);
+        if (typeof ngServerMode !== "undefined" && !ngServerMode) {
+          const applicationRef = this.injector.get(import_core.ApplicationRef);
+          assetPriorityCountBelowThreshold(applicationRef);
+        }
+      }
+    }
+    if (this.placeholder) {
+      this.removePlaceholderOnLoad(this.imgElement);
+    }
+    this.setHostAttributes();
+  }
+  setHostAttributes() {
+    if (this.fill) {
+      this.sizes || (this.sizes = "100vw");
+    } else {
+      this.setHostAttribute("width", this.width.toString());
+      this.setHostAttribute("height", this.height.toString());
+    }
+    this.setHostAttribute("loading", this.getLoadingBehavior());
+    this.setHostAttribute("fetchpriority", this.getFetchPriority());
+    this.setHostAttribute("decoding", this.getDecoding());
+    this.setHostAttribute("ng-img", "true");
+    const rewrittenSrcset = this.updateSrcAndSrcset();
+    if (this.sizes) {
+      if (this.getLoadingBehavior() === "lazy") {
+        this.setHostAttribute("sizes", "auto, " + this.sizes);
+      } else {
+        this.setHostAttribute("sizes", this.sizes);
+      }
+    } else {
+      if (this.ngSrcset && VALID_WIDTH_DESCRIPTOR_SRCSET.test(this.ngSrcset) && this.getLoadingBehavior() === "lazy") {
+        this.setHostAttribute("sizes", "auto, 100vw");
+      }
+    }
+    if (typeof ngServerMode !== "undefined" && ngServerMode && this.priority) {
+      const preloadLinkCreator = this.injector.get(PreloadLinkCreator);
+      preloadLinkCreator.createPreloadLinkTag(this.renderer, this.getRewrittenSrc(), rewrittenSrcset, this.sizes);
+    }
+  }
+  /** @docs-private */
+  ngOnChanges(changes) {
+    var _a;
+    if (ngDevMode) {
+      assertNoPostInitInputChange(this, changes, [
+        "ngSrcset",
+        "width",
+        "height",
+        "priority",
+        "fill",
+        "loading",
+        "sizes",
+        "loaderParams",
+        "disableOptimizedSrcset"
+      ]);
+    }
+    if (changes["ngSrc"] && !changes["ngSrc"].isFirstChange()) {
+      const oldSrc = this._renderedSrc;
+      this.updateSrcAndSrcset(true);
+      if (ngDevMode) {
+        const newSrc = this._renderedSrc;
+        if (oldSrc && newSrc && oldSrc !== newSrc) {
+          const ngZone = this.injector.get(import_core.NgZone);
+          ngZone.runOutsideAngular(() => {
+            this.lcpObserver.updateImage(oldSrc, newSrc);
+          });
+        }
+      }
+    }
+    if (ngDevMode && ((_a = changes["placeholder"]) == null ? void 0 : _a.currentValue) && typeof ngServerMode !== "undefined" && !ngServerMode) {
+      assertPlaceholderDimensions(this, this.imgElement);
+    }
+  }
+  callImageLoader(configWithoutCustomParams) {
+    let augmentedConfig = configWithoutCustomParams;
+    if (this.loaderParams) {
+      augmentedConfig.loaderParams = this.loaderParams;
+    }
+    return this.imageLoader(augmentedConfig);
+  }
+  getLoadingBehavior() {
+    if (!this.priority && this.loading !== void 0) {
+      return this.loading;
+    }
+    return this.priority ? "eager" : "lazy";
+  }
+  getFetchPriority() {
+    return this.priority ? "high" : "auto";
+  }
+  getDecoding() {
+    var _a;
+    if (this.priority) {
+      return "sync";
+    }
+    return (_a = this.decoding) != null ? _a : "auto";
+  }
+  getRewrittenSrc() {
+    if (!this._renderedSrc) {
+      const imgConfig = { src: this.ngSrc };
+      this._renderedSrc = this.callImageLoader(imgConfig);
+    }
+    return this._renderedSrc;
+  }
+  getRewrittenSrcset() {
+    const widthSrcSet = VALID_WIDTH_DESCRIPTOR_SRCSET.test(this.ngSrcset);
+    const finalSrcs = this.ngSrcset.split(",").filter((src) => src !== "").map((srcStr) => {
+      srcStr = srcStr.trim();
+      const width = widthSrcSet ? parseFloat(srcStr) : parseFloat(srcStr) * this.width;
+      return `${this.callImageLoader({ src: this.ngSrc, width })} ${srcStr}`;
+    });
+    return finalSrcs.join(", ");
+  }
+  getAutomaticSrcset() {
+    if (this.sizes) {
+      return this.getResponsiveSrcset();
+    } else {
+      return this.getFixedSrcset();
+    }
+  }
+  getResponsiveSrcset() {
+    var _a;
+    const { breakpoints } = this.config;
+    let filteredBreakpoints = breakpoints;
+    if (((_a = this.sizes) == null ? void 0 : _a.trim()) === "100vw") {
+      filteredBreakpoints = breakpoints.filter((bp) => bp >= VIEWPORT_BREAKPOINT_CUTOFF);
+    }
+    const finalSrcs = filteredBreakpoints.map((bp) => `${this.callImageLoader({ src: this.ngSrc, width: bp })} ${bp}w`);
+    return finalSrcs.join(", ");
+  }
+  updateSrcAndSrcset(forceSrcRecalc = false) {
+    if (forceSrcRecalc) {
+      this._renderedSrc = null;
+    }
+    const rewrittenSrc = this.getRewrittenSrc();
+    this.setHostAttribute("src", rewrittenSrc);
+    let rewrittenSrcset = void 0;
+    if (this.ngSrcset) {
+      rewrittenSrcset = this.getRewrittenSrcset();
+    } else if (this.shouldGenerateAutomaticSrcset()) {
+      rewrittenSrcset = this.getAutomaticSrcset();
+    }
+    if (rewrittenSrcset) {
+      this.setHostAttribute("srcset", rewrittenSrcset);
+    }
+    return rewrittenSrcset;
+  }
+  getFixedSrcset() {
+    const finalSrcs = DENSITY_SRCSET_MULTIPLIERS.map((multiplier) => `${this.callImageLoader({
+      src: this.ngSrc,
+      width: this.width * multiplier
+    })} ${multiplier}x`);
+    return finalSrcs.join(", ");
+  }
+  shouldGenerateAutomaticSrcset() {
+    let oversizedImage = false;
+    if (!this.sizes) {
+      oversizedImage = this.width > FIXED_SRCSET_WIDTH_LIMIT || this.height > FIXED_SRCSET_HEIGHT_LIMIT;
+    }
+    return !this.disableOptimizedSrcset && !this.srcset && this.imageLoader !== noopImageLoader && !oversizedImage;
+  }
+  /**
+   * Returns an image url formatted for use with the CSS background-image property. Expects one of:
+   * * A base64 encoded image, which is wrapped and passed through.
+   * * A boolean. If true, calls the image loader to generate a small placeholder url.
+   */
+  generatePlaceholder(placeholderInput) {
+    const { placeholderResolution } = this.config;
+    if (placeholderInput === true) {
+      return `url(${this.callImageLoader({
+        src: this.ngSrc,
+        width: placeholderResolution,
+        isPlaceholder: true
+      })})`;
+    } else if (typeof placeholderInput === "string") {
+      return `url(${placeholderInput})`;
+    }
+    return null;
+  }
+  /**
+   * Determines if blur should be applied, based on an optional boolean
+   * property `blur` within the optional configuration object `placeholderConfig`.
+   */
+  shouldBlurPlaceholder(placeholderConfig) {
+    if (!placeholderConfig || !placeholderConfig.hasOwnProperty("blur")) {
+      return true;
+    }
+    return Boolean(placeholderConfig.blur);
+  }
+  removePlaceholderOnLoad(img) {
+    const callback = () => {
+      const changeDetectorRef = this.injector.get(import_core.ChangeDetectorRef);
+      removeLoadListenerFn();
+      removeErrorListenerFn();
+      this.placeholder = false;
+      changeDetectorRef.markForCheck();
+    };
+    const removeLoadListenerFn = this.renderer.listen(img, "load", callback);
+    const removeErrorListenerFn = this.renderer.listen(img, "error", callback);
+    this.destroyRef.onDestroy(() => {
+      removeLoadListenerFn();
+      removeErrorListenerFn();
+    });
+    callOnLoadIfImageIsLoaded(img, callback);
+  }
+  setHostAttribute(name, value) {
+    this.renderer.setAttribute(this.imgElement, name, value);
+  }
+};
+__publicField(_NgOptimizedImage, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: _NgOptimizedImage, deps: [], target: i0.\u0275\u0275FactoryTarget.Directive }));
+__publicField(_NgOptimizedImage, "\u0275dir", i0.\u0275\u0275ngDeclareDirective({ minVersion: "16.1.0", version: "20.3.16", type: _NgOptimizedImage, isStandalone: true, selector: "img[ngSrc]", inputs: { ngSrc: ["ngSrc", "ngSrc", unwrapSafeUrl], ngSrcset: "ngSrcset", sizes: "sizes", width: ["width", "width", import_core.numberAttribute], height: ["height", "height", import_core.numberAttribute], decoding: "decoding", loading: "loading", priority: ["priority", "priority", import_core.booleanAttribute], loaderParams: "loaderParams", disableOptimizedSrcset: ["disableOptimizedSrcset", "disableOptimizedSrcset", import_core.booleanAttribute], fill: ["fill", "fill", import_core.booleanAttribute], placeholder: ["placeholder", "placeholder", booleanOrUrlAttribute], placeholderConfig: "placeholderConfig", src: "src", srcset: "srcset" }, host: { properties: { "style.position": 'fill ? "absolute" : null', "style.width": 'fill ? "100%" : null', "style.height": 'fill ? "100%" : null', "style.inset": 'fill ? "0" : null', "style.background-size": 'placeholder ? "cover" : null', "style.background-position": 'placeholder ? "50% 50%" : null', "style.background-repeat": 'placeholder ? "no-repeat" : null', "style.background-image": "placeholder ? generatePlaceholder(placeholder) : null", "style.filter": 'placeholder && shouldBlurPlaceholder(placeholderConfig) ? "blur(15px)" : null' } }, usesOnChanges: true, ngImport: i0 }));
+let NgOptimizedImage = _NgOptimizedImage;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.3.16", ngImport: i0, type: NgOptimizedImage, decorators: [{
+  type: import_core.Directive,
+  args: [{
+    selector: "img[ngSrc]",
+    host: {
+      "[style.position]": 'fill ? "absolute" : null',
+      "[style.width]": 'fill ? "100%" : null',
+      "[style.height]": 'fill ? "100%" : null',
+      "[style.inset]": 'fill ? "0" : null',
+      "[style.background-size]": 'placeholder ? "cover" : null',
+      "[style.background-position]": 'placeholder ? "50% 50%" : null',
+      "[style.background-repeat]": 'placeholder ? "no-repeat" : null',
+      "[style.background-image]": "placeholder ? generatePlaceholder(placeholder) : null",
+      "[style.filter]": 'placeholder && shouldBlurPlaceholder(placeholderConfig) ? "blur(15px)" : null'
+    }
+  }]
+}], ctorParameters: () => [], propDecorators: { ngSrc: [{
+  type: import_core.Input,
+  args: [{ required: true, transform: unwrapSafeUrl }]
+}], ngSrcset: [{
+  type: import_core.Input
+}], sizes: [{
+  type: import_core.Input
+}], width: [{
+  type: import_core.Input,
+  args: [{ transform: import_core.numberAttribute }]
+}], height: [{
+  type: import_core.Input,
+  args: [{ transform: import_core.numberAttribute }]
+}], decoding: [{
+  type: import_core.Input
+}], loading: [{
+  type: import_core.Input
+}], priority: [{
+  type: import_core.Input,
+  args: [{ transform: import_core.booleanAttribute }]
+}], loaderParams: [{
+  type: import_core.Input
+}], disableOptimizedSrcset: [{
+  type: import_core.Input,
+  args: [{ transform: import_core.booleanAttribute }]
+}], fill: [{
+  type: import_core.Input,
+  args: [{ transform: import_core.booleanAttribute }]
+}], placeholder: [{
+  type: import_core.Input,
+  args: [{ transform: booleanOrUrlAttribute }]
+}], placeholderConfig: [{
+  type: import_core.Input
+}], src: [{
+  type: import_core.Input
+}], srcset: [{
+  type: import_core.Input
+}] } });
+function processConfig(config) {
+  let sortedBreakpoints = {};
+  if (config.breakpoints) {
+    sortedBreakpoints.breakpoints = config.breakpoints.sort((a, b) => a - b);
+  }
+  return Object.assign({}, import_core.\u0275IMAGE_CONFIG_DEFAULTS, config, sortedBreakpoints);
+}
+function assertNoConflictingSrc(dir) {
+  if (dir.src) {
+    throw new import_core.\u0275RuntimeError(2950, `${imgDirectiveDetails(dir.ngSrc)} both \`src\` and \`ngSrc\` have been set. Supplying both of these attributes breaks lazy loading. The NgOptimizedImage directive sets \`src\` itself based on the value of \`ngSrc\`. To fix this, please remove the \`src\` attribute.`);
+  }
+}
+function assertNoConflictingSrcset(dir) {
+  if (dir.srcset) {
+    throw new import_core.\u0275RuntimeError(2951, `${imgDirectiveDetails(dir.ngSrc)} both \`srcset\` and \`ngSrcset\` have been set. Supplying both of these attributes breaks lazy loading. The NgOptimizedImage directive sets \`srcset\` itself based on the value of \`ngSrcset\`. To fix this, please remove the \`srcset\` attribute.`);
+  }
+}
+function assertNotBase64Image(dir) {
+  let ngSrc = dir.ngSrc.trim();
+  if (ngSrc.startsWith("data:")) {
+    if (ngSrc.length > BASE64_IMG_MAX_LENGTH_IN_ERROR) {
+      ngSrc = ngSrc.substring(0, BASE64_IMG_MAX_LENGTH_IN_ERROR) + "...";
+    }
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc, false)} \`ngSrc\` is a Base64-encoded string (${ngSrc}). NgOptimizedImage does not support Base64-encoded strings. To fix this, disable the NgOptimizedImage directive for this element by removing \`ngSrc\` and using a standard \`src\` attribute instead.`);
+  }
+}
+function assertNoComplexSizes(dir) {
+  let sizes = dir.sizes;
+  if (sizes == null ? void 0 : sizes.match(/((\)|,)\s|^)\d+px/)) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc, false)} \`sizes\` was set to a string including pixel values. For automatic \`srcset\` generation, \`sizes\` must only include responsive values, such as \`sizes="50vw"\` or \`sizes="(min-width: 768px) 50vw, 100vw"\`. To fix this, modify the \`sizes\` attribute, or provide your own \`ngSrcset\` value directly.`);
+  }
+}
+function assertValidPlaceholder(dir, imageLoader) {
+  assertNoPlaceholderConfigWithoutPlaceholder(dir);
+  assertNoRelativePlaceholderWithoutLoader(dir, imageLoader);
+  assertNoOversizedDataUrl(dir);
+}
+function assertNoPlaceholderConfigWithoutPlaceholder(dir) {
+  if (dir.placeholderConfig && !dir.placeholder) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc, false)} \`placeholderConfig\` options were provided for an image that does not use the \`placeholder\` attribute, and will have no effect.`);
+  }
+}
+function assertNoRelativePlaceholderWithoutLoader(dir, imageLoader) {
+  if (dir.placeholder === true && imageLoader === noopImageLoader) {
+    throw new import_core.\u0275RuntimeError(2963, `${imgDirectiveDetails(dir.ngSrc)} the \`placeholder\` attribute is set to true but no image loader is configured (i.e. the default one is being used), which would result in the same image being used for the primary image and its placeholder. To fix this, provide a loader or remove the \`placeholder\` attribute from the image.`);
+  }
+}
+function assertNoOversizedDataUrl(dir) {
+  if (dir.placeholder && typeof dir.placeholder === "string" && dir.placeholder.startsWith("data:")) {
+    if (dir.placeholder.length > DATA_URL_ERROR_LIMIT) {
+      throw new import_core.\u0275RuntimeError(2965, `${imgDirectiveDetails(dir.ngSrc)} the \`placeholder\` attribute is set to a data URL which is longer than ${DATA_URL_ERROR_LIMIT} characters. This is strongly discouraged, as large inline placeholders directly increase the bundle size of Angular and hurt page load performance. To fix this, generate a smaller data URL placeholder.`);
+    }
+    if (dir.placeholder.length > DATA_URL_WARN_LIMIT) {
+      console.warn((0, import_core.\u0275formatRuntimeError)(2965, `${imgDirectiveDetails(dir.ngSrc)} the \`placeholder\` attribute is set to a data URL which is longer than ${DATA_URL_WARN_LIMIT} characters. This is discouraged, as large inline placeholders directly increase the bundle size of Angular and hurt page load performance. For better loading performance, generate a smaller data URL placeholder.`));
+    }
+  }
+}
+function assertNotBlobUrl(dir) {
+  const ngSrc = dir.ngSrc.trim();
+  if (ngSrc.startsWith("blob:")) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} \`ngSrc\` was set to a blob URL (${ngSrc}). Blob URLs are not supported by the NgOptimizedImage directive. To fix this, disable the NgOptimizedImage directive for this element by removing \`ngSrc\` and using a regular \`src\` attribute instead.`);
+  }
+}
+function assertNonEmptyInput(dir, name, value) {
+  const isString = typeof value === "string";
+  const isEmptyString = isString && value.trim() === "";
+  if (!isString || isEmptyString) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} \`${name}\` has an invalid value (\`${value}\`). To fix this, change the value to a non-empty string.`);
+  }
+}
+function assertValidNgSrcset(dir, value) {
+  if (value == null)
+    return;
+  assertNonEmptyInput(dir, "ngSrcset", value);
+  const stringVal = value;
+  const isValidWidthDescriptor = VALID_WIDTH_DESCRIPTOR_SRCSET.test(stringVal);
+  const isValidDensityDescriptor = VALID_DENSITY_DESCRIPTOR_SRCSET.test(stringVal);
+  if (isValidDensityDescriptor) {
+    assertUnderDensityCap(dir, stringVal);
+  }
+  const isValidSrcset = isValidWidthDescriptor || isValidDensityDescriptor;
+  if (!isValidSrcset) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} \`ngSrcset\` has an invalid value (\`${value}\`). To fix this, supply \`ngSrcset\` using a comma-separated list of one or more width descriptors (e.g. "100w, 200w") or density descriptors (e.g. "1x, 2x").`);
+  }
+}
+function assertUnderDensityCap(dir, value) {
+  const underDensityCap = value.split(",").every((num) => num === "" || parseFloat(num) <= ABSOLUTE_SRCSET_DENSITY_CAP);
+  if (!underDensityCap) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} the \`ngSrcset\` contains an unsupported image density:\`${value}\`. NgOptimizedImage generally recommends a max image density of ${RECOMMENDED_SRCSET_DENSITY_CAP}x but supports image densities up to ${ABSOLUTE_SRCSET_DENSITY_CAP}x. The human eye cannot distinguish between image densities greater than ${RECOMMENDED_SRCSET_DENSITY_CAP}x - which makes them unnecessary for most use cases. Images that will be pinch-zoomed are typically the primary use case for ${ABSOLUTE_SRCSET_DENSITY_CAP}x images. Please remove the high density descriptor and try again.`);
+  }
+}
+function postInitInputChangeError(dir, inputName) {
+  let reason;
+  if (inputName === "width" || inputName === "height") {
+    reason = `Changing \`${inputName}\` may result in different attribute value applied to the underlying image element and cause layout shifts on a page.`;
+  } else {
+    reason = `Changing the \`${inputName}\` would have no effect on the underlying image element, because the resource loading has already occurred.`;
+  }
+  return new import_core.\u0275RuntimeError(2953, `${imgDirectiveDetails(dir.ngSrc)} \`${inputName}\` was updated after initialization. The NgOptimizedImage directive will not react to this input change. ${reason} To fix this, either switch \`${inputName}\` to a static value or wrap the image element in an @if that is gated on the necessary value.`);
+}
+function assertNoPostInitInputChange(dir, changes, inputs) {
+  inputs.forEach((input) => {
+    const isUpdated = changes.hasOwnProperty(input);
+    if (isUpdated && !changes[input].isFirstChange()) {
+      if (input === "ngSrc") {
+        dir = { ngSrc: changes[input].previousValue };
+      }
+      throw postInitInputChangeError(dir, input);
+    }
+  });
+}
+function assertGreaterThanZero(dir, inputValue, inputName) {
+  const validNumber = typeof inputValue === "number" && inputValue > 0;
+  const validString = typeof inputValue === "string" && /^\d+$/.test(inputValue.trim()) && parseInt(inputValue) > 0;
+  if (!validNumber && !validString) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} \`${inputName}\` has an invalid value. To fix this, provide \`${inputName}\` as a number greater than 0.`);
+  }
+}
+function assertNoImageDistortion(dir, img, renderer, destroyRef) {
+  const callback = () => {
+    removeLoadListenerFn();
+    removeErrorListenerFn();
+    const computedStyle = window.getComputedStyle(img);
+    let renderedWidth = parseFloat(computedStyle.getPropertyValue("width"));
+    let renderedHeight = parseFloat(computedStyle.getPropertyValue("height"));
+    const boxSizing = computedStyle.getPropertyValue("box-sizing");
+    if (boxSizing === "border-box") {
+      const paddingTop = computedStyle.getPropertyValue("padding-top");
+      const paddingRight = computedStyle.getPropertyValue("padding-right");
+      const paddingBottom = computedStyle.getPropertyValue("padding-bottom");
+      const paddingLeft = computedStyle.getPropertyValue("padding-left");
+      renderedWidth -= parseFloat(paddingRight) + parseFloat(paddingLeft);
+      renderedHeight -= parseFloat(paddingTop) + parseFloat(paddingBottom);
+    }
+    const renderedAspectRatio = renderedWidth / renderedHeight;
+    const nonZeroRenderedDimensions = renderedWidth !== 0 && renderedHeight !== 0;
+    const intrinsicWidth = img.naturalWidth;
+    const intrinsicHeight = img.naturalHeight;
+    const intrinsicAspectRatio = intrinsicWidth / intrinsicHeight;
+    const suppliedWidth = dir.width;
+    const suppliedHeight = dir.height;
+    const suppliedAspectRatio = suppliedWidth / suppliedHeight;
+    const inaccurateDimensions = Math.abs(suppliedAspectRatio - intrinsicAspectRatio) > ASPECT_RATIO_TOLERANCE;
+    const stylingDistortion = nonZeroRenderedDimensions && Math.abs(intrinsicAspectRatio - renderedAspectRatio) > ASPECT_RATIO_TOLERANCE;
+    if (inaccurateDimensions) {
+      console.warn((0, import_core.\u0275formatRuntimeError)(2952, `${imgDirectiveDetails(dir.ngSrc)} the aspect ratio of the image does not match the aspect ratio indicated by the width and height attributes. 
+Intrinsic image size: ${intrinsicWidth}w x ${intrinsicHeight}h (aspect-ratio: ${round(intrinsicAspectRatio)}). 
+Supplied width and height attributes: ${suppliedWidth}w x ${suppliedHeight}h (aspect-ratio: ${round(suppliedAspectRatio)}). 
+To fix this, update the width and height attributes.`));
+    } else if (stylingDistortion) {
+      console.warn((0, import_core.\u0275formatRuntimeError)(2952, `${imgDirectiveDetails(dir.ngSrc)} the aspect ratio of the rendered image does not match the image's intrinsic aspect ratio. 
+Intrinsic image size: ${intrinsicWidth}w x ${intrinsicHeight}h (aspect-ratio: ${round(intrinsicAspectRatio)}). 
+Rendered image size: ${renderedWidth}w x ${renderedHeight}h (aspect-ratio: ${round(renderedAspectRatio)}). 
+This issue can occur if "width" and "height" attributes are added to an image without updating the corresponding image styling. To fix this, adjust image styling. In most cases, adding "height: auto" or "width: auto" to the image styling will fix this issue.`));
+    } else if (!dir.ngSrcset && nonZeroRenderedDimensions) {
+      const recommendedWidth = RECOMMENDED_SRCSET_DENSITY_CAP * renderedWidth;
+      const recommendedHeight = RECOMMENDED_SRCSET_DENSITY_CAP * renderedHeight;
+      const oversizedWidth = intrinsicWidth - recommendedWidth >= OVERSIZED_IMAGE_TOLERANCE;
+      const oversizedHeight = intrinsicHeight - recommendedHeight >= OVERSIZED_IMAGE_TOLERANCE;
+      if (oversizedWidth || oversizedHeight) {
+        console.warn((0, import_core.\u0275formatRuntimeError)(2960, `${imgDirectiveDetails(dir.ngSrc)} the intrinsic image is significantly larger than necessary. 
+Rendered image size: ${renderedWidth}w x ${renderedHeight}h. 
+Intrinsic image size: ${intrinsicWidth}w x ${intrinsicHeight}h. 
+Recommended intrinsic image size: ${recommendedWidth}w x ${recommendedHeight}h. 
+Note: Recommended intrinsic image size is calculated assuming a maximum DPR of ${RECOMMENDED_SRCSET_DENSITY_CAP}. To improve loading time, resize the image or consider using the "ngSrcset" and "sizes" attributes.`));
+      }
+    }
+  };
+  const removeLoadListenerFn = renderer.listen(img, "load", callback);
+  const removeErrorListenerFn = renderer.listen(img, "error", () => {
+    removeLoadListenerFn();
+    removeErrorListenerFn();
+  });
+  destroyRef.onDestroy(() => {
+    removeLoadListenerFn();
+    removeErrorListenerFn();
+  });
+  callOnLoadIfImageIsLoaded(img, callback);
+}
+function assertNonEmptyWidthAndHeight(dir) {
+  let missingAttributes = [];
+  if (dir.width === void 0)
+    missingAttributes.push("width");
+  if (dir.height === void 0)
+    missingAttributes.push("height");
+  if (missingAttributes.length > 0) {
+    throw new import_core.\u0275RuntimeError(2954, `${imgDirectiveDetails(dir.ngSrc)} these required attributes are missing: ${missingAttributes.map((attr) => `"${attr}"`).join(", ")}. Including "width" and "height" attributes will prevent image-related layout shifts. To fix this, include "width" and "height" attributes on the image tag or turn on "fill" mode with the \`fill\` attribute.`);
+  }
+}
+function assertEmptyWidthAndHeight(dir) {
+  if (dir.width || dir.height) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} the attributes \`height\` and/or \`width\` are present along with the \`fill\` attribute. Because \`fill\` mode causes an image to fill its containing element, the size attributes have no effect and should be removed.`);
+  }
+}
+function assertNonZeroRenderedHeight(dir, img, renderer, destroyRef) {
+  const callback = () => {
+    removeLoadListenerFn();
+    removeErrorListenerFn();
+    const renderedHeight = img.clientHeight;
+    if (dir.fill && renderedHeight === 0) {
+      console.warn((0, import_core.\u0275formatRuntimeError)(2952, `${imgDirectiveDetails(dir.ngSrc)} the height of the fill-mode image is zero. This is likely because the containing element does not have the CSS 'position' property set to one of the following: "relative", "fixed", or "absolute". To fix this problem, make sure the container element has the CSS 'position' property defined and the height of the element is not zero.`));
+    }
+  };
+  const removeLoadListenerFn = renderer.listen(img, "load", callback);
+  const removeErrorListenerFn = renderer.listen(img, "error", () => {
+    removeLoadListenerFn();
+    removeErrorListenerFn();
+  });
+  destroyRef.onDestroy(() => {
+    removeLoadListenerFn();
+    removeErrorListenerFn();
+  });
+  callOnLoadIfImageIsLoaded(img, callback);
+}
+function assertValidLoadingInput(dir) {
+  if (dir.loading && dir.priority) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} the \`loading\` attribute was used on an image that was marked "priority". Setting \`loading\` on priority images is not allowed because these images will always be eagerly loaded. To fix this, remove the \u201Cloading\u201D attribute from the priority image.`);
+  }
+  const validInputs = ["auto", "eager", "lazy"];
+  if (typeof dir.loading === "string" && !validInputs.includes(dir.loading)) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} the \`loading\` attribute has an invalid value (\`${dir.loading}\`). To fix this, provide a valid value ("lazy", "eager", or "auto").`);
+  }
+}
+function assertValidDecodingInput(dir) {
+  const validInputs = ["sync", "async", "auto"];
+  if (typeof dir.decoding === "string" && !validInputs.includes(dir.decoding)) {
+    throw new import_core.\u0275RuntimeError(2952, `${imgDirectiveDetails(dir.ngSrc)} the \`decoding\` attribute has an invalid value (\`${dir.decoding}\`). To fix this, provide a valid value ("sync", "async", or "auto").`);
+  }
+}
+function assertNotMissingBuiltInLoader(ngSrc, imageLoader) {
+  if (imageLoader === noopImageLoader) {
+    let builtInLoaderName = "";
+    for (const loader of BUILT_IN_LOADERS) {
+      if (loader.testUrl(ngSrc)) {
+        builtInLoaderName = loader.name;
+        break;
+      }
+    }
+    if (builtInLoaderName) {
+      console.warn((0, import_core.\u0275formatRuntimeError)(2962, `NgOptimizedImage: It looks like your images may be hosted on the ${builtInLoaderName} CDN, but your app is not using Angular's built-in loader for that CDN. We recommend switching to use the built-in by calling \`provide${builtInLoaderName}Loader()\` in your \`providers\` and passing it your instance's base URL. If you don't want to use the built-in loader, define a custom loader function using IMAGE_LOADER to silence this warning.`));
+    }
+  }
+}
+function assertNoNgSrcsetWithoutLoader(dir, imageLoader) {
+  if (dir.ngSrcset && imageLoader === noopImageLoader) {
+    console.warn((0, import_core.\u0275formatRuntimeError)(2963, `${imgDirectiveDetails(dir.ngSrc)} the \`ngSrcset\` attribute is present but no image loader is configured (i.e. the default one is being used), which would result in the same image being used for all configured sizes. To fix this, provide a loader or remove the \`ngSrcset\` attribute from the image.`));
+  }
+}
+function assertNoLoaderParamsWithoutLoader(dir, imageLoader) {
+  if (dir.loaderParams && imageLoader === noopImageLoader) {
+    console.warn((0, import_core.\u0275formatRuntimeError)(2963, `${imgDirectiveDetails(dir.ngSrc)} the \`loaderParams\` attribute is present but no image loader is configured (i.e. the default one is being used), which means that the loaderParams data will not be consumed and will not affect the URL. To fix this, provide a custom loader or remove the \`loaderParams\` attribute from the image.`));
+  }
+}
+function assetPriorityCountBelowThreshold(appRef) {
+  return __async(this, null, function* () {
+    if (IMGS_WITH_PRIORITY_ATTR_COUNT === 0) {
+      IMGS_WITH_PRIORITY_ATTR_COUNT++;
+      yield appRef.whenStable();
+      if (IMGS_WITH_PRIORITY_ATTR_COUNT > PRIORITY_COUNT_THRESHOLD) {
+        console.warn((0, import_core.\u0275formatRuntimeError)(2966, `NgOptimizedImage: The "priority" attribute is set to true more than ${PRIORITY_COUNT_THRESHOLD} times (${IMGS_WITH_PRIORITY_ATTR_COUNT} times). Marking too many images as "high" priority can hurt your application's LCP (https://web.dev/lcp). "Priority" should only be set on the image expected to be the page's LCP element.`));
+      }
+    } else {
+      IMGS_WITH_PRIORITY_ATTR_COUNT++;
+    }
+  });
+}
+function assertPlaceholderDimensions(dir, imgElement) {
+  const computedStyle = window.getComputedStyle(imgElement);
+  let renderedWidth = parseFloat(computedStyle.getPropertyValue("width"));
+  let renderedHeight = parseFloat(computedStyle.getPropertyValue("height"));
+  if (renderedWidth > PLACEHOLDER_DIMENSION_LIMIT || renderedHeight > PLACEHOLDER_DIMENSION_LIMIT) {
+    console.warn((0, import_core.\u0275formatRuntimeError)(2967, `${imgDirectiveDetails(dir.ngSrc)} it uses a placeholder image, but at least one of the dimensions attribute (height or width) exceeds the limit of ${PLACEHOLDER_DIMENSION_LIMIT}px. To fix this, use a smaller image as a placeholder.`));
+  }
+}
+function callOnLoadIfImageIsLoaded(img, callback) {
+  if (img.complete && img.naturalWidth) {
+    callback();
+  }
+}
+function round(input) {
+  return Number.isInteger(input) ? input : input.toFixed(2);
+}
+function unwrapSafeUrl(value) {
+  if (typeof value === "string") {
+    return value;
+  }
+  return (0, import_core.\u0275unwrapSafeValue)(value);
+}
+function booleanOrUrlAttribute(value) {
+  if (typeof value === "string" && value !== "true" && value !== "false" && value !== "") {
+    return value;
+  }
+  return (0, import_core.booleanAttribute)(value);
+}

@@ -1,0 +1,577 @@
+80a81293d1a559853e891daea4d3c8cb
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
+var resource_exports = {};
+__export(resource_exports, {
+  OutputEmitterRef: () => OutputEmitterRef,
+  ResourceImpl: () => ResourceImpl,
+  computed: () => computed,
+  effect: () => effect,
+  encapsulateResourceError: () => encapsulateResourceError,
+  getOutputDestroyRef: () => getOutputDestroyRef,
+  linkedSignal: () => linkedSignal,
+  resource: () => resource,
+  untracked: () => untracked
+});
+module.exports = __toCommonJS(resource_exports);
+var import_root_effect_scheduler = require("./root_effect_scheduler.mjs");
+var import_signal = require("./signal.mjs");
+var import_effect = require("./effect.mjs");
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+var _a;
+class OutputEmitterRef {
+  constructor() {
+    __publicField(this, "destroyed", false);
+    __publicField(this, "listeners", null);
+    __publicField(this, "errorHandler", (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.ErrorHandler, { optional: true }));
+    /** @internal */
+    __publicField(this, "destroyRef", (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.DestroyRef));
+    this.destroyRef.onDestroy(() => {
+      this.destroyed = true;
+      this.listeners = null;
+    });
+  }
+  subscribe(callback) {
+    var _a2;
+    if (this.destroyed) {
+      throw new import_root_effect_scheduler.RuntimeError(953, ngDevMode && "Unexpected subscription to destroyed `OutputRef`. The owning directive/component is destroyed.");
+    }
+    ((_a2 = this.listeners) != null ? _a2 : this.listeners = []).push(callback);
+    return {
+      unsubscribe: () => {
+        var _a3, _b;
+        const idx = (_a3 = this.listeners) == null ? void 0 : _a3.indexOf(callback);
+        if (idx !== void 0 && idx !== -1) {
+          (_b = this.listeners) == null ? void 0 : _b.splice(idx, 1);
+        }
+      }
+    };
+  }
+  /** Emits a new value to the output. */
+  emit(value) {
+    var _a2;
+    if (this.destroyed) {
+      console.warn((0, import_root_effect_scheduler.formatRuntimeError)(953, ngDevMode && "Unexpected emit for destroyed `OutputRef`. The owning directive/component is destroyed."));
+      return;
+    }
+    if (this.listeners === null) {
+      return;
+    }
+    const previousConsumer = (0, import_signal.setActiveConsumer)(null);
+    try {
+      for (const listenerFn of this.listeners) {
+        try {
+          listenerFn(value);
+        } catch (err) {
+          (_a2 = this.errorHandler) == null ? void 0 : _a2.handleError(err);
+        }
+      }
+    } finally {
+      (0, import_signal.setActiveConsumer)(previousConsumer);
+    }
+  }
+}
+function getOutputDestroyRef(ref) {
+  return ref.destroyRef;
+}
+function untracked(nonReactiveReadsFn) {
+  return (0, import_effect.untracked)(nonReactiveReadsFn);
+}
+function computed(computation, options) {
+  const getter = (0, import_signal.createComputed)(computation, options == null ? void 0 : options.equal);
+  if (ngDevMode) {
+    getter.toString = () => `[Computed: ${getter()}]`;
+    getter[import_signal.SIGNAL].debugName = options == null ? void 0 : options.debugName;
+  }
+  return getter;
+}
+_a = import_signal.SIGNAL;
+class EffectRefImpl {
+  constructor(node) {
+    __publicField(this, _a);
+    this[import_signal.SIGNAL] = node;
+  }
+  destroy() {
+    this[import_signal.SIGNAL].destroy();
+  }
+}
+function effect(effectFn, options) {
+  var _a2, _b;
+  ngDevMode && (0, import_root_effect_scheduler.assertNotInReactiveContext)(effect, "Call `effect` outside of a reactive context. For example, schedule the effect inside the component constructor.");
+  if (ngDevMode && !(options == null ? void 0 : options.injector)) {
+    (0, import_root_effect_scheduler.assertInInjectionContext)(effect);
+  }
+  if (ngDevMode && (options == null ? void 0 : options.allowSignalWrites) !== void 0) {
+    console.warn(`The 'allowSignalWrites' flag is deprecated and no longer impacts effect() (writes are always allowed)`);
+  }
+  const injector = (_a2 = options == null ? void 0 : options.injector) != null ? _a2 : (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.Injector);
+  let destroyRef = (options == null ? void 0 : options.manualCleanup) !== true ? injector.get(import_root_effect_scheduler.DestroyRef) : null;
+  let node;
+  const viewContext = injector.get(import_root_effect_scheduler.ViewContext, null, { optional: true });
+  const notifier = injector.get(import_root_effect_scheduler.ChangeDetectionScheduler);
+  if (viewContext !== null) {
+    node = createViewEffect(viewContext.view, notifier, effectFn);
+    if (destroyRef instanceof import_root_effect_scheduler.NodeInjectorDestroyRef && destroyRef._lView === viewContext.view) {
+      destroyRef = null;
+    }
+  } else {
+    node = createRootEffect(effectFn, injector.get(import_root_effect_scheduler.EffectScheduler), notifier);
+  }
+  node.injector = injector;
+  if (destroyRef !== null) {
+    node.onDestroyFn = destroyRef.onDestroy(() => node.destroy());
+  }
+  const effectRef = new EffectRefImpl(node);
+  if (ngDevMode) {
+    node.debugName = (_b = options == null ? void 0 : options.debugName) != null ? _b : "";
+    const prevInjectorProfilerContext = (0, import_root_effect_scheduler.setInjectorProfilerContext)({ injector, token: null });
+    try {
+      (0, import_root_effect_scheduler.emitEffectCreatedEvent)(effectRef);
+    } finally {
+      (0, import_root_effect_scheduler.setInjectorProfilerContext)(prevInjectorProfilerContext);
+    }
+  }
+  return effectRef;
+}
+const EFFECT_NODE = /* @__PURE__ */ (() => __spreadProps(__spreadValues({}, import_effect.BASE_EFFECT_NODE), {
+  cleanupFns: void 0,
+  zone: null,
+  onDestroyFn: import_root_effect_scheduler.noop,
+  run() {
+    if (ngDevMode && (0, import_signal.isInNotificationPhase)()) {
+      throw new Error(`Schedulers cannot synchronously execute watches while scheduling.`);
+    }
+    const prevRefreshingViews = (0, import_root_effect_scheduler.setIsRefreshingViews)(false);
+    try {
+      (0, import_effect.runEffect)(this);
+    } finally {
+      (0, import_root_effect_scheduler.setIsRefreshingViews)(prevRefreshingViews);
+    }
+  },
+  cleanup() {
+    var _a2;
+    if (!((_a2 = this.cleanupFns) == null ? void 0 : _a2.length)) {
+      return;
+    }
+    const prevConsumer = (0, import_signal.setActiveConsumer)(null);
+    try {
+      while (this.cleanupFns.length) {
+        this.cleanupFns.pop()();
+      }
+    } finally {
+      this.cleanupFns = [];
+      (0, import_signal.setActiveConsumer)(prevConsumer);
+    }
+  }
+}))();
+const ROOT_EFFECT_NODE = /* @__PURE__ */ (() => __spreadProps(__spreadValues({}, EFFECT_NODE), {
+  consumerMarkedDirty() {
+    this.scheduler.schedule(this);
+    this.notifier.notify(
+      12
+      /* NotificationSource.RootEffect */
+    );
+  },
+  destroy() {
+    (0, import_signal.consumerDestroy)(this);
+    this.onDestroyFn();
+    this.cleanup();
+    this.scheduler.remove(this);
+  }
+}))();
+const VIEW_EFFECT_NODE = /* @__PURE__ */ (() => __spreadProps(__spreadValues({}, EFFECT_NODE), {
+  consumerMarkedDirty() {
+    this.view[import_root_effect_scheduler.FLAGS] |= 8192;
+    (0, import_root_effect_scheduler.markAncestorsForTraversal)(this.view);
+    this.notifier.notify(
+      13
+      /* NotificationSource.ViewEffect */
+    );
+  },
+  destroy() {
+    var _a2;
+    (0, import_signal.consumerDestroy)(this);
+    this.onDestroyFn();
+    this.cleanup();
+    (_a2 = this.view[import_root_effect_scheduler.EFFECTS]) == null ? void 0 : _a2.delete(this);
+  }
+}))();
+function createViewEffect(view, notifier, fn) {
+  var _a2, _b;
+  const node = Object.create(VIEW_EFFECT_NODE);
+  node.view = view;
+  node.zone = typeof Zone !== "undefined" ? Zone.current : null;
+  node.notifier = notifier;
+  node.fn = createEffectFn(node, fn);
+  (_b = view[_a2 = import_root_effect_scheduler.EFFECTS]) != null ? _b : view[_a2] = /* @__PURE__ */ new Set();
+  view[import_root_effect_scheduler.EFFECTS].add(node);
+  node.consumerMarkedDirty(node);
+  return node;
+}
+function createRootEffect(fn, scheduler, notifier) {
+  const node = Object.create(ROOT_EFFECT_NODE);
+  node.fn = createEffectFn(node, fn);
+  node.scheduler = scheduler;
+  node.notifier = notifier;
+  node.zone = typeof Zone !== "undefined" ? Zone.current : null;
+  node.scheduler.add(node);
+  node.notifier.notify(
+    12
+    /* NotificationSource.RootEffect */
+  );
+  return node;
+}
+function createEffectFn(node, fn) {
+  return () => {
+    fn((cleanupFn) => {
+      var _a2;
+      return ((_a2 = node.cleanupFns) != null ? _a2 : node.cleanupFns = []).push(cleanupFn);
+    });
+  };
+}
+const identityFn = (v) => v;
+function linkedSignal(optionsOrComputation, options) {
+  if (typeof optionsOrComputation === "function") {
+    const getter = (0, import_effect.createLinkedSignal)(optionsOrComputation, identityFn, options == null ? void 0 : options.equal);
+    return upgradeLinkedSignalGetter(getter, options == null ? void 0 : options.debugName);
+  } else {
+    const getter = (0, import_effect.createLinkedSignal)(optionsOrComputation.source, optionsOrComputation.computation, optionsOrComputation.equal);
+    return upgradeLinkedSignalGetter(getter, optionsOrComputation.debugName);
+  }
+}
+function upgradeLinkedSignalGetter(getter, debugName) {
+  if (ngDevMode) {
+    getter.toString = () => `[LinkedSignal: ${getter()}]`;
+    getter[import_signal.SIGNAL].debugName = debugName;
+  }
+  const node = getter[import_signal.SIGNAL];
+  const upgradedGetter = getter;
+  upgradedGetter.set = (newValue) => (0, import_effect.linkedSignalSetFn)(node, newValue);
+  upgradedGetter.update = (updateFn) => (0, import_effect.linkedSignalUpdateFn)(node, updateFn);
+  upgradedGetter.asReadonly = import_root_effect_scheduler.signalAsReadonlyFn.bind(getter);
+  return upgradedGetter;
+}
+function resource(options) {
+  var _a2, _b, _c;
+  if (ngDevMode && !(options == null ? void 0 : options.injector)) {
+    (0, import_root_effect_scheduler.assertInInjectionContext)(resource);
+  }
+  const oldNameForParams = options.request;
+  const params = (_b = (_a2 = options.params) != null ? _a2 : oldNameForParams) != null ? _b : (() => null);
+  return new ResourceImpl(params, getLoader(options), options.defaultValue, options.equal ? wrapEqualityFn(options.equal) : void 0, (_c = options.injector) != null ? _c : (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.Injector));
+}
+class BaseWritableResource {
+  constructor(value) {
+    __publicField(this, "value");
+    __publicField(this, "isError", computed(() => this.status() === "error"));
+    __publicField(this, "isLoading", computed(() => this.status() === "loading" || this.status() === "reloading"));
+    // Use a computed here to avoid triggering reactive consumers if the value changes while staying
+    // either defined or undefined.
+    __publicField(this, "isValueDefined", computed(() => {
+      if (this.isError()) {
+        return false;
+      }
+      return this.value() !== void 0;
+    }));
+    this.value = value;
+    this.value.set = this.set.bind(this);
+    this.value.update = this.update.bind(this);
+    this.value.asReadonly = import_root_effect_scheduler.signalAsReadonlyFn;
+  }
+  update(updateFn) {
+    this.set(updateFn(untracked(this.value)));
+  }
+  hasValue() {
+    return this.isValueDefined();
+  }
+  asReadonly() {
+    return this;
+  }
+}
+class ResourceImpl extends BaseWritableResource {
+  constructor(request, loaderFn, defaultValue, equal, injector) {
+    super(
+      // Feed a computed signal for the value to `BaseWritableResource`, which will upgrade it to a
+      // `WritableSignal` that delegates to `ResourceImpl.set`.
+      computed(() => {
+        var _a2, _b;
+        const streamValue = (_b = (_a2 = this.state()).stream) == null ? void 0 : _b.call(_a2);
+        if (!streamValue) {
+          return defaultValue;
+        }
+        if (this.state().status === "loading" && this.error()) {
+          return defaultValue;
+        }
+        if (!isResolved(streamValue)) {
+          throw new ResourceValueError(this.error());
+        }
+        return streamValue.value;
+      }, { equal })
+    );
+    __publicField(this, "loaderFn");
+    __publicField(this, "equal");
+    __publicField(this, "pendingTasks");
+    /**
+     * The current state of the resource. Status, value, and error are derived from this.
+     */
+    __publicField(this, "state");
+    /**
+     * Combines the current request with a reload counter which allows the resource to be reloaded on
+     * imperative command.
+     */
+    __publicField(this, "extRequest");
+    __publicField(this, "effectRef");
+    __publicField(this, "pendingController");
+    __publicField(this, "resolvePendingTask");
+    __publicField(this, "destroyed", false);
+    __publicField(this, "unregisterOnDestroy");
+    __publicField(this, "status", computed(() => projectStatusOfState(this.state())));
+    __publicField(this, "error", computed(() => {
+      var _a2, _b;
+      const stream = (_b = (_a2 = this.state()).stream) == null ? void 0 : _b.call(_a2);
+      return stream && !isResolved(stream) ? stream.error : void 0;
+    }));
+    this.loaderFn = loaderFn;
+    this.equal = equal;
+    this.extRequest = linkedSignal({
+      source: request,
+      computation: (request2) => ({ request: request2, reload: 0 })
+    });
+    this.state = linkedSignal({
+      // Whenever the request changes,
+      source: this.extRequest,
+      // Compute the state of the resource given a change in status.
+      computation: (extRequest, previous) => {
+        const status = extRequest.request === void 0 ? "idle" : "loading";
+        if (!previous) {
+          return {
+            extRequest,
+            status,
+            previousStatus: "idle",
+            stream: void 0
+          };
+        } else {
+          return {
+            extRequest,
+            status,
+            previousStatus: projectStatusOfState(previous.value),
+            // If the request hasn't changed, keep the previous stream.
+            stream: previous.value.extRequest.request === extRequest.request ? previous.value.stream : void 0
+          };
+        }
+      }
+    });
+    this.effectRef = effect(this.loadEffect.bind(this), {
+      injector,
+      manualCleanup: true
+    });
+    this.pendingTasks = injector.get(import_root_effect_scheduler.PendingTasks);
+    this.unregisterOnDestroy = injector.get(import_root_effect_scheduler.DestroyRef).onDestroy(() => this.destroy());
+  }
+  /**
+   * Called either directly via `WritableResource.set` or via `.value.set()`.
+   */
+  set(value) {
+    if (this.destroyed) {
+      return;
+    }
+    const error = untracked(this.error);
+    const state = untracked(this.state);
+    if (!error) {
+      const current = untracked(this.value);
+      if (state.status === "local" && (this.equal ? this.equal(current, value) : current === value)) {
+        return;
+      }
+    }
+    this.state.set({
+      extRequest: state.extRequest,
+      status: "local",
+      previousStatus: "local",
+      stream: (0, import_root_effect_scheduler.signal)({ value })
+    });
+    this.abortInProgressLoad();
+  }
+  reload() {
+    const { status } = untracked(this.state);
+    if (status === "idle" || status === "loading") {
+      return false;
+    }
+    this.extRequest.update(({ request, reload }) => ({ request, reload: reload + 1 }));
+    return true;
+  }
+  destroy() {
+    this.destroyed = true;
+    this.unregisterOnDestroy();
+    this.effectRef.destroy();
+    this.abortInProgressLoad();
+    this.state.set({
+      extRequest: { request: void 0, reload: 0 },
+      status: "idle",
+      previousStatus: "idle",
+      stream: void 0
+    });
+  }
+  loadEffect() {
+    return __async(this, null, function* () {
+      const extRequest = this.extRequest();
+      const { status: currentStatus, previousStatus } = untracked(this.state);
+      if (extRequest.request === void 0) {
+        return;
+      } else if (currentStatus !== "loading") {
+        return;
+      }
+      this.abortInProgressLoad();
+      let resolvePendingTask = this.resolvePendingTask = this.pendingTasks.add();
+      const { signal: abortSignal } = this.pendingController = new AbortController();
+      try {
+        const stream = yield untracked(() => {
+          return this.loaderFn({
+            params: extRequest.request,
+            // TODO(alxhub): cleanup after g3 removal of `request` alias.
+            request: extRequest.request,
+            abortSignal,
+            previous: {
+              status: previousStatus
+            }
+          });
+        });
+        if (abortSignal.aborted || untracked(this.extRequest) !== extRequest) {
+          return;
+        }
+        this.state.set({
+          extRequest,
+          status: "resolved",
+          previousStatus: "resolved",
+          stream
+        });
+      } catch (err) {
+        if (abortSignal.aborted || untracked(this.extRequest) !== extRequest) {
+          return;
+        }
+        this.state.set({
+          extRequest,
+          status: "resolved",
+          previousStatus: "error",
+          stream: (0, import_root_effect_scheduler.signal)({ error: encapsulateResourceError(err) })
+        });
+      } finally {
+        resolvePendingTask == null ? void 0 : resolvePendingTask();
+        resolvePendingTask = void 0;
+      }
+    });
+  }
+  abortInProgressLoad() {
+    var _a2;
+    untracked(() => {
+      var _a3;
+      return (_a3 = this.pendingController) == null ? void 0 : _a3.abort();
+    });
+    this.pendingController = void 0;
+    (_a2 = this.resolvePendingTask) == null ? void 0 : _a2.call(this);
+    this.resolvePendingTask = void 0;
+  }
+}
+function wrapEqualityFn(equal) {
+  return (a, b) => a === void 0 || b === void 0 ? a === b : equal(a, b);
+}
+function getLoader(options) {
+  if (isStreamingResourceOptions(options)) {
+    return options.stream;
+  }
+  return (params) => __async(null, null, function* () {
+    try {
+      return (0, import_root_effect_scheduler.signal)({ value: yield options.loader(params) });
+    } catch (err) {
+      return (0, import_root_effect_scheduler.signal)({ error: encapsulateResourceError(err) });
+    }
+  });
+}
+function isStreamingResourceOptions(options) {
+  return !!options.stream;
+}
+function projectStatusOfState(state) {
+  switch (state.status) {
+    case "loading":
+      return state.extRequest.reload === 0 ? "loading" : "reloading";
+    case "resolved":
+      return isResolved(state.stream()) ? "resolved" : "error";
+    default:
+      return state.status;
+  }
+}
+function isResolved(state) {
+  return state.error === void 0;
+}
+function encapsulateResourceError(error) {
+  if (error instanceof Error) {
+    return error;
+  }
+  return new ResourceWrappedError(error);
+}
+class ResourceValueError extends Error {
+  constructor(error) {
+    super(ngDevMode ? `Resource is currently in an error state (see Error.cause for details): ${error.message}` : error.message, { cause: error });
+  }
+}
+class ResourceWrappedError extends Error {
+  constructor(error) {
+    super(ngDevMode ? `Resource returned an error that's not an Error instance: ${String(error)}. Check this error's .cause for the actual error.` : String(error), { cause: error });
+  }
+}

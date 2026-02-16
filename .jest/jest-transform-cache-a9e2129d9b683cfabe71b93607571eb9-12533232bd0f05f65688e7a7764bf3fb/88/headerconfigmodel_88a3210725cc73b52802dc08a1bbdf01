@@ -1,0 +1,14 @@
+9815ee3a6c3316b90eb9428fdcd7ee47
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HeaderConfig = void 0;
+class HeaderConfig {
+    id;
+    color;
+    title;
+    bodyText;
+    buttonText;
+    img;
+}
+exports.HeaderConfig = HeaderConfig;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2NtYWNrZXkvRG9jdW1lbnRzL21pZHdlc3QubWFja2V5L21pZHdlc3QtbWFja2V5LXdlYnNpdGUvc3JjL2NvbmZpZy9oZWFkZXIuY29uZmlnLm1vZGVsLnRzIiwibWFwcGluZ3MiOiI7OztBQUFBLE1BQWEsWUFBWTtJQUNyQixFQUFFLENBQVU7SUFDWixLQUFLLENBQVU7SUFDZixLQUFLLENBQVU7SUFDZixRQUFRLENBQVU7SUFDbEIsVUFBVSxDQUFVO0lBQ3BCLEdBQUcsQ0FBVTtDQUNoQjtBQVBELG9DQU9DIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIi9Vc2Vycy9jbWFja2V5L0RvY3VtZW50cy9taWR3ZXN0Lm1hY2tleS9taWR3ZXN0LW1hY2tleS13ZWJzaXRlL3NyYy9jb25maWcvaGVhZGVyLmNvbmZpZy5tb2RlbC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY2xhc3MgSGVhZGVyQ29uZmlnIHtcclxuICAgIGlkIDogc3RyaW5nO1xyXG4gICAgY29sb3IgOiBzdHJpbmc7XHJcbiAgICB0aXRsZSA6IHN0cmluZztcclxuICAgIGJvZHlUZXh0IDogc3RyaW5nO1xyXG4gICAgYnV0dG9uVGV4dCA6IHN0cmluZztcclxuICAgIGltZyA6IHN0cmluZztcclxufVxyXG4iXSwidmVyc2lvbiI6M30=

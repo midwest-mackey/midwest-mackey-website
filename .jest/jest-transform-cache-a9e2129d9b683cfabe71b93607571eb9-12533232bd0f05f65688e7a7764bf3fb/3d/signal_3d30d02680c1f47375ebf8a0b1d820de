@@ -1,0 +1,473 @@
+0b7225af041b61765eb1b01f283cb266
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var signal_exports = {};
+__export(signal_exports, {
+  COMPUTING: () => COMPUTING,
+  ERRORED: () => ERRORED,
+  REACTIVE_NODE: () => REACTIVE_NODE,
+  SIGNAL: () => SIGNAL,
+  SIGNAL_NODE: () => SIGNAL_NODE,
+  UNSET: () => UNSET,
+  consumerAfterComputation: () => consumerAfterComputation,
+  consumerBeforeComputation: () => consumerBeforeComputation,
+  consumerDestroy: () => consumerDestroy,
+  consumerMarkDirty: () => consumerMarkDirty,
+  consumerPollProducersForChange: () => consumerPollProducersForChange,
+  createComputed: () => createComputed,
+  createSignal: () => createSignal,
+  defaultEquals: () => defaultEquals,
+  finalizeConsumerAfterComputation: () => finalizeConsumerAfterComputation,
+  getActiveConsumer: () => getActiveConsumer,
+  isInNotificationPhase: () => isInNotificationPhase,
+  isReactive: () => isReactive,
+  producerAccessed: () => producerAccessed,
+  producerIncrementEpoch: () => producerIncrementEpoch,
+  producerMarkClean: () => producerMarkClean,
+  producerNotifyConsumers: () => producerNotifyConsumers,
+  producerUpdateValueVersion: () => producerUpdateValueVersion,
+  producerUpdatesAllowed: () => producerUpdatesAllowed,
+  resetConsumerBeforeComputation: () => resetConsumerBeforeComputation,
+  runPostProducerCreatedFn: () => runPostProducerCreatedFn,
+  runPostSignalSetFn: () => runPostSignalSetFn,
+  setActiveConsumer: () => setActiveConsumer,
+  setPostProducerCreatedFn: () => setPostProducerCreatedFn,
+  setPostSignalSetFn: () => setPostSignalSetFn,
+  setThrowInvalidWriteToSignalError: () => setThrowInvalidWriteToSignalError,
+  signalGetFn: () => signalGetFn,
+  signalSetFn: () => signalSetFn,
+  signalUpdateFn: () => signalUpdateFn
+});
+module.exports = __toCommonJS(signal_exports);
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+let activeConsumer = null;
+let inNotificationPhase = false;
+let epoch = 1;
+let postProducerCreatedFn = null;
+const SIGNAL = /* @__PURE__ */ Symbol("SIGNAL");
+function setActiveConsumer(consumer) {
+  const prev = activeConsumer;
+  activeConsumer = consumer;
+  return prev;
+}
+function getActiveConsumer() {
+  return activeConsumer;
+}
+function isInNotificationPhase() {
+  return inNotificationPhase;
+}
+function isReactive(value) {
+  return value[SIGNAL] !== void 0;
+}
+const REACTIVE_NODE = {
+  version: 0,
+  lastCleanEpoch: 0,
+  dirty: false,
+  producers: void 0,
+  producersTail: void 0,
+  consumers: void 0,
+  consumersTail: void 0,
+  recomputing: false,
+  consumerAllowSignalWrites: false,
+  consumerIsAlwaysLive: false,
+  kind: "unknown",
+  producerMustRecompute: () => false,
+  producerRecomputeValue: () => {
+  },
+  consumerMarkedDirty: () => {
+  },
+  consumerOnSignalRead: () => {
+  }
+};
+function producerAccessed(node) {
+  if (inNotificationPhase) {
+    throw new Error(typeof ngDevMode !== "undefined" && ngDevMode ? `Assertion error: signal read during notification phase` : "");
+  }
+  if (activeConsumer === null) {
+    return;
+  }
+  activeConsumer.consumerOnSignalRead(node);
+  const prevProducerLink = activeConsumer.producersTail;
+  if (prevProducerLink !== void 0 && prevProducerLink.producer === node) {
+    return;
+  }
+  let nextProducerLink = void 0;
+  const isRecomputing = activeConsumer.recomputing;
+  if (isRecomputing) {
+    nextProducerLink = prevProducerLink !== void 0 ? prevProducerLink.nextProducer : activeConsumer.producers;
+    if (nextProducerLink !== void 0 && nextProducerLink.producer === node) {
+      activeConsumer.producersTail = nextProducerLink;
+      nextProducerLink.lastReadVersion = node.version;
+      return;
+    }
+  }
+  const prevConsumerLink = node.consumersTail;
+  if (prevConsumerLink !== void 0 && prevConsumerLink.consumer === activeConsumer && // However, we have to make sure that the link we've discovered isn't from a node that is incrementally rebuilding its producer list
+  (!isRecomputing || isValidLink(prevConsumerLink, activeConsumer))) {
+    return;
+  }
+  const isLive = consumerIsLive(activeConsumer);
+  const newLink = {
+    producer: node,
+    consumer: activeConsumer,
+    // instead of eagerly destroying the previous link, we delay until we've finished recomputing
+    // the producers list, so that we can destroy all of the old links at once.
+    nextProducer: nextProducerLink,
+    prevConsumer: prevConsumerLink,
+    lastReadVersion: node.version,
+    nextConsumer: void 0
+  };
+  activeConsumer.producersTail = newLink;
+  if (prevProducerLink !== void 0) {
+    prevProducerLink.nextProducer = newLink;
+  } else {
+    activeConsumer.producers = newLink;
+  }
+  if (isLive) {
+    producerAddLiveConsumer(node, newLink);
+  }
+}
+function producerIncrementEpoch() {
+  epoch++;
+}
+function producerUpdateValueVersion(node) {
+  if (consumerIsLive(node) && !node.dirty) {
+    return;
+  }
+  if (!node.dirty && node.lastCleanEpoch === epoch) {
+    return;
+  }
+  if (!node.producerMustRecompute(node) && !consumerPollProducersForChange(node)) {
+    producerMarkClean(node);
+    return;
+  }
+  node.producerRecomputeValue(node);
+  producerMarkClean(node);
+}
+function producerNotifyConsumers(node) {
+  if (node.consumers === void 0) {
+    return;
+  }
+  const prev = inNotificationPhase;
+  inNotificationPhase = true;
+  try {
+    for (let link = node.consumers; link !== void 0; link = link.nextConsumer) {
+      const consumer = link.consumer;
+      if (!consumer.dirty) {
+        consumerMarkDirty(consumer);
+      }
+    }
+  } finally {
+    inNotificationPhase = prev;
+  }
+}
+function producerUpdatesAllowed() {
+  return (activeConsumer == null ? void 0 : activeConsumer.consumerAllowSignalWrites) !== false;
+}
+function consumerMarkDirty(node) {
+  var _a;
+  node.dirty = true;
+  producerNotifyConsumers(node);
+  (_a = node.consumerMarkedDirty) == null ? void 0 : _a.call(node, node);
+}
+function producerMarkClean(node) {
+  node.dirty = false;
+  node.lastCleanEpoch = epoch;
+}
+function consumerBeforeComputation(node) {
+  if (node)
+    resetConsumerBeforeComputation(node);
+  return setActiveConsumer(node);
+}
+function resetConsumerBeforeComputation(node) {
+  node.producersTail = void 0;
+  node.recomputing = true;
+}
+function consumerAfterComputation(node, prevConsumer) {
+  setActiveConsumer(prevConsumer);
+  if (node)
+    finalizeConsumerAfterComputation(node);
+}
+function finalizeConsumerAfterComputation(node) {
+  node.recomputing = false;
+  const producersTail = node.producersTail;
+  let toRemove = producersTail !== void 0 ? producersTail.nextProducer : node.producers;
+  if (toRemove !== void 0) {
+    if (consumerIsLive(node)) {
+      do {
+        toRemove = producerRemoveLiveConsumerLink(toRemove);
+      } while (toRemove !== void 0);
+    }
+    if (producersTail !== void 0) {
+      producersTail.nextProducer = void 0;
+    } else {
+      node.producers = void 0;
+    }
+  }
+}
+function consumerPollProducersForChange(node) {
+  for (let link = node.producers; link !== void 0; link = link.nextProducer) {
+    const producer = link.producer;
+    const seenVersion = link.lastReadVersion;
+    if (seenVersion !== producer.version) {
+      return true;
+    }
+    producerUpdateValueVersion(producer);
+    if (seenVersion !== producer.version) {
+      return true;
+    }
+  }
+  return false;
+}
+function consumerDestroy(node) {
+  if (consumerIsLive(node)) {
+    let link = node.producers;
+    while (link !== void 0) {
+      link = producerRemoveLiveConsumerLink(link);
+    }
+  }
+  node.producers = void 0;
+  node.producersTail = void 0;
+  node.consumers = void 0;
+  node.consumersTail = void 0;
+}
+function producerAddLiveConsumer(node, link) {
+  const consumersTail = node.consumersTail;
+  const wasLive = consumerIsLive(node);
+  if (consumersTail !== void 0) {
+    link.nextConsumer = consumersTail.nextConsumer;
+    consumersTail.nextConsumer = link;
+  } else {
+    link.nextConsumer = void 0;
+    node.consumers = link;
+  }
+  link.prevConsumer = consumersTail;
+  node.consumersTail = link;
+  if (!wasLive) {
+    for (let link2 = node.producers; link2 !== void 0; link2 = link2.nextProducer) {
+      producerAddLiveConsumer(link2.producer, link2);
+    }
+  }
+}
+function producerRemoveLiveConsumerLink(link) {
+  const producer = link.producer;
+  const nextProducer = link.nextProducer;
+  const nextConsumer = link.nextConsumer;
+  const prevConsumer = link.prevConsumer;
+  link.nextConsumer = void 0;
+  link.prevConsumer = void 0;
+  if (nextConsumer !== void 0) {
+    nextConsumer.prevConsumer = prevConsumer;
+  } else {
+    producer.consumersTail = prevConsumer;
+  }
+  if (prevConsumer !== void 0) {
+    prevConsumer.nextConsumer = nextConsumer;
+  } else {
+    producer.consumers = nextConsumer;
+    if (!consumerIsLive(producer)) {
+      let producerLink = producer.producers;
+      while (producerLink !== void 0) {
+        producerLink = producerRemoveLiveConsumerLink(producerLink);
+      }
+    }
+  }
+  return nextProducer;
+}
+function consumerIsLive(node) {
+  return node.consumerIsAlwaysLive || node.consumers !== void 0;
+}
+function runPostProducerCreatedFn(node) {
+  postProducerCreatedFn == null ? void 0 : postProducerCreatedFn(node);
+}
+function setPostProducerCreatedFn(fn) {
+  const prev = postProducerCreatedFn;
+  postProducerCreatedFn = fn;
+  return prev;
+}
+function isValidLink(checkLink, consumer) {
+  const producersTail = consumer.producersTail;
+  if (producersTail !== void 0) {
+    let link = consumer.producers;
+    do {
+      if (link === checkLink) {
+        return true;
+      }
+      if (link === producersTail) {
+        break;
+      }
+      link = link.nextProducer;
+    } while (link !== void 0);
+  }
+  return false;
+}
+function defaultEquals(a, b) {
+  return Object.is(a, b);
+}
+function createComputed(computation, equal) {
+  const node = Object.create(COMPUTED_NODE);
+  node.computation = computation;
+  if (equal !== void 0) {
+    node.equal = equal;
+  }
+  const computed = () => {
+    producerUpdateValueVersion(node);
+    producerAccessed(node);
+    if (node.value === ERRORED) {
+      throw node.error;
+    }
+    return node.value;
+  };
+  computed[SIGNAL] = node;
+  if (typeof ngDevMode !== "undefined" && ngDevMode) {
+    const debugName = node.debugName ? " (" + node.debugName + ")" : "";
+    computed.toString = () => `[Computed${debugName}: ${node.value}]`;
+  }
+  runPostProducerCreatedFn(node);
+  return computed;
+}
+const UNSET = /* @__PURE__ */ Symbol("UNSET");
+const COMPUTING = /* @__PURE__ */ Symbol("COMPUTING");
+const ERRORED = /* @__PURE__ */ Symbol("ERRORED");
+const COMPUTED_NODE = /* @__PURE__ */ (() => {
+  return __spreadProps(__spreadValues({}, REACTIVE_NODE), {
+    value: UNSET,
+    dirty: true,
+    error: null,
+    equal: defaultEquals,
+    kind: "computed",
+    producerMustRecompute(node) {
+      return node.value === UNSET || node.value === COMPUTING;
+    },
+    producerRecomputeValue(node) {
+      if (node.value === COMPUTING) {
+        throw new Error(typeof ngDevMode !== "undefined" && ngDevMode ? "Detected cycle in computations." : "");
+      }
+      const oldValue = node.value;
+      node.value = COMPUTING;
+      const prevConsumer = consumerBeforeComputation(node);
+      let newValue;
+      let wasEqual = false;
+      try {
+        newValue = node.computation();
+        setActiveConsumer(null);
+        wasEqual = oldValue !== UNSET && oldValue !== ERRORED && newValue !== ERRORED && node.equal(oldValue, newValue);
+      } catch (err) {
+        newValue = ERRORED;
+        node.error = err;
+      } finally {
+        consumerAfterComputation(node, prevConsumer);
+      }
+      if (wasEqual) {
+        node.value = oldValue;
+        return;
+      }
+      node.value = newValue;
+      node.version++;
+    }
+  });
+})();
+function defaultThrowError() {
+  throw new Error();
+}
+let throwInvalidWriteToSignalErrorFn = defaultThrowError;
+function throwInvalidWriteToSignalError(node) {
+  throwInvalidWriteToSignalErrorFn(node);
+}
+function setThrowInvalidWriteToSignalError(fn) {
+  throwInvalidWriteToSignalErrorFn = fn;
+}
+let postSignalSetFn = null;
+function createSignal(initialValue, equal) {
+  const node = Object.create(SIGNAL_NODE);
+  node.value = initialValue;
+  if (equal !== void 0) {
+    node.equal = equal;
+  }
+  const getter = (() => signalGetFn(node));
+  getter[SIGNAL] = node;
+  if (typeof ngDevMode !== "undefined" && ngDevMode) {
+    const debugName = node.debugName ? " (" + node.debugName + ")" : "";
+    getter.toString = () => `[Signal${debugName}: ${node.value}]`;
+  }
+  runPostProducerCreatedFn(node);
+  const set = (newValue) => signalSetFn(node, newValue);
+  const update = (updateFn) => signalUpdateFn(node, updateFn);
+  return [getter, set, update];
+}
+function setPostSignalSetFn(fn) {
+  const prev = postSignalSetFn;
+  postSignalSetFn = fn;
+  return prev;
+}
+function signalGetFn(node) {
+  producerAccessed(node);
+  return node.value;
+}
+function signalSetFn(node, newValue) {
+  if (!producerUpdatesAllowed()) {
+    throwInvalidWriteToSignalError(node);
+  }
+  if (!node.equal(node.value, newValue)) {
+    node.value = newValue;
+    signalValueChanged(node);
+  }
+}
+function signalUpdateFn(node, updater) {
+  if (!producerUpdatesAllowed()) {
+    throwInvalidWriteToSignalError(node);
+  }
+  signalSetFn(node, updater(node.value));
+}
+function runPostSignalSetFn(node) {
+  postSignalSetFn == null ? void 0 : postSignalSetFn(node);
+}
+const SIGNAL_NODE = /* @__PURE__ */ (() => {
+  return __spreadProps(__spreadValues({}, REACTIVE_NODE), {
+    equal: defaultEquals,
+    value: void 0,
+    kind: "signal"
+  });
+})();
+function signalValueChanged(node) {
+  node.version++;
+  producerIncrementEpoch();
+  producerNotifyConsumers(node);
+  postSignalSetFn == null ? void 0 : postSignalSetFn(node);
+}

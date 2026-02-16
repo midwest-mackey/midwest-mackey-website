@@ -1,0 +1,53 @@
+124d3290069b44f24b516f0f1401bf5f
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var zone_exports = {};
+__export(zone_exports, {
+  setupZoneTestEnv: () => setupZoneTestEnv
+});
+module.exports = __toCommonJS(zone_exports);
+var import_zone = require("zone.js");
+var import_testing = require("zone.js/testing");
+var import_core = require("@angular/core");
+var import_testing2 = require("@angular/core/testing");
+var import_testing3 = require("@angular/platform-browser/testing");
+var import_testing4 = require("@angular/platform-browser-dynamic/testing");
+var import_utils = require("../utils");
+const setupZoneTestEnv = (options) => {
+  (0, import_utils.polyfillEncoder)();
+  const testEnvironmentOptions = (0, import_utils.resolveTestEnvOptions)(options);
+  if (+import_core.VERSION.major >= 20) {
+    (0, import_testing2.getTestBed)().initTestEnvironment(
+      [import_testing3.BrowserTestingModule],
+      (0, import_testing3.platformBrowserTesting)([
+        {
+          provide: import_core.COMPILER_OPTIONS,
+          useValue: {},
+          multi: true
+        }
+      ]),
+      testEnvironmentOptions
+    );
+  } else {
+    (0, import_testing2.getTestBed)().initTestEnvironment(
+      [import_testing4.BrowserDynamicTestingModule],
+      (0, import_testing4.platformBrowserDynamicTesting)(),
+      testEnvironmentOptions
+    );
+  }
+};

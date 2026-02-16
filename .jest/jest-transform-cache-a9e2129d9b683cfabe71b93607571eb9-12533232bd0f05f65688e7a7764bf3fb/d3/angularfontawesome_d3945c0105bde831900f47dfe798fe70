@@ -1,0 +1,698 @@
+312dc5d7aa6a0d02889c57d5a24106ef
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var angular_fontawesome_exports = {};
+__export(angular_fontawesome_exports, {
+  FaConfig: () => FaConfig,
+  FaDuotoneIconComponent: () => FaDuotoneIconComponent,
+  FaIconComponent: () => FaIconComponent,
+  FaIconLibrary: () => FaIconLibrary,
+  FaLayersComponent: () => FaLayersComponent,
+  FaLayersCounterComponent: () => FaLayersCounterComponent,
+  FaLayersTextComponent: () => FaLayersTextComponent,
+  FaStackComponent: () => FaStackComponent,
+  FaStackItemSizeDirective: () => FaStackItemSizeDirective,
+  FontAwesomeModule: () => FontAwesomeModule
+});
+module.exports = __toCommonJS(angular_fontawesome_exports);
+var i0 = __toESM(require("@angular/core"), 1);
+var import_core = require("@angular/core");
+var import_platform_browser = require("@angular/platform-browser");
+var import_fontawesome_svg_core = require("@fortawesome/fontawesome-svg-core");
+const _FaConfig = class _FaConfig {
+  constructor() {
+    /**
+     * Default prefix to use, when one is not provided with the icon name.
+     *
+     * @default 'fas'
+     */
+    __publicField(this, "defaultPrefix", "fas");
+    /**
+     * Provides a fallback icon to use whilst main icon is being loaded asynchronously.
+     * When value is null, then fa-icon component will throw an error if icon input is missing.
+     * When value is not null, then the provided icon will be used as a fallback icon if icon input is missing.
+     *
+     * @default null
+     */
+    __publicField(this, "fallbackIcon", null);
+    /**
+     * Set icons to the same fixed width.
+     *
+     * @see {@link: https://fontawesome.com/how-to-use/on-the-web/styling/fixed-width-icons}
+     * @default false
+     */
+    __publicField(this, "fixedWidth");
+    __publicField(this, "_autoAddCss", true);
+  }
+  /**
+   * Automatically add Font Awesome styles to the document when icon is rendered.
+   *
+   * For the majority of the cases the automatically added CSS is sufficient,
+   * please refer to the linked guide for more information on when to disable
+   * this feature.
+   *
+   * @see {@link: https://github.com/FortAwesome/angular-fontawesome/blob/main/docs/guide/adding-css.md}
+   * @default true
+   */
+  set autoAddCss(value) {
+    import_fontawesome_svg_core.config.autoAddCss = value;
+    this._autoAddCss = value;
+  }
+  get autoAddCss() {
+    return this._autoAddCss;
+  }
+};
+__publicField(_FaConfig, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaConfig, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_FaConfig, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaConfig, providedIn: "root" }));
+let FaConfig = _FaConfig;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaConfig, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}] });
+const _FaIconLibrary = class _FaIconLibrary {
+  constructor() {
+    __publicField(this, "definitions", {});
+  }
+  addIcons(...icons) {
+    for (const icon2 of icons) {
+      if (!(icon2.prefix in this.definitions)) {
+        this.definitions[icon2.prefix] = {};
+      }
+      this.definitions[icon2.prefix][icon2.iconName] = icon2;
+      for (const alias of icon2.icon[2]) {
+        if (typeof alias === "string") {
+          this.definitions[icon2.prefix][alias] = icon2;
+        }
+      }
+    }
+  }
+  addIconPacks(...packs) {
+    for (const pack of packs) {
+      const icons = Object.keys(pack).map((key) => pack[key]);
+      this.addIcons(...icons);
+    }
+  }
+  getIconDefinition(prefix, name) {
+    if (prefix in this.definitions && name in this.definitions[prefix]) {
+      return this.definitions[prefix][name];
+    }
+    return null;
+  }
+};
+__publicField(_FaIconLibrary, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaIconLibrary, deps: [], target: i0.\u0275\u0275FactoryTarget.Injectable }));
+__publicField(_FaIconLibrary, "\u0275prov", i0.\u0275\u0275ngDeclareInjectable({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaIconLibrary, providedIn: "root" }));
+let FaIconLibrary = _FaIconLibrary;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaIconLibrary, decorators: [{
+  type: import_core.Injectable,
+  args: [{ providedIn: "root" }]
+}] });
+const faWarnIfIconDefinitionMissing = (iconSpec) => {
+  throw new Error(`Could not find icon with iconName=${iconSpec.iconName} and prefix=${iconSpec.prefix} in the icon library.`);
+};
+const faWarnIfIconSpecMissing = () => {
+  throw new Error("Property `icon` is required for `fa-icon`/`fa-duotone-icon` components.");
+};
+const isKnownRotateValue = (rotate) => rotate != null && (rotate === 90 || rotate === 180 || rotate === 270 || rotate === "90" || rotate === "180" || rotate === "270");
+const faClassList = (props) => {
+  const knownRotateValue = isKnownRotateValue(props.rotate);
+  const classes = {
+    [`fa-${props.animation}`]: props.animation != null && !props.animation.startsWith("spin"),
+    "fa-spin": props.animation === "spin" || props.animation === "spin-reverse",
+    "fa-spin-pulse": props.animation === "spin-pulse" || props.animation === "spin-pulse-reverse",
+    "fa-spin-reverse": props.animation === "spin-reverse" || props.animation === "spin-pulse-reverse",
+    // According to https://fontawesome.com/docs/web/style/animate#spin fa-pulse
+    // class is deprecated, remove the below line when Font Awesome 5 support
+    // is dropped.
+    "fa-pulse": props.animation === "spin-pulse" || props.animation === "spin-pulse-reverse",
+    "fa-fw": props.fixedWidth,
+    "fa-border": props.border,
+    "fa-inverse": props.inverse,
+    "fa-layers-counter": props.counter,
+    "fa-flip-horizontal": props.flip === "horizontal" || props.flip === "both",
+    "fa-flip-vertical": props.flip === "vertical" || props.flip === "both",
+    [`fa-${props.size}`]: props.size !== null,
+    [`fa-rotate-${props.rotate}`]: knownRotateValue,
+    "fa-rotate-by": props.rotate != null && !knownRotateValue,
+    [`fa-pull-${props.pull}`]: props.pull !== null,
+    [`fa-stack-${props.stackItemSize}`]: props.stackItemSize != null
+  };
+  return Object.keys(classes).map((key) => classes[key] ? key : null).filter((key) => key != null);
+};
+const cssInserted = /* @__PURE__ */ new WeakSet();
+const autoCssId = "fa-auto-css";
+function ensureCss(document, config2) {
+  if (!config2.autoAddCss) {
+    return;
+  }
+  if (cssInserted.has(document)) {
+    return;
+  }
+  if (document.getElementById(autoCssId) != null) {
+    config2.autoAddCss = false;
+    cssInserted.add(document);
+    return;
+  }
+  const style = document.createElement("style");
+  style.setAttribute("type", "text/css");
+  style.setAttribute("id", autoCssId);
+  style.innerHTML = import_fontawesome_svg_core.dom.css();
+  const headChildren = document.head.childNodes;
+  let beforeChild = null;
+  for (let i = headChildren.length - 1; i > -1; i--) {
+    const child = headChildren[i];
+    const tagName = child.nodeName.toUpperCase();
+    if (["STYLE", "LINK"].indexOf(tagName) > -1) {
+      beforeChild = child;
+    }
+  }
+  document.head.insertBefore(style, beforeChild);
+  config2.autoAddCss = false;
+  cssInserted.add(document);
+}
+const isIconLookup = (i) => i.prefix !== void 0 && i.iconName !== void 0;
+const faNormalizeIconSpec = (iconSpec, defaultPrefix) => {
+  if (isIconLookup(iconSpec)) {
+    return iconSpec;
+  }
+  if (Array.isArray(iconSpec) && iconSpec.length === 2) {
+    return { prefix: iconSpec[0], iconName: iconSpec[1] };
+  }
+  return { prefix: defaultPrefix, iconName: iconSpec };
+};
+const _FaStackItemSizeDirective = class _FaStackItemSizeDirective {
+  constructor() {
+    /**
+     * Specify whether icon inside {@link FaStackComponent} should be rendered in
+     * regular size (1x) or as a larger icon (2x).
+     */
+    __publicField(this, "stackItemSize", (0, import_core.input)("1x"));
+    /**
+     * @internal
+     */
+    __publicField(this, "size", (0, import_core.input)());
+    __publicField(this, "_effect", (0, import_core.effect)(() => {
+      const size = this.size();
+      if (size) {
+        throw new Error('fa-icon is not allowed to customize size when used inside fa-stack. Set size on the enclosing fa-stack instead: <fa-stack size="4x">...</fa-stack>.');
+      }
+    }));
+  }
+};
+__publicField(_FaStackItemSizeDirective, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaStackItemSizeDirective, deps: [], target: i0.\u0275\u0275FactoryTarget.Directive }));
+__publicField(_FaStackItemSizeDirective, "\u0275dir", i0.\u0275\u0275ngDeclareDirective({ minVersion: "17.1.0", version: "20.0.0", type: _FaStackItemSizeDirective, isStandalone: true, selector: "fa-icon[stackItemSize],fa-duotone-icon[stackItemSize]", inputs: { stackItemSize: { classPropertyName: "stackItemSize", publicName: "stackItemSize", isSignal: true, isRequired: false, transformFunction: null }, size: { classPropertyName: "size", publicName: "size", isSignal: true, isRequired: false, transformFunction: null } }, ngImport: i0 }));
+let FaStackItemSizeDirective = _FaStackItemSizeDirective;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaStackItemSizeDirective, decorators: [{
+  type: import_core.Directive,
+  args: [{
+    // eslint-disable-next-line @angular-eslint/directive-selector
+    selector: "fa-icon[stackItemSize],fa-duotone-icon[stackItemSize]"
+  }]
+}] });
+const _FaStackComponent = class _FaStackComponent {
+  constructor() {
+    /**
+     * Size of the stacked icon.
+     * Note that stacked icon is by default 2 times bigger, than non-stacked icon.
+     * You'll need to set size using custom CSS to align stacked icon with a
+     * simple one. E.g. `fa-stack { font-size: 0.5em; }`.
+     */
+    __publicField(this, "size", (0, import_core.input)());
+    __publicField(this, "classes", (0, import_core.computed)(() => {
+      const sizeValue = this.size();
+      const sizeClass = sizeValue ? { [`fa-${sizeValue}`]: true } : {};
+      return __spreadProps(__spreadValues({}, sizeClass), {
+        "fa-stack": true
+      });
+    }));
+  }
+};
+__publicField(_FaStackComponent, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaStackComponent, deps: [], target: i0.\u0275\u0275FactoryTarget.Component }));
+__publicField(_FaStackComponent, "\u0275cmp", i0.\u0275\u0275ngDeclareComponent({ minVersion: "17.1.0", version: "20.0.0", type: _FaStackComponent, isStandalone: true, selector: "fa-stack", inputs: { size: { classPropertyName: "size", publicName: "size", isSignal: true, isRequired: false, transformFunction: null } }, host: { properties: { "class": "classes()" } }, ngImport: i0, template: `<ng-content />`, isInline: true, changeDetection: i0.ChangeDetectionStrategy.OnPush }));
+let FaStackComponent = _FaStackComponent;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaStackComponent, decorators: [{
+  type: import_core.Component,
+  args: [{
+    selector: "fa-stack",
+    template: `<ng-content />`,
+    host: {
+      "[class]": "classes()"
+    },
+    changeDetection: import_core.ChangeDetectionStrategy.OnPush
+  }]
+}] });
+const _FaIconComponent = class _FaIconComponent {
+  constructor() {
+    __publicField(this, "icon", (0, import_core.model)());
+    /**
+     * Specify a title for the icon.
+     *
+     * This text will be displayed in a tooltip on hover and presented to the
+     * screen readers.
+     */
+    __publicField(this, "title", (0, import_core.model)());
+    /**
+     * Icon animation.
+     *
+     * Most of the animations are only available when using Font Awesome 6. With
+     * Font Awesome 5, only 'spin' and 'spin-pulse' are supported.
+     */
+    __publicField(this, "animation", (0, import_core.model)());
+    __publicField(this, "mask", (0, import_core.model)());
+    __publicField(this, "flip", (0, import_core.model)());
+    __publicField(this, "size", (0, import_core.model)());
+    __publicField(this, "pull", (0, import_core.model)());
+    __publicField(this, "border", (0, import_core.model)());
+    __publicField(this, "inverse", (0, import_core.model)());
+    __publicField(this, "symbol", (0, import_core.model)());
+    __publicField(this, "rotate", (0, import_core.model)());
+    __publicField(this, "fixedWidth", (0, import_core.model)());
+    __publicField(this, "transform", (0, import_core.model)());
+    /**
+     * Specify the `role` attribute for the rendered <svg> element.
+     *
+     * @default 'img'
+     */
+    __publicField(this, "a11yRole", (0, import_core.model)());
+    __publicField(this, "renderedIconHTML", (0, import_core.computed)(() => {
+      var _a;
+      const iconValue = (_a = this.icon()) != null ? _a : this.config.fallbackIcon;
+      if (!iconValue) {
+        faWarnIfIconSpecMissing();
+        return "";
+      }
+      const iconDefinition = this.findIconDefinition(iconValue);
+      if (!iconDefinition) {
+        return "";
+      }
+      const params = this.buildParams();
+      ensureCss(this.document, this.config);
+      const renderedIcon = (0, import_fontawesome_svg_core.icon)(iconDefinition, params);
+      return this.sanitizer.bypassSecurityTrustHtml(renderedIcon.html.join("\n"));
+    }));
+    __publicField(this, "document", (0, import_core.inject)(import_core.DOCUMENT));
+    __publicField(this, "sanitizer", (0, import_core.inject)(import_platform_browser.DomSanitizer));
+    __publicField(this, "config", (0, import_core.inject)(FaConfig));
+    __publicField(this, "iconLibrary", (0, import_core.inject)(FaIconLibrary));
+    __publicField(this, "stackItem", (0, import_core.inject)(FaStackItemSizeDirective, { optional: true }));
+    __publicField(this, "stack", (0, import_core.inject)(FaStackComponent, { optional: true }));
+    if (this.stack != null && this.stackItem == null) {
+      console.error('FontAwesome: fa-icon and fa-duotone-icon elements must specify stackItemSize attribute when wrapped into fa-stack. Example: <fa-icon stackItemSize="2x" />.');
+    }
+  }
+  findIconDefinition(i) {
+    const lookup = faNormalizeIconSpec(i, this.config.defaultPrefix);
+    if ("icon" in lookup) {
+      return lookup;
+    }
+    const definition = this.iconLibrary.getIconDefinition(lookup.prefix, lookup.iconName);
+    if (definition != null) {
+      return definition;
+    }
+    faWarnIfIconDefinitionMissing(lookup);
+    return null;
+  }
+  buildParams() {
+    const fixedWidth = this.fixedWidth();
+    const classOpts = {
+      flip: this.flip(),
+      animation: this.animation(),
+      border: this.border(),
+      inverse: this.inverse(),
+      size: this.size(),
+      pull: this.pull(),
+      rotate: this.rotate(),
+      fixedWidth: typeof fixedWidth === "boolean" ? fixedWidth : this.config.fixedWidth,
+      stackItemSize: this.stackItem != null ? this.stackItem.stackItemSize() : void 0
+    };
+    const transform = this.transform();
+    const parsedTransform = typeof transform === "string" ? import_fontawesome_svg_core.parse.transform(transform) : transform;
+    const mask = this.mask();
+    const maskIconDefinition = mask != null ? this.findIconDefinition(mask) : null;
+    const attributes = {};
+    const a11yRole = this.a11yRole();
+    if (a11yRole != null) {
+      attributes["role"] = a11yRole;
+    }
+    const styles = {};
+    if (classOpts.rotate != null && !isKnownRotateValue(classOpts.rotate)) {
+      styles["--fa-rotate-angle"] = `${classOpts.rotate}`;
+    }
+    return {
+      title: this.title(),
+      transform: parsedTransform,
+      classes: faClassList(classOpts),
+      mask: maskIconDefinition != null ? maskIconDefinition : void 0,
+      symbol: this.symbol(),
+      attributes,
+      styles
+    };
+  }
+};
+__publicField(_FaIconComponent, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaIconComponent, deps: [], target: i0.\u0275\u0275FactoryTarget.Component }));
+__publicField(_FaIconComponent, "\u0275cmp", i0.\u0275\u0275ngDeclareComponent({ minVersion: "17.1.0", version: "20.0.0", type: _FaIconComponent, isStandalone: true, selector: "fa-icon", inputs: { icon: { classPropertyName: "icon", publicName: "icon", isSignal: true, isRequired: false, transformFunction: null }, title: { classPropertyName: "title", publicName: "title", isSignal: true, isRequired: false, transformFunction: null }, animation: { classPropertyName: "animation", publicName: "animation", isSignal: true, isRequired: false, transformFunction: null }, mask: { classPropertyName: "mask", publicName: "mask", isSignal: true, isRequired: false, transformFunction: null }, flip: { classPropertyName: "flip", publicName: "flip", isSignal: true, isRequired: false, transformFunction: null }, size: { classPropertyName: "size", publicName: "size", isSignal: true, isRequired: false, transformFunction: null }, pull: { classPropertyName: "pull", publicName: "pull", isSignal: true, isRequired: false, transformFunction: null }, border: { classPropertyName: "border", publicName: "border", isSignal: true, isRequired: false, transformFunction: null }, inverse: { classPropertyName: "inverse", publicName: "inverse", isSignal: true, isRequired: false, transformFunction: null }, symbol: { classPropertyName: "symbol", publicName: "symbol", isSignal: true, isRequired: false, transformFunction: null }, rotate: { classPropertyName: "rotate", publicName: "rotate", isSignal: true, isRequired: false, transformFunction: null }, fixedWidth: { classPropertyName: "fixedWidth", publicName: "fixedWidth", isSignal: true, isRequired: false, transformFunction: null }, transform: { classPropertyName: "transform", publicName: "transform", isSignal: true, isRequired: false, transformFunction: null }, a11yRole: { classPropertyName: "a11yRole", publicName: "a11yRole", isSignal: true, isRequired: false, transformFunction: null } }, outputs: { icon: "iconChange", title: "titleChange", animation: "animationChange", mask: "maskChange", flip: "flipChange", size: "sizeChange", pull: "pullChange", border: "borderChange", inverse: "inverseChange", symbol: "symbolChange", rotate: "rotateChange", fixedWidth: "fixedWidthChange", transform: "transformChange", a11yRole: "a11yRoleChange" }, host: { properties: { "attr.title": "title() ?? undefined", "innerHTML": "renderedIconHTML()" }, classAttribute: "ng-fa-icon" }, ngImport: i0, template: ``, isInline: true, changeDetection: i0.ChangeDetectionStrategy.OnPush }));
+let FaIconComponent = _FaIconComponent;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaIconComponent, decorators: [{
+  type: import_core.Component,
+  args: [{
+    selector: "fa-icon",
+    template: ``,
+    host: {
+      class: "ng-fa-icon",
+      "[attr.title]": "title() ?? undefined",
+      "[innerHTML]": "renderedIconHTML()"
+    },
+    changeDetection: import_core.ChangeDetectionStrategy.OnPush
+  }]
+}], ctorParameters: () => [] });
+const _FaDuotoneIconComponent = class _FaDuotoneIconComponent extends FaIconComponent {
+  constructor() {
+    super(...arguments);
+    /**
+     * Swap the default opacity of each duotone icon’s layers. This will make an
+     * icon’s primary layer have the default opacity of 40% rather than its
+     * secondary layer.
+     *
+     * @default false
+     */
+    __publicField(this, "swapOpacity", (0, import_core.input)());
+    /**
+     * Customize the opacity of the primary icon layer.
+     * Valid values are in range [0, 1.0].
+     *
+     * @default 1.0
+     */
+    __publicField(this, "primaryOpacity", (0, import_core.input)());
+    /**
+     * Customize the opacity of the secondary icon layer.
+     * Valid values are in range [0, 1.0].
+     *
+     * @default 0.4
+     */
+    __publicField(this, "secondaryOpacity", (0, import_core.input)());
+    /**
+     * Customize the color of the primary icon layer.
+     * Accepts any valid CSS color value.
+     *
+     * @default CSS inherited color
+     */
+    __publicField(this, "primaryColor", (0, import_core.input)());
+    /**
+     * Customize the color of the secondary icon layer.
+     * Accepts any valid CSS color value.
+     *
+     * @default CSS inherited color
+     */
+    __publicField(this, "secondaryColor", (0, import_core.input)());
+  }
+  findIconDefinition(i) {
+    const definition = super.findIconDefinition(i);
+    if (definition != null && !Array.isArray(definition.icon[4])) {
+      throw new Error(`The specified icon does not appear to be a Duotone icon. Check that you specified the correct style: <fa-duotone-icon [icon]="['fad', '${definition.iconName}']" /> or use: <fa-icon icon="${definition.iconName}" /> instead.`);
+    }
+    return definition;
+  }
+  buildParams() {
+    const params = super.buildParams();
+    const swapOpacity = this.swapOpacity();
+    if (swapOpacity === true || swapOpacity === "true") {
+      if (Array.isArray(params.classes)) {
+        params.classes.push("fa-swap-opacity");
+      } else if (typeof params.classes === "string") {
+        params.classes = [params.classes, "fa-swap-opacity"];
+      } else {
+        params.classes = ["fa-swap-opacity"];
+      }
+    }
+    if (params.styles == null) {
+      params.styles = {};
+    }
+    const primaryOpacity = this.primaryOpacity();
+    if (primaryOpacity != null) {
+      params.styles["--fa-primary-opacity"] = primaryOpacity.toString();
+    }
+    const secondaryOpacity = this.secondaryOpacity();
+    if (secondaryOpacity != null) {
+      params.styles["--fa-secondary-opacity"] = secondaryOpacity.toString();
+    }
+    const primaryColor = this.primaryColor();
+    if (primaryColor != null) {
+      params.styles["--fa-primary-color"] = primaryColor;
+    }
+    const secondaryColor = this.secondaryColor();
+    if (secondaryColor != null) {
+      params.styles["--fa-secondary-color"] = secondaryColor;
+    }
+    return params;
+  }
+};
+__publicField(_FaDuotoneIconComponent, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaDuotoneIconComponent, deps: null, target: i0.\u0275\u0275FactoryTarget.Component }));
+__publicField(_FaDuotoneIconComponent, "\u0275cmp", i0.\u0275\u0275ngDeclareComponent({ minVersion: "17.1.0", version: "20.0.0", type: _FaDuotoneIconComponent, isStandalone: true, selector: "fa-duotone-icon", inputs: { swapOpacity: { classPropertyName: "swapOpacity", publicName: "swapOpacity", isSignal: true, isRequired: false, transformFunction: null }, primaryOpacity: { classPropertyName: "primaryOpacity", publicName: "primaryOpacity", isSignal: true, isRequired: false, transformFunction: null }, secondaryOpacity: { classPropertyName: "secondaryOpacity", publicName: "secondaryOpacity", isSignal: true, isRequired: false, transformFunction: null }, primaryColor: { classPropertyName: "primaryColor", publicName: "primaryColor", isSignal: true, isRequired: false, transformFunction: null }, secondaryColor: { classPropertyName: "secondaryColor", publicName: "secondaryColor", isSignal: true, isRequired: false, transformFunction: null } }, usesInheritance: true, ngImport: i0, template: ``, isInline: true, changeDetection: i0.ChangeDetectionStrategy.OnPush }));
+let FaDuotoneIconComponent = _FaDuotoneIconComponent;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaDuotoneIconComponent, decorators: [{
+  type: import_core.Component,
+  args: [{
+    selector: "fa-duotone-icon",
+    template: ``,
+    changeDetection: import_core.ChangeDetectionStrategy.OnPush
+  }]
+}] });
+const faWarnIfParentNotExist = (parent, parentName, childName) => {
+  if (!parent) {
+    throw new Error(`${childName} should be used as child of ${parentName} only.`);
+  }
+};
+const _FaLayersComponent = class _FaLayersComponent {
+  constructor() {
+    __publicField(this, "size", (0, import_core.input)());
+    __publicField(this, "fixedWidth", (0, import_core.input)());
+    __publicField(this, "faFw", (0, import_core.computed)(() => {
+      const fixedWidth = this.fixedWidth();
+      return typeof fixedWidth === "boolean" ? fixedWidth : this.config.fixedWidth;
+    }));
+    __publicField(this, "classes", (0, import_core.computed)(() => {
+      const sizeValue = this.size();
+      const sizeClass = sizeValue ? { [`fa-${sizeValue}`]: true } : {};
+      return __spreadProps(__spreadValues({}, sizeClass), {
+        "fa-fw": this.faFw(),
+        "fa-layers": true
+      });
+    }));
+    __publicField(this, "document", (0, import_core.inject)(import_core.DOCUMENT));
+    __publicField(this, "config", (0, import_core.inject)(FaConfig));
+  }
+  ngOnInit() {
+    ensureCss(this.document, this.config);
+  }
+};
+__publicField(_FaLayersComponent, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaLayersComponent, deps: [], target: i0.\u0275\u0275FactoryTarget.Component }));
+__publicField(_FaLayersComponent, "\u0275cmp", i0.\u0275\u0275ngDeclareComponent({ minVersion: "17.1.0", version: "20.0.0", type: _FaLayersComponent, isStandalone: true, selector: "fa-layers", inputs: { size: { classPropertyName: "size", publicName: "size", isSignal: true, isRequired: false, transformFunction: null }, fixedWidth: { classPropertyName: "fixedWidth", publicName: "fixedWidth", isSignal: true, isRequired: false, transformFunction: null } }, host: { properties: { "class": "classes()" } }, ngImport: i0, template: `<ng-content />`, isInline: true, changeDetection: i0.ChangeDetectionStrategy.OnPush }));
+let FaLayersComponent = _FaLayersComponent;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaLayersComponent, decorators: [{
+  type: import_core.Component,
+  args: [{
+    selector: "fa-layers",
+    template: `<ng-content />`,
+    host: {
+      "[class]": "classes()"
+    },
+    changeDetection: import_core.ChangeDetectionStrategy.OnPush
+  }]
+}] });
+const _FaLayersCounterComponent = class _FaLayersCounterComponent {
+  constructor() {
+    __publicField(this, "content", import_core.input.required());
+    __publicField(this, "title", (0, import_core.input)());
+    __publicField(this, "position", (0, import_core.input)());
+    __publicField(this, "renderedHTML", (0, import_core.computed)(() => {
+      const params = this.buildParams();
+      return this.updateContent(params);
+    }));
+    __publicField(this, "document", (0, import_core.inject)(import_core.DOCUMENT));
+    __publicField(this, "config", (0, import_core.inject)(FaConfig));
+    __publicField(this, "parent", (0, import_core.inject)(FaLayersComponent, { optional: true }));
+    __publicField(this, "sanitizer", (0, import_core.inject)(import_platform_browser.DomSanitizer));
+    faWarnIfParentNotExist(this.parent, "FaLayersComponent", this.constructor.name);
+  }
+  buildParams() {
+    const position = this.position();
+    return {
+      title: this.title(),
+      classes: position != null ? [`fa-layers-${position}`] : void 0
+    };
+  }
+  updateContent(params) {
+    ensureCss(this.document, this.config);
+    return this.sanitizer.bypassSecurityTrustHtml((0, import_fontawesome_svg_core.counter)(this.content() || "", params).html.join(""));
+  }
+};
+__publicField(_FaLayersCounterComponent, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaLayersCounterComponent, deps: [], target: i0.\u0275\u0275FactoryTarget.Component }));
+__publicField(_FaLayersCounterComponent, "\u0275cmp", i0.\u0275\u0275ngDeclareComponent({ minVersion: "17.1.0", version: "20.0.0", type: _FaLayersCounterComponent, isStandalone: true, selector: "fa-layers-counter", inputs: { content: { classPropertyName: "content", publicName: "content", isSignal: true, isRequired: true, transformFunction: null }, title: { classPropertyName: "title", publicName: "title", isSignal: true, isRequired: false, transformFunction: null }, position: { classPropertyName: "position", publicName: "position", isSignal: true, isRequired: false, transformFunction: null } }, host: { properties: { "innerHTML": "renderedHTML()" }, classAttribute: "ng-fa-layers-counter" }, ngImport: i0, template: "", isInline: true, changeDetection: i0.ChangeDetectionStrategy.OnPush }));
+let FaLayersCounterComponent = _FaLayersCounterComponent;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaLayersCounterComponent, decorators: [{
+  type: import_core.Component,
+  args: [{
+    selector: "fa-layers-counter",
+    template: "",
+    host: {
+      class: "ng-fa-layers-counter",
+      "[innerHTML]": "renderedHTML()"
+    },
+    changeDetection: import_core.ChangeDetectionStrategy.OnPush
+  }]
+}], ctorParameters: () => [] });
+const _FaLayersTextComponent = class _FaLayersTextComponent {
+  constructor() {
+    __publicField(this, "content", import_core.input.required());
+    __publicField(this, "title", (0, import_core.input)());
+    __publicField(this, "flip", (0, import_core.input)());
+    __publicField(this, "size", (0, import_core.input)());
+    __publicField(this, "pull", (0, import_core.input)());
+    __publicField(this, "border", (0, import_core.input)());
+    __publicField(this, "inverse", (0, import_core.input)());
+    __publicField(this, "rotate", (0, import_core.input)());
+    __publicField(this, "fixedWidth", (0, import_core.input)());
+    __publicField(this, "transform", (0, import_core.input)());
+    __publicField(this, "renderedHTML", (0, import_core.computed)(() => {
+      const params = this.buildParams();
+      return this.updateContent(params);
+    }));
+    __publicField(this, "document", (0, import_core.inject)(import_core.DOCUMENT));
+    __publicField(this, "config", (0, import_core.inject)(FaConfig));
+    __publicField(this, "parent", (0, import_core.inject)(FaLayersComponent, { optional: true }));
+    __publicField(this, "sanitizer", (0, import_core.inject)(import_platform_browser.DomSanitizer));
+    faWarnIfParentNotExist(this.parent, "FaLayersComponent", this.constructor.name);
+  }
+  /**
+   * Updating params by component props.
+   */
+  buildParams() {
+    const classOpts = {
+      flip: this.flip(),
+      border: this.border(),
+      inverse: this.inverse(),
+      size: this.size(),
+      pull: this.pull(),
+      rotate: this.rotate(),
+      fixedWidth: this.fixedWidth()
+    };
+    const transform = this.transform();
+    const parsedTransform = typeof transform === "string" ? import_fontawesome_svg_core.parse.transform(transform) : transform;
+    const styles = {};
+    if (classOpts.rotate != null && !isKnownRotateValue(classOpts.rotate)) {
+      styles["--fa-rotate-angle"] = `${classOpts.rotate}`;
+    }
+    return {
+      transform: parsedTransform,
+      classes: faClassList(classOpts),
+      title: this.title(),
+      styles
+    };
+  }
+  updateContent(params) {
+    ensureCss(this.document, this.config);
+    return this.sanitizer.bypassSecurityTrustHtml((0, import_fontawesome_svg_core.text)(this.content() || "", params).html.join("\n"));
+  }
+};
+__publicField(_FaLayersTextComponent, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FaLayersTextComponent, deps: [], target: i0.\u0275\u0275FactoryTarget.Component }));
+__publicField(_FaLayersTextComponent, "\u0275cmp", i0.\u0275\u0275ngDeclareComponent({ minVersion: "17.1.0", version: "20.0.0", type: _FaLayersTextComponent, isStandalone: true, selector: "fa-layers-text", inputs: { content: { classPropertyName: "content", publicName: "content", isSignal: true, isRequired: true, transformFunction: null }, title: { classPropertyName: "title", publicName: "title", isSignal: true, isRequired: false, transformFunction: null }, flip: { classPropertyName: "flip", publicName: "flip", isSignal: true, isRequired: false, transformFunction: null }, size: { classPropertyName: "size", publicName: "size", isSignal: true, isRequired: false, transformFunction: null }, pull: { classPropertyName: "pull", publicName: "pull", isSignal: true, isRequired: false, transformFunction: null }, border: { classPropertyName: "border", publicName: "border", isSignal: true, isRequired: false, transformFunction: null }, inverse: { classPropertyName: "inverse", publicName: "inverse", isSignal: true, isRequired: false, transformFunction: null }, rotate: { classPropertyName: "rotate", publicName: "rotate", isSignal: true, isRequired: false, transformFunction: null }, fixedWidth: { classPropertyName: "fixedWidth", publicName: "fixedWidth", isSignal: true, isRequired: false, transformFunction: null }, transform: { classPropertyName: "transform", publicName: "transform", isSignal: true, isRequired: false, transformFunction: null } }, host: { properties: { "innerHTML": "renderedHTML()" }, classAttribute: "ng-fa-layers-text" }, ngImport: i0, template: "", isInline: true, changeDetection: i0.ChangeDetectionStrategy.OnPush }));
+let FaLayersTextComponent = _FaLayersTextComponent;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FaLayersTextComponent, decorators: [{
+  type: import_core.Component,
+  args: [{
+    selector: "fa-layers-text",
+    template: "",
+    host: {
+      class: "ng-fa-layers-text",
+      "[innerHTML]": "renderedHTML()"
+    },
+    changeDetection: import_core.ChangeDetectionStrategy.OnPush
+  }]
+}], ctorParameters: () => [] });
+const _FontAwesomeModule = class _FontAwesomeModule {
+};
+__publicField(_FontAwesomeModule, "\u0275fac", i0.\u0275\u0275ngDeclareFactory({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FontAwesomeModule, deps: [], target: i0.\u0275\u0275FactoryTarget.NgModule }));
+__publicField(_FontAwesomeModule, "\u0275mod", i0.\u0275\u0275ngDeclareNgModule({ minVersion: "14.0.0", version: "20.0.0", ngImport: i0, type: _FontAwesomeModule, imports: [
+  FaIconComponent,
+  FaDuotoneIconComponent,
+  FaLayersComponent,
+  FaLayersTextComponent,
+  FaLayersCounterComponent,
+  FaStackComponent,
+  FaStackItemSizeDirective
+], exports: [
+  FaIconComponent,
+  FaDuotoneIconComponent,
+  FaLayersComponent,
+  FaLayersTextComponent,
+  FaLayersCounterComponent,
+  FaStackComponent,
+  FaStackItemSizeDirective
+] }));
+__publicField(_FontAwesomeModule, "\u0275inj", i0.\u0275\u0275ngDeclareInjector({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: _FontAwesomeModule }));
+let FontAwesomeModule = _FontAwesomeModule;
+i0.\u0275\u0275ngDeclareClassMetadata({ minVersion: "12.0.0", version: "20.0.0", ngImport: i0, type: FontAwesomeModule, decorators: [{
+  type: import_core.NgModule,
+  args: [{
+    imports: [
+      FaIconComponent,
+      FaDuotoneIconComponent,
+      FaLayersComponent,
+      FaLayersTextComponent,
+      FaLayersCounterComponent,
+      FaStackComponent,
+      FaStackItemSizeDirective
+    ],
+    exports: [
+      FaIconComponent,
+      FaDuotoneIconComponent,
+      FaLayersComponent,
+      FaLayersTextComponent,
+      FaLayersCounterComponent,
+      FaStackComponent,
+      FaStackItemSizeDirective
+    ]
+  }]
+}] });

@@ -1,0 +1,2 @@
+7aa8d70c3c0c7e186789d3beefabf58a
+module.exports="<li class=\"nav-item\">\n    <a (click)=\"toggle()\" aria-label=\"Toggle theme\" class=\"nav-link link-light rounded-pill\">\n      <i class=\"bi h5 theme-icon\" [class.bi-moon-stars-fill]=\"isDark\" [class.bi-sun-fill]=\"!isDark\"></i>\n    </a>\n</li>"

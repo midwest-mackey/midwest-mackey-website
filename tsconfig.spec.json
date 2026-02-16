@@ -18,5 +18,7 @@
   ],
   "scripts": {
   "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+  "test:ci": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --runInBand",
+  "test:coverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
 }

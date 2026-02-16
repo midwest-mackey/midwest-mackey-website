@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["/Users/cmackey/Documents/midwest.mackey/midwest-mackey-website/node_modules/@angular/core/fesm2022/weak_ref.mjs"],
+  "sourcesContent": ["/**\n * @license Angular v20.3.16\n * (c) 2010-2025 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nfunction setAlternateWeakRefImpl(impl) {\n    // TODO: remove this function\n}\n\nexport { setAlternateWeakRefImpl };\n//# sourceMappingURL=weak_ref.mjs.map\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAMA,SAAS,wBAAwB,MAAM;AAEvC;",
+  "names": []
+}

@@ -1,0 +1,36 @@
+9d40c81ad3354e323c6fe1a2f9d664d7
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AppNavbarComponent = void 0;
+const tslib_1 = require("tslib");
+const core_1 = require("@angular/core");
+const free_brands_svg_icons_1 = require("@fortawesome/free-brands-svg-icons");
+const global_constants_1 = require("../../global-constants");
+let AppNavbarComponent = class AppNavbarComponent {
+    color;
+    faGithub = free_brands_svg_icons_1.faGithub;
+    faLinkedinIn = free_brands_svg_icons_1.faLinkedinIn;
+    faTwitch = free_brands_svg_icons_1.faTwitch;
+    faInstagram = free_brands_svg_icons_1.faInstagram;
+    linkedinURL = global_constants_1.GlobalConstants.linkedinURL;
+    githubBaseURL = global_constants_1.GlobalConstants.githubBaseURL;
+    twitchURL = global_constants_1.GlobalConstants.twitchURL;
+    instagramURL = global_constants_1.GlobalConstants.instagramURL;
+    isMenuCollapsed = true;
+    constructor() { }
+    ngOnInit() {
+    }
+    static ctorParameters = () => [];
+    static propDecorators = {
+        color: [{ type: core_1.Input }]
+    };
+};
+exports.AppNavbarComponent = AppNavbarComponent;
+exports.AppNavbarComponent = AppNavbarComponent = tslib_1.__decorate([
+    (0, core_1.Component)({
+        selector: 'mm-app-navbar',
+        template: require("./app-navbar.component.html"),
+        standalone: false,
+    })
+], AppNavbarComponent);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2NtYWNrZXkvRG9jdW1lbnRzL21pZHdlc3QubWFja2V5L21pZHdlc3QtbWFja2V5LXdlYnNpdGUvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9hcHAtbmF2YmFyL2FwcC1uYXZiYXIuY29tcG9uZW50LnRzIiwibWFwcGluZ3MiOiI7Ozs7QUFBQSx3Q0FBeUQ7QUFDekQsOEVBQW1HO0FBQ25HLDZEQUF5RDtBQVNsRCxJQUFNLGtCQUFrQixHQUF4QixNQUFNLGtCQUFrQjtJQUNwQixLQUFLO0lBQ2QsUUFBUSxHQUFHLGdDQUFRLENBQUM7SUFDcEIsWUFBWSxHQUFHLG9DQUFZLENBQUM7SUFDNUIsUUFBUSxHQUFHLGdDQUFRLENBQUM7SUFDcEIsV0FBVyxHQUFHLG1DQUFXLENBQUM7SUFDMUIsV0FBVyxHQUFHLGtDQUFlLENBQUMsV0FBVyxDQUFBO0lBQ3pDLGFBQWEsR0FBRyxrQ0FBZSxDQUFDLGFBQWEsQ0FBQztJQUM5QyxTQUFTLEdBQUcsa0NBQWUsQ0FBQyxTQUFTLENBQUM7SUFDdEMsWUFBWSxHQUFHLGtDQUFlLENBQUMsWUFBWSxDQUFDO0lBQzVDLGVBQWUsR0FBRyxJQUFJLENBQUM7SUFFdkIsZ0JBQWdCLENBQUM7SUFFakIsUUFBUTtJQUNSLENBQUM7Ozt3QkFkQSxZQUFLOzs7QUFESyxnREFBa0I7NkJBQWxCLGtCQUFrQjtJQVA5QixJQUFBLGdCQUFTLEVBQUM7UUFDVCxRQUFRLEVBQUUsZUFBZTtRQUN6QixnREFBMEM7UUFFMUMsVUFBVSxFQUFFLEtBQUs7S0FFbEIsQ0FBQztHQUNXLGtCQUFrQixDQWlCOUIiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2NtYWNrZXkvRG9jdW1lbnRzL21pZHdlc3QubWFja2V5L21pZHdlc3QtbWFja2V5LXdlYnNpdGUvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9hcHAtbmF2YmFyL2FwcC1uYXZiYXIuY29tcG9uZW50LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCwgSW5wdXQsIE9uSW5pdCB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5pbXBvcnQgeyBmYUxpbmtlZGluSW4sIGZhVHdpdGNoLCBmYUdpdGh1YiwgZmFJbnN0YWdyYW0gfSBmcm9tICdAZm9ydGF3ZXNvbWUvZnJlZS1icmFuZHMtc3ZnLWljb25zJztcclxuaW1wb3J0IHsgR2xvYmFsQ29uc3RhbnRzIH0gZnJvbSAnLi4vLi4vZ2xvYmFsLWNvbnN0YW50cyc7XHJcblxyXG5AQ29tcG9uZW50KHtcclxuICBzZWxlY3RvcjogJ21tLWFwcC1uYXZiYXInLFxyXG4gIHRlbXBsYXRlVXJsOiAnLi9hcHAtbmF2YmFyLmNvbXBvbmVudC5odG1sJyxcclxuICBzdHlsZVVybHM6IFsnLi9hcHAtbmF2YmFyLmNvbXBvbmVudC5zY3NzJ10sXHJcbiAgc3RhbmRhbG9uZTogZmFsc2UsXHJcblxyXG59KVxyXG5leHBvcnQgY2xhc3MgQXBwTmF2YmFyQ29tcG9uZW50IGltcGxlbWVudHMgT25Jbml0IHtcclxuICBASW5wdXQoKSBjb2xvcjogc3RyaW5nO1xyXG4gIGZhR2l0aHViID0gZmFHaXRodWI7XHJcbiAgZmFMaW5rZWRpbkluID0gZmFMaW5rZWRpbkluO1xyXG4gIGZhVHdpdGNoID0gZmFUd2l0Y2g7XHJcbiAgZmFJbnN0YWdyYW0gPSBmYUluc3RhZ3JhbTtcclxuICBsaW5rZWRpblVSTCA9IEdsb2JhbENvbnN0YW50cy5saW5rZWRpblVSTFxyXG4gIGdpdGh1YkJhc2VVUkwgPSBHbG9iYWxDb25zdGFudHMuZ2l0aHViQmFzZVVSTDtcclxuICB0d2l0Y2hVUkwgPSBHbG9iYWxDb25zdGFudHMudHdpdGNoVVJMO1xyXG4gIGluc3RhZ3JhbVVSTCA9IEdsb2JhbENvbnN0YW50cy5pbnN0YWdyYW1VUkw7XHJcbiAgaXNNZW51Q29sbGFwc2VkID0gdHJ1ZTtcclxuXHJcbiAgY29uc3RydWN0b3IoKSB7IH1cclxuXHJcbiAgbmdPbkluaXQoKTogdm9pZCB7XHJcbiAgfVxyXG5cclxufVxyXG4iXSwidmVyc2lvbiI6M30=

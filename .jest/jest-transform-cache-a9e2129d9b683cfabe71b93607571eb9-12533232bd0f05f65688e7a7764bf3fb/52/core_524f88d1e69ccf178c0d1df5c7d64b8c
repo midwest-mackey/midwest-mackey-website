@@ -1,0 +1,3480 @@
+c0f44bf88c49f0b866e07ce921c5e525
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var core_exports = {};
+__export(core_exports, {
+  ANIMATION_MODULE_TYPE: () => import_debug_node2.ANIMATION_MODULE_TYPE,
+  APP_BOOTSTRAP_LISTENER: () => import_debug_node.APP_BOOTSTRAP_LISTENER,
+  APP_ID: () => import_debug_node.APP_ID,
+  APP_INITIALIZER: () => import_debug_node2.APP_INITIALIZER,
+  ApplicationInitStatus: () => import_debug_node.ApplicationInitStatus,
+  ApplicationModule: () => ApplicationModule,
+  ApplicationRef: () => import_debug_node.ApplicationRef,
+  Attribute: () => import_debug_node2.Attribute,
+  COMPILER_OPTIONS: () => import_debug_node.COMPILER_OPTIONS,
+  CSP_NONCE: () => import_debug_node2.CSP_NONCE,
+  CUSTOM_ELEMENTS_SCHEMA: () => import_debug_node2.CUSTOM_ELEMENTS_SCHEMA,
+  ChangeDetectionStrategy: () => import_debug_node2.ChangeDetectionStrategy,
+  ChangeDetectorRef: () => ChangeDetectorRef,
+  Compiler: () => import_debug_node2.Compiler,
+  CompilerFactory: () => import_debug_node2.CompilerFactory,
+  Component: () => import_debug_node2.Component,
+  ComponentFactory: () => import_debug_node2.ComponentFactory$1,
+  ComponentFactoryResolver: () => import_debug_node2.ComponentFactoryResolver,
+  ComponentRef: () => import_debug_node2.ComponentRef,
+  ContentChild: () => ContentChild,
+  ContentChildren: () => ContentChildren,
+  DEFAULT_CURRENCY_CODE: () => import_debug_node2.DEFAULT_CURRENCY_CODE,
+  DOCUMENT: () => import_root_effect_scheduler2.DOCUMENT,
+  DebugElement: () => import_debug_node2.DebugElement,
+  DebugEventListener: () => import_debug_node2.DebugEventListener,
+  DebugNode: () => import_debug_node2.DebugNode,
+  DefaultIterableDiffer: () => DefaultIterableDiffer,
+  DestroyRef: () => import_root_effect_scheduler.DestroyRef,
+  Directive: () => import_debug_node2.Directive,
+  ENVIRONMENT_INITIALIZER: () => import_root_effect_scheduler.ENVIRONMENT_INITIALIZER,
+  ElementRef: () => import_debug_node2.ElementRef,
+  EmbeddedViewRef: () => EmbeddedViewRef,
+  EnvironmentInjector: () => import_root_effect_scheduler2.EnvironmentInjector,
+  ErrorHandler: () => import_root_effect_scheduler.ErrorHandler,
+  EventEmitter: () => import_debug_node2.EventEmitter,
+  HOST_TAG_NAME: () => HOST_TAG_NAME,
+  Host: () => import_debug_node2.Host,
+  HostAttributeToken: () => HostAttributeToken,
+  HostBinding: () => import_debug_node2.HostBinding,
+  HostListener: () => import_debug_node2.HostListener,
+  INJECTOR: () => import_root_effect_scheduler2.INJECTOR,
+  Inject: () => import_debug_node2.Inject,
+  Injectable: () => import_debug_node.Injectable,
+  InjectionToken: () => import_root_effect_scheduler.InjectionToken,
+  Injector: () => import_root_effect_scheduler.Injector,
+  Input: () => import_debug_node2.Input,
+  IterableDiffers: () => IterableDiffers,
+  KeyValueDiffers: () => KeyValueDiffers,
+  LOCALE_ID: () => import_debug_node.LOCALE_ID,
+  MAX_ANIMATION_TIMEOUT: () => import_debug_node2.MAX_ANIMATION_TIMEOUT,
+  MissingTranslationStrategy: () => import_debug_node2.MissingTranslationStrategy,
+  ModuleWithComponentFactories: () => import_debug_node2.ModuleWithComponentFactories,
+  NO_ERRORS_SCHEMA: () => import_debug_node2.NO_ERRORS_SCHEMA,
+  NgModule: () => import_debug_node.NgModule,
+  NgModuleFactory: () => import_debug_node2.NgModuleFactory$1,
+  NgModuleRef: () => import_debug_node2.NgModuleRef$1,
+  NgProbeToken: () => import_debug_node2.NgProbeToken,
+  NgZone: () => import_debug_node.NgZone,
+  Optional: () => import_debug_node2.Optional,
+  Output: () => import_debug_node2.Output,
+  OutputEmitterRef: () => import_resource.OutputEmitterRef,
+  PACKAGE_ROOT_URL: () => import_debug_node2.PACKAGE_ROOT_URL,
+  PLATFORM_ID: () => import_debug_node2.PLATFORM_ID,
+  PLATFORM_INITIALIZER: () => import_debug_node.PLATFORM_INITIALIZER,
+  PendingTasks: () => import_root_effect_scheduler2.PendingTasks,
+  Pipe: () => import_debug_node2.Pipe,
+  PlatformRef: () => PlatformRef,
+  Query: () => Query,
+  QueryList: () => import_debug_node2.QueryList,
+  REQUEST: () => REQUEST,
+  REQUEST_CONTEXT: () => REQUEST_CONTEXT,
+  RESPONSE_INIT: () => RESPONSE_INIT,
+  Renderer2: () => import_debug_node2.Renderer2,
+  RendererFactory2: () => import_debug_node2.RendererFactory2,
+  RendererStyleFlags2: () => import_debug_node2.RendererStyleFlags2,
+  Sanitizer: () => import_debug_node2.Sanitizer,
+  SecurityContext: () => import_debug_node2.SecurityContext,
+  Self: () => import_debug_node2.Self,
+  SimpleChange: () => import_debug_node2.SimpleChange,
+  SkipSelf: () => import_debug_node2.SkipSelf,
+  TRANSLATIONS: () => import_debug_node2.TRANSLATIONS,
+  TRANSLATIONS_FORMAT: () => import_debug_node2.TRANSLATIONS_FORMAT,
+  TemplateRef: () => import_debug_node2.TemplateRef,
+  Testability: () => import_debug_node2.Testability,
+  TestabilityRegistry: () => import_debug_node2.TestabilityRegistry,
+  TransferState: () => import_debug_node.TransferState,
+  Type: () => import_debug_node2.Type,
+  VERSION: () => import_root_effect_scheduler2.VERSION,
+  Version: () => import_root_effect_scheduler2.Version,
+  ViewChild: () => ViewChild,
+  ViewChildren: () => ViewChildren,
+  ViewContainerRef: () => import_debug_node2.ViewContainerRef,
+  ViewEncapsulation: () => import_debug_node.ViewEncapsulation,
+  ViewRef: () => ViewRef,
+  afterEveryRender: () => import_debug_node2.afterEveryRender,
+  afterNextRender: () => import_debug_node2.afterNextRender,
+  afterRenderEffect: () => afterRenderEffect,
+  asNativeElements: () => import_debug_node2.asNativeElements,
+  assertInInjectionContext: () => import_root_effect_scheduler.assertInInjectionContext,
+  assertNotInReactiveContext: () => import_root_effect_scheduler.assertNotInReactiveContext,
+  assertPlatform: () => assertPlatform,
+  booleanAttribute: () => booleanAttribute,
+  computed: () => import_resource2.computed,
+  contentChild: () => contentChild,
+  contentChildren: () => contentChildren,
+  createComponent: () => createComponent,
+  createEnvironmentInjector: () => import_debug_node2.createEnvironmentInjector,
+  createNgModule: () => import_debug_node2.createNgModule,
+  createNgModuleRef: () => import_debug_node2.createNgModuleRef,
+  createPlatform: () => createPlatform,
+  createPlatformFactory: () => createPlatformFactory,
+  defineInjectable: () => import_root_effect_scheduler2.defineInjectable,
+  destroyPlatform: () => destroyPlatform,
+  effect: () => import_resource2.effect,
+  enableProdMode: () => enableProdMode,
+  enableProfiling: () => import_debug_node2.enableProfiling,
+  forwardRef: () => import_root_effect_scheduler2.forwardRef,
+  getDebugNode: () => import_debug_node2.getDebugNode,
+  getModuleFactory: () => getModuleFactory,
+  getNgModuleById: () => getNgModuleById,
+  getPlatform: () => getPlatform,
+  importProvidersFrom: () => import_root_effect_scheduler2.importProvidersFrom,
+  inject: () => import_root_effect_scheduler.inject,
+  input: () => input,
+  inputBinding: () => import_debug_node2.inputBinding,
+  isDevMode: () => isDevMode,
+  isSignal: () => import_root_effect_scheduler2.isSignal,
+  isStandalone: () => import_root_effect_scheduler2.isStandalone,
+  linkedSignal: () => import_resource2.linkedSignal,
+  makeEnvironmentProviders: () => import_root_effect_scheduler.makeEnvironmentProviders,
+  makeStateKey: () => import_debug_node2.makeStateKey,
+  mergeApplicationConfig: () => mergeApplicationConfig,
+  model: () => model,
+  numberAttribute: () => numberAttribute,
+  output: () => output,
+  outputBinding: () => import_debug_node2.outputBinding,
+  platformCore: () => platformCore,
+  provideAppInitializer: () => import_debug_node2.provideAppInitializer,
+  provideBrowserGlobalErrorListeners: () => import_root_effect_scheduler2.provideBrowserGlobalErrorListeners,
+  provideCheckNoChangesConfig: () => provideCheckNoChangesConfig,
+  provideEnvironmentInitializer: () => import_root_effect_scheduler.provideEnvironmentInitializer,
+  provideNgReflectAttributes: () => import_debug_node2.provideNgReflectAttributes,
+  providePlatformInitializer: () => providePlatformInitializer,
+  provideZoneChangeDetection: () => import_debug_node2.provideZoneChangeDetection,
+  provideZonelessChangeDetection: () => import_debug_node2.provideZonelessChangeDetection,
+  reflectComponentType: () => reflectComponentType,
+  resolveForwardRef: () => import_root_effect_scheduler2.resolveForwardRef,
+  resource: () => import_resource2.resource,
+  runInInjectionContext: () => import_root_effect_scheduler.runInInjectionContext,
+  setTestabilityGetter: () => import_debug_node2.setTestabilityGetter,
+  signal: () => import_root_effect_scheduler2.signal,
+  twoWayBinding: () => import_debug_node2.twoWayBinding,
+  untracked: () => import_resource2.untracked,
+  viewChild: () => viewChild,
+  viewChildren: () => viewChildren,
+  \u0275ANIMATIONS_DISABLED: () => import_debug_node2.ANIMATIONS_DISABLED,
+  \u0275AcxChangeDetectionStrategy: () => import_debug_node2.AcxChangeDetectionStrategy,
+  \u0275AcxViewEncapsulation: () => import_debug_node2.AcxViewEncapsulation,
+  \u0275AfterRenderManager: () => import_debug_node.AfterRenderManager,
+  \u0275CLIENT_RENDER_MODE_FLAG: () => CLIENT_RENDER_MODE_FLAG,
+  \u0275CONTAINER_HEADER_OFFSET: () => import_root_effect_scheduler.CONTAINER_HEADER_OFFSET,
+  \u0275ChangeDetectionScheduler: () => import_root_effect_scheduler.ChangeDetectionScheduler,
+  \u0275ChangeDetectionSchedulerImpl: () => import_debug_node.ChangeDetectionSchedulerImpl,
+  \u0275ComponentFactory: () => import_debug_node2.ComponentFactory$1,
+  \u0275Console: () => import_debug_node.Console,
+  \u0275DEFAULT_LOCALE_ID: () => import_debug_node.DEFAULT_LOCALE_ID,
+  \u0275DEFER_BLOCK_CONFIG: () => import_debug_node2.DEFER_BLOCK_CONFIG,
+  \u0275DEFER_BLOCK_DEPENDENCY_INTERCEPTOR: () => import_debug_node2.DEFER_BLOCK_DEPENDENCY_INTERCEPTOR,
+  \u0275DEHYDRATED_BLOCK_REGISTRY: () => import_debug_node.DEHYDRATED_BLOCK_REGISTRY,
+  \u0275DeferBlockBehavior: () => import_debug_node2.DeferBlockBehavior,
+  \u0275DeferBlockState: () => import_debug_node2.DeferBlockState,
+  \u0275ENABLE_ROOT_COMPONENT_BOOTSTRAP: () => ENABLE_ROOT_COMPONENT_BOOTSTRAP,
+  \u0275EffectScheduler: () => import_root_effect_scheduler2.EffectScheduler,
+  \u0275Framework: () => import_debug_node2.Framework,
+  \u0275HydrationStatus: () => import_debug_node2.HydrationStatus,
+  \u0275IMAGE_CONFIG: () => import_debug_node.IMAGE_CONFIG,
+  \u0275IMAGE_CONFIG_DEFAULTS: () => import_debug_node2.IMAGE_CONFIG_DEFAULTS,
+  \u0275INJECTOR_SCOPE: () => import_root_effect_scheduler.INJECTOR_SCOPE,
+  \u0275INPUT_SIGNAL_BRAND_WRITE_TYPE: () => \u0275INPUT_SIGNAL_BRAND_WRITE_TYPE,
+  \u0275INTERNAL_APPLICATION_ERROR_HANDLER: () => import_root_effect_scheduler.INTERNAL_APPLICATION_ERROR_HANDLER,
+  \u0275IS_ENABLED_BLOCKING_INITIAL_NAVIGATION: () => import_debug_node2.IS_ENABLED_BLOCKING_INITIAL_NAVIGATION,
+  \u0275IS_HYDRATION_DOM_REUSE_ENABLED: () => import_debug_node.IS_HYDRATION_DOM_REUSE_ENABLED,
+  \u0275IS_INCREMENTAL_HYDRATION_ENABLED: () => import_debug_node.IS_INCREMENTAL_HYDRATION_ENABLED,
+  \u0275JSACTION_BLOCK_ELEMENT_MAP: () => import_debug_node.JSACTION_BLOCK_ELEMENT_MAP,
+  \u0275JSACTION_EVENT_CONTRACT: () => import_debug_node.JSACTION_EVENT_CONTRACT,
+  \u0275LContext: () => import_debug_node2.LContext,
+  \u0275LocaleDataIndex: () => import_debug_node2.LocaleDataIndex,
+  \u0275NG_COMP_DEF: () => import_root_effect_scheduler2.NG_COMP_DEF,
+  \u0275NG_DIR_DEF: () => import_root_effect_scheduler2.NG_DIR_DEF,
+  \u0275NG_ELEMENT_ID: () => import_root_effect_scheduler2.NG_ELEMENT_ID,
+  \u0275NG_INJ_DEF: () => import_root_effect_scheduler2.NG_INJ_DEF,
+  \u0275NG_MOD_DEF: () => import_root_effect_scheduler2.NG_MOD_DEF,
+  \u0275NG_PIPE_DEF: () => import_root_effect_scheduler2.NG_PIPE_DEF,
+  \u0275NG_PROV_DEF: () => import_root_effect_scheduler2.NG_PROV_DEF,
+  \u0275NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR: () => import_debug_node2.NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR,
+  \u0275NO_CHANGE: () => import_debug_node2.NO_CHANGE,
+  \u0275NgModuleFactory: () => import_debug_node.NgModuleFactory,
+  \u0275NoopNgZone: () => import_debug_node2.NoopNgZone,
+  \u0275PERFORMANCE_MARK_PREFIX: () => PERFORMANCE_MARK_PREFIX,
+  \u0275PROVIDED_NG_ZONE: () => import_debug_node.PROVIDED_NG_ZONE,
+  \u0275PendingTasksInternal: () => import_root_effect_scheduler.PendingTasksInternal,
+  \u0275R3Injector: () => import_root_effect_scheduler2.R3Injector,
+  \u0275ReflectionCapabilities: () => import_debug_node2.ReflectionCapabilities,
+  \u0275Render3ComponentFactory: () => import_debug_node.ComponentFactory,
+  \u0275Render3ComponentRef: () => import_debug_node2.ComponentRef$1,
+  \u0275Render3NgModuleRef: () => import_debug_node2.NgModuleRef,
+  \u0275ResourceImpl: () => import_resource2.ResourceImpl,
+  \u0275RuntimeError: () => import_root_effect_scheduler.RuntimeError,
+  \u0275SIGNAL: () => import_signal.SIGNAL,
+  \u0275SSR_CONTENT_INTEGRITY_MARKER: () => import_debug_node2.SSR_CONTENT_INTEGRITY_MARKER,
+  \u0275TESTABILITY: () => import_debug_node2.TESTABILITY,
+  \u0275TESTABILITY_GETTER: () => import_debug_node2.TESTABILITY_GETTER,
+  \u0275TimerScheduler: () => import_debug_node2.TimerScheduler,
+  \u0275TracingAction: () => import_debug_node2.TracingAction,
+  \u0275TracingService: () => import_debug_node.TracingService,
+  \u0275ViewRef: () => import_debug_node.ViewRef,
+  \u0275XSS_SECURITY_URL: () => import_root_effect_scheduler2.XSS_SECURITY_URL,
+  \u0275ZONELESS_ENABLED: () => import_root_effect_scheduler2.ZONELESS_ENABLED,
+  \u0275_sanitizeHtml: () => import_debug_node2._sanitizeHtml,
+  \u0275_sanitizeUrl: () => import_debug_node2._sanitizeUrl,
+  \u0275allLeavingAnimations: () => import_debug_node2.allLeavingAnimations,
+  \u0275allowSanitizationBypassAndThrow: () => import_debug_node2.allowSanitizationBypassAndThrow,
+  \u0275annotateForHydration: () => annotateForHydration,
+  \u0275assertType: () => \u0275assertType,
+  \u0275bypassSanitizationTrustHtml: () => import_debug_node2.bypassSanitizationTrustHtml,
+  \u0275bypassSanitizationTrustResourceUrl: () => import_debug_node2.bypassSanitizationTrustResourceUrl,
+  \u0275bypassSanitizationTrustScript: () => import_debug_node2.bypassSanitizationTrustScript,
+  \u0275bypassSanitizationTrustStyle: () => import_debug_node2.bypassSanitizationTrustStyle,
+  \u0275bypassSanitizationTrustUrl: () => import_debug_node2.bypassSanitizationTrustUrl,
+  \u0275clearResolutionOfComponentResourcesQueue: () => import_debug_node2.clearResolutionOfComponentResourcesQueue,
+  \u0275compileComponent: () => import_debug_node2.compileComponent,
+  \u0275compileDirective: () => import_debug_node2.compileDirective,
+  \u0275compileNgModule: () => import_debug_node2.compileNgModule,
+  \u0275compileNgModuleDefs: () => import_debug_node2.compileNgModuleDefs,
+  \u0275compileNgModuleFactory: () => compileNgModuleFactory,
+  \u0275compilePipe: () => import_debug_node2.compilePipe,
+  \u0275convertToBitFlags: () => import_root_effect_scheduler2.convertToBitFlags,
+  \u0275createInjector: () => import_root_effect_scheduler2.createInjector,
+  \u0275createOrReusePlatformInjector: () => createOrReusePlatformInjector,
+  \u0275defaultIterableDiffers: () => defaultIterableDiffers,
+  \u0275defaultKeyValueDiffers: () => defaultKeyValueDiffers,
+  \u0275depsTracker: () => import_debug_node2.depsTracker,
+  \u0275devModeEqual: () => import_debug_node2.devModeEqual,
+  \u0275disableProfiling: () => disableProfiling,
+  \u0275enableProfiling: () => enableProfiling2,
+  \u0275encapsulateResourceError: () => import_resource2.encapsulateResourceError,
+  \u0275findLocaleData: () => import_debug_node2.findLocaleData,
+  \u0275flushModuleScopingQueueAsMuchAsPossible: () => import_debug_node2.flushModuleScopingQueueAsMuchAsPossible,
+  \u0275formatRuntimeError: () => import_root_effect_scheduler.formatRuntimeError,
+  \u0275generateStandaloneInDeclarationsError: () => import_debug_node2.generateStandaloneInDeclarationsError,
+  \u0275getAsyncClassMetadataFn: () => import_debug_node2.getAsyncClassMetadataFn,
+  \u0275getClosestComponentName: () => getClosestComponentName,
+  \u0275getComponentDef: () => import_root_effect_scheduler.getComponentDef,
+  \u0275getDebugNode: () => import_debug_node2.getDebugNode,
+  \u0275getDeferBlocks: () => import_debug_node2.getDeferBlocks,
+  \u0275getDirectives: () => import_debug_node2.getDirectives,
+  \u0275getDocument: () => import_debug_node.getDocument,
+  \u0275getHostElement: () => import_debug_node2.getHostElement,
+  \u0275getInjectableDef: () => import_root_effect_scheduler2.getInjectableDef,
+  \u0275getLContext: () => import_debug_node2.getLContext,
+  \u0275getLocaleCurrencyCode: () => import_debug_node2.getLocaleCurrencyCode,
+  \u0275getLocalePluralCase: () => import_debug_node2.getLocalePluralCase,
+  \u0275getOutputDestroyRef: () => import_resource2.getOutputDestroyRef,
+  \u0275getSanitizationBypassType: () => import_debug_node2.getSanitizationBypassType,
+  \u0275getTransferState: () => import_debug_node2.getTransferState,
+  \u0275getUnknownElementStrictMode: () => import_debug_node2.\u0275getUnknownElementStrictMode,
+  \u0275getUnknownPropertyStrictMode: () => import_debug_node2.\u0275getUnknownPropertyStrictMode,
+  \u0275global: () => import_root_effect_scheduler._global,
+  \u0275inferTagNameFromDefinition: () => import_debug_node2.inferTagNameFromDefinition,
+  \u0275injectChangeDetectorRef: () => injectChangeDetectorRef,
+  \u0275internalCreateApplication: () => internalCreateApplication,
+  \u0275internalProvideZoneChangeDetection: () => import_debug_node.internalProvideZoneChangeDetection,
+  \u0275isBoundToModule: () => import_debug_node2.isBoundToModule,
+  \u0275isComponentDefPendingResolution: () => import_debug_node2.isComponentDefPendingResolution,
+  \u0275isEnvironmentProviders: () => import_root_effect_scheduler2.isEnvironmentProviders,
+  \u0275isInjectable: () => import_root_effect_scheduler2.isInjectable,
+  \u0275isNgModule: () => import_debug_node2.isNgModule,
+  \u0275isPromise: () => import_debug_node.isPromise,
+  \u0275isSubscribable: () => import_debug_node2.isSubscribable,
+  \u0275isViewDirty: () => import_debug_node2.isViewDirty,
+  \u0275markForRefresh: () => import_debug_node2.markForRefresh,
+  \u0275noSideEffects: () => import_debug_node2.noSideEffects,
+  \u0275patchComponentDefWithScope: () => import_debug_node2.patchComponentDefWithScope,
+  \u0275performanceMarkFeature: () => import_debug_node.performanceMarkFeature,
+  \u0275publishExternalGlobalUtil: () => import_debug_node2.publishExternalGlobalUtil,
+  \u0275readHydrationInfo: () => import_debug_node2.readHydrationInfo,
+  \u0275registerLocaleData: () => import_debug_node2.registerLocaleData,
+  \u0275renderDeferBlockState: () => import_debug_node2.renderDeferBlockState,
+  \u0275resetCompiledComponents: () => import_debug_node2.resetCompiledComponents,
+  \u0275resetIncrementalHydrationEnabledWarnedForTests: () => import_debug_node2.resetIncrementalHydrationEnabledWarnedForTests,
+  \u0275resetJitOptions: () => import_debug_node2.resetJitOptions,
+  \u0275resolveComponentResources: () => import_debug_node.resolveComponentResources,
+  \u0275restoreComponentResolutionQueue: () => import_debug_node2.restoreComponentResolutionQueue,
+  \u0275setAllowDuplicateNgModuleIdsForTest: () => import_debug_node2.setAllowDuplicateNgModuleIdsForTest,
+  \u0275setAlternateWeakRefImpl: () => import_weak_ref.setAlternateWeakRefImpl,
+  \u0275setClassDebugInfo: () => import_debug_node2.\u0275setClassDebugInfo,
+  \u0275setClassMetadata: () => import_debug_node.setClassMetadata,
+  \u0275setClassMetadataAsync: () => import_debug_node.setClassMetadataAsync,
+  \u0275setCurrentInjector: () => import_not_found.setCurrentInjector,
+  \u0275setDocument: () => import_debug_node2.setDocument,
+  \u0275setInjectorProfilerContext: () => import_root_effect_scheduler.setInjectorProfilerContext,
+  \u0275setLocaleId: () => import_debug_node.setLocaleId,
+  \u0275setUnknownElementStrictMode: () => import_debug_node2.\u0275setUnknownElementStrictMode,
+  \u0275setUnknownPropertyStrictMode: () => import_debug_node2.\u0275setUnknownPropertyStrictMode,
+  \u0275startMeasuring: () => startMeasuring,
+  \u0275stopMeasuring: () => stopMeasuring,
+  \u0275store: () => import_root_effect_scheduler2.store,
+  \u0275stringify: () => import_root_effect_scheduler.stringify,
+  \u0275transitiveScopesFor: () => import_debug_node2.transitiveScopesFor,
+  \u0275triggerResourceLoading: () => import_debug_node2.triggerResourceLoading,
+  \u0275truncateMiddle: () => import_root_effect_scheduler2.truncateMiddle,
+  \u0275unregisterLocaleData: () => import_debug_node2.unregisterAllLocaleData,
+  \u0275unwrapSafeValue: () => import_debug_node2.unwrapSafeValue,
+  \u0275unwrapWritableSignal: () => import_root_effect_scheduler2.\u0275unwrapWritableSignal,
+  \u0275withDomHydration: () => withDomHydration,
+  \u0275withEventReplay: () => withEventReplay,
+  \u0275withI18nSupport: () => withI18nSupport,
+  \u0275withIncrementalHydration: () => withIncrementalHydration,
+  \u0275\u0275CopyDefinitionFeature: () => import_debug_node2.\u0275\u0275CopyDefinitionFeature,
+  \u0275\u0275ExternalStylesFeature: () => import_debug_node2.\u0275\u0275ExternalStylesFeature,
+  \u0275\u0275FactoryTarget: () => FactoryTarget,
+  \u0275\u0275HostDirectivesFeature: () => import_debug_node2.\u0275\u0275HostDirectivesFeature,
+  \u0275\u0275InheritDefinitionFeature: () => import_debug_node2.\u0275\u0275InheritDefinitionFeature,
+  \u0275\u0275NgOnChangesFeature: () => import_debug_node2.\u0275\u0275NgOnChangesFeature,
+  \u0275\u0275ProvidersFeature: () => import_debug_node2.\u0275\u0275ProvidersFeature,
+  \u0275\u0275advance: () => import_debug_node2.\u0275\u0275advance,
+  \u0275\u0275animateEnter: () => import_debug_node2.\u0275\u0275animateEnter,
+  \u0275\u0275animateEnterListener: () => import_debug_node2.\u0275\u0275animateEnterListener,
+  \u0275\u0275animateLeave: () => import_debug_node2.\u0275\u0275animateLeave,
+  \u0275\u0275animateLeaveListener: () => import_debug_node2.\u0275\u0275animateLeaveListener,
+  \u0275\u0275ariaProperty: () => import_debug_node2.\u0275\u0275ariaProperty,
+  \u0275\u0275attachSourceLocations: () => import_debug_node2.\u0275\u0275attachSourceLocations,
+  \u0275\u0275attribute: () => import_debug_node2.\u0275\u0275attribute,
+  \u0275\u0275classMap: () => import_debug_node2.\u0275\u0275classMap,
+  \u0275\u0275classProp: () => import_debug_node2.\u0275\u0275classProp,
+  \u0275\u0275componentInstance: () => import_debug_node2.\u0275\u0275componentInstance,
+  \u0275\u0275conditional: () => import_debug_node2.\u0275\u0275conditional,
+  \u0275\u0275conditionalBranchCreate: () => import_debug_node2.\u0275\u0275conditionalBranchCreate,
+  \u0275\u0275conditionalCreate: () => import_debug_node2.\u0275\u0275conditionalCreate,
+  \u0275\u0275contentQuery: () => import_debug_node2.\u0275\u0275contentQuery,
+  \u0275\u0275contentQuerySignal: () => import_debug_node2.\u0275\u0275contentQuerySignal,
+  \u0275\u0275declareLet: () => import_debug_node2.\u0275\u0275declareLet,
+  \u0275\u0275defer: () => import_debug_node2.\u0275\u0275defer,
+  \u0275\u0275deferEnableTimerScheduling: () => import_debug_node2.\u0275\u0275deferEnableTimerScheduling,
+  \u0275\u0275deferHydrateNever: () => import_debug_node2.\u0275\u0275deferHydrateNever,
+  \u0275\u0275deferHydrateOnHover: () => import_debug_node2.\u0275\u0275deferHydrateOnHover,
+  \u0275\u0275deferHydrateOnIdle: () => import_debug_node2.\u0275\u0275deferHydrateOnIdle,
+  \u0275\u0275deferHydrateOnImmediate: () => import_debug_node2.\u0275\u0275deferHydrateOnImmediate,
+  \u0275\u0275deferHydrateOnInteraction: () => import_debug_node2.\u0275\u0275deferHydrateOnInteraction,
+  \u0275\u0275deferHydrateOnTimer: () => import_debug_node2.\u0275\u0275deferHydrateOnTimer,
+  \u0275\u0275deferHydrateOnViewport: () => import_debug_node2.\u0275\u0275deferHydrateOnViewport,
+  \u0275\u0275deferHydrateWhen: () => import_debug_node2.\u0275\u0275deferHydrateWhen,
+  \u0275\u0275deferOnHover: () => import_debug_node2.\u0275\u0275deferOnHover,
+  \u0275\u0275deferOnIdle: () => import_debug_node2.\u0275\u0275deferOnIdle,
+  \u0275\u0275deferOnImmediate: () => import_debug_node2.\u0275\u0275deferOnImmediate,
+  \u0275\u0275deferOnInteraction: () => import_debug_node2.\u0275\u0275deferOnInteraction,
+  \u0275\u0275deferOnTimer: () => import_debug_node2.\u0275\u0275deferOnTimer,
+  \u0275\u0275deferOnViewport: () => import_debug_node2.\u0275\u0275deferOnViewport,
+  \u0275\u0275deferPrefetchOnHover: () => import_debug_node2.\u0275\u0275deferPrefetchOnHover,
+  \u0275\u0275deferPrefetchOnIdle: () => import_debug_node2.\u0275\u0275deferPrefetchOnIdle,
+  \u0275\u0275deferPrefetchOnImmediate: () => import_debug_node2.\u0275\u0275deferPrefetchOnImmediate,
+  \u0275\u0275deferPrefetchOnInteraction: () => import_debug_node2.\u0275\u0275deferPrefetchOnInteraction,
+  \u0275\u0275deferPrefetchOnTimer: () => import_debug_node2.\u0275\u0275deferPrefetchOnTimer,
+  \u0275\u0275deferPrefetchOnViewport: () => import_debug_node2.\u0275\u0275deferPrefetchOnViewport,
+  \u0275\u0275deferPrefetchWhen: () => import_debug_node2.\u0275\u0275deferPrefetchWhen,
+  \u0275\u0275deferWhen: () => import_debug_node2.\u0275\u0275deferWhen,
+  \u0275\u0275defineComponent: () => import_debug_node2.\u0275\u0275defineComponent,
+  \u0275\u0275defineDirective: () => import_debug_node2.\u0275\u0275defineDirective,
+  \u0275\u0275defineInjectable: () => import_root_effect_scheduler.\u0275\u0275defineInjectable,
+  \u0275\u0275defineInjector: () => import_root_effect_scheduler.\u0275\u0275defineInjector,
+  \u0275\u0275defineNgModule: () => import_debug_node.\u0275\u0275defineNgModule,
+  \u0275\u0275definePipe: () => import_debug_node2.\u0275\u0275definePipe,
+  \u0275\u0275directiveInject: () => import_debug_node2.\u0275\u0275directiveInject,
+  \u0275\u0275disableBindings: () => import_root_effect_scheduler2.\u0275\u0275disableBindings,
+  \u0275\u0275domElement: () => import_debug_node2.\u0275\u0275domElement,
+  \u0275\u0275domElementContainer: () => import_debug_node2.\u0275\u0275domElementContainer,
+  \u0275\u0275domElementContainerEnd: () => import_debug_node2.\u0275\u0275domElementContainerEnd,
+  \u0275\u0275domElementContainerStart: () => import_debug_node2.\u0275\u0275domElementContainerStart,
+  \u0275\u0275domElementEnd: () => import_debug_node2.\u0275\u0275domElementEnd,
+  \u0275\u0275domElementStart: () => import_debug_node2.\u0275\u0275domElementStart,
+  \u0275\u0275domListener: () => import_debug_node2.\u0275\u0275domListener,
+  \u0275\u0275domProperty: () => import_debug_node2.\u0275\u0275domProperty,
+  \u0275\u0275domTemplate: () => import_debug_node2.\u0275\u0275domTemplate,
+  \u0275\u0275element: () => import_debug_node2.\u0275\u0275element,
+  \u0275\u0275elementContainer: () => import_debug_node2.\u0275\u0275elementContainer,
+  \u0275\u0275elementContainerEnd: () => import_debug_node2.\u0275\u0275elementContainerEnd,
+  \u0275\u0275elementContainerStart: () => import_debug_node2.\u0275\u0275elementContainerStart,
+  \u0275\u0275elementEnd: () => import_debug_node2.\u0275\u0275elementEnd,
+  \u0275\u0275elementStart: () => import_debug_node2.\u0275\u0275elementStart,
+  \u0275\u0275enableBindings: () => import_root_effect_scheduler2.\u0275\u0275enableBindings,
+  \u0275\u0275getComponentDepsFactory: () => import_debug_node2.\u0275\u0275getComponentDepsFactory,
+  \u0275\u0275getCurrentView: () => import_debug_node2.\u0275\u0275getCurrentView,
+  \u0275\u0275getInheritedFactory: () => import_debug_node2.\u0275\u0275getInheritedFactory,
+  \u0275\u0275getReplaceMetadataURL: () => import_debug_node2.\u0275\u0275getReplaceMetadataURL,
+  \u0275\u0275i18n: () => import_debug_node2.\u0275\u0275i18n,
+  \u0275\u0275i18nApply: () => import_debug_node2.\u0275\u0275i18nApply,
+  \u0275\u0275i18nAttributes: () => import_debug_node2.\u0275\u0275i18nAttributes,
+  \u0275\u0275i18nEnd: () => import_debug_node2.\u0275\u0275i18nEnd,
+  \u0275\u0275i18nExp: () => import_debug_node2.\u0275\u0275i18nExp,
+  \u0275\u0275i18nPostprocess: () => import_debug_node2.\u0275\u0275i18nPostprocess,
+  \u0275\u0275i18nStart: () => import_debug_node2.\u0275\u0275i18nStart,
+  \u0275\u0275inject: () => import_root_effect_scheduler.\u0275\u0275inject,
+  \u0275\u0275injectAttribute: () => import_debug_node.\u0275\u0275injectAttribute,
+  \u0275\u0275interpolate: () => import_debug_node2.\u0275\u0275interpolate,
+  \u0275\u0275interpolate1: () => import_debug_node2.\u0275\u0275interpolate1,
+  \u0275\u0275interpolate2: () => import_debug_node2.\u0275\u0275interpolate2,
+  \u0275\u0275interpolate3: () => import_debug_node2.\u0275\u0275interpolate3,
+  \u0275\u0275interpolate4: () => import_debug_node2.\u0275\u0275interpolate4,
+  \u0275\u0275interpolate5: () => import_debug_node2.\u0275\u0275interpolate5,
+  \u0275\u0275interpolate6: () => import_debug_node2.\u0275\u0275interpolate6,
+  \u0275\u0275interpolate7: () => import_debug_node2.\u0275\u0275interpolate7,
+  \u0275\u0275interpolate8: () => import_debug_node2.\u0275\u0275interpolate8,
+  \u0275\u0275interpolateV: () => import_debug_node2.\u0275\u0275interpolateV,
+  \u0275\u0275invalidFactory: () => import_debug_node2.\u0275\u0275invalidFactory,
+  \u0275\u0275invalidFactoryDep: () => import_root_effect_scheduler2.\u0275\u0275invalidFactoryDep,
+  \u0275\u0275listener: () => import_debug_node2.\u0275\u0275listener,
+  \u0275\u0275loadQuery: () => import_debug_node2.\u0275\u0275loadQuery,
+  \u0275\u0275namespaceHTML: () => import_root_effect_scheduler2.\u0275\u0275namespaceHTML,
+  \u0275\u0275namespaceMathML: () => import_root_effect_scheduler2.\u0275\u0275namespaceMathML,
+  \u0275\u0275namespaceSVG: () => import_root_effect_scheduler2.\u0275\u0275namespaceSVG,
+  \u0275\u0275nextContext: () => import_debug_node2.\u0275\u0275nextContext,
+  \u0275\u0275ngDeclareClassMetadata: () => \u0275\u0275ngDeclareClassMetadata,
+  \u0275\u0275ngDeclareClassMetadataAsync: () => \u0275\u0275ngDeclareClassMetadataAsync,
+  \u0275\u0275ngDeclareComponent: () => \u0275\u0275ngDeclareComponent,
+  \u0275\u0275ngDeclareDirective: () => \u0275\u0275ngDeclareDirective,
+  \u0275\u0275ngDeclareFactory: () => \u0275\u0275ngDeclareFactory,
+  \u0275\u0275ngDeclareInjectable: () => \u0275\u0275ngDeclareInjectable,
+  \u0275\u0275ngDeclareInjector: () => \u0275\u0275ngDeclareInjector,
+  \u0275\u0275ngDeclareNgModule: () => \u0275\u0275ngDeclareNgModule,
+  \u0275\u0275ngDeclarePipe: () => \u0275\u0275ngDeclarePipe,
+  \u0275\u0275pipe: () => import_debug_node2.\u0275\u0275pipe,
+  \u0275\u0275pipeBind1: () => import_debug_node2.\u0275\u0275pipeBind1,
+  \u0275\u0275pipeBind2: () => import_debug_node2.\u0275\u0275pipeBind2,
+  \u0275\u0275pipeBind3: () => import_debug_node2.\u0275\u0275pipeBind3,
+  \u0275\u0275pipeBind4: () => import_debug_node2.\u0275\u0275pipeBind4,
+  \u0275\u0275pipeBindV: () => import_debug_node2.\u0275\u0275pipeBindV,
+  \u0275\u0275projection: () => import_debug_node2.\u0275\u0275projection,
+  \u0275\u0275projectionDef: () => import_debug_node2.\u0275\u0275projectionDef,
+  \u0275\u0275property: () => import_debug_node2.\u0275\u0275property,
+  \u0275\u0275pureFunction0: () => import_debug_node2.\u0275\u0275pureFunction0,
+  \u0275\u0275pureFunction1: () => import_debug_node2.\u0275\u0275pureFunction1,
+  \u0275\u0275pureFunction2: () => import_debug_node2.\u0275\u0275pureFunction2,
+  \u0275\u0275pureFunction3: () => import_debug_node2.\u0275\u0275pureFunction3,
+  \u0275\u0275pureFunction4: () => import_debug_node2.\u0275\u0275pureFunction4,
+  \u0275\u0275pureFunction5: () => import_debug_node2.\u0275\u0275pureFunction5,
+  \u0275\u0275pureFunction6: () => import_debug_node2.\u0275\u0275pureFunction6,
+  \u0275\u0275pureFunction7: () => import_debug_node2.\u0275\u0275pureFunction7,
+  \u0275\u0275pureFunction8: () => import_debug_node2.\u0275\u0275pureFunction8,
+  \u0275\u0275pureFunctionV: () => import_debug_node2.\u0275\u0275pureFunctionV,
+  \u0275\u0275queryAdvance: () => import_debug_node2.\u0275\u0275queryAdvance,
+  \u0275\u0275queryRefresh: () => import_debug_node2.\u0275\u0275queryRefresh,
+  \u0275\u0275readContextLet: () => import_debug_node2.\u0275\u0275readContextLet,
+  \u0275\u0275reference: () => import_debug_node2.\u0275\u0275reference,
+  \u0275\u0275registerNgModuleType: () => import_debug_node2.registerNgModuleType,
+  \u0275\u0275repeater: () => import_debug_node2.\u0275\u0275repeater,
+  \u0275\u0275repeaterCreate: () => import_debug_node2.\u0275\u0275repeaterCreate,
+  \u0275\u0275repeaterTrackByIdentity: () => import_debug_node2.\u0275\u0275repeaterTrackByIdentity,
+  \u0275\u0275repeaterTrackByIndex: () => import_debug_node2.\u0275\u0275repeaterTrackByIndex,
+  \u0275\u0275replaceMetadata: () => import_debug_node2.\u0275\u0275replaceMetadata,
+  \u0275\u0275resetView: () => import_root_effect_scheduler2.\u0275\u0275resetView,
+  \u0275\u0275resolveBody: () => import_debug_node2.\u0275\u0275resolveBody,
+  \u0275\u0275resolveDocument: () => import_debug_node2.\u0275\u0275resolveDocument,
+  \u0275\u0275resolveWindow: () => import_debug_node2.\u0275\u0275resolveWindow,
+  \u0275\u0275restoreView: () => import_root_effect_scheduler2.\u0275\u0275restoreView,
+  \u0275\u0275sanitizeHtml: () => import_debug_node2.\u0275\u0275sanitizeHtml,
+  \u0275\u0275sanitizeResourceUrl: () => import_debug_node2.\u0275\u0275sanitizeResourceUrl,
+  \u0275\u0275sanitizeScript: () => import_debug_node2.\u0275\u0275sanitizeScript,
+  \u0275\u0275sanitizeStyle: () => import_debug_node2.\u0275\u0275sanitizeStyle,
+  \u0275\u0275sanitizeUrl: () => import_debug_node2.\u0275\u0275sanitizeUrl,
+  \u0275\u0275sanitizeUrlOrResourceUrl: () => import_debug_node2.\u0275\u0275sanitizeUrlOrResourceUrl,
+  \u0275\u0275setComponentScope: () => import_debug_node2.\u0275\u0275setComponentScope,
+  \u0275\u0275setNgModuleScope: () => import_debug_node2.\u0275\u0275setNgModuleScope,
+  \u0275\u0275storeLet: () => import_debug_node2.\u0275\u0275storeLet,
+  \u0275\u0275styleMap: () => import_debug_node2.\u0275\u0275styleMap,
+  \u0275\u0275styleProp: () => import_debug_node2.\u0275\u0275styleProp,
+  \u0275\u0275syntheticHostListener: () => import_debug_node2.\u0275\u0275syntheticHostListener,
+  \u0275\u0275syntheticHostProperty: () => import_debug_node2.\u0275\u0275syntheticHostProperty,
+  \u0275\u0275template: () => import_debug_node2.\u0275\u0275template,
+  \u0275\u0275templateRefExtractor: () => import_debug_node2.\u0275\u0275templateRefExtractor,
+  \u0275\u0275text: () => import_debug_node2.\u0275\u0275text,
+  \u0275\u0275textInterpolate: () => import_debug_node2.\u0275\u0275textInterpolate,
+  \u0275\u0275textInterpolate1: () => import_debug_node2.\u0275\u0275textInterpolate1,
+  \u0275\u0275textInterpolate2: () => import_debug_node2.\u0275\u0275textInterpolate2,
+  \u0275\u0275textInterpolate3: () => import_debug_node2.\u0275\u0275textInterpolate3,
+  \u0275\u0275textInterpolate4: () => import_debug_node2.\u0275\u0275textInterpolate4,
+  \u0275\u0275textInterpolate5: () => import_debug_node2.\u0275\u0275textInterpolate5,
+  \u0275\u0275textInterpolate6: () => import_debug_node2.\u0275\u0275textInterpolate6,
+  \u0275\u0275textInterpolate7: () => import_debug_node2.\u0275\u0275textInterpolate7,
+  \u0275\u0275textInterpolate8: () => import_debug_node2.\u0275\u0275textInterpolate8,
+  \u0275\u0275textInterpolateV: () => import_debug_node2.\u0275\u0275textInterpolateV,
+  \u0275\u0275trustConstantHtml: () => import_debug_node2.\u0275\u0275trustConstantHtml,
+  \u0275\u0275trustConstantResourceUrl: () => import_debug_node2.\u0275\u0275trustConstantResourceUrl,
+  \u0275\u0275twoWayBindingSet: () => import_debug_node2.\u0275\u0275twoWayBindingSet,
+  \u0275\u0275twoWayListener: () => import_debug_node2.\u0275\u0275twoWayListener,
+  \u0275\u0275twoWayProperty: () => import_debug_node2.\u0275\u0275twoWayProperty,
+  \u0275\u0275validateAttribute: () => import_debug_node2.\u0275\u0275validateAttribute,
+  \u0275\u0275viewQuery: () => import_debug_node2.\u0275\u0275viewQuery,
+  \u0275\u0275viewQuerySignal: () => import_debug_node2.\u0275\u0275viewQuerySignal
+});
+module.exports = __toCommonJS(core_exports);
+var import_root_effect_scheduler = require("./root_effect_scheduler.mjs");
+var import_root_effect_scheduler2 = require("./root_effect_scheduler.mjs");
+var import_signal = require("./signal.mjs");
+var import_debug_node = require("./debug_node.mjs");
+var import_debug_node2 = require("./debug_node.mjs");
+var import_resource = require("./resource.mjs");
+var import_resource2 = require("./resource.mjs");
+var import_weak_ref = require("./weak_ref.mjs");
+var import_not_found = require("./not_found.mjs");
+var import_event_dispatch = require("./primitives/event-dispatch.mjs");
+var import_rxjs = require("rxjs");
+var import_signals = require("@angular/core/primitives/signals");
+var import_di = require("@angular/core/primitives/di");
+var import_operators = require("rxjs/operators");
+var import_attribute = require("./attribute.mjs");
+var import_effect = require("./effect.mjs");
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+const REQUIRED_UNSET_VALUE = /* @__PURE__ */ Symbol("InputSignalNode#UNSET");
+const INPUT_SIGNAL_NODE = /* @__PURE__ */ (() => {
+  return __spreadProps(__spreadValues({}, import_signal.SIGNAL_NODE), {
+    transformFn: void 0,
+    applyValueToInputSignal(node, value) {
+      (0, import_signal.signalSetFn)(node, value);
+    }
+  });
+})();
+const \u0275INPUT_SIGNAL_BRAND_WRITE_TYPE = /* @__PURE__ */ Symbol();
+function createInputSignal(initialValue, options) {
+  const node = Object.create(INPUT_SIGNAL_NODE);
+  node.value = initialValue;
+  node.transformFn = options == null ? void 0 : options.transform;
+  function inputValueFn() {
+    var _a;
+    (0, import_signal.producerAccessed)(node);
+    if (node.value === REQUIRED_UNSET_VALUE) {
+      let message = null;
+      if (ngDevMode) {
+        const name = (_a = options == null ? void 0 : options.debugName) != null ? _a : options == null ? void 0 : options.alias;
+        message = `Input${name ? ` "${name}"` : ""} is required but no value is available yet.`;
+      }
+      throw new import_root_effect_scheduler.RuntimeError(-950, message);
+    }
+    return node.value;
+  }
+  inputValueFn[import_signal.SIGNAL] = node;
+  if (ngDevMode) {
+    inputValueFn.toString = () => `[Input Signal: ${inputValueFn()}]`;
+    node.debugName = options == null ? void 0 : options.debugName;
+  }
+  return inputValueFn;
+}
+var FactoryTarget;
+(function(FactoryTarget2) {
+  FactoryTarget2[FactoryTarget2["Directive"] = 0] = "Directive";
+  FactoryTarget2[FactoryTarget2["Component"] = 1] = "Component";
+  FactoryTarget2[FactoryTarget2["Injectable"] = 2] = "Injectable";
+  FactoryTarget2[FactoryTarget2["Pipe"] = 3] = "Pipe";
+  FactoryTarget2[FactoryTarget2["NgModule"] = 4] = "NgModule";
+})(FactoryTarget || (FactoryTarget = {}));
+var R3TemplateDependencyKind;
+(function(R3TemplateDependencyKind2) {
+  R3TemplateDependencyKind2[R3TemplateDependencyKind2["Directive"] = 0] = "Directive";
+  R3TemplateDependencyKind2[R3TemplateDependencyKind2["Pipe"] = 1] = "Pipe";
+  R3TemplateDependencyKind2[R3TemplateDependencyKind2["NgModule"] = 2] = "NgModule";
+})(R3TemplateDependencyKind || (R3TemplateDependencyKind = {}));
+var ViewEncapsulation;
+(function(ViewEncapsulation2) {
+  ViewEncapsulation2[ViewEncapsulation2["Emulated"] = 0] = "Emulated";
+  ViewEncapsulation2[ViewEncapsulation2["None"] = 2] = "None";
+  ViewEncapsulation2[ViewEncapsulation2["ShadowDom"] = 3] = "ShadowDom";
+})(ViewEncapsulation || (ViewEncapsulation = {}));
+/*!
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.dev/license
+ */
+class HostAttributeToken {
+  constructor(attributeName) {
+    __publicField(this, "attributeName");
+    /** @internal */
+    __publicField(this, "__NG_ELEMENT_ID__", () => (0, import_debug_node.\u0275\u0275injectAttribute)(this.attributeName));
+    this.attributeName = attributeName;
+  }
+  toString() {
+    return `HostAttributeToken ${this.attributeName}`;
+  }
+}
+const HOST_TAG_NAME = new import_root_effect_scheduler.InjectionToken(ngDevMode ? "HOST_TAG_NAME" : "");
+HOST_TAG_NAME.__NG_ELEMENT_ID__ = (flags) => {
+  const tNode = (0, import_root_effect_scheduler.getCurrentTNode)();
+  if (tNode === null) {
+    throw new import_root_effect_scheduler.RuntimeError(204, ngDevMode && "HOST_TAG_NAME can only be injected in directives and components during construction time (in a class constructor or as a class field initializer)");
+  }
+  if (tNode.type & 2) {
+    return tNode.value;
+  }
+  if (flags & 8) {
+    return null;
+  }
+  throw new import_root_effect_scheduler.RuntimeError(204, ngDevMode && `HOST_TAG_NAME was used on ${getDevModeNodeName(tNode)} which doesn't have an underlying element in the DOM. This is invalid, and so the dependency should be marked as optional.`);
+};
+function getDevModeNodeName(tNode) {
+  if (tNode.type & 8) {
+    return "an <ng-container>";
+  } else if (tNode.type & 4) {
+    return "an <ng-template>";
+  } else if (tNode.type & 128) {
+    return "an @let declaration";
+  } else {
+    return "a node";
+  }
+}
+function output(opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(output);
+  return new import_resource.OutputEmitterRef();
+}
+function inputFunction(initialValue, opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(input);
+  return createInputSignal(initialValue, opts);
+}
+function inputRequiredFunction(opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(input);
+  return createInputSignal(REQUIRED_UNSET_VALUE, opts);
+}
+const input = (() => {
+  inputFunction.required = inputRequiredFunction;
+  return inputFunction;
+})();
+function viewChildFn(locator, opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(viewChild);
+  return (0, import_debug_node.createSingleResultOptionalQuerySignalFn)(opts);
+}
+function viewChildRequiredFn(locator, opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(viewChild);
+  return (0, import_debug_node.createSingleResultRequiredQuerySignalFn)(opts);
+}
+const viewChild = (() => {
+  viewChildFn.required = viewChildRequiredFn;
+  return viewChildFn;
+})();
+function viewChildren(locator, opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(viewChildren);
+  return (0, import_debug_node.createMultiResultQuerySignalFn)(opts);
+}
+function contentChildFn(locator, opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(contentChild);
+  return (0, import_debug_node.createSingleResultOptionalQuerySignalFn)(opts);
+}
+function contentChildRequiredFn(locator, opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(contentChildren);
+  return (0, import_debug_node.createSingleResultRequiredQuerySignalFn)(opts);
+}
+const contentChild = (() => {
+  contentChildFn.required = contentChildRequiredFn;
+  return contentChildFn;
+})();
+function contentChildren(locator, opts) {
+  return (0, import_debug_node.createMultiResultQuerySignalFn)(opts);
+}
+function createModelSignal(initialValue, opts) {
+  const node = Object.create(INPUT_SIGNAL_NODE);
+  const emitterRef = new import_resource.OutputEmitterRef();
+  node.value = initialValue;
+  function getter() {
+    (0, import_signal.producerAccessed)(node);
+    assertModelSet(node.value);
+    return node.value;
+  }
+  getter[import_signal.SIGNAL] = node;
+  getter.asReadonly = import_root_effect_scheduler.signalAsReadonlyFn.bind(getter);
+  getter.set = (newValue) => {
+    if (!node.equal(node.value, newValue)) {
+      (0, import_signal.signalSetFn)(node, newValue);
+      emitterRef.emit(newValue);
+    }
+  };
+  getter.update = (updateFn) => {
+    assertModelSet(node.value);
+    getter.set(updateFn(node.value));
+  };
+  getter.subscribe = emitterRef.subscribe.bind(emitterRef);
+  getter.destroyRef = emitterRef.destroyRef;
+  if (ngDevMode) {
+    getter.toString = () => `[Model Signal: ${getter()}]`;
+    node.debugName = opts == null ? void 0 : opts.debugName;
+  }
+  return getter;
+}
+function assertModelSet(value) {
+  if (value === REQUIRED_UNSET_VALUE) {
+    throw new import_root_effect_scheduler.RuntimeError(952, ngDevMode && "Model is required but no value is available yet.");
+  }
+}
+function modelFunction(initialValue, opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(model);
+  return createModelSignal(initialValue, opts);
+}
+function modelRequiredFunction(opts) {
+  ngDevMode && (0, import_root_effect_scheduler.assertInInjectionContext)(model);
+  return createModelSignal(REQUIRED_UNSET_VALUE, opts);
+}
+const model = (() => {
+  modelFunction.required = modelRequiredFunction;
+  return modelFunction;
+})();
+const emitDistinctChangesOnlyDefaultValue = true;
+class Query {
+}
+const ContentChildren = (0, import_debug_node.makePropDecorator)("ContentChildren", (selector, opts = {}) => __spreadValues({
+  selector,
+  first: false,
+  isViewQuery: false,
+  descendants: false,
+  emitDistinctChangesOnly: emitDistinctChangesOnlyDefaultValue
+}, opts), Query);
+const ContentChild = (0, import_debug_node.makePropDecorator)("ContentChild", (selector, opts = {}) => __spreadValues({
+  selector,
+  first: true,
+  isViewQuery: false,
+  descendants: true
+}, opts), Query);
+const ViewChildren = (0, import_debug_node.makePropDecorator)("ViewChildren", (selector, opts = {}) => __spreadValues({
+  selector,
+  first: false,
+  isViewQuery: true,
+  descendants: true,
+  emitDistinctChangesOnly: emitDistinctChangesOnlyDefaultValue
+}, opts), Query);
+const ViewChild = (0, import_debug_node.makePropDecorator)("ViewChild", (selector, opts) => __spreadValues({
+  selector,
+  first: true,
+  isViewQuery: true,
+  descendants: true
+}, opts), Query);
+function compileNgModuleFactory(injector, options, moduleType) {
+  ngDevMode && (0, import_root_effect_scheduler.assertNgModuleType)(moduleType);
+  const moduleFactory = new import_debug_node.NgModuleFactory(moduleType);
+  if (typeof ngJitMode !== "undefined" && !ngJitMode) {
+    return Promise.resolve(moduleFactory);
+  }
+  const compilerOptions = injector.get(import_debug_node.COMPILER_OPTIONS, []).concat(options);
+  (0, import_debug_node.setJitOptions)({
+    defaultEncapsulation: _lastDefined(compilerOptions.map((opts) => opts.defaultEncapsulation)),
+    preserveWhitespaces: _lastDefined(compilerOptions.map((opts) => opts.preserveWhitespaces))
+  });
+  if ((0, import_debug_node.isComponentResourceResolutionQueueEmpty)()) {
+    return Promise.resolve(moduleFactory);
+  }
+  const compilerProviders = compilerOptions.flatMap((option) => {
+    var _a;
+    return (_a = option.providers) != null ? _a : [];
+  });
+  if (compilerProviders.length === 0) {
+    return Promise.resolve(moduleFactory);
+  }
+  const compiler = (0, import_debug_node.getCompilerFacade)({
+    usage: 0,
+    kind: "NgModule",
+    type: moduleType
+  });
+  const compilerInjector = import_root_effect_scheduler.Injector.create({ providers: compilerProviders });
+  const resourceLoader = compilerInjector.get(compiler.ResourceLoader);
+  return (0, import_debug_node.resolveComponentResources)((url) => Promise.resolve(resourceLoader.get(url))).then(() => moduleFactory);
+}
+function _lastDefined(args) {
+  for (let i = args.length - 1; i >= 0; i--) {
+    if (args[i] !== void 0) {
+      return args[i];
+    }
+  }
+  return void 0;
+}
+const SCAN_DELAY = 200;
+const OVERSIZED_IMAGE_TOLERANCE = 1200;
+const _ImagePerformanceWarning = class _ImagePerformanceWarning {
+  constructor() {
+    // Map of full image URLs -> original `ngSrc` values.
+    __publicField(this, "window", null);
+    __publicField(this, "observer", null);
+    __publicField(this, "options", (0, import_root_effect_scheduler.inject)(import_debug_node.IMAGE_CONFIG));
+    __publicField(this, "lcpImageUrl");
+  }
+  start() {
+    var _a, _b;
+    if (typeof ngServerMode !== "undefined" && ngServerMode || typeof PerformanceObserver === "undefined" || ((_a = this.options) == null ? void 0 : _a.disableImageSizeWarning) && ((_b = this.options) == null ? void 0 : _b.disableImageLazyLoadWarning)) {
+      return;
+    }
+    this.observer = this.initPerformanceObserver();
+    const doc = (0, import_debug_node.getDocument)();
+    const win = doc.defaultView;
+    if (win) {
+      this.window = win;
+      const waitToScan = () => {
+        setTimeout(this.scanImages.bind(this), SCAN_DELAY);
+      };
+      const setup = () => {
+        var _a2;
+        if (doc.readyState === "complete") {
+          waitToScan();
+        } else {
+          (_a2 = this.window) == null ? void 0 : _a2.addEventListener("load", waitToScan, { once: true });
+        }
+      };
+      if (typeof Zone !== "undefined") {
+        Zone.root.run(() => setup());
+      } else {
+        setup();
+      }
+    }
+  }
+  ngOnDestroy() {
+    var _a;
+    (_a = this.observer) == null ? void 0 : _a.disconnect();
+  }
+  initPerformanceObserver() {
+    if (typeof PerformanceObserver === "undefined") {
+      return null;
+    }
+    const observer = new PerformanceObserver((entryList) => {
+      var _a, _b;
+      const entries = entryList.getEntries();
+      if (entries.length === 0)
+        return;
+      const lcpElement = entries[entries.length - 1];
+      const imgSrc = (_b = (_a = lcpElement.element) == null ? void 0 : _a.src) != null ? _b : "";
+      if (imgSrc.startsWith("data:") || imgSrc.startsWith("blob:"))
+        return;
+      this.lcpImageUrl = imgSrc;
+    });
+    observer.observe({ type: "largest-contentful-paint", buffered: true });
+    return observer;
+  }
+  scanImages() {
+    var _a, _b, _c;
+    const images = (0, import_debug_node.getDocument)().querySelectorAll("img");
+    let lcpElementFound, lcpElementLoadedCorrectly = false;
+    for (let index = 0; index < images.length; index++) {
+      const image = images[index];
+      if (!image) {
+        continue;
+      }
+      if (!((_a = this.options) == null ? void 0 : _a.disableImageSizeWarning)) {
+        if (!image.getAttribute("ng-img") && this.isOversized(image)) {
+          logOversizedImageWarning(image.src);
+        }
+      }
+      if (!((_b = this.options) == null ? void 0 : _b.disableImageLazyLoadWarning) && this.lcpImageUrl) {
+        if (image.src === this.lcpImageUrl) {
+          lcpElementFound = true;
+          if (image.loading !== "lazy" || image.getAttribute("ng-img")) {
+            lcpElementLoadedCorrectly = true;
+          }
+        }
+      }
+    }
+    if (lcpElementFound && !lcpElementLoadedCorrectly && this.lcpImageUrl && !((_c = this.options) == null ? void 0 : _c.disableImageLazyLoadWarning)) {
+      logLazyLCPWarning(this.lcpImageUrl);
+    }
+  }
+  isOversized(image) {
+    if (!this.window) {
+      return false;
+    }
+    const nonOversizedImageExtentions = [
+      // SVG images are vector-based, which means they can scale
+      // to any size without losing quality.
+      ".svg"
+    ];
+    const imageSource = (image.src || "").toLowerCase();
+    if (nonOversizedImageExtentions.some((extension) => imageSource.endsWith(extension))) {
+      return false;
+    }
+    const computedStyle = this.window.getComputedStyle(image);
+    let renderedWidth = parseFloat(computedStyle.getPropertyValue("width"));
+    let renderedHeight = parseFloat(computedStyle.getPropertyValue("height"));
+    const boxSizing = computedStyle.getPropertyValue("box-sizing");
+    const objectFit = computedStyle.getPropertyValue("object-fit");
+    if (objectFit === `cover`) {
+      return false;
+    }
+    if (boxSizing === "border-box") {
+      const paddingTop = computedStyle.getPropertyValue("padding-top");
+      const paddingRight = computedStyle.getPropertyValue("padding-right");
+      const paddingBottom = computedStyle.getPropertyValue("padding-bottom");
+      const paddingLeft = computedStyle.getPropertyValue("padding-left");
+      renderedWidth -= parseFloat(paddingRight) + parseFloat(paddingLeft);
+      renderedHeight -= parseFloat(paddingTop) + parseFloat(paddingBottom);
+    }
+    const intrinsicWidth = image.naturalWidth;
+    const intrinsicHeight = image.naturalHeight;
+    const recommendedWidth = this.window.devicePixelRatio * renderedWidth;
+    const recommendedHeight = this.window.devicePixelRatio * renderedHeight;
+    const oversizedWidth = intrinsicWidth - recommendedWidth >= OVERSIZED_IMAGE_TOLERANCE;
+    const oversizedHeight = intrinsicHeight - recommendedHeight >= OVERSIZED_IMAGE_TOLERANCE;
+    return oversizedWidth || oversizedHeight;
+  }
+};
+__publicField(_ImagePerformanceWarning, "\u0275fac", function ImagePerformanceWarning_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _ImagePerformanceWarning)();
+});
+__publicField(_ImagePerformanceWarning, "\u0275prov", /* @__PURE__ */ (0, import_root_effect_scheduler.\u0275\u0275defineInjectable)({ token: _ImagePerformanceWarning, factory: _ImagePerformanceWarning.\u0275fac, providedIn: "root" }));
+let ImagePerformanceWarning = _ImagePerformanceWarning;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && (0, import_debug_node.setClassMetadata)(ImagePerformanceWarning, [{
+    type: import_debug_node.Injectable,
+    args: [{ providedIn: "root" }]
+  }], null, null);
+})();
+function logLazyLCPWarning(src) {
+  console.warn((0, import_root_effect_scheduler.formatRuntimeError)(-913, `An image with src ${src} is the Largest Contentful Paint (LCP) element but was given a "loading" value of "lazy", which can negatively impact application loading performance. This warning can be addressed by changing the loading value of the LCP image to "eager", or by using the NgOptimizedImage directive's prioritization utilities. For more information about addressing or disabling this warning, see https://angular.dev/errors/NG0913`));
+}
+function logOversizedImageWarning(src) {
+  console.warn((0, import_root_effect_scheduler.formatRuntimeError)(-913, `An image with src ${src} has intrinsic file dimensions much larger than its rendered size. This can negatively impact application loading performance. For more information about addressing or disabling this warning, see https://angular.dev/errors/NG0913`));
+}
+const PLATFORM_DESTROY_LISTENERS = new import_root_effect_scheduler.InjectionToken(ngDevMode ? "PlatformDestroyListeners" : "");
+const ENABLE_ROOT_COMPONENT_BOOTSTRAP = new import_root_effect_scheduler.InjectionToken(ngDevMode ? "ENABLE_ROOT_COMPONENT_BOOTSTRAP" : "");
+function isApplicationBootstrapConfig(config) {
+  return !config.moduleRef;
+}
+function bootstrap(config) {
+  const envInjector = isApplicationBootstrapConfig(config) ? config.r3Injector : config.moduleRef.injector;
+  const ngZone = envInjector.get(import_debug_node.NgZone);
+  return ngZone.run(() => {
+    if (isApplicationBootstrapConfig(config)) {
+      config.r3Injector.resolveInjectorInitializers();
+    } else {
+      config.moduleRef.resolveInjectorInitializers();
+    }
+    const exceptionHandler = envInjector.get(import_root_effect_scheduler.INTERNAL_APPLICATION_ERROR_HANDLER);
+    if (typeof ngDevMode === "undefined" || ngDevMode) {
+      if (envInjector.get(import_root_effect_scheduler.PROVIDED_ZONELESS) && envInjector.get(import_debug_node.PROVIDED_NG_ZONE)) {
+        throw new import_root_effect_scheduler.RuntimeError(408, "Invalid change detection configuration: provideZoneChangeDetection and provideZonelessChangeDetection cannot be used together.");
+      }
+    }
+    let onErrorSubscription;
+    ngZone.runOutsideAngular(() => {
+      onErrorSubscription = ngZone.onError.subscribe({
+        next: exceptionHandler
+      });
+    });
+    if (isApplicationBootstrapConfig(config)) {
+      const destroyListener = () => envInjector.destroy();
+      const onPlatformDestroyListeners = config.platformInjector.get(PLATFORM_DESTROY_LISTENERS);
+      onPlatformDestroyListeners.add(destroyListener);
+      envInjector.onDestroy(() => {
+        onErrorSubscription.unsubscribe();
+        onPlatformDestroyListeners.delete(destroyListener);
+      });
+    } else {
+      const destroyListener = () => config.moduleRef.destroy();
+      const onPlatformDestroyListeners = config.platformInjector.get(PLATFORM_DESTROY_LISTENERS);
+      onPlatformDestroyListeners.add(destroyListener);
+      config.moduleRef.onDestroy(() => {
+        (0, import_debug_node.remove)(config.allPlatformModules, config.moduleRef);
+        onErrorSubscription.unsubscribe();
+        onPlatformDestroyListeners.delete(destroyListener);
+      });
+    }
+    return _callAndReportToErrorHandler(exceptionHandler, ngZone, () => {
+      const pendingTasks = envInjector.get(import_root_effect_scheduler.PendingTasksInternal);
+      const taskId = pendingTasks.add();
+      const initStatus = envInjector.get(import_debug_node.ApplicationInitStatus);
+      initStatus.runInitializers();
+      return initStatus.donePromise.then(() => {
+        const localeId = envInjector.get(import_debug_node.LOCALE_ID, import_debug_node.DEFAULT_LOCALE_ID);
+        (0, import_debug_node.setLocaleId)(localeId || import_debug_node.DEFAULT_LOCALE_ID);
+        const enableRootComponentbootstrap = envInjector.get(ENABLE_ROOT_COMPONENT_BOOTSTRAP, true);
+        if (!enableRootComponentbootstrap) {
+          if (isApplicationBootstrapConfig(config)) {
+            return envInjector.get(import_debug_node.ApplicationRef);
+          }
+          config.allPlatformModules.push(config.moduleRef);
+          return config.moduleRef;
+        }
+        if (typeof ngDevMode === "undefined" || ngDevMode) {
+          const imagePerformanceService = envInjector.get(ImagePerformanceWarning);
+          imagePerformanceService.start();
+        }
+        if (isApplicationBootstrapConfig(config)) {
+          const appRef = envInjector.get(import_debug_node.ApplicationRef);
+          if (config.rootComponent !== void 0) {
+            appRef.bootstrap(config.rootComponent);
+          }
+          return appRef;
+        } else {
+          moduleBootstrapImpl == null ? void 0 : moduleBootstrapImpl(config.moduleRef, config.allPlatformModules);
+          return config.moduleRef;
+        }
+      }).finally(() => void pendingTasks.remove(taskId));
+    });
+  });
+}
+let moduleBootstrapImpl;
+function setModuleBootstrapImpl() {
+  moduleBootstrapImpl = _moduleDoBootstrap;
+}
+function _moduleDoBootstrap(moduleRef, allPlatformModules) {
+  const appRef = moduleRef.injector.get(import_debug_node.ApplicationRef);
+  if (moduleRef._bootstrapComponents.length > 0) {
+    moduleRef._bootstrapComponents.forEach((f) => appRef.bootstrap(f));
+  } else if (moduleRef.instance.ngDoBootstrap) {
+    moduleRef.instance.ngDoBootstrap(appRef);
+  } else {
+    throw new import_root_effect_scheduler.RuntimeError(-403, ngDevMode && `The module ${(0, import_root_effect_scheduler.stringify)(moduleRef.instance.constructor)} was bootstrapped, but it does not declare "@NgModule.bootstrap" components nor a "ngDoBootstrap" method. Please define one of these.`);
+  }
+  allPlatformModules.push(moduleRef);
+}
+function _callAndReportToErrorHandler(errorHandler, ngZone, callback) {
+  try {
+    const result = callback();
+    if ((0, import_debug_node.isPromise)(result)) {
+      return result.catch((e) => {
+        ngZone.runOutsideAngular(() => errorHandler(e));
+        throw e;
+      });
+    }
+    return result;
+  } catch (e) {
+    ngZone.runOutsideAngular(() => errorHandler(e));
+    throw e;
+  }
+}
+const _PlatformRef = class _PlatformRef {
+  /** @internal */
+  constructor(_injector) {
+    __publicField(this, "_injector");
+    __publicField(this, "_modules", []);
+    __publicField(this, "_destroyListeners", []);
+    __publicField(this, "_destroyed", false);
+    this._injector = _injector;
+  }
+  /**
+   * Creates an instance of an `@NgModule` for the given platform.
+   *
+   * @deprecated Passing NgModule factories as the `PlatformRef.bootstrapModuleFactory` function
+   *     argument is deprecated. Use the `PlatformRef.bootstrapModule` API instead.
+   */
+  bootstrapModuleFactory(moduleFactory, options) {
+    const scheduleInRootZone = options == null ? void 0 : options.scheduleInRootZone;
+    const ngZoneFactory = () => (0, import_debug_node.getNgZone)(options == null ? void 0 : options.ngZone, __spreadProps(__spreadValues({}, (0, import_debug_node.getNgZoneOptions)({
+      eventCoalescing: options == null ? void 0 : options.ngZoneEventCoalescing,
+      runCoalescing: options == null ? void 0 : options.ngZoneRunCoalescing
+    })), {
+      scheduleInRootZone
+    }));
+    const ignoreChangesOutsideZone = options == null ? void 0 : options.ignoreChangesOutsideZone;
+    const allAppProviders = [
+      (0, import_debug_node.internalProvideZoneChangeDetection)({
+        ngZoneFactory,
+        ignoreChangesOutsideZone
+      }),
+      { provide: import_root_effect_scheduler.ChangeDetectionScheduler, useExisting: import_debug_node.ChangeDetectionSchedulerImpl },
+      import_root_effect_scheduler.errorHandlerEnvironmentInitializer
+    ];
+    const moduleRef = (0, import_debug_node.createNgModuleRefWithProviders)(moduleFactory.moduleType, this.injector, allAppProviders);
+    setModuleBootstrapImpl();
+    return bootstrap({
+      moduleRef,
+      allPlatformModules: this._modules,
+      platformInjector: this.injector
+    });
+  }
+  /**
+   * Creates an instance of an `@NgModule` for a given platform.
+   *
+   * @usageNotes
+   * ### Simple Example
+   *
+   * ```ts
+   * @NgModule({
+   *   imports: [BrowserModule]
+   * })
+   * class MyModule {}
+   *
+   * let moduleRef = platformBrowser().bootstrapModule(MyModule);
+   * ```
+   *
+   */
+  bootstrapModule(moduleType, compilerOptions = []) {
+    const options = (0, import_debug_node.optionsReducer)({}, compilerOptions);
+    setModuleBootstrapImpl();
+    return compileNgModuleFactory(this.injector, options, moduleType).then((moduleFactory) => this.bootstrapModuleFactory(moduleFactory, options));
+  }
+  /**
+   * Registers a listener to be called when the platform is destroyed.
+   */
+  onDestroy(callback) {
+    this._destroyListeners.push(callback);
+  }
+  /**
+   * Retrieves the platform {@link Injector}, which is the parent injector for
+   * every Angular application on the page and provides singleton providers.
+   */
+  get injector() {
+    return this._injector;
+  }
+  /**
+   * Destroys the current Angular platform and all Angular applications on the page.
+   * Destroys all modules and listeners registered with the platform.
+   */
+  destroy() {
+    if (this._destroyed) {
+      throw new import_root_effect_scheduler.RuntimeError(404, ngDevMode && "The platform has already been destroyed!");
+    }
+    this._modules.slice().forEach((module2) => module2.destroy());
+    this._destroyListeners.forEach((listener) => listener());
+    const destroyListeners = this._injector.get(PLATFORM_DESTROY_LISTENERS, null);
+    if (destroyListeners) {
+      destroyListeners.forEach((listener) => listener());
+      destroyListeners.clear();
+    }
+    this._destroyed = true;
+  }
+  /**
+   * Indicates whether this instance was destroyed.
+   */
+  get destroyed() {
+    return this._destroyed;
+  }
+};
+__publicField(_PlatformRef, "\u0275fac", function PlatformRef_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _PlatformRef)((0, import_root_effect_scheduler.\u0275\u0275inject)(import_root_effect_scheduler.Injector));
+});
+__publicField(_PlatformRef, "\u0275prov", /* @__PURE__ */ (0, import_root_effect_scheduler.\u0275\u0275defineInjectable)({ token: _PlatformRef, factory: _PlatformRef.\u0275fac, providedIn: "platform" }));
+let PlatformRef = _PlatformRef;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && (0, import_debug_node.setClassMetadata)(PlatformRef, [{
+    type: import_debug_node.Injectable,
+    args: [{ providedIn: "platform" }]
+  }], () => [{ type: import_root_effect_scheduler.Injector }], null);
+})();
+let _platformInjector = null;
+function createPlatform(injector) {
+  if (getPlatform()) {
+    throw new import_root_effect_scheduler.RuntimeError(400, ngDevMode && "There can be only one platform. Destroy the previous one to create a new one.");
+  }
+  (0, import_debug_node.publishDefaultGlobalUtils)();
+  (0, import_debug_node.publishSignalConfiguration)();
+  _platformInjector = typeof ngServerMode === "undefined" || !ngServerMode ? injector : null;
+  const platform = injector.get(PlatformRef);
+  runPlatformInitializers(injector);
+  return platform;
+}
+function createPlatformFactory(parentPlatformFactory, name, providers = []) {
+  const desc = `Platform: ${name}`;
+  const marker = new import_root_effect_scheduler.InjectionToken(desc);
+  return (extraProviders = []) => {
+    var _a;
+    let platform = getPlatform();
+    if (!platform) {
+      const platformProviders = [
+        ...providers,
+        ...extraProviders,
+        { provide: marker, useValue: true }
+      ];
+      platform = (_a = parentPlatformFactory == null ? void 0 : parentPlatformFactory(platformProviders)) != null ? _a : createPlatform(createPlatformInjector(platformProviders, desc));
+    }
+    return typeof ngServerMode !== "undefined" && ngServerMode ? platform : assertPlatform(marker);
+  };
+}
+function createPlatformInjector(providers = [], name) {
+  return import_root_effect_scheduler.Injector.create({
+    name,
+    providers: [
+      { provide: import_root_effect_scheduler.INJECTOR_SCOPE, useValue: "platform" },
+      { provide: PLATFORM_DESTROY_LISTENERS, useValue: /* @__PURE__ */ new Set([() => _platformInjector = null]) },
+      ...providers
+    ]
+  });
+}
+function assertPlatform(requiredToken) {
+  const platform = getPlatform();
+  if (!platform) {
+    throw new import_root_effect_scheduler.RuntimeError(-401, ngDevMode && "No platform exists!");
+  }
+  if ((typeof ngDevMode === "undefined" || ngDevMode) && !platform.injector.get(requiredToken, null)) {
+    throw new import_root_effect_scheduler.RuntimeError(400, "A platform with a different configuration has been created. Please destroy it first.");
+  }
+  return platform;
+}
+function getPlatform() {
+  var _a;
+  if (typeof ngServerMode !== "undefined" && ngServerMode) {
+    return null;
+  }
+  return (_a = _platformInjector == null ? void 0 : _platformInjector.get(PlatformRef)) != null ? _a : null;
+}
+function destroyPlatform() {
+  var _a;
+  (_a = getPlatform()) == null ? void 0 : _a.destroy();
+}
+function createOrReusePlatformInjector(providers = []) {
+  if (_platformInjector)
+    return _platformInjector;
+  (0, import_debug_node.publishDefaultGlobalUtils)();
+  const injector = createPlatformInjector(providers);
+  if (typeof ngServerMode === "undefined" || !ngServerMode) {
+    _platformInjector = injector;
+  }
+  (0, import_debug_node.publishSignalConfiguration)();
+  runPlatformInitializers(injector);
+  return injector;
+}
+function providePlatformInitializer(initializerFn) {
+  return (0, import_root_effect_scheduler.makeEnvironmentProviders)([
+    {
+      provide: import_debug_node.PLATFORM_INITIALIZER,
+      useValue: initializerFn,
+      multi: true
+    }
+  ]);
+}
+function runPlatformInitializers(injector) {
+  const inits = injector.get(import_debug_node.PLATFORM_INITIALIZER, null);
+  (0, import_root_effect_scheduler.runInInjectionContext)(injector, () => {
+    inits == null ? void 0 : inits.forEach((init) => init());
+  });
+}
+function exhaustiveCheckNoChangesInterval(interval) {
+  return (0, import_root_effect_scheduler.provideEnvironmentInitializer)(() => {
+    const applicationRef = (0, import_root_effect_scheduler.inject)(import_debug_node.ApplicationRef);
+    const errorHandler = (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.ErrorHandler);
+    const scheduler = (0, import_root_effect_scheduler.inject)(import_debug_node.ChangeDetectionSchedulerImpl);
+    const ngZone = (0, import_root_effect_scheduler.inject)(import_debug_node.NgZone);
+    function scheduleCheckNoChanges() {
+      ngZone.runOutsideAngular(() => {
+        setTimeout(() => {
+          if (applicationRef.destroyed) {
+            return;
+          }
+          if (scheduler.pendingRenderTaskId || scheduler.runningTick) {
+            scheduleCheckNoChanges();
+            return;
+          }
+          for (const view of applicationRef.allViews) {
+            try {
+              (0, import_debug_node.checkNoChangesInternal)(
+                view._lView,
+                true
+                /** exhaustive */
+              );
+            } catch (e) {
+              errorHandler.handleError(e);
+            }
+          }
+          scheduleCheckNoChanges();
+        }, interval);
+      });
+    }
+    scheduleCheckNoChanges();
+  });
+}
+function provideCheckNoChangesConfig(options) {
+  return (0, import_root_effect_scheduler.makeEnvironmentProviders)(typeof ngDevMode === "undefined" || ngDevMode ? [
+    {
+      provide: import_debug_node.UseExhaustiveCheckNoChanges,
+      useValue: options.exhaustive
+    },
+    (options == null ? void 0 : options.interval) !== void 0 ? exhaustiveCheckNoChangesInterval(options.interval) : []
+  ] : []);
+}
+function isDevMode() {
+  return typeof ngDevMode === "undefined" || !!ngDevMode;
+}
+function enableProdMode() {
+  if (typeof ngDevMode === "undefined" || ngDevMode) {
+    import_root_effect_scheduler._global["ngDevMode"] = false;
+  }
+}
+function getModuleFactory(id) {
+  const type = (0, import_debug_node.getRegisteredNgModuleType)(id);
+  if (!type)
+    throw noModuleError(id);
+  return new import_debug_node.NgModuleFactory(type);
+}
+function getNgModuleById(id) {
+  const type = (0, import_debug_node.getRegisteredNgModuleType)(id);
+  if (!type)
+    throw noModuleError(id);
+  return type;
+}
+function noModuleError(id) {
+  return new Error(`No module with ID ${id} loaded`);
+}
+class ChangeDetectorRef {
+}
+/**
+ * @internal
+ * @nocollapse
+ */
+__publicField(ChangeDetectorRef, "__NG_ELEMENT_ID__", injectChangeDetectorRef);
+function injectChangeDetectorRef(flags) {
+  return createViewRef(
+    (0, import_root_effect_scheduler.getCurrentTNode)(),
+    (0, import_root_effect_scheduler.getLView)(),
+    (flags & 16) === 16
+    /* InternalInjectFlags.ForPipe */
+  );
+}
+function createViewRef(tNode, lView, isPipe) {
+  if ((0, import_root_effect_scheduler.isComponentHost)(tNode) && !isPipe) {
+    const componentView = (0, import_root_effect_scheduler.getComponentLViewByIndex)(tNode.index, lView);
+    return new import_debug_node.ViewRef(componentView, componentView);
+  } else if (tNode.type & (3 | 12 | 32 | 128)) {
+    const hostComponentView = lView[import_root_effect_scheduler.DECLARATION_COMPONENT_VIEW];
+    return new import_debug_node.ViewRef(hostComponentView, lView);
+  }
+  return null;
+}
+class ViewRef extends ChangeDetectorRef {
+}
+class EmbeddedViewRef extends ViewRef {
+}
+class DefaultIterableDifferFactory {
+  constructor() {
+  }
+  supports(obj) {
+    return (0, import_debug_node.isListLikeIterable)(obj);
+  }
+  create(trackByFn) {
+    return new DefaultIterableDiffer(trackByFn);
+  }
+}
+const trackByIdentity = (index, item) => item;
+class DefaultIterableDiffer {
+  constructor(trackByFn) {
+    __publicField(this, "length", 0);
+    // TODO: confirm the usage of `collection` as it's unused, readonly and on a non public API.
+    __publicField(this, "collection");
+    // Keeps track of the used records at any point in time (during & across `_check()` calls)
+    __publicField(this, "_linkedRecords", null);
+    // Keeps track of the removed records at any point in time during `_check()` calls.
+    __publicField(this, "_unlinkedRecords", null);
+    __publicField(this, "_previousItHead", null);
+    __publicField(this, "_itHead", null);
+    __publicField(this, "_itTail", null);
+    __publicField(this, "_additionsHead", null);
+    __publicField(this, "_additionsTail", null);
+    __publicField(this, "_movesHead", null);
+    __publicField(this, "_movesTail", null);
+    __publicField(this, "_removalsHead", null);
+    __publicField(this, "_removalsTail", null);
+    // Keeps track of records where custom track by is the same, but item identity has changed
+    __publicField(this, "_identityChangesHead", null);
+    __publicField(this, "_identityChangesTail", null);
+    __publicField(this, "_trackByFn");
+    this._trackByFn = trackByFn || trackByIdentity;
+  }
+  forEachItem(fn) {
+    let record;
+    for (record = this._itHead; record !== null; record = record._next) {
+      fn(record);
+    }
+  }
+  forEachOperation(fn) {
+    let nextIt = this._itHead;
+    let nextRemove = this._removalsHead;
+    let addRemoveOffset = 0;
+    let moveOffsets = null;
+    while (nextIt || nextRemove) {
+      const record = !nextRemove || nextIt && nextIt.currentIndex < getPreviousIndex(nextRemove, addRemoveOffset, moveOffsets) ? nextIt : nextRemove;
+      const adjPreviousIndex = getPreviousIndex(record, addRemoveOffset, moveOffsets);
+      const currentIndex = record.currentIndex;
+      if (record === nextRemove) {
+        addRemoveOffset--;
+        nextRemove = nextRemove._nextRemoved;
+      } else {
+        nextIt = nextIt._next;
+        if (record.previousIndex == null) {
+          addRemoveOffset++;
+        } else {
+          if (!moveOffsets)
+            moveOffsets = [];
+          const localMovePreviousIndex = adjPreviousIndex - addRemoveOffset;
+          const localCurrentIndex = currentIndex - addRemoveOffset;
+          if (localMovePreviousIndex != localCurrentIndex) {
+            for (let i = 0; i < localMovePreviousIndex; i++) {
+              const offset = i < moveOffsets.length ? moveOffsets[i] : moveOffsets[i] = 0;
+              const index = offset + i;
+              if (localCurrentIndex <= index && index < localMovePreviousIndex) {
+                moveOffsets[i] = offset + 1;
+              }
+            }
+            const previousIndex = record.previousIndex;
+            moveOffsets[previousIndex] = localCurrentIndex - localMovePreviousIndex;
+          }
+        }
+      }
+      if (adjPreviousIndex !== currentIndex) {
+        fn(record, adjPreviousIndex, currentIndex);
+      }
+    }
+  }
+  forEachPreviousItem(fn) {
+    let record;
+    for (record = this._previousItHead; record !== null; record = record._nextPrevious) {
+      fn(record);
+    }
+  }
+  forEachAddedItem(fn) {
+    let record;
+    for (record = this._additionsHead; record !== null; record = record._nextAdded) {
+      fn(record);
+    }
+  }
+  forEachMovedItem(fn) {
+    let record;
+    for (record = this._movesHead; record !== null; record = record._nextMoved) {
+      fn(record);
+    }
+  }
+  forEachRemovedItem(fn) {
+    let record;
+    for (record = this._removalsHead; record !== null; record = record._nextRemoved) {
+      fn(record);
+    }
+  }
+  forEachIdentityChange(fn) {
+    let record;
+    for (record = this._identityChangesHead; record !== null; record = record._nextIdentityChange) {
+      fn(record);
+    }
+  }
+  diff(collection) {
+    if (collection == null)
+      collection = [];
+    if (!(0, import_debug_node.isListLikeIterable)(collection)) {
+      throw new import_root_effect_scheduler.RuntimeError(900, ngDevMode && `Error trying to diff '${(0, import_root_effect_scheduler.stringify)(collection)}'. Only arrays and iterables are allowed`);
+    }
+    if (this.check(collection)) {
+      return this;
+    } else {
+      return null;
+    }
+  }
+  onDestroy() {
+  }
+  check(collection) {
+    this._reset();
+    let record = this._itHead;
+    let mayBeDirty = false;
+    let index;
+    let item;
+    let itemTrackBy;
+    if (Array.isArray(collection)) {
+      this.length = collection.length;
+      for (let index2 = 0; index2 < this.length; index2++) {
+        item = collection[index2];
+        itemTrackBy = this._trackByFn(index2, item);
+        if (record === null || !Object.is(record.trackById, itemTrackBy)) {
+          record = this._mismatch(record, item, itemTrackBy, index2);
+          mayBeDirty = true;
+        } else {
+          if (mayBeDirty) {
+            record = this._verifyReinsertion(record, item, itemTrackBy, index2);
+          }
+          if (!Object.is(record.item, item))
+            this._addIdentityChange(record, item);
+        }
+        record = record._next;
+      }
+    } else {
+      index = 0;
+      (0, import_debug_node.iterateListLike)(collection, (item2) => {
+        itemTrackBy = this._trackByFn(index, item2);
+        if (record === null || !Object.is(record.trackById, itemTrackBy)) {
+          record = this._mismatch(record, item2, itemTrackBy, index);
+          mayBeDirty = true;
+        } else {
+          if (mayBeDirty) {
+            record = this._verifyReinsertion(record, item2, itemTrackBy, index);
+          }
+          if (!Object.is(record.item, item2))
+            this._addIdentityChange(record, item2);
+        }
+        record = record._next;
+        index++;
+      });
+      this.length = index;
+    }
+    this._truncate(record);
+    this.collection = collection;
+    return this.isDirty;
+  }
+  /* CollectionChanges is considered dirty if it has any additions, moves, removals, or identity
+   * changes.
+   */
+  get isDirty() {
+    return this._additionsHead !== null || this._movesHead !== null || this._removalsHead !== null || this._identityChangesHead !== null;
+  }
+  /**
+   * Reset the state of the change objects to show no changes. This means set previousKey to
+   * currentKey, and clear all of the queues (additions, moves, removals).
+   * Set the previousIndexes of moved and added items to their currentIndexes
+   * Reset the list of additions, moves and removals
+   *
+   * @internal
+   */
+  _reset() {
+    if (this.isDirty) {
+      let record;
+      for (record = this._previousItHead = this._itHead; record !== null; record = record._next) {
+        record._nextPrevious = record._next;
+      }
+      for (record = this._additionsHead; record !== null; record = record._nextAdded) {
+        record.previousIndex = record.currentIndex;
+      }
+      this._additionsHead = this._additionsTail = null;
+      for (record = this._movesHead; record !== null; record = record._nextMoved) {
+        record.previousIndex = record.currentIndex;
+      }
+      this._movesHead = this._movesTail = null;
+      this._removalsHead = this._removalsTail = null;
+      this._identityChangesHead = this._identityChangesTail = null;
+    }
+  }
+  /**
+   * This is the core function which handles differences between collections.
+   *
+   * - `record` is the record which we saw at this position last time. If null then it is a new
+   *   item.
+   * - `item` is the current item in the collection
+   * - `index` is the position of the item in the collection
+   *
+   * @internal
+   */
+  _mismatch(record, item, itemTrackBy, index) {
+    let previousRecord;
+    if (record === null) {
+      previousRecord = this._itTail;
+    } else {
+      previousRecord = record._prev;
+      this._remove(record);
+    }
+    record = this._unlinkedRecords === null ? null : this._unlinkedRecords.get(itemTrackBy, null);
+    if (record !== null) {
+      if (!Object.is(record.item, item))
+        this._addIdentityChange(record, item);
+      this._reinsertAfter(record, previousRecord, index);
+    } else {
+      record = this._linkedRecords === null ? null : this._linkedRecords.get(itemTrackBy, index);
+      if (record !== null) {
+        if (!Object.is(record.item, item))
+          this._addIdentityChange(record, item);
+        this._moveAfter(record, previousRecord, index);
+      } else {
+        record = this._addAfter(new IterableChangeRecord_(item, itemTrackBy), previousRecord, index);
+      }
+    }
+    return record;
+  }
+  /**
+   * This check is only needed if an array contains duplicates. (Short circuit of nothing dirty)
+   *
+   * Use case: `[a, a]` => `[b, a, a]`
+   *
+   * If we did not have this check then the insertion of `b` would:
+   *   1) evict first `a`
+   *   2) insert `b` at `0` index.
+   *   3) leave `a` at index `1` as is. <-- this is wrong!
+   *   3) reinsert `a` at index 2. <-- this is wrong!
+   *
+   * The correct behavior is:
+   *   1) evict first `a`
+   *   2) insert `b` at `0` index.
+   *   3) reinsert `a` at index 1.
+   *   3) move `a` at from `1` to `2`.
+   *
+   *
+   * Double check that we have not evicted a duplicate item. We need to check if the item type may
+   * have already been removed:
+   * The insertion of b will evict the first 'a'. If we don't reinsert it now it will be reinserted
+   * at the end. Which will show up as the two 'a's switching position. This is incorrect, since a
+   * better way to think of it is as insert of 'b' rather then switch 'a' with 'b' and then add 'a'
+   * at the end.
+   *
+   * @internal
+   */
+  _verifyReinsertion(record, item, itemTrackBy, index) {
+    let reinsertRecord = this._unlinkedRecords === null ? null : this._unlinkedRecords.get(itemTrackBy, null);
+    if (reinsertRecord !== null) {
+      record = this._reinsertAfter(reinsertRecord, record._prev, index);
+    } else if (record.currentIndex != index) {
+      record.currentIndex = index;
+      this._addToMoves(record, index);
+    }
+    return record;
+  }
+  /**
+   * Get rid of any excess {@link IterableChangeRecord_}s from the previous collection
+   *
+   * - `record` The first excess {@link IterableChangeRecord_}.
+   *
+   * @internal
+   */
+  _truncate(record) {
+    while (record !== null) {
+      const nextRecord = record._next;
+      this._addToRemovals(this._unlink(record));
+      record = nextRecord;
+    }
+    if (this._unlinkedRecords !== null) {
+      this._unlinkedRecords.clear();
+    }
+    if (this._additionsTail !== null) {
+      this._additionsTail._nextAdded = null;
+    }
+    if (this._movesTail !== null) {
+      this._movesTail._nextMoved = null;
+    }
+    if (this._itTail !== null) {
+      this._itTail._next = null;
+    }
+    if (this._removalsTail !== null) {
+      this._removalsTail._nextRemoved = null;
+    }
+    if (this._identityChangesTail !== null) {
+      this._identityChangesTail._nextIdentityChange = null;
+    }
+  }
+  /** @internal */
+  _reinsertAfter(record, prevRecord, index) {
+    if (this._unlinkedRecords !== null) {
+      this._unlinkedRecords.remove(record);
+    }
+    const prev = record._prevRemoved;
+    const next = record._nextRemoved;
+    if (prev === null) {
+      this._removalsHead = next;
+    } else {
+      prev._nextRemoved = next;
+    }
+    if (next === null) {
+      this._removalsTail = prev;
+    } else {
+      next._prevRemoved = prev;
+    }
+    this._insertAfter(record, prevRecord, index);
+    this._addToMoves(record, index);
+    return record;
+  }
+  /** @internal */
+  _moveAfter(record, prevRecord, index) {
+    this._unlink(record);
+    this._insertAfter(record, prevRecord, index);
+    this._addToMoves(record, index);
+    return record;
+  }
+  /** @internal */
+  _addAfter(record, prevRecord, index) {
+    this._insertAfter(record, prevRecord, index);
+    if (this._additionsTail === null) {
+      this._additionsTail = this._additionsHead = record;
+    } else {
+      this._additionsTail = this._additionsTail._nextAdded = record;
+    }
+    return record;
+  }
+  /** @internal */
+  _insertAfter(record, prevRecord, index) {
+    const next = prevRecord === null ? this._itHead : prevRecord._next;
+    record._next = next;
+    record._prev = prevRecord;
+    if (next === null) {
+      this._itTail = record;
+    } else {
+      next._prev = record;
+    }
+    if (prevRecord === null) {
+      this._itHead = record;
+    } else {
+      prevRecord._next = record;
+    }
+    if (this._linkedRecords === null) {
+      this._linkedRecords = new _DuplicateMap();
+    }
+    this._linkedRecords.put(record);
+    record.currentIndex = index;
+    return record;
+  }
+  /** @internal */
+  _remove(record) {
+    return this._addToRemovals(this._unlink(record));
+  }
+  /** @internal */
+  _unlink(record) {
+    if (this._linkedRecords !== null) {
+      this._linkedRecords.remove(record);
+    }
+    const prev = record._prev;
+    const next = record._next;
+    if (prev === null) {
+      this._itHead = next;
+    } else {
+      prev._next = next;
+    }
+    if (next === null) {
+      this._itTail = prev;
+    } else {
+      next._prev = prev;
+    }
+    return record;
+  }
+  /** @internal */
+  _addToMoves(record, toIndex) {
+    if (record.previousIndex === toIndex) {
+      return record;
+    }
+    if (this._movesTail === null) {
+      this._movesTail = this._movesHead = record;
+    } else {
+      this._movesTail = this._movesTail._nextMoved = record;
+    }
+    return record;
+  }
+  _addToRemovals(record) {
+    if (this._unlinkedRecords === null) {
+      this._unlinkedRecords = new _DuplicateMap();
+    }
+    this._unlinkedRecords.put(record);
+    record.currentIndex = null;
+    record._nextRemoved = null;
+    if (this._removalsTail === null) {
+      this._removalsTail = this._removalsHead = record;
+      record._prevRemoved = null;
+    } else {
+      record._prevRemoved = this._removalsTail;
+      this._removalsTail = this._removalsTail._nextRemoved = record;
+    }
+    return record;
+  }
+  /** @internal */
+  _addIdentityChange(record, item) {
+    record.item = item;
+    if (this._identityChangesTail === null) {
+      this._identityChangesTail = this._identityChangesHead = record;
+    } else {
+      this._identityChangesTail = this._identityChangesTail._nextIdentityChange = record;
+    }
+    return record;
+  }
+}
+class IterableChangeRecord_ {
+  constructor(item, trackById) {
+    __publicField(this, "item");
+    __publicField(this, "trackById");
+    __publicField(this, "currentIndex", null);
+    __publicField(this, "previousIndex", null);
+    /** @internal */
+    __publicField(this, "_nextPrevious", null);
+    /** @internal */
+    __publicField(this, "_prev", null);
+    /** @internal */
+    __publicField(this, "_next", null);
+    /** @internal */
+    __publicField(this, "_prevDup", null);
+    /** @internal */
+    __publicField(this, "_nextDup", null);
+    /** @internal */
+    __publicField(this, "_prevRemoved", null);
+    /** @internal */
+    __publicField(this, "_nextRemoved", null);
+    /** @internal */
+    __publicField(this, "_nextAdded", null);
+    /** @internal */
+    __publicField(this, "_nextMoved", null);
+    /** @internal */
+    __publicField(this, "_nextIdentityChange", null);
+    this.item = item;
+    this.trackById = trackById;
+  }
+}
+class _DuplicateItemRecordList {
+  constructor() {
+    /** @internal */
+    __publicField(this, "_head", null);
+    /** @internal */
+    __publicField(this, "_tail", null);
+  }
+  /**
+   * Append the record to the list of duplicates.
+   *
+   * Note: by design all records in the list of duplicates hold the same value in record.item.
+   */
+  add(record) {
+    if (this._head === null) {
+      this._head = this._tail = record;
+      record._nextDup = null;
+      record._prevDup = null;
+    } else {
+      this._tail._nextDup = record;
+      record._prevDup = this._tail;
+      record._nextDup = null;
+      this._tail = record;
+    }
+  }
+  // Returns a IterableChangeRecord_ having IterableChangeRecord_.trackById == trackById and
+  // IterableChangeRecord_.currentIndex >= atOrAfterIndex
+  get(trackById, atOrAfterIndex) {
+    let record;
+    for (record = this._head; record !== null; record = record._nextDup) {
+      if ((atOrAfterIndex === null || atOrAfterIndex <= record.currentIndex) && Object.is(record.trackById, trackById)) {
+        return record;
+      }
+    }
+    return null;
+  }
+  /**
+   * Remove one {@link IterableChangeRecord_} from the list of duplicates.
+   *
+   * Returns whether the list of duplicates is empty.
+   */
+  remove(record) {
+    const prev = record._prevDup;
+    const next = record._nextDup;
+    if (prev === null) {
+      this._head = next;
+    } else {
+      prev._nextDup = next;
+    }
+    if (next === null) {
+      this._tail = prev;
+    } else {
+      next._prevDup = prev;
+    }
+    return this._head === null;
+  }
+}
+class _DuplicateMap {
+  constructor() {
+    __publicField(this, "map", /* @__PURE__ */ new Map());
+  }
+  put(record) {
+    const key = record.trackById;
+    let duplicates = this.map.get(key);
+    if (!duplicates) {
+      duplicates = new _DuplicateItemRecordList();
+      this.map.set(key, duplicates);
+    }
+    duplicates.add(record);
+  }
+  /**
+   * Retrieve the `value` using key. Because the IterableChangeRecord_ value may be one which we
+   * have already iterated over, we use the `atOrAfterIndex` to pretend it is not there.
+   *
+   * Use case: `[a, b, c, a, a]` if we are at index `3` which is the second `a` then asking if we
+   * have any more `a`s needs to return the second `a`.
+   */
+  get(trackById, atOrAfterIndex) {
+    const key = trackById;
+    const recordList = this.map.get(key);
+    return recordList ? recordList.get(trackById, atOrAfterIndex) : null;
+  }
+  /**
+   * Removes a {@link IterableChangeRecord_} from the list of duplicates.
+   *
+   * The list of duplicates also is removed from the map if it gets empty.
+   */
+  remove(record) {
+    const key = record.trackById;
+    const recordList = this.map.get(key);
+    if (recordList.remove(record)) {
+      this.map.delete(key);
+    }
+    return record;
+  }
+  get isEmpty() {
+    return this.map.size === 0;
+  }
+  clear() {
+    this.map.clear();
+  }
+}
+function getPreviousIndex(item, addRemoveOffset, moveOffsets) {
+  const previousIndex = item.previousIndex;
+  if (previousIndex === null)
+    return previousIndex;
+  let moveOffset = 0;
+  if (moveOffsets && previousIndex < moveOffsets.length) {
+    moveOffset = moveOffsets[previousIndex];
+  }
+  return previousIndex + addRemoveOffset + moveOffset;
+}
+class DefaultKeyValueDifferFactory {
+  constructor() {
+  }
+  supports(obj) {
+    return obj instanceof Map || (0, import_debug_node.isJsObject)(obj);
+  }
+  create() {
+    return new DefaultKeyValueDiffer();
+  }
+}
+class DefaultKeyValueDiffer {
+  constructor() {
+    __publicField(this, "_records", /* @__PURE__ */ new Map());
+    __publicField(this, "_mapHead", null);
+    // _appendAfter is used in the check loop
+    __publicField(this, "_appendAfter", null);
+    __publicField(this, "_previousMapHead", null);
+    __publicField(this, "_changesHead", null);
+    __publicField(this, "_changesTail", null);
+    __publicField(this, "_additionsHead", null);
+    __publicField(this, "_additionsTail", null);
+    __publicField(this, "_removalsHead", null);
+    __publicField(this, "_removalsTail", null);
+  }
+  get isDirty() {
+    return this._additionsHead !== null || this._changesHead !== null || this._removalsHead !== null;
+  }
+  forEachItem(fn) {
+    let record;
+    for (record = this._mapHead; record !== null; record = record._next) {
+      fn(record);
+    }
+  }
+  forEachPreviousItem(fn) {
+    let record;
+    for (record = this._previousMapHead; record !== null; record = record._nextPrevious) {
+      fn(record);
+    }
+  }
+  forEachChangedItem(fn) {
+    let record;
+    for (record = this._changesHead; record !== null; record = record._nextChanged) {
+      fn(record);
+    }
+  }
+  forEachAddedItem(fn) {
+    let record;
+    for (record = this._additionsHead; record !== null; record = record._nextAdded) {
+      fn(record);
+    }
+  }
+  forEachRemovedItem(fn) {
+    let record;
+    for (record = this._removalsHead; record !== null; record = record._nextRemoved) {
+      fn(record);
+    }
+  }
+  diff(map) {
+    if (!map) {
+      map = /* @__PURE__ */ new Map();
+    } else if (!(map instanceof Map || (0, import_debug_node.isJsObject)(map))) {
+      throw new import_root_effect_scheduler.RuntimeError(900, ngDevMode && `Error trying to diff '${(0, import_root_effect_scheduler.stringify)(map)}'. Only maps and objects are allowed`);
+    }
+    return this.check(map) ? this : null;
+  }
+  onDestroy() {
+  }
+  /**
+   * Check the current state of the map vs the previous.
+   * The algorithm is optimised for when the keys do no change.
+   */
+  check(map) {
+    this._reset();
+    let insertBefore = this._mapHead;
+    this._appendAfter = null;
+    this._forEach(map, (value, key) => {
+      if (insertBefore && insertBefore.key === key) {
+        this._maybeAddToChanges(insertBefore, value);
+        this._appendAfter = insertBefore;
+        insertBefore = insertBefore._next;
+      } else {
+        const record = this._getOrCreateRecordForKey(key, value);
+        insertBefore = this._insertBeforeOrAppend(insertBefore, record);
+      }
+    });
+    if (insertBefore) {
+      if (insertBefore._prev) {
+        insertBefore._prev._next = null;
+      }
+      this._removalsHead = insertBefore;
+      for (let record = insertBefore; record !== null; record = record._nextRemoved) {
+        if (record === this._mapHead) {
+          this._mapHead = null;
+        }
+        this._records.delete(record.key);
+        record._nextRemoved = record._next;
+        record.previousValue = record.currentValue;
+        record.currentValue = null;
+        record._prev = null;
+        record._next = null;
+      }
+    }
+    if (this._changesTail)
+      this._changesTail._nextChanged = null;
+    if (this._additionsTail)
+      this._additionsTail._nextAdded = null;
+    return this.isDirty;
+  }
+  /**
+   * Inserts a record before `before` or append at the end of the list when `before` is null.
+   *
+   * Notes:
+   * - This method appends at `this._appendAfter`,
+   * - This method updates `this._appendAfter`,
+   * - The return value is the new value for the insertion pointer.
+   */
+  _insertBeforeOrAppend(before, record) {
+    if (before) {
+      const prev = before._prev;
+      record._next = before;
+      record._prev = prev;
+      before._prev = record;
+      if (prev) {
+        prev._next = record;
+      }
+      if (before === this._mapHead) {
+        this._mapHead = record;
+      }
+      this._appendAfter = before;
+      return before;
+    }
+    if (this._appendAfter) {
+      this._appendAfter._next = record;
+      record._prev = this._appendAfter;
+    } else {
+      this._mapHead = record;
+    }
+    this._appendAfter = record;
+    return null;
+  }
+  _getOrCreateRecordForKey(key, value) {
+    if (this._records.has(key)) {
+      const record2 = this._records.get(key);
+      this._maybeAddToChanges(record2, value);
+      const prev = record2._prev;
+      const next = record2._next;
+      if (prev) {
+        prev._next = next;
+      }
+      if (next) {
+        next._prev = prev;
+      }
+      record2._next = null;
+      record2._prev = null;
+      return record2;
+    }
+    const record = new KeyValueChangeRecord_(key);
+    this._records.set(key, record);
+    record.currentValue = value;
+    this._addToAdditions(record);
+    return record;
+  }
+  /** @internal */
+  _reset() {
+    if (this.isDirty) {
+      let record;
+      this._previousMapHead = this._mapHead;
+      for (record = this._previousMapHead; record !== null; record = record._next) {
+        record._nextPrevious = record._next;
+      }
+      for (record = this._changesHead; record !== null; record = record._nextChanged) {
+        record.previousValue = record.currentValue;
+      }
+      for (record = this._additionsHead; record != null; record = record._nextAdded) {
+        record.previousValue = record.currentValue;
+      }
+      this._changesHead = this._changesTail = null;
+      this._additionsHead = this._additionsTail = null;
+      this._removalsHead = null;
+    }
+  }
+  // Add the record or a given key to the list of changes only when the value has actually changed
+  _maybeAddToChanges(record, newValue) {
+    if (!Object.is(newValue, record.currentValue)) {
+      record.previousValue = record.currentValue;
+      record.currentValue = newValue;
+      this._addToChanges(record);
+    }
+  }
+  _addToAdditions(record) {
+    if (this._additionsHead === null) {
+      this._additionsHead = this._additionsTail = record;
+    } else {
+      this._additionsTail._nextAdded = record;
+      this._additionsTail = record;
+    }
+  }
+  _addToChanges(record) {
+    if (this._changesHead === null) {
+      this._changesHead = this._changesTail = record;
+    } else {
+      this._changesTail._nextChanged = record;
+      this._changesTail = record;
+    }
+  }
+  /** @internal */
+  _forEach(obj, fn) {
+    if (obj instanceof Map) {
+      obj.forEach(fn);
+    } else {
+      Object.keys(obj).forEach((k) => fn(obj[k], k));
+    }
+  }
+}
+class KeyValueChangeRecord_ {
+  constructor(key) {
+    __publicField(this, "key");
+    __publicField(this, "previousValue", null);
+    __publicField(this, "currentValue", null);
+    /** @internal */
+    __publicField(this, "_nextPrevious", null);
+    /** @internal */
+    __publicField(this, "_next", null);
+    /** @internal */
+    __publicField(this, "_prev", null);
+    /** @internal */
+    __publicField(this, "_nextAdded", null);
+    /** @internal */
+    __publicField(this, "_nextRemoved", null);
+    /** @internal */
+    __publicField(this, "_nextChanged", null);
+    this.key = key;
+  }
+}
+function defaultIterableDiffersFactory() {
+  return new IterableDiffers([new DefaultIterableDifferFactory()]);
+}
+const _IterableDiffers = class _IterableDiffers {
+  constructor(factories) {
+    __publicField(this, "factories");
+    this.factories = factories;
+  }
+  static create(factories, parent) {
+    if (parent != null) {
+      const copied = parent.factories.slice();
+      factories = factories.concat(copied);
+    }
+    return new _IterableDiffers(factories);
+  }
+  /**
+   * Takes an array of {@link IterableDifferFactory} and returns a provider used to extend the
+   * inherited {@link IterableDiffers} instance with the provided factories and return a new
+   * {@link IterableDiffers} instance.
+   *
+   * @usageNotes
+   * ### Example
+   *
+   * The following example shows how to extend an existing list of factories,
+   * which will only be applied to the injector for this component and its children.
+   * This step is all that's required to make a new {@link IterableDiffer} available.
+   *
+   * ```ts
+   * @Component({
+   *   viewProviders: [
+   *     IterableDiffers.extend([new ImmutableListDiffer()])
+   *   ]
+   * })
+   * ```
+   */
+  static extend(factories) {
+    return {
+      provide: _IterableDiffers,
+      useFactory: () => {
+        const parent = (0, import_root_effect_scheduler.inject)(_IterableDiffers, { optional: true, skipSelf: true });
+        return _IterableDiffers.create(factories, parent || defaultIterableDiffersFactory());
+      }
+    };
+  }
+  find(iterable) {
+    const factory = this.factories.find((f) => f.supports(iterable));
+    if (factory != null) {
+      return factory;
+    } else {
+      throw new import_root_effect_scheduler.RuntimeError(901, ngDevMode && `Cannot find a differ supporting object '${iterable}' of type '${getTypeNameForDebugging(iterable)}'`);
+    }
+  }
+};
+/** @nocollapse */
+__publicField(
+  _IterableDiffers,
+  "\u0275prov",
+  /** @pureOrBreakMyCode */
+  /* @__PURE__ */ (0, import_root_effect_scheduler.\u0275\u0275defineInjectable)({
+    token: _IterableDiffers,
+    providedIn: "root",
+    factory: defaultIterableDiffersFactory
+  })
+);
+let IterableDiffers = _IterableDiffers;
+function getTypeNameForDebugging(type) {
+  return type["name"] || typeof type;
+}
+function defaultKeyValueDiffersFactory() {
+  return new KeyValueDiffers([new DefaultKeyValueDifferFactory()]);
+}
+const _KeyValueDiffers = class _KeyValueDiffers {
+  constructor(factories) {
+    __publicField(this, "factories");
+    this.factories = factories;
+  }
+  static create(factories, parent) {
+    if (parent) {
+      const copied = parent.factories.slice();
+      factories = factories.concat(copied);
+    }
+    return new _KeyValueDiffers(factories);
+  }
+  /**
+   * Takes an array of {@link KeyValueDifferFactory} and returns a provider used to extend the
+   * inherited {@link KeyValueDiffers} instance with the provided factories and return a new
+   * {@link KeyValueDiffers} instance.
+   *
+   * @usageNotes
+   * ### Example
+   *
+   * The following example shows how to extend an existing list of factories,
+   * which will only be applied to the injector for this component and its children.
+   * This step is all that's required to make a new {@link KeyValueDiffer} available.
+   *
+   * ```ts
+   * @Component({
+   *   viewProviders: [
+   *     KeyValueDiffers.extend([new ImmutableMapDiffer()])
+   *   ]
+   * })
+   * ```
+   */
+  static extend(factories) {
+    return {
+      provide: _KeyValueDiffers,
+      useFactory: () => {
+        const parent = (0, import_root_effect_scheduler.inject)(_KeyValueDiffers, { optional: true, skipSelf: true });
+        return _KeyValueDiffers.create(factories, parent || defaultKeyValueDiffersFactory());
+      }
+    };
+  }
+  find(kv) {
+    const factory = this.factories.find((f) => f.supports(kv));
+    if (factory) {
+      return factory;
+    }
+    throw new import_root_effect_scheduler.RuntimeError(901, ngDevMode && `Cannot find a differ supporting object '${kv}'`);
+  }
+};
+/** @nocollapse */
+__publicField(
+  _KeyValueDiffers,
+  "\u0275prov",
+  /** @pureOrBreakMyCode */
+  /* @__PURE__ */ (0, import_root_effect_scheduler.\u0275\u0275defineInjectable)({
+    token: _KeyValueDiffers,
+    providedIn: "root",
+    factory: defaultKeyValueDiffersFactory
+  })
+);
+let KeyValueDiffers = _KeyValueDiffers;
+const keyValDiff = [new DefaultKeyValueDifferFactory()];
+const iterableDiff = [new DefaultIterableDifferFactory()];
+const defaultIterableDiffers = new IterableDiffers(iterableDiff);
+const defaultKeyValueDiffers = new KeyValueDiffers(keyValDiff);
+const platformCore = createPlatformFactory(null, "core", []);
+const _ApplicationModule = class _ApplicationModule {
+  // Inject ApplicationRef to make it eager...
+  constructor(appRef) {
+  }
+};
+__publicField(_ApplicationModule, "\u0275fac", function ApplicationModule_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _ApplicationModule)((0, import_root_effect_scheduler.\u0275\u0275inject)(import_debug_node.ApplicationRef));
+});
+__publicField(_ApplicationModule, "\u0275mod", /* @__PURE__ */ (0, import_debug_node.\u0275\u0275defineNgModule)({ type: _ApplicationModule }));
+__publicField(_ApplicationModule, "\u0275inj", /* @__PURE__ */ (0, import_root_effect_scheduler.\u0275\u0275defineInjector)({}));
+let ApplicationModule = _ApplicationModule;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && (0, import_debug_node.setClassMetadata)(ApplicationModule, [{
+    type: import_debug_node.NgModule
+  }], () => [{ type: import_debug_node.ApplicationRef }], null);
+})();
+function internalCreateApplication(config) {
+  var _a;
+  const { rootComponent, appProviders, platformProviders, platformRef } = config;
+  (0, import_debug_node.profiler)(
+    8
+    /* ProfilerEvent.BootstrapApplicationStart */
+  );
+  if (typeof ngServerMode !== "undefined" && ngServerMode && !platformRef) {
+    throw new import_root_effect_scheduler.RuntimeError(-401, ngDevMode && "Missing Platform: This may be due to using `bootstrapApplication` on the server without passing a `BootstrapContext`. Please make sure that `bootstrapApplication` is called with a `context` argument.");
+  }
+  try {
+    const platformInjector = (_a = platformRef == null ? void 0 : platformRef.injector) != null ? _a : createOrReusePlatformInjector(platformProviders);
+    if ((typeof ngDevMode === "undefined" || ngDevMode) && rootComponent !== void 0) {
+      (0, import_debug_node.assertStandaloneComponentType)(rootComponent);
+    }
+    const allAppProviders = [
+      (0, import_debug_node.internalProvideZoneChangeDetection)({}),
+      { provide: import_root_effect_scheduler.ChangeDetectionScheduler, useExisting: import_debug_node.ChangeDetectionSchedulerImpl },
+      import_root_effect_scheduler.errorHandlerEnvironmentInitializer,
+      ...appProviders || []
+    ];
+    const adapter = new import_debug_node.EnvironmentNgModuleRefAdapter({
+      providers: allAppProviders,
+      parent: platformInjector,
+      debugName: typeof ngDevMode === "undefined" || ngDevMode ? "Environment Injector" : "",
+      // We skip environment initializers because we need to run them inside the NgZone, which
+      // happens after we get the NgZone instance from the Injector.
+      runEnvironmentInitializers: false
+    });
+    return bootstrap({
+      r3Injector: adapter.injector,
+      platformInjector,
+      rootComponent
+    });
+  } catch (e) {
+    return Promise.reject(e);
+  } finally {
+    (0, import_debug_node.profiler)(
+      9
+      /* ProfilerEvent.BootstrapApplicationEnd */
+    );
+  }
+}
+const appsWithEventReplay = /* @__PURE__ */ new WeakSet();
+const EAGER_CONTENT_LISTENERS_KEY = "";
+let blockEventQueue = [];
+function shouldEnableEventReplay(injector) {
+  return injector.get(import_debug_node.IS_EVENT_REPLAY_ENABLED, import_debug_node.EVENT_REPLAY_ENABLED_DEFAULT);
+}
+function withEventReplay() {
+  const providers = [
+    {
+      provide: import_debug_node.IS_EVENT_REPLAY_ENABLED,
+      useFactory: () => {
+        var _a;
+        let isEnabled = true;
+        if (typeof ngServerMode === "undefined" || !ngServerMode) {
+          const appId = (0, import_root_effect_scheduler.inject)(import_debug_node.APP_ID);
+          isEnabled = !!((_a = window._ejsas) == null ? void 0 : _a[appId]);
+        }
+        if (isEnabled) {
+          (0, import_debug_node.performanceMarkFeature)("NgEventReplay");
+        }
+        return isEnabled;
+      }
+    }
+  ];
+  if (typeof ngServerMode === "undefined" || !ngServerMode) {
+    providers.push({
+      provide: import_root_effect_scheduler.ENVIRONMENT_INITIALIZER,
+      useValue: () => {
+        const appRef = (0, import_root_effect_scheduler.inject)(import_debug_node.ApplicationRef);
+        const { injector } = appRef;
+        if (!appsWithEventReplay.has(appRef)) {
+          const jsActionMap = (0, import_root_effect_scheduler.inject)(import_debug_node.JSACTION_BLOCK_ELEMENT_MAP);
+          if (shouldEnableEventReplay(injector)) {
+            (0, import_debug_node.enableStashEventListenerImpl)();
+            const appId = injector.get(import_debug_node.APP_ID);
+            const clearStashFn = (0, import_debug_node.setStashFn)(appId, (rEl, eventName, listenerFn) => {
+              if (rEl.nodeType !== Node.ELEMENT_NODE)
+                return;
+              (0, import_debug_node.sharedStashFunction)(rEl, eventName, listenerFn);
+              (0, import_debug_node.sharedMapFunction)(rEl, jsActionMap);
+            });
+            appRef.onDestroy(clearStashFn);
+          }
+        }
+      },
+      multi: true
+    }, {
+      provide: import_debug_node.APP_BOOTSTRAP_LISTENER,
+      useFactory: () => {
+        const appRef = (0, import_root_effect_scheduler.inject)(import_debug_node.ApplicationRef);
+        const { injector } = appRef;
+        return () => {
+          if (!shouldEnableEventReplay(injector) || appsWithEventReplay.has(appRef)) {
+            return;
+          }
+          appsWithEventReplay.add(appRef);
+          const appId = injector.get(import_debug_node.APP_ID);
+          appRef.onDestroy(() => {
+            appsWithEventReplay.delete(appRef);
+            if (typeof ngServerMode !== "undefined" && !ngServerMode) {
+              (0, import_event_dispatch.clearAppScopedEarlyEventContract)(appId);
+            }
+          });
+          appRef.whenStable().then(() => {
+            var _a;
+            if (appRef.destroyed) {
+              return;
+            }
+            const eventContractDetails = injector.get(import_debug_node.JSACTION_EVENT_CONTRACT);
+            initEventReplay(eventContractDetails, injector);
+            const jsActionMap = injector.get(import_debug_node.JSACTION_BLOCK_ELEMENT_MAP);
+            (_a = jsActionMap.get(EAGER_CONTENT_LISTENERS_KEY)) == null ? void 0 : _a.forEach(import_debug_node.removeListeners);
+            jsActionMap.delete(EAGER_CONTENT_LISTENERS_KEY);
+            const eventContract = eventContractDetails.instance;
+            if ((0, import_debug_node.isIncrementalHydrationEnabled)(injector)) {
+              appRef.onDestroy(() => eventContract.cleanUp());
+            } else {
+              eventContract.cleanUp();
+            }
+          });
+        };
+      },
+      multi: true
+    });
+  }
+  return providers;
+}
+const initEventReplay = (eventDelegation, injector) => {
+  const appId = injector.get(import_debug_node.APP_ID);
+  const earlyJsactionData = window._ejsas[appId];
+  const eventContract = eventDelegation.instance = new import_event_dispatch.EventContract(new import_event_dispatch.EventContractContainer(earlyJsactionData.c));
+  for (const et of earlyJsactionData.et) {
+    eventContract.addEvent(et);
+  }
+  for (const et of earlyJsactionData.etc) {
+    eventContract.addEvent(et);
+  }
+  const eventInfos = (0, import_event_dispatch.getAppScopedQueuedEventInfos)(appId);
+  eventContract.replayEarlyEventInfos(eventInfos);
+  (0, import_event_dispatch.clearAppScopedEarlyEventContract)(appId);
+  const dispatcher = new import_event_dispatch.EventDispatcher((event) => {
+    invokeRegisteredReplayListeners(injector, event, event.currentTarget);
+  });
+  (0, import_event_dispatch.registerDispatcher)(eventContract, dispatcher);
+};
+function collectDomEventsInfo(tView, lView, eventTypesToReplay) {
+  const domEventsInfo = /* @__PURE__ */ new Map();
+  const lCleanup = lView[import_root_effect_scheduler.CLEANUP];
+  const tCleanup = tView.cleanup;
+  if (!tCleanup || !lCleanup) {
+    return domEventsInfo;
+  }
+  for (let i = 0; i < tCleanup.length; ) {
+    const firstParam = tCleanup[i++];
+    const secondParam = tCleanup[i++];
+    if (typeof firstParam !== "string") {
+      continue;
+    }
+    const eventType = firstParam;
+    if (!(0, import_event_dispatch.isEarlyEventType)(eventType)) {
+      continue;
+    }
+    if ((0, import_event_dispatch.isCaptureEventType)(eventType)) {
+      eventTypesToReplay.capture.add(eventType);
+    } else {
+      eventTypesToReplay.regular.add(eventType);
+    }
+    const listenerElement = (0, import_root_effect_scheduler.unwrapRNode)(lView[secondParam]);
+    i++;
+    const useCaptureOrIndx = tCleanup[i++];
+    const isDomEvent = typeof useCaptureOrIndx === "boolean" || useCaptureOrIndx >= 0;
+    if (!isDomEvent) {
+      continue;
+    }
+    if (!domEventsInfo.has(listenerElement)) {
+      domEventsInfo.set(listenerElement, [eventType]);
+    } else {
+      domEventsInfo.get(listenerElement).push(eventType);
+    }
+  }
+  return domEventsInfo;
+}
+function invokeRegisteredReplayListeners(injector, event, currentTarget) {
+  var _a;
+  const blockName = (_a = currentTarget && currentTarget.getAttribute(import_debug_node.DEFER_BLOCK_SSR_ID_ATTRIBUTE)) != null ? _a : "";
+  if (/d\d+/.test(blockName)) {
+    hydrateAndInvokeBlockListeners(blockName, injector, event, currentTarget);
+  } else if (event.eventPhase === import_event_dispatch.EventPhase.REPLAY) {
+    (0, import_debug_node.invokeListeners)(event, currentTarget);
+  }
+}
+function hydrateAndInvokeBlockListeners(blockName, injector, event, currentTarget) {
+  blockEventQueue.push({ event, currentTarget });
+  (0, import_debug_node.triggerHydrationFromBlockName)(injector, blockName, replayQueuedBlockEvents);
+}
+function replayQueuedBlockEvents(hydratedBlocks) {
+  const queue = [...blockEventQueue];
+  const hydrated = new Set(hydratedBlocks);
+  blockEventQueue = [];
+  for (let { event, currentTarget } of queue) {
+    const blockName = currentTarget.getAttribute(import_debug_node.DEFER_BLOCK_SSR_ID_ATTRIBUTE);
+    if (hydrated.has(blockName)) {
+      (0, import_debug_node.invokeListeners)(event, currentTarget);
+    } else {
+      blockEventQueue.push({ event, currentTarget });
+    }
+  }
+}
+class SerializedViewCollection {
+  constructor() {
+    __publicField(this, "views", []);
+    __publicField(this, "indexByContent", /* @__PURE__ */ new Map());
+  }
+  add(serializedView) {
+    const viewAsString = JSON.stringify(serializedView);
+    if (!this.indexByContent.has(viewAsString)) {
+      const index = this.views.length;
+      this.views.push(serializedView);
+      this.indexByContent.set(viewAsString, index);
+      return index;
+    }
+    return this.indexByContent.get(viewAsString);
+  }
+  getAll() {
+    return this.views;
+  }
+}
+let tViewSsrId = 0;
+function getSsrId(tView) {
+  if (!tView.ssrId) {
+    tView.ssrId = `t${tViewSsrId++}`;
+  }
+  return tView.ssrId;
+}
+function calcNumRootNodes(tView, lView, tNode) {
+  const rootNodes = [];
+  (0, import_debug_node.collectNativeNodes)(tView, lView, tNode, rootNodes);
+  return rootNodes.length;
+}
+function calcNumRootNodesInLContainer(lContainer) {
+  const rootNodes = [];
+  (0, import_debug_node.collectNativeNodesInLContainer)(lContainer, rootNodes);
+  return rootNodes.length;
+}
+function annotateComponentLViewForHydration(lView, context, injector) {
+  const hostElement = lView[import_root_effect_scheduler.HOST];
+  if (hostElement && !hostElement.hasAttribute(import_debug_node.SKIP_HYDRATION_ATTR_NAME)) {
+    return annotateHostElementForHydration(hostElement, lView, null, context);
+  }
+  return null;
+}
+function annotateLContainerForHydration(lContainer, context, injector) {
+  const componentLView = (0, import_root_effect_scheduler.unwrapLView)(lContainer[import_root_effect_scheduler.HOST]);
+  const componentLViewNghIndex = annotateComponentLViewForHydration(componentLView, context);
+  if (componentLViewNghIndex === null) {
+    return;
+  }
+  const hostElement = (0, import_root_effect_scheduler.unwrapRNode)(componentLView[import_root_effect_scheduler.HOST]);
+  const rootLView = lContainer[import_root_effect_scheduler.PARENT];
+  const rootLViewNghIndex = annotateHostElementForHydration(hostElement, rootLView, null, context);
+  const renderer = componentLView[import_root_effect_scheduler.RENDERER];
+  const finalIndex = `${componentLViewNghIndex}|${rootLViewNghIndex}`;
+  renderer.setAttribute(hostElement, import_debug_node.NGH_ATTR_NAME, finalIndex);
+}
+function annotateForHydration(appRef, doc) {
+  const injector = appRef.injector;
+  const isI18nHydrationEnabledVal = (0, import_debug_node.isI18nHydrationEnabled)(injector);
+  const isIncrementalHydrationEnabledVal = (0, import_debug_node.isIncrementalHydrationEnabled)(injector);
+  const serializedViewCollection = new SerializedViewCollection();
+  const corruptedTextNodes = /* @__PURE__ */ new Map();
+  const viewRefs = appRef._views;
+  const shouldReplayEvents = injector.get(import_debug_node.IS_EVENT_REPLAY_ENABLED, import_debug_node.EVENT_REPLAY_ENABLED_DEFAULT);
+  const eventTypesToReplay = {
+    regular: /* @__PURE__ */ new Set(),
+    capture: /* @__PURE__ */ new Set()
+  };
+  const deferBlocks = /* @__PURE__ */ new Map();
+  const appId = appRef.injector.get(import_debug_node.APP_ID);
+  for (const viewRef of viewRefs) {
+    const lNode = (0, import_debug_node.getLNodeForHydration)(viewRef);
+    if (lNode !== null) {
+      const context = {
+        serializedViewCollection,
+        corruptedTextNodes,
+        isI18nHydrationEnabled: isI18nHydrationEnabledVal,
+        isIncrementalHydrationEnabled: isIncrementalHydrationEnabledVal,
+        i18nChildren: /* @__PURE__ */ new Map(),
+        eventTypesToReplay,
+        shouldReplayEvents,
+        appId,
+        deferBlocks
+      };
+      if ((0, import_root_effect_scheduler.isLContainer)(lNode)) {
+        annotateLContainerForHydration(lNode, context);
+      } else {
+        annotateComponentLViewForHydration(lNode, context);
+      }
+      insertCorruptedTextNodeMarkers(corruptedTextNodes, doc);
+    }
+  }
+  const serializedViews = serializedViewCollection.getAll();
+  const transferState = injector.get(import_debug_node.TransferState);
+  transferState.set(import_debug_node.NGH_DATA_KEY, serializedViews);
+  if (deferBlocks.size > 0) {
+    const blocks = {};
+    for (const [id, info] of deferBlocks.entries()) {
+      blocks[id] = info;
+    }
+    transferState.set(import_debug_node.NGH_DEFER_BLOCKS_KEY, blocks);
+  }
+  return eventTypesToReplay;
+}
+function serializeLContainer(lContainer, tNode, lView, parentDeferBlockId, context) {
+  var _a, _b;
+  const views = [];
+  let lastViewAsString = "";
+  for (let i = import_root_effect_scheduler.CONTAINER_HEADER_OFFSET; i < lContainer.length; i++) {
+    let childLView = lContainer[i];
+    let template;
+    let numRootNodes;
+    let serializedView;
+    if ((0, import_root_effect_scheduler.isRootView)(childLView)) {
+      childLView = childLView[import_root_effect_scheduler.HEADER_OFFSET];
+      if ((0, import_root_effect_scheduler.isLContainer)(childLView)) {
+        numRootNodes = calcNumRootNodesInLContainer(childLView) + 1;
+        annotateLContainerForHydration(childLView, context);
+        const componentLView = (0, import_root_effect_scheduler.unwrapLView)(childLView[import_root_effect_scheduler.HOST]);
+        serializedView = {
+          [import_debug_node.TEMPLATE_ID]: componentLView[import_root_effect_scheduler.TVIEW].ssrId,
+          [import_debug_node.NUM_ROOT_NODES]: numRootNodes
+        };
+      }
+    }
+    if (!serializedView) {
+      const childTView = childLView[import_root_effect_scheduler.TVIEW];
+      if (childTView.type === 1) {
+        template = childTView.ssrId;
+        numRootNodes = 1;
+      } else {
+        template = getSsrId(childTView);
+        numRootNodes = calcNumRootNodes(childTView, childLView, childTView.firstChild);
+      }
+      serializedView = {
+        [import_debug_node.TEMPLATE_ID]: template,
+        [import_debug_node.NUM_ROOT_NODES]: numRootNodes
+      };
+      let isHydrateNeverBlock = false;
+      if ((0, import_debug_node.isDeferBlock)(lView[import_root_effect_scheduler.TVIEW], tNode)) {
+        const lDetails = (0, import_debug_node.getLDeferBlockDetails)(lView, tNode);
+        const tDetails = (0, import_debug_node.getTDeferBlockDetails)(lView[import_root_effect_scheduler.TVIEW], tNode);
+        if (context.isIncrementalHydrationEnabled && tDetails.hydrateTriggers !== null) {
+          const deferBlockId = `d${context.deferBlocks.size}`;
+          if (tDetails.hydrateTriggers.has(
+            7
+            /* DeferBlockTrigger.Never */
+          )) {
+            isHydrateNeverBlock = true;
+          }
+          let rootNodes = [];
+          (0, import_debug_node.collectNativeNodesInLContainer)(lContainer, rootNodes);
+          const deferBlockInfo = {
+            [import_debug_node.NUM_ROOT_NODES]: rootNodes.length,
+            [import_debug_node.DEFER_BLOCK_STATE]: lDetails[import_debug_node.DEFER_BLOCK_STATE$1]
+          };
+          const serializedTriggers = serializeHydrateTriggers(tDetails.hydrateTriggers);
+          if (serializedTriggers.length > 0) {
+            deferBlockInfo[import_debug_node.DEFER_HYDRATE_TRIGGERS] = serializedTriggers;
+          }
+          if (parentDeferBlockId !== null) {
+            deferBlockInfo[import_debug_node.DEFER_PARENT_BLOCK_ID] = parentDeferBlockId;
+          }
+          context.deferBlocks.set(deferBlockId, deferBlockInfo);
+          const node = (0, import_root_effect_scheduler.unwrapRNode)(lContainer);
+          if (node !== void 0) {
+            if (node.nodeType === Node.COMMENT_NODE) {
+              annotateDeferBlockAnchorForHydration(node, deferBlockId);
+            }
+          } else {
+            ngDevMode && (0, import_debug_node.validateNodeExists)(node, childLView, tNode);
+            ngDevMode && (0, import_debug_node.validateMatchingNode)(node, Node.COMMENT_NODE, null, childLView, tNode, true);
+            annotateDeferBlockAnchorForHydration(node, deferBlockId);
+          }
+          if (!isHydrateNeverBlock) {
+            annotateDeferBlockRootNodesWithJsAction(tDetails, rootNodes, deferBlockId, context);
+          }
+          parentDeferBlockId = deferBlockId;
+          serializedView[import_debug_node.DEFER_BLOCK_ID] = deferBlockId;
+        }
+        serializedView[import_debug_node.DEFER_BLOCK_STATE] = lDetails[import_debug_node.DEFER_BLOCK_STATE$1];
+      }
+      if (!isHydrateNeverBlock) {
+        Object.assign(serializedView, serializeLView(lContainer[i], parentDeferBlockId, context));
+      }
+    }
+    const currentViewAsString = JSON.stringify(serializedView);
+    if (views.length > 0 && currentViewAsString === lastViewAsString) {
+      const previousView = views[views.length - 1];
+      (_b = previousView[_a = import_debug_node.MULTIPLIER]) != null ? _b : previousView[_a] = 1;
+      previousView[import_debug_node.MULTIPLIER]++;
+    } else {
+      lastViewAsString = currentViewAsString;
+      views.push(serializedView);
+    }
+  }
+  return views;
+}
+function serializeHydrateTriggers(triggerMap) {
+  const serializableDeferBlockTrigger = /* @__PURE__ */ new Set([
+    0,
+    1,
+    2,
+    5
+  ]);
+  let triggers = [];
+  for (let [trigger, details] of triggerMap) {
+    if (serializableDeferBlockTrigger.has(trigger)) {
+      if (details === null) {
+        triggers.push(trigger);
+      } else {
+        triggers.push({ trigger, delay: details.delay });
+      }
+    }
+  }
+  return triggers;
+}
+function appendSerializedNodePath(ngh, tNode, lView, excludedParentNodes) {
+  var _a, _b, _c, _d;
+  const noOffsetIndex = tNode.index - import_root_effect_scheduler.HEADER_OFFSET;
+  (_b = ngh[_a = import_debug_node.NODES]) != null ? _b : ngh[_a] = {};
+  (_d = (_c = ngh[import_debug_node.NODES])[noOffsetIndex]) != null ? _d : _c[noOffsetIndex] = (0, import_debug_node.calcPathForNode)(tNode, lView, excludedParentNodes);
+}
+function appendDisconnectedNodeIndex(ngh, tNodeOrNoOffsetIndex) {
+  var _a, _b;
+  const noOffsetIndex = typeof tNodeOrNoOffsetIndex === "number" ? tNodeOrNoOffsetIndex : tNodeOrNoOffsetIndex.index - import_root_effect_scheduler.HEADER_OFFSET;
+  (_b = ngh[_a = import_debug_node.DISCONNECTED_NODES]) != null ? _b : ngh[_a] = [];
+  if (!ngh[import_debug_node.DISCONNECTED_NODES].includes(noOffsetIndex)) {
+    ngh[import_debug_node.DISCONNECTED_NODES].push(noOffsetIndex);
+  }
+}
+function serializeLView(lView, parentDeferBlockId = null, context) {
+  var _a, _b, _c, _d, _e, _f, _g, _h;
+  const ngh = {};
+  const tView = lView[import_root_effect_scheduler.TVIEW];
+  const i18nChildren = (0, import_debug_node.getOrComputeI18nChildren)(tView, context);
+  const nativeElementsToEventTypes = context.shouldReplayEvents ? collectDomEventsInfo(tView, lView, context.eventTypesToReplay) : null;
+  for (let i = import_root_effect_scheduler.HEADER_OFFSET; i < tView.bindingStartIndex; i++) {
+    const tNode = tView.data[i];
+    const noOffsetIndex = i - import_root_effect_scheduler.HEADER_OFFSET;
+    const i18nData = (0, import_debug_node.trySerializeI18nBlock)(lView, i, context);
+    if (i18nData) {
+      (_b = ngh[_a = import_debug_node.I18N_DATA]) != null ? _b : ngh[_a] = {};
+      ngh[import_debug_node.I18N_DATA][noOffsetIndex] = i18nData.caseQueue;
+      for (const nodeNoOffsetIndex of i18nData.disconnectedNodes) {
+        appendDisconnectedNodeIndex(ngh, nodeNoOffsetIndex);
+      }
+      for (const nodeNoOffsetIndex of i18nData.disjointNodes) {
+        const tNode2 = tView.data[nodeNoOffsetIndex + import_root_effect_scheduler.HEADER_OFFSET];
+        ngDevMode && (0, import_root_effect_scheduler.assertTNode)(tNode2);
+        appendSerializedNodePath(ngh, tNode2, lView, i18nChildren);
+      }
+      continue;
+    }
+    if (!(0, import_debug_node.isTNodeShape)(tNode)) {
+      continue;
+    }
+    if ((0, import_debug_node.isDetachedByI18n)(tNode)) {
+      continue;
+    }
+    if ((0, import_root_effect_scheduler.isLContainer)(lView[i]) && tNode.tView) {
+      (_d = ngh[_c = import_debug_node.TEMPLATES]) != null ? _d : ngh[_c] = {};
+      ngh[import_debug_node.TEMPLATES][noOffsetIndex] = getSsrId(tNode.tView);
+    }
+    if ((0, import_debug_node.isDisconnectedNode)(tNode, lView) && isContentProjectedNode(tNode)) {
+      appendDisconnectedNodeIndex(ngh, tNode);
+      continue;
+    }
+    if (Array.isArray(tNode.projection)) {
+      for (const projectionHeadTNode of tNode.projection) {
+        if (!projectionHeadTNode)
+          continue;
+        if (!Array.isArray(projectionHeadTNode)) {
+          if (!(0, import_root_effect_scheduler.isProjectionTNode)(projectionHeadTNode) && !(0, import_debug_node.isInSkipHydrationBlock)(projectionHeadTNode)) {
+            if ((0, import_debug_node.isDisconnectedNode)(projectionHeadTNode, lView)) {
+              appendDisconnectedNodeIndex(ngh, projectionHeadTNode);
+            } else {
+              appendSerializedNodePath(ngh, projectionHeadTNode, lView, i18nChildren);
+            }
+          }
+        } else {
+          throw (0, import_debug_node.unsupportedProjectionOfDomNodes)((0, import_root_effect_scheduler.unwrapRNode)(lView[i]));
+        }
+      }
+    }
+    conditionallyAnnotateNodePath(ngh, tNode, lView, i18nChildren);
+    if ((0, import_root_effect_scheduler.isLContainer)(lView[i])) {
+      const hostNode = lView[i][import_root_effect_scheduler.HOST];
+      if (Array.isArray(hostNode)) {
+        const targetNode = (0, import_root_effect_scheduler.unwrapRNode)(hostNode);
+        if (!targetNode.hasAttribute(import_debug_node.SKIP_HYDRATION_ATTR_NAME)) {
+          annotateHostElementForHydration(targetNode, hostNode, parentDeferBlockId, context);
+        }
+      }
+      (_f = ngh[_e = import_debug_node.CONTAINERS]) != null ? _f : ngh[_e] = {};
+      ngh[import_debug_node.CONTAINERS][noOffsetIndex] = serializeLContainer(lView[i], tNode, lView, parentDeferBlockId, context);
+    } else if (Array.isArray(lView[i]) && !(0, import_debug_node.isLetDeclaration)(tNode)) {
+      const targetNode = (0, import_root_effect_scheduler.unwrapRNode)(lView[i][import_root_effect_scheduler.HOST]);
+      if (!targetNode.hasAttribute(import_debug_node.SKIP_HYDRATION_ATTR_NAME)) {
+        annotateHostElementForHydration(targetNode, lView[i], parentDeferBlockId, context);
+      }
+    } else {
+      if (tNode.type & 8) {
+        (_h = ngh[_g = import_debug_node.ELEMENT_CONTAINERS]) != null ? _h : ngh[_g] = {};
+        ngh[import_debug_node.ELEMENT_CONTAINERS][noOffsetIndex] = calcNumRootNodes(tView, lView, tNode.child);
+      } else if (tNode.type & (16 | 128)) {
+        let nextTNode = tNode.next;
+        while (nextTNode !== null && nextTNode.type & (16 | 128)) {
+          nextTNode = nextTNode.next;
+        }
+        if (nextTNode && !(0, import_debug_node.isInSkipHydrationBlock)(nextTNode)) {
+          appendSerializedNodePath(ngh, nextTNode, lView, i18nChildren);
+        }
+      } else if (tNode.type & 1) {
+        const rNode = (0, import_root_effect_scheduler.unwrapRNode)(lView[i]);
+        (0, import_debug_node.processTextNodeBeforeSerialization)(context, rNode);
+      }
+    }
+    if (nativeElementsToEventTypes && tNode.type & 2) {
+      const nativeElement = (0, import_root_effect_scheduler.unwrapRNode)(lView[i]);
+      if (nativeElementsToEventTypes.has(nativeElement)) {
+        (0, import_debug_node.setJSActionAttributes)(nativeElement, nativeElementsToEventTypes.get(nativeElement), parentDeferBlockId);
+      }
+    }
+  }
+  return ngh;
+}
+function conditionallyAnnotateNodePath(ngh, tNode, lView, excludedParentNodes) {
+  if ((0, import_root_effect_scheduler.isProjectionTNode)(tNode)) {
+    return;
+  }
+  if (tNode.projectionNext && tNode.projectionNext !== tNode.next && !(0, import_debug_node.isInSkipHydrationBlock)(tNode.projectionNext)) {
+    appendSerializedNodePath(ngh, tNode.projectionNext, lView, excludedParentNodes);
+  }
+  if (tNode.prev === null && tNode.parent !== null && (0, import_debug_node.isDisconnectedNode)(tNode.parent, lView) && !(0, import_debug_node.isDisconnectedNode)(tNode, lView)) {
+    appendSerializedNodePath(ngh, tNode, lView, excludedParentNodes);
+  }
+}
+function componentUsesShadowDomEncapsulation(lView) {
+  var _a;
+  const instance = lView[import_root_effect_scheduler.CONTEXT];
+  return (instance == null ? void 0 : instance.constructor) ? ((_a = (0, import_root_effect_scheduler.getComponentDef)(instance.constructor)) == null ? void 0 : _a.encapsulation) === import_debug_node.ViewEncapsulation.ShadowDom : false;
+}
+function annotateHostElementForHydration(element, lView, parentDeferBlockId, context) {
+  const renderer = lView[import_root_effect_scheduler.RENDERER];
+  if ((0, import_root_effect_scheduler.hasI18n)(lView) && !(0, import_debug_node.isI18nHydrationSupportEnabled)() || componentUsesShadowDomEncapsulation(lView)) {
+    renderer.setAttribute(element, import_debug_node.SKIP_HYDRATION_ATTR_NAME, "");
+    return null;
+  } else {
+    const ngh = serializeLView(lView, parentDeferBlockId, context);
+    const index = context.serializedViewCollection.add(ngh);
+    renderer.setAttribute(element, import_debug_node.NGH_ATTR_NAME, index.toString());
+    return index;
+  }
+}
+function annotateDeferBlockAnchorForHydration(comment, deferBlockId) {
+  comment.textContent = `ngh=${deferBlockId}`;
+}
+function insertCorruptedTextNodeMarkers(corruptedTextNodes, doc) {
+  for (const [textNode, marker] of corruptedTextNodes) {
+    textNode.after(doc.createComment(marker));
+  }
+}
+function isContentProjectedNode(tNode) {
+  let currentTNode = tNode;
+  while (currentTNode != null) {
+    if ((0, import_root_effect_scheduler.isComponentHost)(currentTNode)) {
+      return true;
+    }
+    currentTNode = currentTNode.parent;
+  }
+  return false;
+}
+function annotateDeferBlockRootNodesWithJsAction(tDetails, rootNodes, parentDeferBlockId, context) {
+  const actionList = (0, import_debug_node.convertHydrateTriggersToJsAction)(tDetails.hydrateTriggers);
+  for (let et of actionList) {
+    context.eventTypesToReplay.regular.add(et);
+  }
+  if (actionList.length > 0) {
+    const elementNodes = rootNodes.filter((rn) => rn.nodeType === Node.ELEMENT_NODE);
+    for (let rNode of elementNodes) {
+      (0, import_debug_node.setJSActionAttributes)(rNode, actionList, parentDeferBlockId);
+    }
+  }
+}
+let isHydrationSupportEnabled = false;
+let isI18nHydrationRuntimeSupportEnabled = false;
+let isIncrementalHydrationRuntimeSupportEnabled = false;
+const APPLICATION_IS_STABLE_TIMEOUT = 1e4;
+function enableHydrationRuntimeSupport() {
+  if (!isHydrationSupportEnabled) {
+    isHydrationSupportEnabled = true;
+    (0, import_debug_node.enableRetrieveHydrationInfoImpl)();
+    (0, import_debug_node.enableLocateOrCreateElementNodeImpl)();
+    (0, import_debug_node.enableLocateOrCreateTextNodeImpl)();
+    (0, import_debug_node.enableLocateOrCreateElementContainerNodeImpl)();
+    (0, import_debug_node.enableLocateOrCreateContainerAnchorImpl)();
+    (0, import_debug_node.enableLocateOrCreateContainerRefImpl)();
+    (0, import_debug_node.enableFindMatchingDehydratedViewImpl)();
+    (0, import_debug_node.enableApplyRootElementTransformImpl)();
+  }
+}
+function enableI18nHydrationRuntimeSupport() {
+  if (!isI18nHydrationRuntimeSupportEnabled) {
+    isI18nHydrationRuntimeSupportEnabled = true;
+    (0, import_debug_node.enableLocateOrCreateI18nNodeImpl)();
+    (0, import_debug_node.enablePrepareI18nBlockForHydrationImpl)();
+    (0, import_debug_node.enableClaimDehydratedIcuCaseImpl)();
+  }
+}
+function enableIncrementalHydrationRuntimeSupport() {
+  if (!isIncrementalHydrationRuntimeSupportEnabled) {
+    isIncrementalHydrationRuntimeSupportEnabled = true;
+    (0, import_debug_node.enableRetrieveDeferBlockDataImpl)();
+  }
+}
+function printHydrationStats(injector) {
+  const console2 = injector.get(import_debug_node.Console);
+  const message = `Angular hydrated ${ngDevMode.hydratedComponents} component(s) and ${ngDevMode.hydratedNodes} node(s), ${ngDevMode.componentsSkippedHydration} component(s) were skipped. ` + ((0, import_debug_node.isIncrementalHydrationEnabled)(injector) ? `${ngDevMode.deferBlocksWithIncrementalHydration} defer block(s) were configured to use incremental hydration. ` : "") + `Learn more at https://angular.dev/guide/hydration.`;
+  console2.log(message);
+}
+function whenStableWithTimeout(appRef) {
+  const whenStablePromise = appRef.whenStable();
+  if (typeof ngDevMode !== "undefined" && ngDevMode) {
+    const timeoutTime = APPLICATION_IS_STABLE_TIMEOUT;
+    const console2 = appRef.injector.get(import_debug_node.Console);
+    const ngZone = appRef.injector.get(import_debug_node.NgZone);
+    const timeoutId = ngZone.runOutsideAngular(() => {
+      return setTimeout(() => logWarningOnStableTimedout(timeoutTime, console2), timeoutTime);
+    });
+    whenStablePromise.finally(() => clearTimeout(timeoutId));
+  }
+  return whenStablePromise;
+}
+const CLIENT_RENDER_MODE_FLAG = "ngcm";
+function isClientRenderModeEnabled() {
+  const doc = (0, import_debug_node.getDocument)();
+  return (typeof ngServerMode === "undefined" || !ngServerMode) && doc.body.hasAttribute(CLIENT_RENDER_MODE_FLAG);
+}
+function withDomHydration() {
+  const providers = [
+    {
+      provide: import_debug_node.IS_HYDRATION_DOM_REUSE_ENABLED,
+      useFactory: () => {
+        let isEnabled = true;
+        if (typeof ngServerMode === "undefined" || !ngServerMode) {
+          const transferState = (0, import_root_effect_scheduler.inject)(import_debug_node.TransferState, { optional: true });
+          isEnabled = !!(transferState == null ? void 0 : transferState.get(import_debug_node.NGH_DATA_KEY, null));
+        }
+        if (isEnabled) {
+          (0, import_debug_node.performanceMarkFeature)("NgHydration");
+        }
+        return isEnabled;
+      }
+    },
+    {
+      provide: import_root_effect_scheduler.ENVIRONMENT_INITIALIZER,
+      useValue: () => {
+        (0, import_debug_node.setIsI18nHydrationSupportEnabled)(false);
+        if (typeof ngServerMode !== "undefined" && ngServerMode) {
+          return;
+        }
+        if ((0, import_root_effect_scheduler.inject)(import_debug_node.IS_HYDRATION_DOM_REUSE_ENABLED)) {
+          (0, import_debug_node.verifySsrContentsIntegrity)((0, import_debug_node.getDocument)());
+          enableHydrationRuntimeSupport();
+        } else if (typeof ngDevMode !== "undefined" && ngDevMode && !isClientRenderModeEnabled()) {
+          const console2 = (0, import_root_effect_scheduler.inject)(import_debug_node.Console);
+          const message = (0, import_root_effect_scheduler.formatRuntimeError)(-505, "Angular hydration was requested on the client, but there was no serialized information present in the server response, thus hydration was not enabled. Make sure the `provideClientHydration()` is included into the list of providers in the server part of the application configuration.");
+          console2.warn(message);
+        }
+      },
+      multi: true
+    }
+  ];
+  if (typeof ngServerMode === "undefined" || !ngServerMode) {
+    providers.push({
+      provide: import_debug_node.PRESERVE_HOST_CONTENT,
+      useFactory: () => {
+        return (0, import_root_effect_scheduler.inject)(import_debug_node.IS_HYDRATION_DOM_REUSE_ENABLED);
+      }
+    }, {
+      provide: import_debug_node.APP_BOOTSTRAP_LISTENER,
+      useFactory: () => {
+        if ((0, import_root_effect_scheduler.inject)(import_debug_node.IS_HYDRATION_DOM_REUSE_ENABLED)) {
+          const appRef = (0, import_root_effect_scheduler.inject)(import_debug_node.ApplicationRef);
+          return () => {
+            whenStableWithTimeout(appRef).then(() => {
+              if (appRef.destroyed) {
+                return;
+              }
+              (0, import_debug_node.cleanupDehydratedViews)(appRef);
+              if (typeof ngDevMode !== "undefined" && ngDevMode) {
+                (0, import_debug_node.countBlocksSkippedByHydration)(appRef.injector);
+                printHydrationStats(appRef.injector);
+              }
+            });
+          };
+        }
+        return () => {
+        };
+      },
+      multi: true
+    });
+  }
+  return (0, import_root_effect_scheduler.makeEnvironmentProviders)(providers);
+}
+function withI18nSupport() {
+  return [
+    {
+      provide: import_debug_node.IS_I18N_HYDRATION_ENABLED,
+      useFactory: () => (0, import_root_effect_scheduler.inject)(import_debug_node.IS_HYDRATION_DOM_REUSE_ENABLED)
+    },
+    {
+      provide: import_root_effect_scheduler.ENVIRONMENT_INITIALIZER,
+      useValue: () => {
+        if ((0, import_root_effect_scheduler.inject)(import_debug_node.IS_HYDRATION_DOM_REUSE_ENABLED)) {
+          enableI18nHydrationRuntimeSupport();
+          (0, import_debug_node.setIsI18nHydrationSupportEnabled)(true);
+          (0, import_debug_node.performanceMarkFeature)("NgI18nHydration");
+        }
+      },
+      multi: true
+    }
+  ];
+}
+function withIncrementalHydration() {
+  const providers = [
+    withEventReplay(),
+    {
+      provide: import_debug_node.IS_INCREMENTAL_HYDRATION_ENABLED,
+      useValue: true
+    },
+    {
+      provide: import_debug_node.DEHYDRATED_BLOCK_REGISTRY,
+      useClass: import_debug_node.DehydratedBlockRegistry
+    },
+    {
+      provide: import_root_effect_scheduler.ENVIRONMENT_INITIALIZER,
+      useValue: () => {
+        enableIncrementalHydrationRuntimeSupport();
+        (0, import_debug_node.performanceMarkFeature)("NgIncrementalHydration");
+      },
+      multi: true
+    }
+  ];
+  if (typeof ngServerMode === "undefined" || !ngServerMode) {
+    providers.push({
+      provide: import_debug_node.APP_BOOTSTRAP_LISTENER,
+      useFactory: () => {
+        const injector = (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.Injector);
+        const doc = (0, import_debug_node.getDocument)();
+        return () => {
+          const deferBlockData = (0, import_debug_node.processBlockData)(injector);
+          const commentsByBlockId = (0, import_debug_node.gatherDeferBlocksCommentNodes)(doc, doc.body);
+          (0, import_debug_node.processAndInitTriggers)(injector, deferBlockData, commentsByBlockId);
+          (0, import_debug_node.appendDeferBlocksToJSActionMap)(doc, injector);
+        };
+      },
+      multi: true
+    });
+  }
+  return providers;
+}
+function logWarningOnStableTimedout(time, console2) {
+  const message = `Angular hydration expected the ApplicationRef.isStable() to emit \`true\`, but it didn't happen within ${time}ms. Angular hydration logic depends on the application becoming stable as a signal to complete hydration process.`;
+  console2.warn((0, import_root_effect_scheduler.formatRuntimeError)(-506, message));
+}
+function booleanAttribute(value) {
+  return typeof value === "boolean" ? value : value != null && value !== "false";
+}
+function numberAttribute(value, fallbackValue = NaN) {
+  const isNumberValue = !isNaN(parseFloat(value)) && !isNaN(Number(value));
+  return isNumberValue ? Number(value) : fallbackValue;
+}
+const PERFORMANCE_MARK_PREFIX = "\u{1F170}\uFE0F";
+let enablePerfLogging = false;
+function startMeasuring(label) {
+  if (!enablePerfLogging) {
+    return;
+  }
+  const { startLabel } = labels(label);
+  performance.mark(startLabel);
+}
+function stopMeasuring(label) {
+  if (!enablePerfLogging) {
+    return;
+  }
+  const { startLabel, labelName, endLabel } = labels(label);
+  performance.mark(endLabel);
+  performance.measure(labelName, startLabel, endLabel);
+  performance.clearMarks(startLabel);
+  performance.clearMarks(endLabel);
+}
+function labels(label) {
+  const labelName = `${PERFORMANCE_MARK_PREFIX}:${label}`;
+  return {
+    labelName,
+    startLabel: `start:${labelName}`,
+    endLabel: `end:${labelName}`
+  };
+}
+let warningLogged = false;
+function enableProfiling2() {
+  if (!warningLogged && (typeof performance === "undefined" || !performance.mark || !performance.measure)) {
+    warningLogged = true;
+    console.warn("Performance API is not supported on this platform");
+    return;
+  }
+  enablePerfLogging = true;
+}
+function disableProfiling() {
+  enablePerfLogging = false;
+}
+/*!
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.dev/license
+ */
+function getClosestComponentName(node) {
+  var _a;
+  let currentNode = node;
+  while (currentNode) {
+    const lView = (0, import_debug_node.readPatchedLView)(currentNode);
+    if (lView !== null) {
+      for (let i = import_root_effect_scheduler.HEADER_OFFSET; i < lView.length; i++) {
+        const current = lView[i];
+        if (!(0, import_root_effect_scheduler.isLView)(current) && !(0, import_root_effect_scheduler.isLContainer)(current) || current[import_root_effect_scheduler.HOST] !== currentNode) {
+          continue;
+        }
+        const tView = lView[import_root_effect_scheduler.TVIEW];
+        const tNode = (0, import_root_effect_scheduler.getTNode)(tView, i);
+        if ((0, import_root_effect_scheduler.isComponentHost)(tNode)) {
+          const def = tView.data[tNode.directiveStart + tNode.componentOffset];
+          const name = ((_a = def.debugInfo) == null ? void 0 : _a.className) || def.type.name;
+          if (name) {
+            return name;
+          } else {
+            break;
+          }
+        }
+      }
+    }
+    currentNode = currentNode.parentNode;
+  }
+  return null;
+}
+/*!
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.dev/license
+ */
+function \u0275assertType(value) {
+}
+function \u0275\u0275ngDeclareDirective(decl) {
+  const compiler = (0, import_debug_node.getCompilerFacade)({
+    usage: 1,
+    kind: "directive",
+    type: decl.type
+  });
+  return compiler.compileDirectiveDeclaration(import_debug_node.angularCoreEnv, `ng:///${decl.type.name}/\u0275fac.js`, decl);
+}
+function \u0275\u0275ngDeclareClassMetadata(decl) {
+  var _a, _b;
+  (0, import_debug_node.setClassMetadata)(decl.type, decl.decorators, (_a = decl.ctorParameters) != null ? _a : null, (_b = decl.propDecorators) != null ? _b : null);
+}
+function \u0275\u0275ngDeclareClassMetadataAsync(decl) {
+  (0, import_debug_node.setClassMetadataAsync)(decl.type, decl.resolveDeferredDeps, (...types) => {
+    const meta = decl.resolveMetadata(...types);
+    (0, import_debug_node.setClassMetadata)(decl.type, meta.decorators, meta.ctorParameters, meta.propDecorators);
+  });
+}
+function \u0275\u0275ngDeclareComponent(decl) {
+  const compiler = (0, import_debug_node.getCompilerFacade)({
+    usage: 1,
+    kind: "component",
+    type: decl.type
+  });
+  return compiler.compileComponentDeclaration(import_debug_node.angularCoreEnv, `ng:///${decl.type.name}/\u0275cmp.js`, decl);
+}
+function \u0275\u0275ngDeclareFactory(decl) {
+  const compiler = (0, import_debug_node.getCompilerFacade)({
+    usage: 1,
+    kind: getFactoryKind(decl.target),
+    type: decl.type
+  });
+  return compiler.compileFactoryDeclaration(import_debug_node.angularCoreEnv, `ng:///${decl.type.name}/\u0275fac.js`, decl);
+}
+function getFactoryKind(target) {
+  switch (target) {
+    case FactoryTarget.Directive:
+      return "directive";
+    case FactoryTarget.Component:
+      return "component";
+    case FactoryTarget.Injectable:
+      return "injectable";
+    case FactoryTarget.Pipe:
+      return "pipe";
+    case FactoryTarget.NgModule:
+      return "NgModule";
+  }
+}
+function \u0275\u0275ngDeclareInjectable(decl) {
+  const compiler = (0, import_debug_node.getCompilerFacade)({
+    usage: 1,
+    kind: "injectable",
+    type: decl.type
+  });
+  return compiler.compileInjectableDeclaration(import_debug_node.angularCoreEnv, `ng:///${decl.type.name}/\u0275prov.js`, decl);
+}
+function \u0275\u0275ngDeclareInjector(decl) {
+  const compiler = (0, import_debug_node.getCompilerFacade)({
+    usage: 1,
+    kind: "NgModule",
+    type: decl.type
+  });
+  return compiler.compileInjectorDeclaration(import_debug_node.angularCoreEnv, `ng:///${decl.type.name}/\u0275inj.js`, decl);
+}
+function \u0275\u0275ngDeclareNgModule(decl) {
+  const compiler = (0, import_debug_node.getCompilerFacade)({
+    usage: 1,
+    kind: "NgModule",
+    type: decl.type
+  });
+  return compiler.compileNgModuleDeclaration(import_debug_node.angularCoreEnv, `ng:///${decl.type.name}/\u0275mod.js`, decl);
+}
+function \u0275\u0275ngDeclarePipe(decl) {
+  const compiler = (0, import_debug_node.getCompilerFacade)({
+    usage: 1,
+    kind: "pipe",
+    type: decl.type
+  });
+  return compiler.compilePipeDeclaration(import_debug_node.angularCoreEnv, `ng:///${decl.type.name}/\u0275pipe.js`, decl);
+}
+const NOT_SET = /* @__PURE__ */ Symbol("NOT_SET");
+const EMPTY_CLEANUP_SET = /* @__PURE__ */ new Set();
+const AFTER_RENDER_PHASE_EFFECT_NODE = /* @__PURE__ */ (() => __spreadProps(__spreadValues({}, import_signal.SIGNAL_NODE), {
+  consumerIsAlwaysLive: true,
+  consumerAllowSignalWrites: true,
+  value: NOT_SET,
+  cleanup: null,
+  /** Called when the effect becomes dirty */
+  consumerMarkedDirty() {
+    if (this.sequence.impl.executing) {
+      if (this.sequence.lastPhase === null || this.sequence.lastPhase < this.phase) {
+        return;
+      }
+      this.sequence.erroredOrDestroyed = true;
+    }
+    this.sequence.scheduler.notify(
+      7
+      /* NotificationSource.RenderHook */
+    );
+  },
+  phaseFn(previousValue) {
+    var _a, _b;
+    this.sequence.lastPhase = this.phase;
+    if (!this.dirty) {
+      return this.signal;
+    }
+    this.dirty = false;
+    if (this.value !== NOT_SET && !(0, import_signal.consumerPollProducersForChange)(this)) {
+      return this.signal;
+    }
+    try {
+      for (const cleanupFn of (_a = this.cleanup) != null ? _a : EMPTY_CLEANUP_SET) {
+        cleanupFn();
+      }
+    } finally {
+      (_b = this.cleanup) == null ? void 0 : _b.clear();
+    }
+    const args = [];
+    if (previousValue !== void 0) {
+      args.push(previousValue);
+    }
+    args.push(this.registerCleanupFn);
+    const prevConsumer = (0, import_signal.consumerBeforeComputation)(this);
+    let newValue;
+    try {
+      newValue = this.userFn.apply(null, args);
+    } finally {
+      (0, import_signal.consumerAfterComputation)(this, prevConsumer);
+    }
+    if (this.value === NOT_SET || !this.equal(this.value, newValue)) {
+      this.value = newValue;
+      this.version++;
+    }
+    return this.signal;
+  }
+}))();
+class AfterRenderEffectSequence extends import_debug_node.AfterRenderSequence {
+  constructor(impl, effectHooks, view, scheduler, injector, snapshot = null) {
+    super(impl, [void 0, void 0, void 0, void 0], view, false, injector.get(import_root_effect_scheduler.DestroyRef), snapshot);
+    __publicField(this, "scheduler");
+    /**
+     * While this sequence is executing, this tracks the last phase which was called by the
+     * `afterRender` machinery.
+     *
+     * When a phase effect is marked dirty, this is used to determine whether it's already run or not.
+     */
+    __publicField(this, "lastPhase", null);
+    /**
+     * The reactive nodes for each phase, if a phase effect is defined for that phase.
+     *
+     * These are initialized to `undefined` but set in the constructor.
+     */
+    __publicField(this, "nodes", [void 0, void 0, void 0, void 0]);
+    this.scheduler = scheduler;
+    for (const phase of import_debug_node.AFTER_RENDER_PHASES) {
+      const effectHook = effectHooks[phase];
+      if (effectHook === void 0) {
+        continue;
+      }
+      const node = Object.create(AFTER_RENDER_PHASE_EFFECT_NODE);
+      node.sequence = this;
+      node.phase = phase;
+      node.userFn = effectHook;
+      node.dirty = true;
+      node.signal = (() => {
+        (0, import_signal.producerAccessed)(node);
+        return node.value;
+      });
+      node.signal[import_signal.SIGNAL] = node;
+      node.registerCleanupFn = (fn) => {
+        var _a;
+        return ((_a = node.cleanup) != null ? _a : node.cleanup = /* @__PURE__ */ new Set()).add(fn);
+      };
+      this.nodes[phase] = node;
+      this.hooks[phase] = (value) => node.phaseFn(value);
+      if (ngDevMode) {
+        setupDebugInfo(node, injector);
+      }
+    }
+  }
+  afterRun() {
+    super.afterRun();
+    this.lastPhase = null;
+  }
+  destroy() {
+    var _a;
+    super.destroy();
+    for (const node of this.nodes) {
+      if (node) {
+        try {
+          for (const fn of (_a = node.cleanup) != null ? _a : EMPTY_CLEANUP_SET) {
+            fn();
+          }
+        } finally {
+          (0, import_signal.consumerDestroy)(node);
+        }
+      }
+    }
+  }
+}
+function afterRenderEffect(callbackOrSpec, options) {
+  var _a, _b;
+  ngDevMode && (0, import_root_effect_scheduler.assertNotInReactiveContext)(afterRenderEffect, "Call `afterRenderEffect` outside of a reactive context. For example, create the render effect inside the component constructor`.");
+  if (ngDevMode && !(options == null ? void 0 : options.injector)) {
+    (0, import_root_effect_scheduler.assertInInjectionContext)(afterRenderEffect);
+  }
+  if (typeof ngServerMode !== "undefined" && ngServerMode) {
+    return import_debug_node.NOOP_AFTER_RENDER_REF;
+  }
+  const injector = (_a = options == null ? void 0 : options.injector) != null ? _a : (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.Injector);
+  const scheduler = injector.get(import_root_effect_scheduler.ChangeDetectionScheduler);
+  const manager = injector.get(import_debug_node.AfterRenderManager);
+  const tracing = injector.get(import_debug_node.TracingService, null, { optional: true });
+  (_b = manager.impl) != null ? _b : manager.impl = injector.get(import_debug_node.AfterRenderImpl);
+  let spec = callbackOrSpec;
+  if (typeof spec === "function") {
+    spec = { mixedReadWrite: callbackOrSpec };
+  }
+  const viewContext = injector.get(import_root_effect_scheduler.ViewContext, null, { optional: true });
+  const sequence = new AfterRenderEffectSequence(manager.impl, [spec.earlyRead, spec.write, spec.mixedReadWrite, spec.read], viewContext == null ? void 0 : viewContext.view, scheduler, injector, tracing == null ? void 0 : tracing.snapshot(null));
+  manager.impl.register(sequence);
+  return sequence;
+}
+function setupDebugInfo(node, injector) {
+  node.debugName = `afterRenderEffect - ${phaseDebugName(node.phase)} phase`;
+  const prevInjectorProfilerContext = (0, import_root_effect_scheduler.setInjectorProfilerContext)({ injector, token: null });
+  try {
+    (0, import_root_effect_scheduler.emitEffectCreatedEvent)({ [import_signal.SIGNAL]: node, destroy() {
+    } });
+  } finally {
+    (0, import_root_effect_scheduler.setInjectorProfilerContext)(prevInjectorProfilerContext);
+  }
+}
+function phaseDebugName(phase) {
+  switch (phase) {
+    case 0:
+      return "EarlyRead";
+    case 1:
+      return "Write";
+    case 2:
+      return "MixedReadWrite";
+    case 3:
+      return "Read";
+  }
+}
+function createComponent(component, options) {
+  ngDevMode && (0, import_debug_node.assertComponentDef)(component);
+  const componentDef = (0, import_root_effect_scheduler.getComponentDef)(component);
+  const elementInjector = options.elementInjector || (0, import_root_effect_scheduler.getNullInjector)();
+  const factory = new import_debug_node.ComponentFactory(componentDef);
+  return factory.create(elementInjector, options.projectableNodes, options.hostElement, options.environmentInjector, options.directives, options.bindings);
+}
+function reflectComponentType(component) {
+  const componentDef = (0, import_root_effect_scheduler.getComponentDef)(component);
+  if (!componentDef)
+    return null;
+  const factory = new import_debug_node.ComponentFactory(componentDef);
+  return {
+    get selector() {
+      return factory.selector;
+    },
+    get type() {
+      return factory.componentType;
+    },
+    get inputs() {
+      return factory.inputs;
+    },
+    get outputs() {
+      return factory.outputs;
+    },
+    get ngContentSelectors() {
+      return factory.ngContentSelectors;
+    },
+    get isStandalone() {
+      return componentDef.standalone;
+    },
+    get isSignal() {
+      return componentDef.signals;
+    }
+  };
+}
+function mergeApplicationConfig(...configs) {
+  return configs.reduce((prev, curr) => {
+    return Object.assign(prev, curr, { providers: [...prev.providers, ...curr.providers] });
+  }, { providers: [] });
+}
+const REQUEST = new import_root_effect_scheduler.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "REQUEST" : "", {
+  providedIn: "platform",
+  factory: () => null
+});
+const RESPONSE_INIT = new import_root_effect_scheduler.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "RESPONSE_INIT" : "", {
+  providedIn: "platform",
+  factory: () => null
+});
+const REQUEST_CONTEXT = new import_root_effect_scheduler.InjectionToken(typeof ngDevMode === "undefined" || ngDevMode ? "REQUEST_CONTEXT" : "", {
+  providedIn: "platform",
+  factory: () => null
+});

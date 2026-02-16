@@ -1,0 +1,62 @@
+a5c51be1a611ee59a67abbd1ff57d62f
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ProjectsPageComponent = void 0;
+const tslib_1 = require("tslib");
+const core_1 = require("@angular/core");
+const platform_browser_1 = require("@angular/platform-browser");
+const free_solid_svg_icons_1 = require("@fortawesome/free-solid-svg-icons");
+const global_constants_1 = require("src/app/shared/global-constants");
+let ProjectsPageComponent = class ProjectsPageComponent {
+    titleService;
+    sanitizer;
+    currentArrayText = [
+        'Plex',
+        'spotify',
+        'projects',
+        'status',
+        'twitch'
+    ];
+    currentID = 'projects';
+    currentColor = 'purple';
+    currentTitle = 'Projects';
+    currentBodyText = 'Checkout my';
+    currentButtonText = 'learn more';
+    iframeUrl;
+    faList = free_solid_svg_icons_1.faList;
+    linkstackURL = global_constants_1.GlobalConstants.linkstackURL;
+    projectsID = 'projects';
+    projectsColor = this.currentColor;
+    projectsCss = 'left';
+    projectsTitle = 'Check back later';
+    projectsSideText = "MM";
+    projectsBodyText = 'more coming soon';
+    projectsSubText = '';
+    projectsButtons = [{
+            icon: this.faList,
+            text: 'Linktree',
+            link: this.linkstackURL,
+        },
+    ];
+    constructor(titleService, sanitizer) {
+        this.titleService = titleService;
+        this.sanitizer = sanitizer;
+        this.titleService.setTitle('Projects');
+        this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://192.168.1.28:8199/');
+    }
+    ngOnInit() {
+    }
+    static ctorParameters = () => [
+        { type: platform_browser_1.Title },
+        { type: platform_browser_1.DomSanitizer }
+    ];
+};
+exports.ProjectsPageComponent = ProjectsPageComponent;
+exports.ProjectsPageComponent = ProjectsPageComponent = tslib_1.__decorate([
+    (0, core_1.Component)({
+        selector: 'mm-projects-page',
+        template: require("./projects-page.component.html"),
+        standalone: false,
+    })
+], ProjectsPageComponent);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2NtYWNrZXkvRG9jdW1lbnRzL21pZHdlc3QubWFja2V5L21pZHdlc3QtbWFja2V5LXdlYnNpdGUvc3JjL2FwcC9wYWdlcy9wcm9qZWN0cy1wYWdlL3Byb2plY3RzLXBhZ2UuY29tcG9uZW50LnRzIiwibWFwcGluZ3MiOiI7Ozs7QUFBQSx3Q0FBa0Q7QUFDbEQsZ0VBQWlGO0FBQ2pGLDRFQUEyRDtBQUMzRCxzRUFBa0U7QUFTM0QsSUFBTSxxQkFBcUIsR0FBM0IsTUFBTSxxQkFBcUI7SUFrQ1o7SUFBNEI7SUFoQ2hELGdCQUFnQixHQUFHO1FBQ2pCLE1BQU07UUFDTixTQUFTO1FBQ1QsVUFBVTtRQUNWLFFBQVE7UUFDUixRQUFRO0tBQ1QsQ0FBQztJQUVGLFNBQVMsR0FBRyxVQUFVLENBQUM7SUFDdkIsWUFBWSxHQUFHLFFBQVEsQ0FBQztJQUN4QixZQUFZLEdBQUcsVUFBVSxDQUFDO0lBQzFCLGVBQWUsR0FBRyxhQUFhLENBQUM7SUFDaEMsaUJBQWlCLEdBQUcsWUFBWSxDQUFDO0lBQ2pDLFNBQVMsQ0FBbUI7SUFFNUIsTUFBTSxHQUFHLDZCQUFNLENBQUM7SUFDaEIsWUFBWSxHQUFHLGtDQUFlLENBQUMsWUFBWSxDQUFDO0lBRTVDLFVBQVUsR0FBRyxVQUFVLENBQUM7SUFDeEIsYUFBYSxHQUFHLElBQUksQ0FBQyxZQUFZLENBQUM7SUFDbEMsV0FBVyxHQUFHLE1BQU0sQ0FBQztJQUNyQixhQUFhLEdBQUcsa0JBQWtCLENBQUM7SUFDbkMsZ0JBQWdCLEdBQUcsSUFBSSxDQUFDO0lBQ3hCLGdCQUFnQixHQUFHLGtCQUFrQixDQUFDO0lBQ3RDLGVBQWUsR0FBRyxFQUFFLENBQUM7SUFDckIsZUFBZSxHQUFVLENBQUM7WUFDeEIsSUFBSSxFQUFFLElBQUksQ0FBQyxNQUFNO1lBQ2pCLElBQUksRUFBRSxVQUFVO1lBQ2hCLElBQUksRUFBRSxJQUFJLENBQUMsWUFBWTtTQUN4QjtLQUNBLENBQUM7SUFFRixZQUFvQixZQUFrQixFQUFVLFNBQXNCO1FBQWxELGlCQUFZLEdBQVosWUFBWSxDQUFNO1FBQVUsY0FBUyxHQUFULFNBQVMsQ0FBYTtRQUNwRSxJQUFJLENBQUMsWUFBWSxDQUFDLFFBQVEsQ0FBQyxVQUFVLENBQUMsQ0FBQztRQUN2QyxJQUFJLENBQUMsU0FBUyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsOEJBQThCLENBQzVELDRCQUE0QixDQUM3QixDQUFDO0lBQ0osQ0FBQztJQUVELFFBQVE7SUFDUixDQUFDOzs7Ozs7QUExQ1Usc0RBQXFCO2dDQUFyQixxQkFBcUI7SUFQakMsSUFBQSxnQkFBUyxFQUFDO1FBQ1QsUUFBUSxFQUFFLGtCQUFrQjtRQUM1QixtREFBNkM7UUFFN0MsVUFBVSxFQUFFLEtBQUs7S0FDbEIsQ0FBQztHQUVXLHFCQUFxQixDQTRDakMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2NtYWNrZXkvRG9jdW1lbnRzL21pZHdlc3QubWFja2V5L21pZHdlc3QtbWFja2V5LXdlYnNpdGUvc3JjL2FwcC9wYWdlcy9wcm9qZWN0cy1wYWdlL3Byb2plY3RzLXBhZ2UuY29tcG9uZW50LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCwgT25Jbml0IH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XHJcbmltcG9ydCB7IERvbVNhbml0aXplciwgVGl0bGUsIFNhZmVSZXNvdXJjZVVybCB9IGZyb20gJ0Bhbmd1bGFyL3BsYXRmb3JtLWJyb3dzZXInO1xyXG5pbXBvcnQgeyBmYUxpc3QgfSBmcm9tICdAZm9ydGF3ZXNvbWUvZnJlZS1zb2xpZC1zdmctaWNvbnMnO1xyXG5pbXBvcnQgeyBHbG9iYWxDb25zdGFudHMgfSBmcm9tICdzcmMvYXBwL3NoYXJlZC9nbG9iYWwtY29uc3RhbnRzJztcclxuXHJcbkBDb21wb25lbnQoe1xyXG4gIHNlbGVjdG9yOiAnbW0tcHJvamVjdHMtcGFnZScsXHJcbiAgdGVtcGxhdGVVcmw6ICcuL3Byb2plY3RzLXBhZ2UuY29tcG9uZW50Lmh0bWwnLFxyXG4gIHN0eWxlVXJsczogWycuL3Byb2plY3RzLXBhZ2UuY29tcG9uZW50LnNjc3MnXSxcclxuICBzdGFuZGFsb25lOiBmYWxzZSxcclxufSlcclxuXHJcbmV4cG9ydCBjbGFzcyBQcm9qZWN0c1BhZ2VDb21wb25lbnQgaW1wbGVtZW50cyBPbkluaXQge1xyXG5cclxuICBjdXJyZW50QXJyYXlUZXh0ID0gW1xyXG4gICAgJ1BsZXgnLFxyXG4gICAgJ3Nwb3RpZnknLFxyXG4gICAgJ3Byb2plY3RzJyxcclxuICAgICdzdGF0dXMnLFxyXG4gICAgJ3R3aXRjaCdcclxuICBdO1xyXG5cclxuICBjdXJyZW50SUQgPSAncHJvamVjdHMnO1xyXG4gIGN1cnJlbnRDb2xvciA9ICdwdXJwbGUnO1xyXG4gIGN1cnJlbnRUaXRsZSA9ICdQcm9qZWN0cyc7XHJcbiAgY3VycmVudEJvZHlUZXh0ID0gJ0NoZWNrb3V0IG15JztcclxuICBjdXJyZW50QnV0dG9uVGV4dCA9ICdsZWFybiBtb3JlJztcclxuICBpZnJhbWVVcmwhOiBTYWZlUmVzb3VyY2VVcmw7XHJcblxyXG4gIGZhTGlzdCA9IGZhTGlzdDtcclxuICBsaW5rc3RhY2tVUkwgPSBHbG9iYWxDb25zdGFudHMubGlua3N0YWNrVVJMO1xyXG5cclxuICBwcm9qZWN0c0lEID0gJ3Byb2plY3RzJztcclxuICBwcm9qZWN0c0NvbG9yID0gdGhpcy5jdXJyZW50Q29sb3I7XHJcbiAgcHJvamVjdHNDc3MgPSAnbGVmdCc7XHJcbiAgcHJvamVjdHNUaXRsZSA9ICdDaGVjayBiYWNrIGxhdGVyJztcclxuICBwcm9qZWN0c1NpZGVUZXh0ID0gXCJNTVwiO1xyXG4gIHByb2plY3RzQm9keVRleHQgPSAnbW9yZSBjb21pbmcgc29vbic7XHJcbiAgcHJvamVjdHNTdWJUZXh0ID0gJyc7XHJcbiAgcHJvamVjdHNCdXR0b25zOiBhbnlbXSA9IFt7XHJcbiAgICBpY29uOiB0aGlzLmZhTGlzdCxcclxuICAgIHRleHQ6ICdMaW5rdHJlZScsXHJcbiAgICBsaW5rOiB0aGlzLmxpbmtzdGFja1VSTCxcclxuICB9LFxyXG4gIF07XHJcblxyXG4gIGNvbnN0cnVjdG9yKHByaXZhdGUgdGl0bGVTZXJ2aWNlOlRpdGxlLCBwcml2YXRlIHNhbml0aXplcjpEb21TYW5pdGl6ZXIpIHtcclxuICAgIHRoaXMudGl0bGVTZXJ2aWNlLnNldFRpdGxlKCdQcm9qZWN0cycpO1xyXG4gICAgdGhpcy5pZnJhbWVVcmwgPSB0aGlzLnNhbml0aXplci5ieXBhc3NTZWN1cml0eVRydXN0UmVzb3VyY2VVcmwoXHJcbiAgICAgICdodHRwczovLzE5Mi4xNjguMS4yODo4MTk5LydcclxuICAgICk7XHJcbiAgfVxyXG5cclxuICBuZ09uSW5pdCgpOiB2b2lkIHtcclxuICB9XHJcblxyXG59XHJcbiJdLCJ2ZXJzaW9uIjozfQ==

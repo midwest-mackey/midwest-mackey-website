@@ -1,0 +1,2952 @@
+721261b3700601394708b7e89a547d7f
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __async = (__this, __arguments, generator) => {
+  return new Promise((resolve, reject) => {
+    var fulfilled = (value) => {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var rejected = (value) => {
+      try {
+        step(generator.throw(value));
+      } catch (e) {
+        reject(e);
+      }
+    };
+    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+    step((generator = generator.apply(__this, __arguments)).next());
+  });
+};
+var testing_exports = {};
+__export(testing_exports, {
+  ComponentFixture: () => ComponentFixture,
+  ComponentFixtureAutoDetect: () => ComponentFixtureAutoDetect,
+  ComponentFixtureNoNgZone: () => ComponentFixtureNoNgZone,
+  DeferBlockBehavior: () => import_debug_node.DeferBlockBehavior,
+  DeferBlockFixture: () => DeferBlockFixture,
+  DeferBlockState: () => import_debug_node.DeferBlockState,
+  InjectSetupWrapper: () => InjectSetupWrapper,
+  TestBed: () => TestBed,
+  TestComponentRenderer: () => TestComponentRenderer,
+  discardPeriodicTasks: () => discardPeriodicTasks,
+  fakeAsync: () => fakeAsync,
+  flush: () => flush,
+  flushMicrotasks: () => flushMicrotasks,
+  getTestBed: () => getTestBed,
+  inject: () => inject,
+  resetFakeAsyncZone: () => resetFakeAsyncZone,
+  tick: () => tick,
+  waitForAsync: () => waitForAsync,
+  withModule: () => withModule,
+  \u0275FakeNavigation: () => FakeNavigation,
+  \u0275Log: () => Log,
+  \u0275MetadataOverrider: () => MetadataOverrider,
+  \u0275getCleanupHook: () => getCleanupHook
+});
+module.exports = __toCommonJS(testing_exports);
+var i0 = __toESM(require("@angular/core"), 1);
+var import_debug_node = require("./debug_node.mjs");
+var import_rxjs = require("rxjs");
+var import_root_effect_scheduler = require("./root_effect_scheduler.mjs");
+var import_compiler = require("@angular/compiler");
+var import_signal = require("./signal.mjs");
+var import_signals = require("@angular/core/primitives/signals");
+var import_operators = require("rxjs/operators");
+var import_attribute = require("./attribute.mjs");
+var import_not_found = require("./not_found.mjs");
+var import_di = require("@angular/core/primitives/di");
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+var _a, _b, _c;
+function waitForAsync(fn) {
+  const _Zone2 = typeof Zone !== "undefined" ? Zone : null;
+  if (!_Zone2) {
+    return function() {
+      return Promise.reject("Zone is needed for the waitForAsync() test helper but could not be found. Please make sure that your environment includes zone.js");
+    };
+  }
+  const asyncTest = _Zone2 && _Zone2[_Zone2.__symbol__("asyncTest")];
+  if (typeof asyncTest === "function") {
+    return asyncTest(fn);
+  }
+  return function() {
+    return Promise.reject("zone-testing.js is needed for the async() test helper but could not be found. Please make sure that your environment includes zone.js/testing");
+  };
+}
+const RETHROW_APPLICATION_ERRORS_DEFAULT = true;
+const _TestBedApplicationErrorHandler = class _TestBedApplicationErrorHandler {
+  constructor() {
+    __publicField(this, "zone", (0, import_root_effect_scheduler.inject)(import_debug_node.NgZone));
+    __publicField(this, "injector", (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.EnvironmentInjector));
+    __publicField(this, "userErrorHandler");
+    __publicField(this, "whenStableRejectFunctions", /* @__PURE__ */ new Set());
+  }
+  handleError(e) {
+    try {
+      this.zone.runOutsideAngular(() => {
+        var _a2;
+        (_a2 = this.userErrorHandler) != null ? _a2 : this.userErrorHandler = this.injector.get(import_root_effect_scheduler.ErrorHandler);
+        this.userErrorHandler.handleError(e);
+      });
+    } catch (userError) {
+      e = userError;
+    }
+    if (this.whenStableRejectFunctions.size > 0) {
+      for (const fn of this.whenStableRejectFunctions.values()) {
+        fn(e);
+      }
+      this.whenStableRejectFunctions.clear();
+    } else {
+      throw e;
+    }
+  }
+};
+__publicField(_TestBedApplicationErrorHandler, "\u0275fac", function TestBedApplicationErrorHandler_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _TestBedApplicationErrorHandler)();
+});
+__publicField(_TestBedApplicationErrorHandler, "\u0275prov", /* @__PURE__ */ i0.\u0275\u0275defineInjectable({ token: _TestBedApplicationErrorHandler, factory: _TestBedApplicationErrorHandler.\u0275fac }));
+let TestBedApplicationErrorHandler = _TestBedApplicationErrorHandler;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i0.\u0275setClassMetadata(TestBedApplicationErrorHandler, [{
+    type: import_debug_node.Injectable
+  }], null, null);
+})();
+class DeferBlockFixture {
+  /** @docs-private */
+  constructor(block, componentFixture) {
+    __publicField(this, "block");
+    __publicField(this, "componentFixture");
+    this.block = block;
+    this.componentFixture = componentFixture;
+  }
+  /**
+   * Renders the specified state of the defer fixture.
+   * @param state the defer state to render
+   */
+  render(state) {
+    return __async(this, null, function* () {
+      if (!hasStateTemplate(state, this.block)) {
+        const stateAsString = getDeferBlockStateNameFromEnum(state);
+        throw new Error(`Tried to render this defer block in the \`${stateAsString}\` state, but there was no @${stateAsString.toLowerCase()} block defined in a template.`);
+      }
+      if (state === import_debug_node.DeferBlockState.Complete) {
+        yield (0, import_debug_node.triggerResourceLoading)(this.block.tDetails, this.block.lView, this.block.tNode);
+      }
+      const skipTimerScheduling = true;
+      (0, import_debug_node.renderDeferBlockState)(state, this.block.tNode, this.block.lContainer, skipTimerScheduling);
+      this.componentFixture.detectChanges();
+    });
+  }
+  /**
+   * Retrieves all nested child defer block fixtures
+   * in a given defer block.
+   */
+  getDeferBlocks() {
+    const deferBlocks = [];
+    const deferBlockFixtures = [];
+    if (this.block.lContainer.length >= import_root_effect_scheduler.CONTAINER_HEADER_OFFSET) {
+      const lView = this.block.lContainer[import_root_effect_scheduler.CONTAINER_HEADER_OFFSET];
+      (0, import_debug_node.getDeferBlocks)(lView, deferBlocks);
+      for (const block of deferBlocks) {
+        deferBlockFixtures.push(new DeferBlockFixture(block, this.componentFixture));
+      }
+    }
+    return Promise.resolve(deferBlockFixtures);
+  }
+}
+function hasStateTemplate(state, block) {
+  switch (state) {
+    case import_debug_node.DeferBlockState.Placeholder:
+      return block.tDetails.placeholderTmplIndex !== null;
+    case import_debug_node.DeferBlockState.Loading:
+      return block.tDetails.loadingTmplIndex !== null;
+    case import_debug_node.DeferBlockState.Error:
+      return block.tDetails.errorTmplIndex !== null;
+    case import_debug_node.DeferBlockState.Complete:
+      return true;
+    default:
+      return false;
+  }
+}
+function getDeferBlockStateNameFromEnum(state) {
+  switch (state) {
+    case import_debug_node.DeferBlockState.Placeholder:
+      return "Placeholder";
+    case import_debug_node.DeferBlockState.Loading:
+      return "Loading";
+    case import_debug_node.DeferBlockState.Error:
+      return "Error";
+    default:
+      return "Main";
+  }
+}
+const TEARDOWN_TESTING_MODULE_ON_DESTROY_DEFAULT = true;
+const THROW_ON_UNKNOWN_ELEMENTS_DEFAULT = false;
+const THROW_ON_UNKNOWN_PROPERTIES_DEFAULT = false;
+const DEFER_BLOCK_DEFAULT_BEHAVIOR = import_debug_node.DeferBlockBehavior.Playthrough;
+const ANIMATIONS_ENABLED_DEFAULT = false;
+class TestComponentRenderer {
+  insertRootElement(rootElementId, tagName) {
+  }
+  removeAllRootElements() {
+  }
+}
+const ComponentFixtureAutoDetect = new import_root_effect_scheduler.InjectionToken("ComponentFixtureAutoDetect");
+const ComponentFixtureNoNgZone = new import_root_effect_scheduler.InjectionToken("ComponentFixtureNoNgZone");
+class ComponentFixture {
+  /** @docs-private */
+  constructor(componentRef) {
+    __publicField(this, "componentRef");
+    /**
+     * The DebugElement associated with the root element of this component.
+     */
+    __publicField(this, "debugElement");
+    /**
+     * The instance of the root component class.
+     */
+    __publicField(this, "componentInstance");
+    /**
+     * The native element at the root of the component.
+     */
+    __publicField(this, "nativeElement");
+    /**
+     * The ElementRef for the element at the root of the component.
+     */
+    __publicField(this, "elementRef");
+    /**
+     * The ChangeDetectorRef for the component
+     */
+    __publicField(this, "changeDetectorRef");
+    __publicField(this, "_renderer");
+    __publicField(this, "_isDestroyed", false);
+    /** @internal */
+    __publicField(this, "_noZoneOptionIsSet", (0, import_root_effect_scheduler.inject)(ComponentFixtureNoNgZone, { optional: true }));
+    /** @internal */
+    __publicField(this, "_ngZone", this._noZoneOptionIsSet ? new import_debug_node.NoopNgZone() : (0, import_root_effect_scheduler.inject)(import_debug_node.NgZone));
+    // Inject ApplicationRef to ensure NgZone stableness causes after render hooks to run
+    // This will likely happen as a result of fixture.detectChanges because it calls ngZone.run
+    // This is a crazy way of doing things but hey, it's the world we live in.
+    // The zoneless scheduler should instead do this more imperatively by attaching
+    // the `ComponentRef` to `ApplicationRef` and calling `appRef.tick` as the `detectChanges`
+    // behavior.
+    /** @internal */
+    __publicField(this, "_appRef", (0, import_root_effect_scheduler.inject)(import_debug_node.ApplicationRef));
+    __publicField(this, "_testAppRef", this._appRef);
+    __publicField(this, "pendingTasks", (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.PendingTasksInternal));
+    __publicField(this, "appErrorHandler", (0, import_root_effect_scheduler.inject)(TestBedApplicationErrorHandler));
+    __publicField(this, "zonelessEnabled", (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.ZONELESS_ENABLED));
+    __publicField(this, "scheduler", (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.ChangeDetectionScheduler));
+    __publicField(this, "rootEffectScheduler", (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.EffectScheduler));
+    __publicField(this, "autoDetectDefault", this.zonelessEnabled ? true : false);
+    __publicField(this, "autoDetect", (_a = (0, import_root_effect_scheduler.inject)(ComponentFixtureAutoDetect, { optional: true })) != null ? _a : this.autoDetectDefault);
+    __publicField(this, "subscriptions", new import_rxjs.Subscription());
+    // TODO(atscott): Remove this from public API
+    __publicField(this, "ngZone", this._noZoneOptionIsSet ? null : this._ngZone);
+    var _a2, _b2;
+    this.componentRef = componentRef;
+    this.changeDetectorRef = componentRef.changeDetectorRef;
+    this.elementRef = componentRef.location;
+    this.debugElement = (0, import_debug_node.getDebugNode)(this.elementRef.nativeElement);
+    this.componentInstance = componentRef.instance;
+    this.nativeElement = this.elementRef.nativeElement;
+    this.componentRef = componentRef;
+    this._testAppRef.allTestViews.add(this.componentRef.hostView);
+    if (this.autoDetect) {
+      this._testAppRef.autoDetectTestViews.add(this.componentRef.hostView);
+      (_a2 = this.scheduler) == null ? void 0 : _a2.notify(8);
+      (_b2 = this.scheduler) == null ? void 0 : _b2.notify(0);
+    }
+    this.componentRef.hostView.onDestroy(() => {
+      this._testAppRef.allTestViews.delete(this.componentRef.hostView);
+      this._testAppRef.autoDetectTestViews.delete(this.componentRef.hostView);
+    });
+    this._ngZone.runOutsideAngular(() => {
+      this.subscriptions.add(this._ngZone.onError.subscribe({
+        next: (error) => {
+          if (typeof Zone === "undefined" || Zone.current.get("FakeAsyncTestZoneSpec")) {
+            return;
+          }
+          throw error;
+        }
+      }));
+    });
+  }
+  /**
+   * Trigger a change detection cycle for the component.
+   */
+  detectChanges(checkNoChanges = true) {
+    const originalCheckNoChanges = this.componentRef.changeDetectorRef.checkNoChanges;
+    try {
+      if (!checkNoChanges) {
+        this.componentRef.changeDetectorRef.checkNoChanges = () => {
+        };
+      }
+      if (this.zonelessEnabled) {
+        try {
+          this._testAppRef.includeAllTestViews = true;
+          this._appRef.tick();
+        } finally {
+          this._testAppRef.includeAllTestViews = false;
+        }
+      } else {
+        this._ngZone.run(() => {
+          this.rootEffectScheduler.flush();
+          this.changeDetectorRef.detectChanges();
+          this.checkNoChanges();
+        });
+      }
+    } finally {
+      this.componentRef.changeDetectorRef.checkNoChanges = originalCheckNoChanges;
+    }
+  }
+  /**
+   * Do a change detection run to make sure there were no changes.
+   */
+  checkNoChanges() {
+    this.changeDetectorRef.checkNoChanges();
+  }
+  autoDetectChanges(autoDetect = true) {
+    if (!autoDetect && this.zonelessEnabled) {
+      throw new Error("Cannot set autoDetect to false with zoneless change detection.");
+    }
+    if (this._noZoneOptionIsSet && !this.zonelessEnabled) {
+      throw new Error("Cannot call autoDetectChanges when ComponentFixtureNoNgZone is set.");
+    }
+    if (autoDetect) {
+      this._testAppRef.autoDetectTestViews.add(this.componentRef.hostView);
+    } else {
+      this._testAppRef.autoDetectTestViews.delete(this.componentRef.hostView);
+    }
+    this.autoDetect = autoDetect;
+    this.detectChanges();
+  }
+  /**
+   * Return whether the fixture is currently stable or has async tasks that have not been completed
+   * yet.
+   */
+  isStable() {
+    return !this.pendingTasks.hasPendingTasks;
+  }
+  /**
+   * Get a promise that resolves when the fixture is stable.
+   *
+   * This can be used to resume testing after events have triggered asynchronous activity or
+   * asynchronous change detection.
+   */
+  whenStable() {
+    if (this.isStable()) {
+      return Promise.resolve(false);
+    }
+    return new Promise((resolve, reject) => {
+      this.appErrorHandler.whenStableRejectFunctions.add(reject);
+      this._appRef.whenStable().then(() => {
+        this.appErrorHandler.whenStableRejectFunctions.delete(reject);
+        resolve(true);
+      });
+    });
+  }
+  /**
+   * Retrieves all defer block fixtures in the component fixture.
+   */
+  getDeferBlocks() {
+    const deferBlocks = [];
+    const lView = this.componentRef.hostView["_lView"];
+    (0, import_debug_node.getDeferBlocks)(lView, deferBlocks);
+    const deferBlockFixtures = [];
+    for (const block of deferBlocks) {
+      deferBlockFixtures.push(new DeferBlockFixture(block, this));
+    }
+    return Promise.resolve(deferBlockFixtures);
+  }
+  _getRenderer() {
+    if (this._renderer === void 0) {
+      this._renderer = this.componentRef.injector.get(import_debug_node.RendererFactory2, null);
+    }
+    return this._renderer;
+  }
+  /**
+   * Get a promise that resolves when the ui state is stable following animations.
+   */
+  whenRenderingDone() {
+    const renderer = this._getRenderer();
+    if (renderer && renderer.whenRenderingDone) {
+      return renderer.whenRenderingDone();
+    }
+    return this.whenStable();
+  }
+  /**
+   * Trigger component destruction.
+   */
+  destroy() {
+    this.subscriptions.unsubscribe();
+    this._testAppRef.autoDetectTestViews.delete(this.componentRef.hostView);
+    this._testAppRef.allTestViews.delete(this.componentRef.hostView);
+    if (!this._isDestroyed) {
+      this.componentRef.destroy();
+      this._isDestroyed = true;
+    }
+  }
+}
+const _Zone = typeof Zone !== "undefined" ? Zone : null;
+function getFakeAsyncTestModule() {
+  return _Zone && _Zone[_Zone.__symbol__("fakeAsyncTest")];
+}
+function withFakeAsyncTestModule(fn) {
+  const fakeAsyncTestModule = getFakeAsyncTestModule();
+  if (!fakeAsyncTestModule) {
+    throw new Error(`zone-testing.js is needed for the fakeAsync() test helper but could not be found.
+        Please make sure that your environment includes zone.js/testing`);
+  }
+  return fn(fakeAsyncTestModule);
+}
+function resetFakeAsyncZone() {
+  withFakeAsyncTestModule((v) => v.resetFakeAsyncZone());
+}
+function resetFakeAsyncZoneIfExists() {
+  var _a2;
+  if (getFakeAsyncTestModule() && ((_a2 = Zone["ProxyZoneSpec"]) == null ? void 0 : _a2.isLoaded())) {
+    getFakeAsyncTestModule().resetFakeAsyncZone();
+  }
+}
+function fakeAsync(fn, options) {
+  return withFakeAsyncTestModule((v) => v.fakeAsync(fn, options));
+}
+function tick(millis = 0, tickOptions = {
+  processNewMacroTasksSynchronously: true
+}) {
+  return withFakeAsyncTestModule((m) => m.tick(millis, tickOptions));
+}
+function flush(maxTurns) {
+  return withFakeAsyncTestModule((m) => m.flush(maxTurns));
+}
+function discardPeriodicTasks() {
+  return withFakeAsyncTestModule((m) => m.discardPeriodicTasks());
+}
+function flushMicrotasks() {
+  return withFakeAsyncTestModule((m) => m.flushMicrotasks());
+}
+let _nextReferenceId = 0;
+class MetadataOverrider {
+  constructor() {
+    __publicField(this, "_references", /* @__PURE__ */ new Map());
+  }
+  /**
+   * Creates a new instance for the given metadata class
+   * based on an old instance and overrides.
+   */
+  overrideMetadata(metadataClass, oldMetadata, override) {
+    const props = {};
+    if (oldMetadata) {
+      _valueProps(oldMetadata).forEach((prop) => props[prop] = oldMetadata[prop]);
+    }
+    if (override.set) {
+      if (override.remove || override.add) {
+        throw new Error(`Cannot set and add/remove ${(0, import_root_effect_scheduler.stringify)(metadataClass)} at the same time!`);
+      }
+      setMetadata(props, override.set);
+    }
+    if (override.remove) {
+      removeMetadata(props, override.remove, this._references);
+    }
+    if (override.add) {
+      addMetadata(props, override.add);
+    }
+    return new metadataClass(props);
+  }
+}
+function removeMetadata(metadata, remove, references) {
+  const removeObjects = /* @__PURE__ */ new Set();
+  for (const prop in remove) {
+    const removeValue = remove[prop];
+    if (Array.isArray(removeValue)) {
+      removeValue.forEach((value) => {
+        removeObjects.add(_propHashKey(prop, value, references));
+      });
+    } else {
+      removeObjects.add(_propHashKey(prop, removeValue, references));
+    }
+  }
+  for (const prop in metadata) {
+    const propValue = metadata[prop];
+    if (Array.isArray(propValue)) {
+      metadata[prop] = propValue.filter((value) => !removeObjects.has(_propHashKey(prop, value, references)));
+    } else {
+      if (removeObjects.has(_propHashKey(prop, propValue, references))) {
+        metadata[prop] = void 0;
+      }
+    }
+  }
+}
+function addMetadata(metadata, add) {
+  for (const prop in add) {
+    const addValue = add[prop];
+    const propValue = metadata[prop];
+    if (propValue != null && Array.isArray(propValue)) {
+      metadata[prop] = propValue.concat(addValue);
+    } else {
+      metadata[prop] = addValue;
+    }
+  }
+}
+function setMetadata(metadata, set) {
+  for (const prop in set) {
+    metadata[prop] = set[prop];
+  }
+}
+function _propHashKey(propName, propValue, references) {
+  let nextObjectId = 0;
+  const objectIds = /* @__PURE__ */ new Map();
+  const replacer = (key, value) => {
+    if (value !== null && typeof value === "object") {
+      if (objectIds.has(value)) {
+        return objectIds.get(value);
+      }
+      objectIds.set(value, `\u0275obj#${nextObjectId++}`);
+      return value;
+    } else if (typeof value === "function") {
+      value = _serializeReference(value, references);
+    }
+    return value;
+  };
+  return `${propName}:${JSON.stringify(propValue, replacer)}`;
+}
+function _serializeReference(ref, references) {
+  let id = references.get(ref);
+  if (!id) {
+    id = `${(0, import_root_effect_scheduler.stringify)(ref)}${_nextReferenceId++}`;
+    references.set(ref, id);
+  }
+  return id;
+}
+function _valueProps(obj) {
+  const props = [];
+  Object.keys(obj).forEach((prop) => {
+    if (!prop.startsWith("_")) {
+      props.push(prop);
+    }
+  });
+  let proto = obj;
+  while (proto = Object.getPrototypeOf(proto)) {
+    Object.keys(proto).forEach((protoProp) => {
+      const desc = Object.getOwnPropertyDescriptor(proto, protoProp);
+      if (!protoProp.startsWith("_") && desc && "get" in desc) {
+        props.push(protoProp);
+      }
+    });
+  }
+  return props;
+}
+const reflection = new import_debug_node.ReflectionCapabilities();
+class OverrideResolver {
+  constructor() {
+    __publicField(this, "overrides", /* @__PURE__ */ new Map());
+    __publicField(this, "resolved", /* @__PURE__ */ new Map());
+  }
+  addOverride(type, override) {
+    const overrides = this.overrides.get(type) || [];
+    overrides.push(override);
+    this.overrides.set(type, overrides);
+    this.resolved.delete(type);
+  }
+  setOverrides(overrides) {
+    this.overrides.clear();
+    overrides.forEach(([type, override]) => {
+      this.addOverride(type, override);
+    });
+  }
+  getAnnotation(type) {
+    const annotations = reflection.annotations(type);
+    for (let i = annotations.length - 1; i >= 0; i--) {
+      const annotation = annotations[i];
+      const isKnownType = annotation instanceof import_debug_node.Directive || annotation instanceof import_debug_node.Component || annotation instanceof import_debug_node.Pipe || annotation instanceof import_debug_node.NgModule;
+      if (isKnownType) {
+        return annotation instanceof this.type ? annotation : null;
+      }
+    }
+    return null;
+  }
+  resolve(type) {
+    let resolved = this.resolved.get(type) || null;
+    if (!resolved) {
+      resolved = this.getAnnotation(type);
+      if (resolved) {
+        const overrides = this.overrides.get(type);
+        if (overrides) {
+          const overrider = new MetadataOverrider();
+          overrides.forEach((override) => {
+            resolved = overrider.overrideMetadata(this.type, resolved, override);
+          });
+        }
+      }
+      this.resolved.set(type, resolved);
+    }
+    return resolved;
+  }
+}
+class DirectiveResolver extends OverrideResolver {
+  get type() {
+    return import_debug_node.Directive;
+  }
+}
+class ComponentResolver extends OverrideResolver {
+  get type() {
+    return import_debug_node.Component;
+  }
+}
+class PipeResolver extends OverrideResolver {
+  get type() {
+    return import_debug_node.Pipe;
+  }
+}
+class NgModuleResolver extends OverrideResolver {
+  get type() {
+    return import_debug_node.NgModule;
+  }
+}
+var TestingModuleOverride;
+(function(TestingModuleOverride2) {
+  TestingModuleOverride2[TestingModuleOverride2["DECLARATION"] = 0] = "DECLARATION";
+  TestingModuleOverride2[TestingModuleOverride2["OVERRIDE_TEMPLATE"] = 1] = "OVERRIDE_TEMPLATE";
+})(TestingModuleOverride || (TestingModuleOverride = {}));
+function isTestingModuleOverride(value) {
+  return value === TestingModuleOverride.DECLARATION || value === TestingModuleOverride.OVERRIDE_TEMPLATE;
+}
+function assertNoStandaloneComponents(types, resolver, location) {
+  types.forEach((type) => {
+    if (!(0, import_debug_node.getAsyncClassMetadataFn)(type)) {
+      const component = resolver.resolve(type);
+      if (component && (component.standalone == null || component.standalone)) {
+        throw new Error((0, import_debug_node.generateStandaloneInDeclarationsError)(type, location));
+      }
+    }
+  });
+}
+class TestBedCompiler {
+  constructor(platform, additionalModuleTypes) {
+    __publicField(this, "platform");
+    __publicField(this, "additionalModuleTypes");
+    __publicField(this, "originalComponentResolutionQueue", null);
+    // Testing module configuration
+    __publicField(this, "declarations", []);
+    __publicField(this, "imports", []);
+    __publicField(this, "providers", []);
+    __publicField(this, "schemas", []);
+    // Queues of components/directives/pipes that should be recompiled.
+    __publicField(this, "pendingComponents", /* @__PURE__ */ new Set());
+    __publicField(this, "pendingDirectives", /* @__PURE__ */ new Set());
+    __publicField(this, "pendingPipes", /* @__PURE__ */ new Set());
+    // Set of components with async metadata, i.e. components with `@defer` blocks
+    // in their templates.
+    __publicField(this, "componentsWithAsyncMetadata", /* @__PURE__ */ new Set());
+    // Keep track of all components and directives, so we can patch Providers onto defs later.
+    __publicField(this, "seenComponents", /* @__PURE__ */ new Set());
+    __publicField(this, "seenDirectives", /* @__PURE__ */ new Set());
+    // Keep track of overridden modules, so that we can collect all affected ones in the module tree.
+    __publicField(this, "overriddenModules", /* @__PURE__ */ new Set());
+    // Store resolved styles for Components that have template overrides present and `styleUrls`
+    // defined at the same time.
+    __publicField(this, "existingComponentStyles", /* @__PURE__ */ new Map());
+    __publicField(this, "resolvers", initResolvers());
+    // Map of component type to an NgModule that declares it.
+    //
+    // There are a couple special cases:
+    // - for standalone components, the module scope value is `null`
+    // - when a component is declared in `TestBed.configureTestingModule()` call or
+    //   a component's template is overridden via `TestBed.overrideTemplateUsingTestingModule()`.
+    //   we use a special value from the `TestingModuleOverride` enum.
+    __publicField(this, "componentToModuleScope", /* @__PURE__ */ new Map());
+    // Map that keeps initial version of component/directive/pipe defs in case
+    // we compile a Type again, thus overriding respective static fields. This is
+    // required to make sure we restore defs to their initial states between test runs.
+    // Note: one class may have multiple defs (for example: ɵmod and ɵinj in case of an
+    // NgModule), store all of them in a map.
+    __publicField(this, "initialNgDefs", /* @__PURE__ */ new Map());
+    // Array that keeps cleanup operations for initial versions of component/directive/pipe/module
+    // defs in case TestBed makes changes to the originals.
+    __publicField(this, "defCleanupOps", []);
+    __publicField(this, "_injector", null);
+    __publicField(this, "compilerProviders", null);
+    __publicField(this, "providerOverrides", []);
+    __publicField(this, "rootProviderOverrides", []);
+    // Overrides for injectables with `{providedIn: SomeModule}` need to be tracked and added to that
+    // module's provider list.
+    __publicField(this, "providerOverridesByModule", /* @__PURE__ */ new Map());
+    __publicField(this, "providerOverridesByToken", /* @__PURE__ */ new Map());
+    __publicField(this, "scopesWithOverriddenProviders", /* @__PURE__ */ new Set());
+    __publicField(this, "testModuleType");
+    __publicField(this, "testModuleRef", null);
+    __publicField(this, "animationsEnabled", ANIMATIONS_ENABLED_DEFAULT);
+    __publicField(this, "deferBlockBehavior", DEFER_BLOCK_DEFAULT_BEHAVIOR);
+    __publicField(this, "rethrowApplicationTickErrors", RETHROW_APPLICATION_ERRORS_DEFAULT);
+    this.platform = platform;
+    this.additionalModuleTypes = additionalModuleTypes;
+    class DynamicTestModule {
+    }
+    this.testModuleType = DynamicTestModule;
+  }
+  setCompilerProviders(providers) {
+    this.compilerProviders = providers;
+    this._injector = null;
+  }
+  configureTestingModule(moduleDef) {
+    var _a2, _b2, _c2;
+    if (moduleDef.declarations !== void 0) {
+      assertNoStandaloneComponents(moduleDef.declarations, this.resolvers.component, '"TestBed.configureTestingModule" call');
+      this.queueTypeArray(moduleDef.declarations, TestingModuleOverride.DECLARATION);
+      this.declarations.push(...moduleDef.declarations);
+    }
+    if (moduleDef.imports !== void 0) {
+      this.queueTypesFromModulesArray(moduleDef.imports);
+      this.imports.push(...moduleDef.imports);
+    }
+    if (moduleDef.providers !== void 0) {
+      this.providers.push(...moduleDef.providers);
+    }
+    if (moduleDef.schemas !== void 0) {
+      this.schemas.push(...moduleDef.schemas);
+    }
+    this.deferBlockBehavior = (_a2 = moduleDef.deferBlockBehavior) != null ? _a2 : DEFER_BLOCK_DEFAULT_BEHAVIOR;
+    this.animationsEnabled = (_b2 = moduleDef.animationsEnabled) != null ? _b2 : ANIMATIONS_ENABLED_DEFAULT;
+    this.rethrowApplicationTickErrors = (_c2 = moduleDef.rethrowApplicationErrors) != null ? _c2 : RETHROW_APPLICATION_ERRORS_DEFAULT;
+  }
+  overrideModule(ngModule, override) {
+    import_debug_node.depsTracker.clearScopeCacheFor(ngModule);
+    this.overriddenModules.add(ngModule);
+    this.resolvers.module.addOverride(ngModule, override);
+    const metadata = this.resolvers.module.resolve(ngModule);
+    if (metadata === null) {
+      throw invalidTypeError(ngModule.name, "NgModule");
+    }
+    this.recompileNgModule(ngModule, metadata);
+    this.queueTypesFromModulesArray([ngModule]);
+  }
+  overrideComponent(component, override) {
+    this.verifyNoStandaloneFlagOverrides(component, override);
+    this.resolvers.component.addOverride(component, override);
+    this.pendingComponents.add(component);
+    this.maybeRegisterComponentWithAsyncMetadata(component);
+  }
+  overrideDirective(directive, override) {
+    this.verifyNoStandaloneFlagOverrides(directive, override);
+    this.resolvers.directive.addOverride(directive, override);
+    this.pendingDirectives.add(directive);
+  }
+  overridePipe(pipe, override) {
+    this.verifyNoStandaloneFlagOverrides(pipe, override);
+    this.resolvers.pipe.addOverride(pipe, override);
+    this.pendingPipes.add(pipe);
+  }
+  verifyNoStandaloneFlagOverrides(type, override) {
+    var _a2, _b2, _c2;
+    if (((_a2 = override.add) == null ? void 0 : _a2.hasOwnProperty("standalone")) || ((_b2 = override.set) == null ? void 0 : _b2.hasOwnProperty("standalone")) || ((_c2 = override.remove) == null ? void 0 : _c2.hasOwnProperty("standalone"))) {
+      throw new Error(`An override for the ${type.name} class has the \`standalone\` flag. Changing the \`standalone\` flag via TestBed overrides is not supported.`);
+    }
+  }
+  overrideProvider(token, provider) {
+    let providerDef;
+    if (provider.useFactory !== void 0) {
+      providerDef = {
+        provide: token,
+        useFactory: provider.useFactory,
+        deps: provider.deps || [],
+        multi: provider.multi
+      };
+    } else if (provider.useValue !== void 0) {
+      providerDef = { provide: token, useValue: provider.useValue, multi: provider.multi };
+    } else {
+      providerDef = { provide: token };
+    }
+    const injectableDef = typeof token !== "string" ? (0, import_root_effect_scheduler.getInjectableDef)(token) : null;
+    const providedIn = injectableDef === null ? null : (0, import_root_effect_scheduler.resolveForwardRef)(injectableDef.providedIn);
+    const overridesBucket = providedIn === "root" ? this.rootProviderOverrides : this.providerOverrides;
+    overridesBucket.push(providerDef);
+    this.providerOverridesByToken.set(token, providerDef);
+    if (injectableDef !== null && providedIn !== null && typeof providedIn !== "string") {
+      const existingOverrides = this.providerOverridesByModule.get(providedIn);
+      if (existingOverrides !== void 0) {
+        existingOverrides.push(providerDef);
+      } else {
+        this.providerOverridesByModule.set(providedIn, [providerDef]);
+      }
+    }
+  }
+  overrideTemplateUsingTestingModule(type, template) {
+    const def = type[import_root_effect_scheduler.NG_COMP_DEF];
+    const hasStyleUrls = () => {
+      var _a2;
+      const metadata = this.resolvers.component.resolve(type);
+      return !!metadata.styleUrl || !!((_a2 = metadata.styleUrls) == null ? void 0 : _a2.length);
+    };
+    const overrideStyleUrls = !!def && !(0, import_debug_node.isComponentDefPendingResolution)(type) && hasStyleUrls();
+    const override = overrideStyleUrls ? { template, styles: [], styleUrls: [], styleUrl: void 0 } : { template };
+    this.overrideComponent(type, { set: override });
+    if (overrideStyleUrls && def.styles && def.styles.length > 0) {
+      this.existingComponentStyles.set(type, def.styles);
+    }
+    this.componentToModuleScope.set(type, TestingModuleOverride.OVERRIDE_TEMPLATE);
+  }
+  resolvePendingComponentsWithAsyncMetadata() {
+    return __async(this, null, function* () {
+      if (this.componentsWithAsyncMetadata.size === 0)
+        return;
+      const promises = [];
+      for (const component of this.componentsWithAsyncMetadata) {
+        const asyncMetadataFn = (0, import_debug_node.getAsyncClassMetadataFn)(component);
+        if (asyncMetadataFn) {
+          promises.push(asyncMetadataFn());
+        }
+      }
+      this.componentsWithAsyncMetadata.clear();
+      const resolvedDeps = yield Promise.all(promises);
+      const flatResolvedDeps = resolvedDeps.flat(2);
+      this.queueTypesFromModulesArray(flatResolvedDeps);
+      for (const component of flatResolvedDeps) {
+        this.applyProviderOverridesInScope(component);
+      }
+    });
+  }
+  compileComponents() {
+    return __async(this, null, function* () {
+      this.clearComponentResolutionQueue();
+      yield this.resolvePendingComponentsWithAsyncMetadata();
+      assertNoStandaloneComponents(this.declarations, this.resolvers.component, '"TestBed.configureTestingModule" call');
+      let needsAsyncResources = this.compileTypesSync();
+      if (needsAsyncResources) {
+        let resourceLoader;
+        let resolver = (url) => {
+          if (!resourceLoader) {
+            resourceLoader = this.injector.get(import_compiler.ResourceLoader);
+          }
+          return Promise.resolve(resourceLoader.get(url));
+        };
+        yield (0, import_debug_node.resolveComponentResources)(resolver);
+      }
+    });
+  }
+  finalize() {
+    this.compileTypesSync();
+    this.compileTestModule();
+    this.applyTransitiveScopes();
+    this.applyProviderOverrides();
+    this.patchComponentsWithExistingStyles();
+    this.componentToModuleScope.clear();
+    const parentInjector = this.platform.injector;
+    this.testModuleRef = new import_debug_node.NgModuleRef(this.testModuleType, parentInjector, []);
+    this.testModuleRef.injector.get(import_debug_node.ApplicationInitStatus).runInitializers();
+    const localeId = this.testModuleRef.injector.get(import_debug_node.LOCALE_ID, import_debug_node.DEFAULT_LOCALE_ID);
+    (0, import_debug_node.setLocaleId)(localeId);
+    return this.testModuleRef;
+  }
+  /**
+   * @internal
+   */
+  _compileNgModuleSync(moduleType) {
+    this.queueTypesFromModulesArray([moduleType]);
+    this.compileTypesSync();
+    this.applyProviderOverrides();
+    this.applyProviderOverridesInScope(moduleType);
+    this.applyTransitiveScopes();
+  }
+  /**
+   * @internal
+   */
+  _compileNgModuleAsync(moduleType) {
+    return __async(this, null, function* () {
+      this.queueTypesFromModulesArray([moduleType]);
+      yield this.compileComponents();
+      this.applyProviderOverrides();
+      this.applyProviderOverridesInScope(moduleType);
+      this.applyTransitiveScopes();
+    });
+  }
+  /**
+   * @internal
+   */
+  _getModuleResolver() {
+    return this.resolvers.module;
+  }
+  /**
+   * @internal
+   */
+  _getComponentFactories(moduleType) {
+    return maybeUnwrapFn(moduleType.\u0275mod.declarations).reduce((factories, declaration) => {
+      const componentDef = declaration.\u0275cmp;
+      componentDef && factories.push(new import_debug_node.ComponentFactory(componentDef, this.testModuleRef));
+      return factories;
+    }, []);
+  }
+  compileTypesSync() {
+    let needsAsyncResources = false;
+    this.pendingComponents.forEach((declaration) => {
+      if ((0, import_debug_node.getAsyncClassMetadataFn)(declaration)) {
+        throw new Error(`Component '${declaration.name}' has unresolved metadata. Please call \`await TestBed.compileComponents()\` before running this test.`);
+      }
+      needsAsyncResources = needsAsyncResources || (0, import_debug_node.isComponentDefPendingResolution)(declaration);
+      const metadata = this.resolvers.component.resolve(declaration);
+      if (metadata === null) {
+        throw invalidTypeError(declaration.name, "Component");
+      }
+      this.maybeStoreNgDef(import_root_effect_scheduler.NG_COMP_DEF, declaration);
+      import_debug_node.depsTracker.clearScopeCacheFor(declaration);
+      (0, import_debug_node.compileComponent)(declaration, metadata);
+    });
+    this.pendingComponents.clear();
+    this.pendingDirectives.forEach((declaration) => {
+      const metadata = this.resolvers.directive.resolve(declaration);
+      if (metadata === null) {
+        throw invalidTypeError(declaration.name, "Directive");
+      }
+      this.maybeStoreNgDef(import_root_effect_scheduler.NG_DIR_DEF, declaration);
+      (0, import_debug_node.compileDirective)(declaration, metadata);
+    });
+    this.pendingDirectives.clear();
+    this.pendingPipes.forEach((declaration) => {
+      const metadata = this.resolvers.pipe.resolve(declaration);
+      if (metadata === null) {
+        throw invalidTypeError(declaration.name, "Pipe");
+      }
+      this.maybeStoreNgDef(import_root_effect_scheduler.NG_PIPE_DEF, declaration);
+      (0, import_debug_node.compilePipe)(declaration, metadata);
+    });
+    this.pendingPipes.clear();
+    return needsAsyncResources;
+  }
+  applyTransitiveScopes() {
+    if (this.overriddenModules.size > 0) {
+      const testingModuleDef = this.testModuleType[import_root_effect_scheduler.NG_MOD_DEF];
+      const affectedModules = this.collectModulesAffectedByOverrides(testingModuleDef.imports);
+      if (affectedModules.size > 0) {
+        affectedModules.forEach((moduleType) => {
+          import_debug_node.depsTracker.clearScopeCacheFor(moduleType);
+        });
+      }
+    }
+    const moduleToScope = /* @__PURE__ */ new Map();
+    const getScopeOfModule = (moduleType) => {
+      if (!moduleToScope.has(moduleType)) {
+        const isTestingModule = isTestingModuleOverride(moduleType);
+        const realType = isTestingModule ? this.testModuleType : moduleType;
+        moduleToScope.set(moduleType, (0, import_debug_node.transitiveScopesFor)(realType));
+      }
+      return moduleToScope.get(moduleType);
+    };
+    this.componentToModuleScope.forEach((moduleType, componentType) => {
+      if (moduleType !== null) {
+        const moduleScope = getScopeOfModule(moduleType);
+        this.storeFieldOfDefOnType(componentType, import_root_effect_scheduler.NG_COMP_DEF, "directiveDefs");
+        this.storeFieldOfDefOnType(componentType, import_root_effect_scheduler.NG_COMP_DEF, "pipeDefs");
+        (0, import_debug_node.patchComponentDefWithScope)(getComponentDef(componentType), moduleScope);
+      }
+      this.storeFieldOfDefOnType(componentType, import_root_effect_scheduler.NG_COMP_DEF, "tView");
+    });
+    this.componentToModuleScope.clear();
+  }
+  applyProviderOverrides() {
+    const maybeApplyOverrides = (field) => (type) => {
+      const resolver = field === import_root_effect_scheduler.NG_COMP_DEF ? this.resolvers.component : this.resolvers.directive;
+      const metadata = resolver.resolve(type);
+      if (this.hasProviderOverrides(metadata.providers)) {
+        this.patchDefWithProviderOverrides(type, field);
+      }
+    };
+    this.seenComponents.forEach(maybeApplyOverrides(import_root_effect_scheduler.NG_COMP_DEF));
+    this.seenDirectives.forEach(maybeApplyOverrides(import_root_effect_scheduler.NG_DIR_DEF));
+    this.seenComponents.clear();
+    this.seenDirectives.clear();
+  }
+  /**
+   * Applies provider overrides to a given type (either an NgModule or a standalone component)
+   * and all imported NgModules and standalone components recursively.
+   */
+  applyProviderOverridesInScope(type) {
+    var _a2;
+    const hasScope = isStandaloneComponent(type) || isNgModule(type);
+    if (!hasScope || this.scopesWithOverriddenProviders.has(type)) {
+      return;
+    }
+    this.scopesWithOverriddenProviders.add(type);
+    const injectorDef = type[import_root_effect_scheduler.NG_INJ_DEF];
+    if (this.providerOverridesByToken.size === 0)
+      return;
+    if (isStandaloneComponent(type)) {
+      const def = getComponentDef(type);
+      const dependencies = maybeUnwrapFn((_a2 = def.dependencies) != null ? _a2 : []);
+      for (const dependency of dependencies) {
+        this.applyProviderOverridesInScope(dependency);
+      }
+    } else {
+      const providers = [
+        ...injectorDef.providers,
+        ...this.providerOverridesByModule.get(type) || []
+      ];
+      if (this.hasProviderOverrides(providers)) {
+        this.maybeStoreNgDef(import_root_effect_scheduler.NG_INJ_DEF, type);
+        this.storeFieldOfDefOnType(type, import_root_effect_scheduler.NG_INJ_DEF, "providers");
+        injectorDef.providers = this.getOverriddenProviders(providers);
+      }
+      const moduleDef = type[import_root_effect_scheduler.NG_MOD_DEF];
+      const imports = maybeUnwrapFn(moduleDef.imports);
+      for (const importedModule of imports) {
+        this.applyProviderOverridesInScope(importedModule);
+      }
+      for (const importedModule of flatten(injectorDef.imports)) {
+        if (isModuleWithProviders(importedModule)) {
+          this.defCleanupOps.push({
+            object: importedModule,
+            fieldName: "providers",
+            originalValue: importedModule.providers
+          });
+          importedModule.providers = this.getOverriddenProviders(importedModule.providers);
+        }
+      }
+    }
+  }
+  patchComponentsWithExistingStyles() {
+    this.existingComponentStyles.forEach((styles, type) => type[import_root_effect_scheduler.NG_COMP_DEF].styles = styles);
+    this.existingComponentStyles.clear();
+  }
+  queueTypeArray(arr, moduleType) {
+    for (const value of arr) {
+      if (Array.isArray(value)) {
+        this.queueTypeArray(value, moduleType);
+      } else {
+        this.queueType(value, moduleType);
+      }
+    }
+  }
+  recompileNgModule(ngModule, metadata) {
+    this.maybeStoreNgDef(import_root_effect_scheduler.NG_MOD_DEF, ngModule);
+    this.maybeStoreNgDef(import_root_effect_scheduler.NG_INJ_DEF, ngModule);
+    (0, import_debug_node.compileNgModuleDefs)(ngModule, metadata);
+  }
+  maybeRegisterComponentWithAsyncMetadata(type) {
+    const asyncMetadataFn = (0, import_debug_node.getAsyncClassMetadataFn)(type);
+    if (asyncMetadataFn) {
+      this.componentsWithAsyncMetadata.add(type);
+    }
+  }
+  queueType(type, moduleType) {
+    this.maybeRegisterComponentWithAsyncMetadata(type);
+    const component = this.resolvers.component.resolve(type);
+    if (component) {
+      if ((0, import_debug_node.isComponentDefPendingResolution)(type) || !type.hasOwnProperty(import_root_effect_scheduler.NG_COMP_DEF)) {
+        this.pendingComponents.add(type);
+      }
+      this.seenComponents.add(type);
+      if (!this.componentToModuleScope.has(type) || this.componentToModuleScope.get(type) === TestingModuleOverride.DECLARATION) {
+        this.componentToModuleScope.set(type, moduleType);
+      }
+      return;
+    }
+    const directive = this.resolvers.directive.resolve(type);
+    if (directive) {
+      if (!type.hasOwnProperty(import_root_effect_scheduler.NG_DIR_DEF)) {
+        this.pendingDirectives.add(type);
+      }
+      this.seenDirectives.add(type);
+      return;
+    }
+    const pipe = this.resolvers.pipe.resolve(type);
+    if (pipe && !type.hasOwnProperty(import_root_effect_scheduler.NG_PIPE_DEF)) {
+      this.pendingPipes.add(type);
+      return;
+    }
+  }
+  queueTypesFromModulesArray(arr) {
+    const processedDefs = /* @__PURE__ */ new Set();
+    const queueTypesFromModulesArrayRecur = (arr2) => {
+      var _a2;
+      for (const value of arr2) {
+        if (Array.isArray(value)) {
+          queueTypesFromModulesArrayRecur(value);
+        } else if (hasNgModuleDef(value)) {
+          const def = value.\u0275mod;
+          if (processedDefs.has(def)) {
+            continue;
+          }
+          processedDefs.add(def);
+          this.queueTypeArray(maybeUnwrapFn(def.declarations), value);
+          queueTypesFromModulesArrayRecur(maybeUnwrapFn(def.imports));
+          queueTypesFromModulesArrayRecur(maybeUnwrapFn(def.exports));
+        } else if (isModuleWithProviders(value)) {
+          queueTypesFromModulesArrayRecur([value.ngModule]);
+        } else if (isStandaloneComponent(value)) {
+          this.queueType(value, null);
+          const def = getComponentDef(value);
+          if (processedDefs.has(def)) {
+            continue;
+          }
+          processedDefs.add(def);
+          const dependencies = maybeUnwrapFn((_a2 = def.dependencies) != null ? _a2 : []);
+          dependencies.forEach((dependency) => {
+            if (isStandaloneComponent(dependency) || hasNgModuleDef(dependency)) {
+              queueTypesFromModulesArrayRecur([dependency]);
+            } else {
+              this.queueType(dependency, null);
+            }
+          });
+        }
+      }
+    };
+    queueTypesFromModulesArrayRecur(arr);
+  }
+  // When module overrides (via `TestBed.overrideModule`) are present, it might affect all modules
+  // that import (even transitively) an overridden one. For all affected modules we need to
+  // recalculate their scopes for a given test run and restore original scopes at the end. The goal
+  // of this function is to collect all affected modules in a set for further processing. Example:
+  // if we have the following module hierarchy: A -> B -> C (where `->` means `imports`) and module
+  // `C` is overridden, we consider `A` and `B` as affected, since their scopes might become
+  // invalidated with the override.
+  collectModulesAffectedByOverrides(arr) {
+    const seenModules = /* @__PURE__ */ new Set();
+    const affectedModules = /* @__PURE__ */ new Set();
+    const calcAffectedModulesRecur = (arr2, path) => {
+      for (const value of arr2) {
+        if (Array.isArray(value)) {
+          calcAffectedModulesRecur(value, path);
+        } else if (hasNgModuleDef(value)) {
+          if (seenModules.has(value)) {
+            if (affectedModules.has(value)) {
+              path.forEach((item) => affectedModules.add(item));
+            }
+            continue;
+          }
+          seenModules.add(value);
+          if (this.overriddenModules.has(value)) {
+            path.forEach((item) => affectedModules.add(item));
+          }
+          const moduleDef = value[import_root_effect_scheduler.NG_MOD_DEF];
+          calcAffectedModulesRecur(maybeUnwrapFn(moduleDef.imports), path.concat(value));
+        }
+      }
+    };
+    calcAffectedModulesRecur(arr, []);
+    return affectedModules;
+  }
+  /**
+   * Preserve an original def (such as ɵmod, ɵinj, etc) before applying an override.
+   * Note: one class may have multiple defs (for example: ɵmod and ɵinj in case of
+   * an NgModule). If there is a def in a set already, don't override it, since
+   * an original one should be restored at the end of a test.
+   */
+  maybeStoreNgDef(prop, type) {
+    if (!this.initialNgDefs.has(type)) {
+      this.initialNgDefs.set(type, /* @__PURE__ */ new Map());
+    }
+    const currentDefs = this.initialNgDefs.get(type);
+    if (!currentDefs.has(prop)) {
+      const currentDef = Object.getOwnPropertyDescriptor(type, prop);
+      currentDefs.set(prop, currentDef);
+    }
+  }
+  storeFieldOfDefOnType(type, defField, fieldName) {
+    const def = type[defField];
+    const originalValue = def[fieldName];
+    this.defCleanupOps.push({ object: def, fieldName, originalValue });
+  }
+  /**
+   * Clears current components resolution queue, but stores the state of the queue, so we can
+   * restore it later. Clearing the queue is required before we try to compile components (via
+   * `TestBed.compileComponents`), so that component defs are in sync with the resolution queue.
+   */
+  clearComponentResolutionQueue() {
+    if (this.originalComponentResolutionQueue === null) {
+      this.originalComponentResolutionQueue = /* @__PURE__ */ new Map();
+    }
+    (0, import_debug_node.clearResolutionOfComponentResourcesQueue)().forEach((value, key) => this.originalComponentResolutionQueue.set(key, value));
+  }
+  /*
+   * Restores component resolution queue to the previously saved state. This operation is performed
+   * as a part of restoring the state after completion of the current set of tests (that might
+   * potentially mutate the state).
+   */
+  restoreComponentResolutionQueue() {
+    if (this.originalComponentResolutionQueue !== null) {
+      (0, import_debug_node.restoreComponentResolutionQueue)(this.originalComponentResolutionQueue);
+      this.originalComponentResolutionQueue = null;
+    }
+  }
+  restoreOriginalState() {
+    forEachRight(this.defCleanupOps, (op) => {
+      op.object[op.fieldName] = op.originalValue;
+    });
+    this.initialNgDefs.forEach((defs, type) => {
+      import_debug_node.depsTracker.clearScopeCacheFor(type);
+      defs.forEach((descriptor, prop) => {
+        if (!descriptor) {
+          delete type[prop];
+        } else {
+          Object.defineProperty(type, prop, descriptor);
+        }
+      });
+    });
+    this.initialNgDefs.clear();
+    this.scopesWithOverriddenProviders.clear();
+    this.restoreComponentResolutionQueue();
+    (0, import_debug_node.setLocaleId)(import_debug_node.DEFAULT_LOCALE_ID);
+  }
+  compileTestModule() {
+    class RootScopeModule {
+    }
+    (0, import_debug_node.compileNgModuleDefs)(RootScopeModule, {
+      providers: [
+        ...this.rootProviderOverrides,
+        (0, import_debug_node.internalProvideZoneChangeDetection)({}),
+        TestBedApplicationErrorHandler,
+        { provide: import_root_effect_scheduler.ChangeDetectionScheduler, useExisting: import_debug_node.ChangeDetectionSchedulerImpl },
+        {
+          provide: import_root_effect_scheduler.ENVIRONMENT_INITIALIZER,
+          multi: true,
+          useValue: () => {
+            (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.ErrorHandler);
+          }
+        }
+      ]
+    });
+    const providers = [
+      { provide: import_debug_node.Compiler, useFactory: () => new R3TestCompiler(this) },
+      { provide: import_debug_node.DEFER_BLOCK_CONFIG, useValue: { behavior: this.deferBlockBehavior } },
+      {
+        provide: import_debug_node.ANIMATIONS_DISABLED,
+        useValue: !this.animationsEnabled
+      },
+      {
+        provide: import_root_effect_scheduler.INTERNAL_APPLICATION_ERROR_HANDLER,
+        useFactory: () => {
+          if (this.rethrowApplicationTickErrors) {
+            const handler = (0, import_root_effect_scheduler.inject)(TestBedApplicationErrorHandler);
+            return (e) => {
+              handler.handleError(e);
+            };
+          } else {
+            const userErrorHandler = (0, import_root_effect_scheduler.inject)(import_root_effect_scheduler.ErrorHandler);
+            const ngZone = (0, import_root_effect_scheduler.inject)(import_debug_node.NgZone);
+            return (e) => ngZone.runOutsideAngular(() => userErrorHandler.handleError(e));
+          }
+        }
+      },
+      ...this.providers,
+      ...this.providerOverrides
+    ];
+    const imports = [RootScopeModule, this.additionalModuleTypes, this.imports || []];
+    (0, import_debug_node.compileNgModuleDefs)(
+      this.testModuleType,
+      {
+        declarations: this.declarations,
+        imports,
+        schemas: this.schemas,
+        providers
+      },
+      /* allowDuplicateDeclarationsInRoot */
+      true
+    );
+    this.applyProviderOverridesInScope(this.testModuleType);
+  }
+  get injector() {
+    if (this._injector !== null) {
+      return this._injector;
+    }
+    const providers = [];
+    const compilerOptions = this.platform.injector.get(import_debug_node.COMPILER_OPTIONS, []);
+    compilerOptions.forEach((opts) => {
+      if (opts.providers) {
+        providers.push(opts.providers);
+      }
+    });
+    if (this.compilerProviders !== null) {
+      providers.push(...this.compilerProviders);
+    }
+    this._injector = import_root_effect_scheduler.Injector.create({ providers, parent: this.platform.injector });
+    return this._injector;
+  }
+  // get overrides for a specific provider (if any)
+  getSingleProviderOverrides(provider) {
+    const token = getProviderToken(provider);
+    return this.providerOverridesByToken.get(token) || null;
+  }
+  getProviderOverrides(providers) {
+    if (!providers || !providers.length || this.providerOverridesByToken.size === 0)
+      return [];
+    return flatten(flattenProviders(providers, (provider) => this.getSingleProviderOverrides(provider) || []));
+  }
+  getOverriddenProviders(providers) {
+    if (!providers || !providers.length || this.providerOverridesByToken.size === 0)
+      return [];
+    const flattenedProviders = flattenProviders(providers);
+    const overrides = this.getProviderOverrides(flattenedProviders);
+    const overriddenProviders = [...flattenedProviders, ...overrides];
+    const final = [];
+    const seenOverriddenProviders = /* @__PURE__ */ new Set();
+    forEachRight(overriddenProviders, (provider) => {
+      const token = getProviderToken(provider);
+      if (this.providerOverridesByToken.has(token)) {
+        if (!seenOverriddenProviders.has(token)) {
+          seenOverriddenProviders.add(token);
+          final.unshift(__spreadProps(__spreadValues({}, provider), { multi: false }));
+        }
+      } else {
+        final.unshift(provider);
+      }
+    });
+    return final;
+  }
+  hasProviderOverrides(providers) {
+    return this.getProviderOverrides(providers).length > 0;
+  }
+  patchDefWithProviderOverrides(declaration, field) {
+    const def = declaration[field];
+    if (def && def.providersResolver) {
+      this.maybeStoreNgDef(field, declaration);
+      const resolver = def.providersResolver;
+      const processProvidersFn = (providers) => this.getOverriddenProviders(providers);
+      this.storeFieldOfDefOnType(declaration, field, "providersResolver");
+      def.providersResolver = (ngDef) => resolver(ngDef, processProvidersFn);
+    }
+  }
+}
+function initResolvers() {
+  return {
+    module: new NgModuleResolver(),
+    component: new ComponentResolver(),
+    directive: new DirectiveResolver(),
+    pipe: new PipeResolver()
+  };
+}
+function isStandaloneComponent(value) {
+  const def = getComponentDef(value);
+  return !!(def == null ? void 0 : def.standalone);
+}
+function getComponentDef(value) {
+  var _a2;
+  return (_a2 = value.\u0275cmp) != null ? _a2 : null;
+}
+function hasNgModuleDef(value) {
+  return value.hasOwnProperty("\u0275mod");
+}
+function isNgModule(value) {
+  return hasNgModuleDef(value);
+}
+function maybeUnwrapFn(maybeFn) {
+  return maybeFn instanceof Function ? maybeFn() : maybeFn;
+}
+function flatten(values) {
+  const out = [];
+  values.forEach((value) => {
+    if (Array.isArray(value)) {
+      out.push(...flatten(value));
+    } else {
+      out.push(value);
+    }
+  });
+  return out;
+}
+function identityFn(value) {
+  return value;
+}
+function flattenProviders(providers, mapFn = identityFn) {
+  const out = [];
+  for (let provider of providers) {
+    if ((0, import_root_effect_scheduler.isEnvironmentProviders)(provider)) {
+      provider = provider.\u0275providers;
+    }
+    if (Array.isArray(provider)) {
+      out.push(...flattenProviders(provider, mapFn));
+    } else {
+      out.push(mapFn(provider));
+    }
+  }
+  return out;
+}
+function getProviderField(provider, field) {
+  return provider && typeof provider === "object" && provider[field];
+}
+function getProviderToken(provider) {
+  return getProviderField(provider, "provide") || provider;
+}
+function isModuleWithProviders(value) {
+  return value.hasOwnProperty("ngModule");
+}
+function forEachRight(values, fn) {
+  for (let idx = values.length - 1; idx >= 0; idx--) {
+    fn(values[idx], idx);
+  }
+}
+function invalidTypeError(name, expectedType) {
+  return new Error(`${name} class doesn't have @${expectedType} decorator or is missing metadata.`);
+}
+class R3TestCompiler {
+  constructor(testBed) {
+    __publicField(this, "testBed");
+    this.testBed = testBed;
+  }
+  compileModuleSync(moduleType) {
+    this.testBed._compileNgModuleSync(moduleType);
+    return new import_debug_node.NgModuleFactory(moduleType);
+  }
+  compileModuleAsync(moduleType) {
+    return __async(this, null, function* () {
+      yield this.testBed._compileNgModuleAsync(moduleType);
+      return new import_debug_node.NgModuleFactory(moduleType);
+    });
+  }
+  compileModuleAndAllComponentsSync(moduleType) {
+    const ngModuleFactory = this.compileModuleSync(moduleType);
+    const componentFactories = this.testBed._getComponentFactories(moduleType);
+    return new import_debug_node.ModuleWithComponentFactories(ngModuleFactory, componentFactories);
+  }
+  compileModuleAndAllComponentsAsync(moduleType) {
+    return __async(this, null, function* () {
+      const ngModuleFactory = yield this.compileModuleAsync(moduleType);
+      const componentFactories = this.testBed._getComponentFactories(moduleType);
+      return new import_debug_node.ModuleWithComponentFactories(ngModuleFactory, componentFactories);
+    });
+  }
+  clearCache() {
+  }
+  clearCacheFor(type) {
+  }
+  getModuleId(moduleType) {
+    const meta = this.testBed._getModuleResolver().resolve(moduleType);
+    return meta && meta.id || void 0;
+  }
+}
+let _nextRootElementId = 0;
+function getTestBed() {
+  return TestBedImpl.INSTANCE;
+}
+const _TestBedImpl = class _TestBedImpl {
+  constructor() {
+    /**
+     * Teardown options that have been configured at the `TestBed` instance level.
+     * These options take precedence over the environment-level ones.
+     */
+    __publicField(this, "_instanceTeardownOptions");
+    /**
+     * Defer block behavior option that specifies whether defer blocks will be triggered manually
+     * or set to play through.
+     */
+    __publicField(this, "_instanceDeferBlockBehavior", DEFER_BLOCK_DEFAULT_BEHAVIOR);
+    /**
+     * Animations behavior option that specifies whether animations are enabled or disabled.
+     */
+    __publicField(this, "_instanceAnimationsEnabled", ANIMATIONS_ENABLED_DEFAULT);
+    /**
+     * "Error on unknown elements" option that has been configured at the `TestBed` instance level.
+     * This option takes precedence over the environment-level one.
+     */
+    __publicField(this, "_instanceErrorOnUnknownElementsOption");
+    /**
+     * "Error on unknown properties" option that has been configured at the `TestBed` instance level.
+     * This option takes precedence over the environment-level one.
+     */
+    __publicField(this, "_instanceErrorOnUnknownPropertiesOption");
+    /**
+     * Stores the previous "Error on unknown elements" option value,
+     * allowing to restore it in the reset testing module logic.
+     */
+    __publicField(this, "_previousErrorOnUnknownElementsOption");
+    /**
+     * Stores the previous "Error on unknown properties" option value,
+     * allowing to restore it in the reset testing module logic.
+     */
+    __publicField(this, "_previousErrorOnUnknownPropertiesOption");
+    /**
+     * Stores the value for `inferTagName` from the testing module.
+     */
+    __publicField(this, "_instanceInferTagName");
+    // Properties
+    __publicField(this, "platform", null);
+    __publicField(this, "ngModule", null);
+    __publicField(this, "_compiler", null);
+    __publicField(this, "_testModuleRef", null);
+    __publicField(this, "_activeFixtures", []);
+    /**
+     * Internal-only flag to indicate whether a module
+     * scoping queue has been checked and flushed already.
+     * @docs-private
+     */
+    __publicField(this, "globalCompilationChecked", false);
+  }
+  static get INSTANCE() {
+    return _TestBedImpl._INSTANCE = _TestBedImpl._INSTANCE || new _TestBedImpl();
+  }
+  /**
+   * Initialize the environment for testing with a compiler factory, a PlatformRef, and an
+   * angular module. These are common to every test in the suite.
+   *
+   * This may only be called once, to set up the common providers for the current test
+   * suite on the current platform. If you absolutely need to change the providers,
+   * first use `resetTestEnvironment`.
+   *
+   * Test modules and platforms for individual platforms are available from
+   * '@angular/<platform_name>/testing'.
+   *
+   * @publicApi
+   */
+  static initTestEnvironment(ngModule, platform, options) {
+    const testBed = _TestBedImpl.INSTANCE;
+    testBed.initTestEnvironment(ngModule, platform, options);
+    return testBed;
+  }
+  /**
+   * Reset the providers for the test injector.
+   *
+   * @publicApi
+   */
+  static resetTestEnvironment() {
+    _TestBedImpl.INSTANCE.resetTestEnvironment();
+  }
+  static configureCompiler(config) {
+    return _TestBedImpl.INSTANCE.configureCompiler(config);
+  }
+  /**
+   * Allows overriding default providers, directives, pipes, modules of the test injector,
+   * which are defined in test_injector.js
+   */
+  static configureTestingModule(moduleDef) {
+    return _TestBedImpl.INSTANCE.configureTestingModule(moduleDef);
+  }
+  /**
+   * Compile components with a `templateUrl` for the test's NgModule.
+   * It is necessary to call this function
+   * as fetching urls is asynchronous.
+   */
+  static compileComponents() {
+    return _TestBedImpl.INSTANCE.compileComponents();
+  }
+  static overrideModule(ngModule, override) {
+    return _TestBedImpl.INSTANCE.overrideModule(ngModule, override);
+  }
+  static overrideComponent(component, override) {
+    return _TestBedImpl.INSTANCE.overrideComponent(component, override);
+  }
+  static overrideDirective(directive, override) {
+    return _TestBedImpl.INSTANCE.overrideDirective(directive, override);
+  }
+  static overridePipe(pipe, override) {
+    return _TestBedImpl.INSTANCE.overridePipe(pipe, override);
+  }
+  static overrideTemplate(component, template) {
+    return _TestBedImpl.INSTANCE.overrideTemplate(component, template);
+  }
+  /**
+   * Overrides the template of the given component, compiling the template
+   * in the context of the TestingModule.
+   *
+   * Note: This works for JIT and AOTed components as well.
+   */
+  static overrideTemplateUsingTestingModule(component, template) {
+    return _TestBedImpl.INSTANCE.overrideTemplateUsingTestingModule(component, template);
+  }
+  static overrideProvider(token, provider) {
+    return _TestBedImpl.INSTANCE.overrideProvider(token, provider);
+  }
+  static inject(token, notFoundValue, options) {
+    return _TestBedImpl.INSTANCE.inject(token, notFoundValue, options);
+  }
+  /**
+   * Runs the given function in the `EnvironmentInjector` context of `TestBed`.
+   *
+   * @see {@link https://angular.dev/api/core/EnvironmentInjector#runInContext}
+   */
+  static runInInjectionContext(fn) {
+    return _TestBedImpl.INSTANCE.runInInjectionContext(fn);
+  }
+  static createComponent(component, options) {
+    return _TestBedImpl.INSTANCE.createComponent(component, options);
+  }
+  static resetTestingModule() {
+    return _TestBedImpl.INSTANCE.resetTestingModule();
+  }
+  static execute(tokens, fn, context) {
+    return _TestBedImpl.INSTANCE.execute(tokens, fn, context);
+  }
+  static get platform() {
+    return _TestBedImpl.INSTANCE.platform;
+  }
+  static get ngModule() {
+    return _TestBedImpl.INSTANCE.ngModule;
+  }
+  static flushEffects() {
+    return _TestBedImpl.INSTANCE.tick();
+  }
+  static tick() {
+    return _TestBedImpl.INSTANCE.tick();
+  }
+  /**
+   * Initialize the environment for testing with a compiler factory, a PlatformRef, and an
+   * angular module. These are common to every test in the suite.
+   *
+   * This may only be called once, to set up the common providers for the current test
+   * suite on the current platform. If you absolutely need to change the providers,
+   * first use `resetTestEnvironment`.
+   *
+   * Test modules and platforms for individual platforms are available from
+   * '@angular/<platform_name>/testing'.
+   *
+   * @publicApi
+   */
+  initTestEnvironment(ngModule, platform, options) {
+    if (this.platform || this.ngModule) {
+      throw new Error("Cannot set base providers because it has already been called");
+    }
+    _TestBedImpl._environmentTeardownOptions = options == null ? void 0 : options.teardown;
+    _TestBedImpl._environmentErrorOnUnknownElementsOption = options == null ? void 0 : options.errorOnUnknownElements;
+    _TestBedImpl._environmentErrorOnUnknownPropertiesOption = options == null ? void 0 : options.errorOnUnknownProperties;
+    this.platform = platform;
+    this.ngModule = ngModule;
+    this._compiler = new TestBedCompiler(this.platform, this.ngModule);
+    (0, import_debug_node.setAllowDuplicateNgModuleIdsForTest)(true);
+  }
+  /**
+   * Reset the providers for the test injector.
+   *
+   * @publicApi
+   */
+  resetTestEnvironment() {
+    this.resetTestingModule();
+    this._compiler = null;
+    this.platform = null;
+    this.ngModule = null;
+    _TestBedImpl._environmentTeardownOptions = void 0;
+    (0, import_debug_node.setAllowDuplicateNgModuleIdsForTest)(false);
+  }
+  resetTestingModule() {
+    var _a2, _b2;
+    this.checkGlobalCompilationFinished();
+    (0, import_debug_node.resetCompiledComponents)();
+    if (this._compiler !== null) {
+      this.compiler.restoreOriginalState();
+    }
+    this._compiler = new TestBedCompiler(this.platform, this.ngModule);
+    (0, import_debug_node.\u0275setUnknownElementStrictMode)((_a2 = this._previousErrorOnUnknownElementsOption) != null ? _a2 : THROW_ON_UNKNOWN_ELEMENTS_DEFAULT);
+    (0, import_debug_node.\u0275setUnknownPropertyStrictMode)((_b2 = this._previousErrorOnUnknownPropertiesOption) != null ? _b2 : THROW_ON_UNKNOWN_PROPERTIES_DEFAULT);
+    try {
+      this.destroyActiveFixtures();
+    } finally {
+      try {
+        if (this.shouldTearDownTestingModule()) {
+          this.tearDownTestingModule();
+        }
+      } finally {
+        this._testModuleRef = null;
+        this._instanceTeardownOptions = void 0;
+        this._instanceErrorOnUnknownElementsOption = void 0;
+        this._instanceErrorOnUnknownPropertiesOption = void 0;
+        this._instanceInferTagName = void 0;
+        this._instanceDeferBlockBehavior = DEFER_BLOCK_DEFAULT_BEHAVIOR;
+        this._instanceAnimationsEnabled = ANIMATIONS_ENABLED_DEFAULT;
+      }
+    }
+    return this;
+  }
+  configureCompiler(config) {
+    if (config.useJit != null) {
+      throw new Error("JIT compiler is not configurable via TestBed APIs.");
+    }
+    if (config.providers !== void 0) {
+      this.compiler.setCompilerProviders(config.providers);
+    }
+    return this;
+  }
+  configureTestingModule(moduleDef) {
+    var _a2, _b2;
+    this.assertNotInstantiated("TestBed.configureTestingModule", "configure the test module");
+    this.checkGlobalCompilationFinished();
+    this._instanceTeardownOptions = moduleDef.teardown;
+    this._instanceErrorOnUnknownElementsOption = moduleDef.errorOnUnknownElements;
+    this._instanceErrorOnUnknownPropertiesOption = moduleDef.errorOnUnknownProperties;
+    this._instanceInferTagName = moduleDef.inferTagName;
+    this._instanceDeferBlockBehavior = (_a2 = moduleDef.deferBlockBehavior) != null ? _a2 : DEFER_BLOCK_DEFAULT_BEHAVIOR;
+    this._instanceAnimationsEnabled = (_b2 = moduleDef.animationsEnabled) != null ? _b2 : ANIMATIONS_ENABLED_DEFAULT;
+    this._previousErrorOnUnknownElementsOption = (0, import_debug_node.\u0275getUnknownElementStrictMode)();
+    (0, import_debug_node.\u0275setUnknownElementStrictMode)(this.shouldThrowErrorOnUnknownElements());
+    this._previousErrorOnUnknownPropertiesOption = (0, import_debug_node.\u0275getUnknownPropertyStrictMode)();
+    (0, import_debug_node.\u0275setUnknownPropertyStrictMode)(this.shouldThrowErrorOnUnknownProperties());
+    this.compiler.configureTestingModule(moduleDef);
+    return this;
+  }
+  compileComponents() {
+    return this.compiler.compileComponents();
+  }
+  inject(token, notFoundValue, options) {
+    if (token === TestBed) {
+      return this;
+    }
+    const UNDEFINED = {};
+    const result = this.testModuleRef.injector.get(token, UNDEFINED, options);
+    return result === UNDEFINED ? this.compiler.injector.get(token, notFoundValue, options) : result;
+  }
+  runInInjectionContext(fn) {
+    return (0, import_root_effect_scheduler.runInInjectionContext)(this.inject(import_root_effect_scheduler.EnvironmentInjector), fn);
+  }
+  execute(tokens, fn, context) {
+    const params = tokens.map((t) => this.inject(t));
+    return fn.apply(context, params);
+  }
+  overrideModule(ngModule, override) {
+    this.assertNotInstantiated("overrideModule", "override module metadata");
+    this.compiler.overrideModule(ngModule, override);
+    return this;
+  }
+  overrideComponent(component, override) {
+    this.assertNotInstantiated("overrideComponent", "override component metadata");
+    this.compiler.overrideComponent(component, override);
+    return this;
+  }
+  overrideTemplateUsingTestingModule(component, template) {
+    this.assertNotInstantiated("TestBed.overrideTemplateUsingTestingModule", "Cannot override template when the test module has already been instantiated");
+    this.compiler.overrideTemplateUsingTestingModule(component, template);
+    return this;
+  }
+  overrideDirective(directive, override) {
+    this.assertNotInstantiated("overrideDirective", "override directive metadata");
+    this.compiler.overrideDirective(directive, override);
+    return this;
+  }
+  overridePipe(pipe, override) {
+    this.assertNotInstantiated("overridePipe", "override pipe metadata");
+    this.compiler.overridePipe(pipe, override);
+    return this;
+  }
+  /**
+   * Overwrites all providers for the given token with the given provider definition.
+   */
+  overrideProvider(token, provider) {
+    this.assertNotInstantiated("overrideProvider", "override provider");
+    this.compiler.overrideProvider(token, provider);
+    return this;
+  }
+  overrideTemplate(component, template) {
+    return this.overrideComponent(component, { set: { template, templateUrl: null } });
+  }
+  createComponent(type, options) {
+    var _a2, _b2;
+    if ((0, import_debug_node.getAsyncClassMetadataFn)(type)) {
+      throw new Error(`Component '${type.name}' has unresolved metadata. Please call \`await TestBed.compileComponents()\` before running this test.`);
+    }
+    const testComponentRenderer = this.inject(TestComponentRenderer);
+    const shouldInferTagName = (_b2 = (_a2 = options == null ? void 0 : options.inferTagName) != null ? _a2 : this._instanceInferTagName) != null ? _b2 : false;
+    const componentDef = (0, import_root_effect_scheduler.getComponentDef)(type);
+    const rootElId = `root${_nextRootElementId++}`;
+    if (!componentDef) {
+      throw new Error(`It looks like '${(0, import_root_effect_scheduler.stringify)(type)}' has not been compiled.`);
+    }
+    testComponentRenderer.insertRootElement(rootElId, shouldInferTagName ? (0, import_debug_node.inferTagNameFromDefinition)(componentDef) : void 0);
+    const componentFactory = new import_debug_node.ComponentFactory(componentDef);
+    const initComponent = () => {
+      const componentRef = componentFactory.create(import_root_effect_scheduler.Injector.NULL, [], `#${rootElId}`, this.testModuleRef, void 0, options == null ? void 0 : options.bindings);
+      return this.runInInjectionContext(() => new ComponentFixture(componentRef));
+    };
+    const noNgZone = this.inject(ComponentFixtureNoNgZone, false);
+    const ngZone = noNgZone ? null : this.inject(import_debug_node.NgZone, null);
+    const fixture = ngZone ? ngZone.run(initComponent) : initComponent();
+    this._activeFixtures.push(fixture);
+    return fixture;
+  }
+  /**
+   * @internal strip this from published d.ts files due to
+   * https://github.com/microsoft/TypeScript/issues/36216
+   */
+  get compiler() {
+    if (this._compiler === null) {
+      throw new Error(`Need to call TestBed.initTestEnvironment() first`);
+    }
+    return this._compiler;
+  }
+  /**
+   * @internal strip this from published d.ts files due to
+   * https://github.com/microsoft/TypeScript/issues/36216
+   */
+  get testModuleRef() {
+    if (this._testModuleRef === null) {
+      this._testModuleRef = this.compiler.finalize();
+    }
+    return this._testModuleRef;
+  }
+  assertNotInstantiated(methodName, methodDescription) {
+    if (this._testModuleRef !== null) {
+      throw new Error(`Cannot ${methodDescription} when the test module has already been instantiated. Make sure you are not using \`inject\` before \`${methodName}\`.`);
+    }
+  }
+  /**
+   * Check whether the module scoping queue should be flushed, and flush it if needed.
+   *
+   * When the TestBed is reset, it clears the JIT module compilation queue, cancelling any
+   * in-progress module compilation. This creates a potential hazard - the very first time the
+   * TestBed is initialized (or if it's reset without being initialized), there may be pending
+   * compilations of modules declared in global scope. These compilations should be finished.
+   *
+   * To ensure that globally declared modules have their components scoped properly, this function
+   * is called whenever TestBed is initialized or reset. The _first_ time that this happens, prior
+   * to any other operations, the scoping queue is flushed.
+   */
+  checkGlobalCompilationFinished() {
+    if (!this.globalCompilationChecked && this._testModuleRef === null) {
+      (0, import_debug_node.flushModuleScopingQueueAsMuchAsPossible)();
+    }
+    this.globalCompilationChecked = true;
+  }
+  destroyActiveFixtures() {
+    let errorCount = 0;
+    this._activeFixtures.forEach((fixture) => {
+      try {
+        fixture.destroy();
+      } catch (e) {
+        errorCount++;
+        console.error("Error during cleanup of component", {
+          component: fixture.componentInstance,
+          stacktrace: e
+        });
+      }
+    });
+    this._activeFixtures = [];
+    if (errorCount > 0 && this.shouldRethrowTeardownErrors()) {
+      throw Error(`${errorCount} ${errorCount === 1 ? "component" : "components"} threw errors during cleanup`);
+    }
+  }
+  shouldRethrowTeardownErrors() {
+    var _a2, _b2;
+    const instanceOptions = this._instanceTeardownOptions;
+    const environmentOptions = _TestBedImpl._environmentTeardownOptions;
+    if (!instanceOptions && !environmentOptions) {
+      return TEARDOWN_TESTING_MODULE_ON_DESTROY_DEFAULT;
+    }
+    return (_b2 = (_a2 = instanceOptions == null ? void 0 : instanceOptions.rethrowErrors) != null ? _a2 : environmentOptions == null ? void 0 : environmentOptions.rethrowErrors) != null ? _b2 : this.shouldTearDownTestingModule();
+  }
+  shouldThrowErrorOnUnknownElements() {
+    var _a2, _b2;
+    return (_b2 = (_a2 = this._instanceErrorOnUnknownElementsOption) != null ? _a2 : _TestBedImpl._environmentErrorOnUnknownElementsOption) != null ? _b2 : THROW_ON_UNKNOWN_ELEMENTS_DEFAULT;
+  }
+  shouldThrowErrorOnUnknownProperties() {
+    var _a2, _b2;
+    return (_b2 = (_a2 = this._instanceErrorOnUnknownPropertiesOption) != null ? _a2 : _TestBedImpl._environmentErrorOnUnknownPropertiesOption) != null ? _b2 : THROW_ON_UNKNOWN_PROPERTIES_DEFAULT;
+  }
+  shouldTearDownTestingModule() {
+    var _a2, _b2, _c2, _d;
+    return (_d = (_c2 = (_a2 = this._instanceTeardownOptions) == null ? void 0 : _a2.destroyAfterEach) != null ? _c2 : (_b2 = _TestBedImpl._environmentTeardownOptions) == null ? void 0 : _b2.destroyAfterEach) != null ? _d : TEARDOWN_TESTING_MODULE_ON_DESTROY_DEFAULT;
+  }
+  getDeferBlockBehavior() {
+    return this._instanceDeferBlockBehavior;
+  }
+  getAnimationsEnabled() {
+    return this._instanceAnimationsEnabled;
+  }
+  tearDownTestingModule() {
+    var _a2;
+    if (this._testModuleRef === null) {
+      return;
+    }
+    const testRenderer = this.inject(TestComponentRenderer);
+    try {
+      this._testModuleRef.destroy();
+    } catch (e) {
+      if (this.shouldRethrowTeardownErrors()) {
+        throw e;
+      } else {
+        console.error("Error during cleanup of a testing module", {
+          component: this._testModuleRef.instance,
+          stacktrace: e
+        });
+      }
+    } finally {
+      (_a2 = testRenderer.removeAllRootElements) == null ? void 0 : _a2.call(testRenderer);
+    }
+  }
+  /**
+   * Execute any pending effects by executing any pending work required to synchronize model to the UI.
+   *
+   * @deprecated use `TestBed.tick()` instead
+   */
+  flushEffects() {
+    this.tick();
+  }
+  /**
+   * Execute any pending work required to synchronize model to the UI.
+   *
+   * @publicApi
+   */
+  tick() {
+    const appRef = this.inject(import_debug_node.ApplicationRef);
+    try {
+      appRef.includeAllTestViews = true;
+      appRef.tick();
+    } finally {
+      appRef.includeAllTestViews = false;
+    }
+  }
+};
+__publicField(_TestBedImpl, "_INSTANCE", null);
+/**
+ * Teardown options that have been configured at the environment level.
+ * Used as a fallback if no instance-level options have been provided.
+ */
+__publicField(_TestBedImpl, "_environmentTeardownOptions");
+/**
+ * "Error on unknown elements" option that has been configured at the environment level.
+ * Used as a fallback if no instance-level option has been provided.
+ */
+__publicField(_TestBedImpl, "_environmentErrorOnUnknownElementsOption");
+/**
+ * "Error on unknown properties" option that has been configured at the environment level.
+ * Used as a fallback if no instance-level option has been provided.
+ */
+__publicField(_TestBedImpl, "_environmentErrorOnUnknownPropertiesOption");
+let TestBedImpl = _TestBedImpl;
+const TestBed = TestBedImpl;
+function inject(tokens, fn) {
+  const testBed = TestBedImpl.INSTANCE;
+  return function() {
+    return testBed.execute(tokens, fn, this);
+  };
+}
+class InjectSetupWrapper {
+  constructor(_moduleDef) {
+    __publicField(this, "_moduleDef");
+    this._moduleDef = _moduleDef;
+  }
+  _addModule() {
+    const moduleDef = this._moduleDef();
+    if (moduleDef) {
+      TestBedImpl.configureTestingModule(moduleDef);
+    }
+  }
+  inject(tokens, fn) {
+    const self = this;
+    return function() {
+      self._addModule();
+      return inject(tokens, fn).call(this);
+    };
+  }
+}
+function withModule(moduleDef, fn) {
+  if (fn) {
+    return function() {
+      const testBed = TestBedImpl.INSTANCE;
+      if (moduleDef) {
+        testBed.configureTestingModule(moduleDef);
+      }
+      return fn.apply(this);
+    };
+  }
+  return new InjectSetupWrapper(() => moduleDef);
+}
+class FakeNavigation {
+  constructor(doc, startURL) {
+    /**
+     * The fake implementation of an entries array. Only same-document entries
+     * allowed.
+     */
+    __publicField(this, "entriesArr", []);
+    /**
+     * The current active entry index into `entriesArr`.
+     */
+    __publicField(this, "currentEntryIndex", 0);
+    /**
+     * The current navigate event.
+     * @internal
+     */
+    __publicField(this, "navigateEvent", null);
+    /**
+     * A Map of pending traversals, so that traversals to the same entry can be
+     * re-used.
+     */
+    __publicField(this, "traversalQueue", /* @__PURE__ */ new Map());
+    /**
+     * A Promise that resolves when the previous traversals have finished. Used to
+     * simulate the cross-process communication necessary for traversals.
+     */
+    __publicField(this, "nextTraversal", Promise.resolve());
+    /**
+     * A prospective current active entry index, which includes unresolved
+     * traversals. Used by `go` to determine where navigations are intended to go.
+     */
+    __publicField(this, "prospectiveEntryIndex", 0);
+    /**
+     * A test-only option to make traversals synchronous, rather than emulate
+     * cross-process communication.
+     */
+    __publicField(this, "synchronousTraversals", false);
+    /** Whether to allow a call to setInitialEntryForTesting. */
+    __publicField(this, "canSetInitialEntry", true);
+    /**
+     * `EventTarget` to dispatch events.
+     * @internal
+     */
+    __publicField(this, "eventTarget");
+    /** The next unique id for created entries. Replace recreates this id. */
+    __publicField(this, "nextId", 0);
+    /** The next unique key for created entries. Replace inherits this id. */
+    __publicField(this, "nextKey", 0);
+    /** Whether this fake is disposed. */
+    __publicField(this, "disposed", false);
+    __publicField(this, "createEventTarget");
+    __publicField(this, "_window");
+    __publicField(this, "_transition", null);
+    var _a2;
+    this.createEventTarget = () => {
+      try {
+        return doc.createElement("div");
+      } catch (e) {
+        return new EventTarget();
+      }
+    };
+    this._window = (_a2 = document.defaultView) != null ? _a2 : this.createEventTarget();
+    this.eventTarget = this.createEventTarget();
+    this.setInitialEntryForTesting(startURL);
+  }
+  /** Equivalent to `navigation.currentEntry`. */
+  get currentEntry() {
+    return this.entriesArr[this.currentEntryIndex];
+  }
+  get canGoBack() {
+    return this.currentEntryIndex > 0;
+  }
+  get canGoForward() {
+    return this.currentEntryIndex < this.entriesArr.length - 1;
+  }
+  get window() {
+    return this._window;
+  }
+  /**
+   * Sets the initial entry.
+   */
+  setInitialEntryForTesting(url, options = { historyState: null }) {
+    var _a2, _b2;
+    if (!this.canSetInitialEntry) {
+      throw new Error("setInitialEntryForTesting can only be called before any navigation has occurred");
+    }
+    const currentInitialEntry = this.entriesArr[0];
+    this.entriesArr[0] = new FakeNavigationHistoryEntry(this.eventTarget, new URL(url).toString(), {
+      index: 0,
+      key: (_a2 = currentInitialEntry == null ? void 0 : currentInitialEntry.key) != null ? _a2 : String(this.nextKey++),
+      id: (_b2 = currentInitialEntry == null ? void 0 : currentInitialEntry.id) != null ? _b2 : String(this.nextId++),
+      sameDocument: true,
+      historyState: options == null ? void 0 : options.historyState,
+      state: options.state
+    });
+  }
+  /** Returns whether the initial entry is still eligible to be set. */
+  canSetInitialEntryForTesting() {
+    return this.canSetInitialEntry;
+  }
+  /**
+   * Sets whether to emulate traversals as synchronous rather than
+   * asynchronous.
+   */
+  setSynchronousTraversalsForTesting(synchronousTraversals) {
+    this.synchronousTraversals = synchronousTraversals;
+  }
+  /** Equivalent to `navigation.entries()`. */
+  entries() {
+    return this.entriesArr.slice();
+  }
+  /** Equivalent to `navigation.navigate()`. */
+  navigate(url, options) {
+    const fromUrl = new URL(this.currentEntry.url);
+    const toUrl = new URL(url, this.currentEntry.url);
+    let navigationType;
+    if (!(options == null ? void 0 : options.history) || options.history === "auto") {
+      if (fromUrl.toString() === toUrl.toString()) {
+        navigationType = "replace";
+      } else {
+        navigationType = "push";
+      }
+    } else {
+      navigationType = options.history;
+    }
+    const hashChange = isHashChange(fromUrl, toUrl);
+    const destination = new FakeNavigationDestination({
+      url: toUrl.toString(),
+      state: options == null ? void 0 : options.state,
+      sameDocument: hashChange,
+      historyState: null
+    });
+    const result = new InternalNavigationResult(this);
+    const intercepted = this.userAgentNavigate(destination, result, {
+      navigationType,
+      cancelable: true,
+      canIntercept: true,
+      // Always false for navigate().
+      userInitiated: false,
+      hashChange,
+      info: options == null ? void 0 : options.info
+    });
+    if (!intercepted) {
+      this.updateNavigationEntriesForSameDocumentNavigation(this.navigateEvent);
+    }
+    return {
+      committed: result.committed,
+      finished: result.finished
+    };
+  }
+  /** Equivalent to `history.pushState()`. */
+  pushState(data, title, url) {
+    this.pushOrReplaceState("push", data, title, url);
+  }
+  /** Equivalent to `history.replaceState()`. */
+  replaceState(data, title, url) {
+    this.pushOrReplaceState("replace", data, title, url);
+  }
+  pushOrReplaceState(navigationType, data, _title, url) {
+    const fromUrl = new URL(this.currentEntry.url);
+    const toUrl = url ? new URL(url, this.currentEntry.url) : fromUrl;
+    const hashChange = isHashChange(fromUrl, toUrl);
+    const destination = new FakeNavigationDestination({
+      url: toUrl.toString(),
+      sameDocument: true,
+      // history.pushState/replaceState are always same-document
+      historyState: data,
+      state: void 0
+      // No Navigation API state directly from history.pushState
+    });
+    const result = new InternalNavigationResult(this);
+    const intercepted = this.userAgentNavigate(destination, result, {
+      navigationType,
+      cancelable: true,
+      canIntercept: true,
+      // Always false for pushState() or replaceState().
+      userInitiated: false,
+      hashChange
+    });
+    if (intercepted) {
+      return;
+    }
+    this.updateNavigationEntriesForSameDocumentNavigation(this.navigateEvent);
+  }
+  /** Equivalent to `navigation.traverseTo()`. */
+  traverseTo(key, options) {
+    const fromUrl = new URL(this.currentEntry.url);
+    const entry = this.findEntry(key);
+    if (!entry) {
+      const domException = new DOMException("Invalid key", "InvalidStateError");
+      const committed = Promise.reject(domException);
+      const finished = Promise.reject(domException);
+      committed.catch(() => {
+      });
+      finished.catch(() => {
+      });
+      return {
+        committed,
+        finished
+      };
+    }
+    if (entry === this.currentEntry) {
+      return {
+        committed: Promise.resolve(this.currentEntry),
+        finished: Promise.resolve(this.currentEntry)
+      };
+    }
+    if (this.traversalQueue.has(entry.key)) {
+      const existingResult = this.traversalQueue.get(entry.key);
+      return {
+        committed: existingResult.committed,
+        finished: existingResult.finished
+      };
+    }
+    const hashChange = isHashChange(fromUrl, new URL(entry.url, this.currentEntry.url));
+    const destination = new FakeNavigationDestination({
+      url: entry.url,
+      state: entry.getState(),
+      historyState: entry.getHistoryState(),
+      key: entry.key,
+      id: entry.id,
+      index: entry.index,
+      sameDocument: entry.sameDocument
+    });
+    this.prospectiveEntryIndex = entry.index;
+    const result = new InternalNavigationResult(this);
+    this.traversalQueue.set(entry.key, result);
+    this.runTraversal(() => {
+      this.traversalQueue.delete(entry.key);
+      const intercepted = this.userAgentNavigate(destination, result, {
+        navigationType: "traverse",
+        cancelable: true,
+        canIntercept: true,
+        // Always false for traverseTo().
+        userInitiated: false,
+        hashChange,
+        info: options == null ? void 0 : options.info
+      });
+      if (!intercepted) {
+        this.userAgentTraverse(this.navigateEvent);
+      }
+    });
+    return {
+      committed: result.committed,
+      finished: result.finished
+    };
+  }
+  /** Equivalent to `navigation.back()`. */
+  back(options) {
+    if (this.currentEntryIndex === 0) {
+      const domException = new DOMException("Cannot go back", "InvalidStateError");
+      const committed = Promise.reject(domException);
+      const finished = Promise.reject(domException);
+      committed.catch(() => {
+      });
+      finished.catch(() => {
+      });
+      return {
+        committed,
+        finished
+      };
+    }
+    const entry = this.entriesArr[this.currentEntryIndex - 1];
+    return this.traverseTo(entry.key, options);
+  }
+  /** Equivalent to `navigation.forward()`. */
+  forward(options) {
+    if (this.currentEntryIndex === this.entriesArr.length - 1) {
+      const domException = new DOMException("Cannot go forward", "InvalidStateError");
+      const committed = Promise.reject(domException);
+      const finished = Promise.reject(domException);
+      committed.catch(() => {
+      });
+      finished.catch(() => {
+      });
+      return {
+        committed,
+        finished
+      };
+    }
+    const entry = this.entriesArr[this.currentEntryIndex + 1];
+    return this.traverseTo(entry.key, options);
+  }
+  /**
+   * Equivalent to `history.go()`.
+   * Note that this method does not actually work precisely to how Chrome
+   * does, instead choosing a simpler model with less unexpected behavior.
+   * Chrome has a few edge case optimizations, for instance with repeated
+   * `back(); forward()` chains it collapses certain traversals.
+   */
+  go(direction) {
+    const targetIndex = this.prospectiveEntryIndex + direction;
+    if (targetIndex >= this.entriesArr.length || targetIndex < 0) {
+      return;
+    }
+    this.prospectiveEntryIndex = targetIndex;
+    this.runTraversal(() => {
+      if (targetIndex >= this.entriesArr.length || targetIndex < 0) {
+        return;
+      }
+      const fromUrl = new URL(this.currentEntry.url);
+      const entry = this.entriesArr[targetIndex];
+      const hashChange = isHashChange(fromUrl, new URL(entry.url, this.currentEntry.url));
+      const destination = new FakeNavigationDestination({
+        url: entry.url,
+        state: entry.getState(),
+        historyState: entry.getHistoryState(),
+        key: entry.key,
+        id: entry.id,
+        index: entry.index,
+        sameDocument: entry.sameDocument
+      });
+      const result = new InternalNavigationResult(this);
+      const intercepted = this.userAgentNavigate(destination, result, {
+        navigationType: "traverse",
+        cancelable: true,
+        canIntercept: true,
+        // Always false for go().
+        userInitiated: false,
+        hashChange
+      });
+      if (!intercepted) {
+        this.userAgentTraverse(this.navigateEvent);
+      }
+    });
+  }
+  /** Runs a traversal synchronously or asynchronously */
+  runTraversal(traversal) {
+    if (this.synchronousTraversals) {
+      traversal();
+      return;
+    }
+    this.nextTraversal = this.nextTraversal.then(() => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+          traversal();
+        });
+      });
+    });
+  }
+  /** Equivalent to `navigation.addEventListener()`. */
+  addEventListener(type, callback, options) {
+    this.eventTarget.addEventListener(type, callback, options);
+  }
+  /** Equivalent to `navigation.removeEventListener()`. */
+  removeEventListener(type, callback, options) {
+    this.eventTarget.removeEventListener(type, callback, options);
+  }
+  /** Equivalent to `navigation.dispatchEvent()` */
+  dispatchEvent(event) {
+    return this.eventTarget.dispatchEvent(event);
+  }
+  /** Cleans up resources. */
+  dispose() {
+    this.eventTarget = this.createEventTarget();
+    this.disposed = true;
+  }
+  /** Returns whether this fake is disposed. */
+  isDisposed() {
+    return this.disposed;
+  }
+  abortOngoingNavigation(eventToAbort, reason) {
+    if (this.navigateEvent !== eventToAbort) {
+      return;
+    }
+    if (this.navigateEvent.abortController.signal.aborted) {
+      return;
+    }
+    const abortReason = reason != null ? reason : new DOMException("Navigation aborted", "AbortError");
+    this.navigateEvent.cancel(abortReason);
+  }
+  /**
+   * Implementation for all navigations and traversals.
+   * @returns true if the event was intercepted, otherwise false
+   */
+  userAgentNavigate(destination, result, options) {
+    this.canSetInitialEntry = false;
+    if (this.navigateEvent) {
+      this.abortOngoingNavigation(this.navigateEvent, new DOMException("Navigation superseded by a new navigation.", "AbortError"));
+    }
+    const dispatchResultIsTrueIfNoInterception = dispatchNavigateEvent({
+      navigationType: options.navigationType,
+      cancelable: options.cancelable,
+      canIntercept: options.canIntercept,
+      userInitiated: options.userInitiated,
+      hashChange: options.hashChange,
+      destination,
+      info: options.info,
+      sameDocument: destination.sameDocument,
+      result
+    });
+    return !dispatchResultIsTrueIfNoInterception;
+  }
+  /**
+   * Implementation for a push or replace navigation.
+   * https://whatpr.org/html/10919/browsing-the-web.html#url-and-history-update-steps
+   * https://whatpr.org/html/10919/nav-history-apis.html#update-the-navigation-api-entries-for-a-same-document-navigation
+   * @internal
+   */
+  urlAndHistoryUpdateSteps(navigateEvent) {
+    this.updateNavigationEntriesForSameDocumentNavigation(navigateEvent);
+  }
+  /**
+   * Implementation for a traverse navigation.
+   *
+   * https://whatpr.org/html/10919/browsing-the-web.html#apply-the-traverse-history-step
+   * ...
+   * > Let updateDocument be an algorithm step which performs update document for history step application given targetEntry's document, targetEntry, changingNavigableContinuation's update-only, scriptHistoryLength, scriptHistoryIndex, navigationType, entriesForNavigationAPI, and previousEntry.
+   * > If targetEntry's document is equal to displayedDocument, then perform updateDocument.
+   * https://whatpr.org/html/10919/browsing-the-web.html#update-document-for-history-step-application
+   * which then goes to https://whatpr.org/html/10919/nav-history-apis.html#update-the-navigation-api-entries-for-a-same-document-navigation
+   * @internal
+   */
+  userAgentTraverse(navigateEvent) {
+    const oldUrl = this.currentEntry.url;
+    this.updateNavigationEntriesForSameDocumentNavigation(navigateEvent);
+    const popStateEvent = createPopStateEvent({
+      state: navigateEvent.destination.getHistoryState()
+    });
+    this._window.dispatchEvent(popStateEvent);
+    if (navigateEvent.hashChange) {
+      const hashchangeEvent = createHashChangeEvent(oldUrl, this.currentEntry.url);
+      this._window.dispatchEvent(hashchangeEvent);
+    }
+  }
+  /**
+   * https://whatpr.org/html/10919/nav-history-apis.html#update-the-navigation-api-entries-for-a-same-document-navigation
+   * @internal
+   */
+  updateNavigationEntriesForSameDocumentNavigation({ destination, navigationType, result }) {
+    var _a2;
+    const oldCurrentNHE = this.currentEntry;
+    const disposedNHEs = [];
+    if (navigationType === "traverse") {
+      this.currentEntryIndex = destination.index;
+      if (this.currentEntryIndex === -1) {
+        throw new Error("unexpected current entry index");
+      }
+    } else if (navigationType === "push") {
+      this.currentEntryIndex++;
+      this.prospectiveEntryIndex = this.currentEntryIndex;
+      disposedNHEs.push(...this.entriesArr.splice(this.currentEntryIndex));
+    } else if (navigationType === "replace") {
+      disposedNHEs.push(oldCurrentNHE);
+    }
+    if (navigationType === "push" || navigationType === "replace") {
+      const index = this.currentEntryIndex;
+      const key = navigationType === "push" ? String(this.nextKey++) : (_a2 = oldCurrentNHE == null ? void 0 : oldCurrentNHE.key) != null ? _a2 : String(this.nextKey++);
+      const newNHE = new FakeNavigationHistoryEntry(this.eventTarget, destination.url, {
+        id: String(this.nextId++),
+        key,
+        index,
+        sameDocument: true,
+        state: destination.getState(),
+        historyState: destination.getHistoryState()
+      });
+      this.entriesArr[this.currentEntryIndex] = newNHE;
+    }
+    result.committedResolve(this.currentEntry);
+    const currentEntryChangeEvent = createFakeNavigationCurrentEntryChangeEvent({
+      from: oldCurrentNHE,
+      navigationType
+    });
+    this.eventTarget.dispatchEvent(currentEntryChangeEvent);
+    for (const disposedNHE of disposedNHEs) {
+      disposedNHE.dispose();
+    }
+  }
+  /** Utility method for finding entries with the given `key`. */
+  findEntry(key) {
+    for (const entry of this.entriesArr) {
+      if (entry.key === key)
+        return entry;
+    }
+    return void 0;
+  }
+  set onnavigate(_handler) {
+    throw new Error("unimplemented");
+  }
+  // tslint:disable-next-line:no-any
+  get onnavigate() {
+    throw new Error("unimplemented");
+  }
+  set oncurrententrychange(_handler) {
+    throw new Error("unimplemented");
+  }
+  get oncurrententrychange() {
+    throw new Error("unimplemented");
+  }
+  set onnavigatesuccess(_handler) {
+    throw new Error("unimplemented");
+  }
+  // tslint:disable-next-line:no-any
+  get onnavigatesuccess() {
+    throw new Error("unimplemented");
+  }
+  set onnavigateerror(_handler) {
+    throw new Error("unimplemented");
+  }
+  // tslint:disable-next-line:no-any
+  get onnavigateerror() {
+    throw new Error("unimplemented");
+  }
+  /** @internal */
+  set transition(t) {
+    this._transition = t;
+  }
+  get transition() {
+    return this._transition;
+  }
+  updateCurrentEntry(_options) {
+    throw new Error("unimplemented");
+  }
+  reload(_options) {
+    throw new Error("unimplemented");
+  }
+}
+class FakeNavigationHistoryEntry {
+  constructor(eventTarget, url, { id, key, index, sameDocument, state, historyState }) {
+    __publicField(this, "eventTarget");
+    __publicField(this, "url");
+    __publicField(this, "sameDocument");
+    __publicField(this, "id");
+    __publicField(this, "key");
+    __publicField(this, "index");
+    __publicField(this, "state");
+    __publicField(this, "historyState");
+    // tslint:disable-next-line:no-any
+    __publicField(this, "ondispose", null);
+    this.eventTarget = eventTarget;
+    this.url = url;
+    this.id = id;
+    this.key = key;
+    this.index = index;
+    this.sameDocument = sameDocument;
+    this.state = state;
+    this.historyState = historyState;
+  }
+  getState() {
+    return this.state ? JSON.parse(JSON.stringify(this.state)) : this.state;
+  }
+  getHistoryState() {
+    return this.historyState ? JSON.parse(JSON.stringify(this.historyState)) : this.historyState;
+  }
+  addEventListener(type, callback, options) {
+    this.eventTarget.addEventListener(type, callback, options);
+  }
+  removeEventListener(type, callback, options) {
+    this.eventTarget.removeEventListener(type, callback, options);
+  }
+  dispatchEvent(event) {
+    return this.eventTarget.dispatchEvent(event);
+  }
+  /** internal */
+  dispose() {
+    const disposeEvent = new Event("disposed");
+    this.dispatchEvent(disposeEvent);
+    this.eventTarget = null;
+  }
+}
+function dispatchNavigateEvent({ cancelable, canIntercept, userInitiated, hashChange, navigationType, destination, info, sameDocument, result }) {
+  const { navigation } = result;
+  const eventAbortController = new AbortController();
+  const event = new Event("navigate", { bubbles: false, cancelable });
+  event.navigationType = navigationType;
+  event.destination = destination;
+  event.canIntercept = canIntercept;
+  event.userInitiated = userInitiated;
+  event.hashChange = hashChange;
+  event.signal = eventAbortController.signal;
+  event.abortController = eventAbortController;
+  event.info = info;
+  event.focusResetBehavior = null;
+  event.scrollBehavior = null;
+  event.interceptionState = "none";
+  event.downloadRequest = null;
+  event.formData = null;
+  event.result = result;
+  event.sameDocument = sameDocument;
+  let precommitHandlers = [];
+  let handlers = [];
+  event.intercept = function(options) {
+    var _a2, _b2;
+    if (!this.canIntercept) {
+      throw new DOMException(`Cannot intercept when canIntercept is 'false'`, "SecurityError");
+    }
+    this.interceptionState = "intercepted";
+    event.sameDocument = true;
+    const precommitHandler = options == null ? void 0 : options.precommitHandler;
+    if (precommitHandler) {
+      if (!this.cancelable) {
+        throw new DOMException(`Cannot use precommitHandler when cancelable is 'false'`, "InvalidStateError");
+      }
+      precommitHandlers.push(precommitHandler);
+    }
+    if (event.interceptionState !== "none" && event.interceptionState !== "intercepted") {
+      throw new Error('Event interceptionState should be "none" or "intercepted"');
+    }
+    event.interceptionState = "intercepted";
+    const handler = options == null ? void 0 : options.handler;
+    if (handler) {
+      handlers.push(handler);
+    }
+    event.focusResetBehavior = (_a2 = options == null ? void 0 : options.focusReset) != null ? _a2 : event.focusResetBehavior;
+    event.scrollBehavior = (_b2 = options == null ? void 0 : options.scroll) != null ? _b2 : event.scrollBehavior;
+  };
+  event.scroll = function() {
+    if (event.interceptionState !== "committed") {
+      throw new DOMException(`Failed to execute 'scroll' on 'NavigateEvent': scroll() must be called after commit() and interception options must specify manual scroll.`, "InvalidStateError");
+    }
+    processScrollBehavior(event);
+  };
+  function redirect(url, options = {}) {
+    if (event.interceptionState === "none") {
+      throw new Error("cannot redirect when event is not intercepted");
+    }
+    if (event.interceptionState !== "intercepted") {
+      throw new DOMException(`cannot redirect when event is not in 'intercepted' state`, "InvalidStateError");
+    }
+    if (event.navigationType !== "push" && event.navigationType !== "replace") {
+      throw new DOMException(`cannot redirect when navigationType is not 'push' or 'replace`, "InvalidStateError");
+    }
+    const destinationUrl = new URL(url, navigation.currentEntry.url);
+    if (options.history === "push" || options.history === "replace") {
+      event.navigationType = options.history;
+    }
+    if (options.hasOwnProperty("state")) {
+      event.destination.state = options.state;
+    }
+    event.destination.url = destinationUrl.href;
+    if (options.hasOwnProperty("info")) {
+      event.info = options.info;
+    }
+  }
+  function commit() {
+    var _a2;
+    if (result.signal.aborted) {
+      return;
+    }
+    (_a2 = navigation.transition) == null ? void 0 : _a2.committedResolve();
+    if (event.interceptionState === "intercepted") {
+      event.interceptionState = "committed";
+      switch (event.navigationType) {
+        case "push":
+        case "replace": {
+          navigation.urlAndHistoryUpdateSteps(event);
+          break;
+        }
+        case "reload": {
+          navigation.updateNavigationEntriesForSameDocumentNavigation(event);
+          break;
+        }
+        case "traverse": {
+          navigation.userAgentTraverse(event);
+          break;
+        }
+      }
+    }
+    const promisesList = handlers.map((handler) => handler());
+    if (promisesList.length === 0) {
+      promisesList.push(Promise.resolve());
+    }
+    Promise.all(promisesList).then(() => {
+      var _a3;
+      if (result.signal.aborted) {
+        return;
+      }
+      if (event !== navigation.navigateEvent) {
+        if (!result.signal.aborted && result.committedTo) {
+          result.finishedReject(new DOMException("Navigation superseded before handler completion", "AbortError"));
+        }
+        return;
+      }
+      navigation.navigateEvent = null;
+      finishNavigationEvent(event, true);
+      result.finishedResolve();
+      const navigatesuccessEvent = new Event("navigatesuccess", {
+        bubbles: false,
+        cancelable: false
+      });
+      navigation.eventTarget.dispatchEvent(navigatesuccessEvent);
+      (_a3 = navigation.transition) == null ? void 0 : _a3.finishedResolve();
+      navigation.transition = null;
+    }).catch((reason) => {
+      if (!event.abortController.signal.aborted) {
+        event.cancel(reason);
+      }
+    });
+  }
+  event.cancel = function(reason) {
+    if (result.signal.aborted) {
+      return;
+    }
+    this.abortController.abort(reason);
+    const isCurrentGlobalNavigationEvent = this === navigation.navigateEvent;
+    if (isCurrentGlobalNavigationEvent) {
+      navigation.navigateEvent = null;
+    }
+    if (this.interceptionState !== "intercepted" && this.interceptionState !== "finished") {
+      finishNavigationEvent(this, false);
+    } else if (this.interceptionState === "intercepted") {
+      this.interceptionState = "finished";
+    }
+    result.committedReject(reason);
+    result.finishedReject(reason);
+    const navigateerrorEvent = new Event("navigateerror", {
+      bubbles: false,
+      cancelable
+    });
+    navigateerrorEvent.error = reason;
+    navigation.eventTarget.dispatchEvent(navigateerrorEvent);
+    const transition = navigation.transition;
+    transition == null ? void 0 : transition.committedReject(reason);
+    transition == null ? void 0 : transition.finishedReject(reason);
+    navigation.transition = null;
+  };
+  function dispatch() {
+    navigation.navigateEvent = event;
+    const dispatchResult = navigation.eventTarget.dispatchEvent(event);
+    if (event.interceptionState === "intercepted") {
+      if (!navigation.currentEntry) {
+        event.cancel(new DOMException("Cannot create transition without a currentEntry for intercepted navigation.", "InvalidStateError"));
+        return;
+      }
+      const transition = new InternalNavigationTransition(navigation.currentEntry, navigationType);
+      navigation.transition = transition;
+      transition.finished.catch(() => {
+      });
+      transition.committed.catch(() => {
+      });
+    }
+    if (!dispatchResult && event.cancelable) {
+      if (!event.abortController.signal.aborted) {
+        event.cancel(new DOMException("Navigation prevented by event.preventDefault()", "AbortError"));
+      }
+    } else {
+      if (precommitHandlers.length === 0) {
+        commit();
+      } else {
+        const precommitController = { redirect };
+        const precommitPromisesList = precommitHandlers.map((handler) => {
+          let p;
+          try {
+            p = handler(precommitController);
+          } catch (e) {
+            p = Promise.reject(e);
+          }
+          p.catch(() => {
+          });
+          return p;
+        });
+        Promise.all(precommitPromisesList).then(() => commit()).catch((reason) => {
+          if (event.abortController.signal.aborted) {
+            return;
+          }
+          if (navigation.transition) {
+            navigation.transition.committedReject(reason);
+          }
+          event.cancel(reason);
+        });
+      }
+    }
+  }
+  dispatch();
+  return event.interceptionState === "none";
+}
+function finishNavigationEvent(event, didFulfill) {
+  if (event.interceptionState === "finished") {
+    throw new Error("Attempting to finish navigation event that was already finished");
+  }
+  if (event.interceptionState === "intercepted") {
+    if (didFulfill === true) {
+      throw new Error("didFulfill should be false");
+    }
+    event.interceptionState = "finished";
+    return;
+  }
+  if (event.interceptionState === "none") {
+    return;
+  }
+  potentiallyResetFocus(event);
+  if (didFulfill) {
+    potentiallyResetScroll(event);
+  }
+  event.interceptionState = "finished";
+}
+function potentiallyResetFocus(event) {
+  if (event.interceptionState !== "committed" && event.interceptionState !== "scrolled") {
+    throw new Error("cannot reset focus if navigation event is not committed or scrolled");
+  }
+  if (event.focusResetBehavior === "manual") {
+    return;
+  }
+}
+function potentiallyResetScroll(event) {
+  if (event.interceptionState !== "committed" && event.interceptionState !== "scrolled") {
+    throw new Error("cannot reset scroll if navigation event is not committed or scrolled");
+  }
+  if (event.interceptionState === "scrolled" || event.scrollBehavior === "manual") {
+    return;
+  }
+  processScrollBehavior(event);
+}
+function processScrollBehavior(event) {
+  if (event.interceptionState !== "committed") {
+    throw new Error("invalid event interception state when processing scroll behavior");
+  }
+  event.interceptionState = "scrolled";
+}
+function createFakeNavigationCurrentEntryChangeEvent({ from, navigationType }) {
+  const event = new Event("currententrychange", {
+    bubbles: false,
+    cancelable: false
+  });
+  event.from = from;
+  event.navigationType = navigationType;
+  return event;
+}
+function createPopStateEvent({ state }) {
+  const event = new Event("popstate", {
+    bubbles: false,
+    cancelable: false
+  });
+  event.state = state;
+  return event;
+}
+function createHashChangeEvent(newURL, oldURL) {
+  const event = new Event("hashchange", {
+    bubbles: false,
+    cancelable: false
+  });
+  event.newURL = newURL;
+  event.oldURL = oldURL;
+  return event;
+}
+class FakeNavigationDestination {
+  constructor({ url, sameDocument, historyState, state, key = null, id = null, index = -1 }) {
+    __publicField(this, "url");
+    __publicField(this, "sameDocument");
+    __publicField(this, "key");
+    __publicField(this, "id");
+    __publicField(this, "index");
+    __publicField(this, "state");
+    __publicField(this, "historyState");
+    this.url = url;
+    this.sameDocument = sameDocument;
+    this.state = state;
+    this.historyState = historyState;
+    this.key = key;
+    this.id = id;
+    this.index = index;
+  }
+  getState() {
+    return this.state;
+  }
+  getHistoryState() {
+    return this.historyState;
+  }
+}
+function isHashChange(from, to) {
+  return to.hash !== from.hash && to.hostname === from.hostname && to.pathname === from.pathname && to.search === from.search;
+}
+class InternalNavigationTransition {
+  constructor(from, navigationType) {
+    __publicField(this, "from");
+    __publicField(this, "navigationType");
+    __publicField(this, "finished");
+    __publicField(this, "committed");
+    __publicField(this, "finishedResolve");
+    __publicField(this, "finishedReject");
+    __publicField(this, "committedResolve");
+    __publicField(this, "committedReject");
+    this.from = from;
+    this.navigationType = navigationType;
+    this.finished = new Promise((resolve, reject) => {
+      this.finishedReject = reject;
+      this.finishedResolve = resolve;
+    });
+    this.committed = new Promise((resolve, reject) => {
+      this.committedReject = reject;
+      this.committedResolve = resolve;
+    });
+    this.finished.catch(() => {
+    });
+    this.committed.catch(() => {
+    });
+  }
+}
+class InternalNavigationResult {
+  constructor(navigation) {
+    __publicField(this, "navigation");
+    __publicField(this, "committedTo", null);
+    __publicField(this, "committedResolve");
+    __publicField(this, "committedReject");
+    __publicField(this, "finishedResolve");
+    __publicField(this, "finishedReject");
+    __publicField(this, "committed");
+    __publicField(this, "finished");
+    __publicField(this, "abortController", new AbortController());
+    this.navigation = navigation;
+    this.committed = new Promise((resolve, reject) => {
+      this.committedResolve = (entry) => {
+        this.committedTo = entry;
+        resolve(entry);
+      };
+      this.committedReject = reject;
+    });
+    this.finished = new Promise((resolve, reject) => {
+      this.finishedResolve = () => {
+        if (this.committedTo === null) {
+          throw new Error("NavigateEvent should have been committed before resolving finished promise.");
+        }
+        resolve(this.committedTo);
+      };
+      this.finishedReject = (reason) => {
+        reject(reason);
+        this.abortController.abort(reason);
+      };
+    });
+    this.committed.catch(() => {
+    });
+    this.finished.catch(() => {
+    });
+  }
+  get signal() {
+    return this.abortController.signal;
+  }
+}
+(_b = globalThis.beforeEach) == null ? void 0 : _b.call(globalThis, getCleanupHook(false));
+(_c = globalThis.afterEach) == null ? void 0 : _c.call(globalThis, getCleanupHook(true));
+function getCleanupHook(expectedTeardownValue) {
+  return () => {
+    const testBed = TestBedImpl.INSTANCE;
+    if (testBed.shouldTearDownTestingModule() === expectedTeardownValue) {
+      testBed.resetTestingModule();
+      resetFakeAsyncZoneIfExists();
+    }
+  };
+}
+const _Log = class _Log {
+  constructor() {
+    __publicField(this, "logItems");
+    this.logItems = [];
+  }
+  add(value) {
+    this.logItems.push(value);
+  }
+  fn(value) {
+    return () => {
+      this.logItems.push(value);
+    };
+  }
+  clear() {
+    this.logItems = [];
+  }
+  result() {
+    return this.logItems.join("; ");
+  }
+};
+__publicField(_Log, "\u0275fac", function Log_Factory(__ngFactoryType__) {
+  return new (__ngFactoryType__ || _Log)();
+});
+__publicField(_Log, "\u0275prov", /* @__PURE__ */ i0.\u0275\u0275defineInjectable({ token: _Log, factory: _Log.\u0275fac }));
+let Log = _Log;
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i0.\u0275setClassMetadata(Log, [{
+    type: import_debug_node.Injectable
+  }], () => [], null);
+})();

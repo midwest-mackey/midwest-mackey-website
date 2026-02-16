@@ -1,0 +1,91 @@
+2a6c6c212248115e12c5575a47e0f5f3
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SocialLinksComponent = void 0;
+const tslib_1 = require("tslib");
+const core_1 = require("@angular/core");
+const free_brands_svg_icons_1 = require("@fortawesome/free-brands-svg-icons");
+const free_solid_svg_icons_1 = require("@fortawesome/free-solid-svg-icons");
+const global_constants_1 = require("../../global-constants");
+let SocialLinksComponent = class SocialLinksComponent {
+    faCircle = free_solid_svg_icons_1.faCircle;
+    faArrowRight = free_solid_svg_icons_1.faArrowRight;
+    faTwitch = free_brands_svg_icons_1.faTwitch;
+    faInstagram = free_brands_svg_icons_1.faInstagram;
+    faGithub = free_brands_svg_icons_1.faGithubAlt;
+    faTikTok = free_brands_svg_icons_1.faTiktok;
+    faDiscord = free_brands_svg_icons_1.faDiscord;
+    faReddit = free_brands_svg_icons_1.faReddit;
+    faYouTube = free_brands_svg_icons_1.faYoutube;
+    faLinkedin = free_brands_svg_icons_1.faLinkedinIn;
+    faPlaystation = free_brands_svg_icons_1.faPlaystation;
+    twitchURL = global_constants_1.GlobalConstants.twitchURL;
+    instagramURL = global_constants_1.GlobalConstants.instagramURL;
+    githubBaseURL = global_constants_1.GlobalConstants.githubBaseURL;
+    discordURL = global_constants_1.GlobalConstants.discordURL;
+    tiktokURL = global_constants_1.GlobalConstants.tiktokURL;
+    youtubeURL = global_constants_1.GlobalConstants.youtubeURL;
+    redditURL = global_constants_1.GlobalConstants.redditURL;
+    linkedinURL = global_constants_1.GlobalConstants.linkedinURL;
+    playstationURL = global_constants_1.GlobalConstants.playstationURL;
+    buttons = [{
+            icon: this.faTwitch,
+            text: 'Twitch',
+            link: this.twitchURL,
+            // fragment: 'jumptToBootstrap',
+        },
+        {
+            icon: this.faInstagram,
+            text: 'Instagram',
+            link: this.instagramURL,
+        },
+        {
+            icon: this.faDiscord,
+            text: 'Discord',
+            link: this.discordURL,
+        },
+        {
+            icon: this.faTikTok,
+            text: 'TikTok',
+            link: this.tiktokURL,
+        },
+        {
+            icon: this.faYouTube,
+            text: 'YouTube',
+            link: this.youtubeURL,
+        },
+        {
+            icon: this.faReddit,
+            text: 'Reddit',
+            link: this.redditURL,
+        },
+        {
+            icon: this.faLinkedin,
+            text: 'Linkedin',
+            link: this.linkedinURL,
+        },
+        {
+            icon: this.faGithub,
+            text: 'Github',
+            link: this.githubBaseURL,
+        },
+        {
+            icon: this.faPlaystation,
+            text: 'Playstation',
+            link: this.playstationURL,
+        }
+    ];
+    constructor() { }
+    ngOnInit() {
+    }
+    static ctorParameters = () => [];
+};
+exports.SocialLinksComponent = SocialLinksComponent;
+exports.SocialLinksComponent = SocialLinksComponent = tslib_1.__decorate([
+    (0, core_1.Component)({
+        selector: 'mm-social-links',
+        template: require("./social-links.component.html"),
+        standalone: false,
+    })
+], SocialLinksComponent);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2NtYWNrZXkvRG9jdW1lbnRzL21pZHdlc3QubWFja2V5L21pZHdlc3QtbWFja2V5LXdlYnNpdGUvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9zb2NpYWwtbGlua3Mvc29jaWFsLWxpbmtzLmNvbXBvbmVudC50cyIsIm1hcHBpbmdzIjoiOzs7O0FBQUEsd0NBQWtEO0FBQ2xELDhFQUErSjtBQUMvSiw0RUFBMkU7QUFDM0UsNkRBQXlEO0FBUWxELElBQU0sb0JBQW9CLEdBQTFCLE1BQU0sb0JBQW9CO0lBRS9CLFFBQVEsR0FBRywrQkFBUSxDQUFDO0lBQ3BCLFlBQVksR0FBRyxtQ0FBWSxDQUFDO0lBRTVCLFFBQVEsR0FBRyxnQ0FBUSxDQUFDO0lBQ3BCLFdBQVcsR0FBRyxtQ0FBVyxDQUFDO0lBQzFCLFFBQVEsR0FBRyxtQ0FBVyxDQUFDO0lBQ3ZCLFFBQVEsR0FBRyxnQ0FBUSxDQUFDO0lBQ3BCLFNBQVMsR0FBRyxpQ0FBUyxDQUFDO0lBQ3RCLFFBQVEsR0FBRyxnQ0FBUSxDQUFDO0lBQ3BCLFNBQVMsR0FBRyxpQ0FBUyxDQUFDO0lBQ3RCLFVBQVUsR0FBRyxvQ0FBWSxDQUFDO0lBQzFCLGFBQWEsR0FBRyxxQ0FBYSxDQUFDO0lBRzlCLFNBQVMsR0FBRyxrQ0FBZSxDQUFDLFNBQVMsQ0FBQztJQUN0QyxZQUFZLEdBQUcsa0NBQWUsQ0FBQyxZQUFZLENBQUM7SUFDNUMsYUFBYSxHQUFHLGtDQUFlLENBQUMsYUFBYSxDQUFDO0lBQzlDLFVBQVUsR0FBRyxrQ0FBZSxDQUFDLFVBQVUsQ0FBQztJQUN4QyxTQUFTLEdBQUcsa0NBQWUsQ0FBQyxTQUFTLENBQUM7SUFDdEMsVUFBVSxHQUFHLGtDQUFlLENBQUMsVUFBVSxDQUFDO0lBQ3hDLFNBQVMsR0FBRyxrQ0FBZSxDQUFDLFNBQVMsQ0FBQztJQUN0QyxXQUFXLEdBQUcsa0NBQWUsQ0FBQyxXQUFXLENBQUM7SUFDMUMsY0FBYyxHQUFHLGtDQUFlLENBQUMsY0FBYyxDQUFDO0lBR2hELE9BQU8sR0FBVSxDQUFDO1lBRWhCLElBQUksRUFBRSxJQUFJLENBQUMsUUFBUTtZQUNuQixJQUFJLEVBQUUsUUFBUTtZQUNkLElBQUksRUFBRSxJQUFJLENBQUMsU0FBUztZQUNwQixnQ0FBZ0M7U0FDakM7UUFDRDtZQUNFLElBQUksRUFBRSxJQUFJLENBQUMsV0FBVztZQUN0QixJQUFJLEVBQUUsV0FBVztZQUNqQixJQUFJLEVBQUUsSUFBSSxDQUFDLFlBQVk7U0FDeEI7UUFDRDtZQUNFLElBQUksRUFBRSxJQUFJLENBQUMsU0FBUztZQUNwQixJQUFJLEVBQUUsU0FBUztZQUNmLElBQUksRUFBRSxJQUFJLENBQUMsVUFBVTtTQUN0QjtRQUNEO1lBQ0UsSUFBSSxFQUFFLElBQUksQ0FBQyxRQUFRO1lBQ25CLElBQUksRUFBRSxRQUFRO1lBQ2QsSUFBSSxFQUFFLElBQUksQ0FBQyxTQUFTO1NBQ3JCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSSxDQUFDLFNBQVM7WUFDcEIsSUFBSSxFQUFFLFNBQVM7WUFDZixJQUFJLEVBQUUsSUFBSSxDQUFDLFVBQVU7U0FDdEI7UUFDRDtZQUNFLElBQUksRUFBRSxJQUFJLENBQUMsUUFBUTtZQUNuQixJQUFJLEVBQUUsUUFBUTtZQUNkLElBQUksRUFBRSxJQUFJLENBQUMsU0FBUztTQUNyQjtRQUNEO1lBQ0UsSUFBSSxFQUFFLElBQUksQ0FBQyxVQUFVO1lBQ3JCLElBQUksRUFBRSxVQUFVO1lBQ2hCLElBQUksRUFBRSxJQUFJLENBQUMsV0FBVztTQUN2QjtRQUNEO1lBQ0UsSUFBSSxFQUFFLElBQUksQ0FBQyxRQUFRO1lBQ25CLElBQUksRUFBRSxRQUFRO1lBQ2QsSUFBSSxFQUFFLElBQUksQ0FBQyxhQUFhO1NBQ3pCO1FBQ0Q7WUFDRSxJQUFJLEVBQUUsSUFBSSxDQUFDLGFBQWE7WUFDeEIsSUFBSSxFQUFFLGFBQWE7WUFDbkIsSUFBSSxFQUFFLElBQUksQ0FBQyxjQUFjO1NBQzFCO0tBQ0YsQ0FBQztJQUVBLGdCQUFnQixDQUFDO0lBRWpCLFFBQVE7SUFDUixDQUFDOzs7QUEvRVUsb0RBQW9COytCQUFwQixvQkFBb0I7SUFOaEMsSUFBQSxnQkFBUyxFQUFDO1FBQ1QsUUFBUSxFQUFFLGlCQUFpQjtRQUMzQixrREFBNEM7UUFFNUMsVUFBVSxFQUFFLEtBQUs7S0FDbEIsQ0FBQztHQUNXLG9CQUFvQixDQWlGaEMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiL1VzZXJzL2NtYWNrZXkvRG9jdW1lbnRzL21pZHdlc3QubWFja2V5L21pZHdlc3QtbWFja2V5LXdlYnNpdGUvc3JjL2FwcC9zaGFyZWQvY29tcG9uZW50cy9zb2NpYWwtbGlua3Mvc29jaWFsLWxpbmtzLmNvbXBvbmVudC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBDb21wb25lbnQsIE9uSW5pdCB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5pbXBvcnQgeyBmYURpc2NvcmQsIGZhR2l0aHViQWx0LCBmYUluc3RhZ3JhbSwgZmFMaW5rZWRpbkluLCBmYVBsYXlzdGF0aW9uLCBmYVJlZGRpdCwgZmFUaWt0b2ssIGZhVHdpdGNoLCBmYVlvdXR1YmUgfSBmcm9tICdAZm9ydGF3ZXNvbWUvZnJlZS1icmFuZHMtc3ZnLWljb25zJztcclxuaW1wb3J0IHsgZmFDaXJjbGUsIGZhQXJyb3dSaWdodCB9IGZyb20gJ0Bmb3J0YXdlc29tZS9mcmVlLXNvbGlkLXN2Zy1pY29ucyc7XHJcbmltcG9ydCB7IEdsb2JhbENvbnN0YW50cyB9IGZyb20gJy4uLy4uL2dsb2JhbC1jb25zdGFudHMnO1xyXG5cclxuQENvbXBvbmVudCh7XHJcbiAgc2VsZWN0b3I6ICdtbS1zb2NpYWwtbGlua3MnLFxyXG4gIHRlbXBsYXRlVXJsOiAnLi9zb2NpYWwtbGlua3MuY29tcG9uZW50Lmh0bWwnLFxyXG4gIHN0eWxlVXJsczogWycuL3NvY2lhbC1saW5rcy5jb21wb25lbnQuc2NzcyddLFxyXG4gIHN0YW5kYWxvbmU6IGZhbHNlLFxyXG59KVxyXG5leHBvcnQgY2xhc3MgU29jaWFsTGlua3NDb21wb25lbnQgaW1wbGVtZW50cyBPbkluaXQge1xyXG5cclxuICBmYUNpcmNsZSA9IGZhQ2lyY2xlO1xyXG4gIGZhQXJyb3dSaWdodCA9IGZhQXJyb3dSaWdodDtcclxuXHJcbiAgZmFUd2l0Y2ggPSBmYVR3aXRjaDtcclxuICBmYUluc3RhZ3JhbSA9IGZhSW5zdGFncmFtO1xyXG4gIGZhR2l0aHViID0gZmFHaXRodWJBbHQ7XHJcbiAgZmFUaWtUb2sgPSBmYVRpa3RvaztcclxuICBmYURpc2NvcmQgPSBmYURpc2NvcmQ7XHJcbiAgZmFSZWRkaXQgPSBmYVJlZGRpdDtcclxuICBmYVlvdVR1YmUgPSBmYVlvdXR1YmU7XHJcbiAgZmFMaW5rZWRpbiA9IGZhTGlua2VkaW5JbjtcclxuICBmYVBsYXlzdGF0aW9uID0gZmFQbGF5c3RhdGlvbjtcclxuXHJcbiAgXHJcbiAgdHdpdGNoVVJMID0gR2xvYmFsQ29uc3RhbnRzLnR3aXRjaFVSTDtcclxuICBpbnN0YWdyYW1VUkwgPSBHbG9iYWxDb25zdGFudHMuaW5zdGFncmFtVVJMO1xyXG4gIGdpdGh1YkJhc2VVUkwgPSBHbG9iYWxDb25zdGFudHMuZ2l0aHViQmFzZVVSTDtcclxuICBkaXNjb3JkVVJMID0gR2xvYmFsQ29uc3RhbnRzLmRpc2NvcmRVUkw7XHJcbiAgdGlrdG9rVVJMID0gR2xvYmFsQ29uc3RhbnRzLnRpa3Rva1VSTDtcclxuICB5b3V0dWJlVVJMID0gR2xvYmFsQ29uc3RhbnRzLnlvdXR1YmVVUkw7XHJcbiAgcmVkZGl0VVJMID0gR2xvYmFsQ29uc3RhbnRzLnJlZGRpdFVSTDtcclxuICBsaW5rZWRpblVSTCA9IEdsb2JhbENvbnN0YW50cy5saW5rZWRpblVSTDtcclxuICBwbGF5c3RhdGlvblVSTCA9IEdsb2JhbENvbnN0YW50cy5wbGF5c3RhdGlvblVSTDtcclxuXHJcblxyXG4gIGJ1dHRvbnM6IGFueVtdID0gW3tcclxuXHJcbiAgICBpY29uOiB0aGlzLmZhVHdpdGNoLFxyXG4gICAgdGV4dDogJ1R3aXRjaCcsXHJcbiAgICBsaW5rOiB0aGlzLnR3aXRjaFVSTCxcclxuICAgIC8vIGZyYWdtZW50OiAnanVtcHRUb0Jvb3RzdHJhcCcsXHJcbiAgfSxcclxuICB7XHJcbiAgICBpY29uOiB0aGlzLmZhSW5zdGFncmFtLFxyXG4gICAgdGV4dDogJ0luc3RhZ3JhbScsXHJcbiAgICBsaW5rOiB0aGlzLmluc3RhZ3JhbVVSTCxcclxuICB9LFxyXG4gIHtcclxuICAgIGljb246IHRoaXMuZmFEaXNjb3JkLFxyXG4gICAgdGV4dDogJ0Rpc2NvcmQnLFxyXG4gICAgbGluazogdGhpcy5kaXNjb3JkVVJMLFxyXG4gIH0sXHJcbiAge1xyXG4gICAgaWNvbjogdGhpcy5mYVRpa1RvayxcclxuICAgIHRleHQ6ICdUaWtUb2snLFxyXG4gICAgbGluazogdGhpcy50aWt0b2tVUkwsXHJcbiAgfSxcclxuICB7XHJcbiAgICBpY29uOiB0aGlzLmZhWW91VHViZSxcclxuICAgIHRleHQ6ICdZb3VUdWJlJyxcclxuICAgIGxpbms6IHRoaXMueW91dHViZVVSTCxcclxuICB9LFxyXG4gIHtcclxuICAgIGljb246IHRoaXMuZmFSZWRkaXQsXHJcbiAgICB0ZXh0OiAnUmVkZGl0JyxcclxuICAgIGxpbms6IHRoaXMucmVkZGl0VVJMLFxyXG4gIH0sXHJcbiAge1xyXG4gICAgaWNvbjogdGhpcy5mYUxpbmtlZGluLFxyXG4gICAgdGV4dDogJ0xpbmtlZGluJyxcclxuICAgIGxpbms6IHRoaXMubGlua2VkaW5VUkwsXHJcbiAgfSxcclxuICB7XHJcbiAgICBpY29uOiB0aGlzLmZhR2l0aHViLFxyXG4gICAgdGV4dDogJ0dpdGh1YicsXHJcbiAgICBsaW5rOiB0aGlzLmdpdGh1YkJhc2VVUkwsXHJcbiAgfSxcclxuICB7XHJcbiAgICBpY29uOiB0aGlzLmZhUGxheXN0YXRpb24sXHJcbiAgICB0ZXh0OiAnUGxheXN0YXRpb24nLFxyXG4gICAgbGluazogdGhpcy5wbGF5c3RhdGlvblVSTCxcclxuICB9XHJcbl07XHJcblxyXG4gIGNvbnN0cnVjdG9yKCkgeyB9XHJcblxyXG4gIG5nT25Jbml0KCk6IHZvaWQge1xyXG4gIH1cclxuXHJcbn1cclxuIl0sInZlcnNpb24iOjN9

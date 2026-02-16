@@ -1,0 +1,21 @@
+5e702ec4c4b08d15d77479b67664fdfa
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AboutMeComponent = void 0;
+const tslib_1 = require("tslib");
+const core_1 = require("@angular/core");
+let AboutMeComponent = class AboutMeComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+    static ctorParameters = () => [];
+};
+exports.AboutMeComponent = AboutMeComponent;
+exports.AboutMeComponent = AboutMeComponent = tslib_1.__decorate([
+    (0, core_1.Component)({
+        selector: 'mm-about-me',
+        template: require("./about-me.component.html"),
+        standalone: false,
+    })
+], AboutMeComponent);
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2NtYWNrZXkvRG9jdW1lbnRzL21pZHdlc3QubWFja2V5L21pZHdlc3QtbWFja2V5LXdlYnNpdGUvc3JjL2FwcC9jb21wb25lbnRzL2Fib3V0LW1lL2Fib3V0LW1lLmNvbXBvbmVudC50cyIsIm1hcHBpbmdzIjoiOzs7O0FBQUEsd0NBQWtEO0FBUzNDLElBQU0sZ0JBQWdCLEdBQXRCLE1BQU0sZ0JBQWdCO0lBRTNCLGdCQUFnQixDQUFDO0lBRWpCLFFBQVE7SUFDUixDQUFDOzs7QUFMVSw0Q0FBZ0I7MkJBQWhCLGdCQUFnQjtJQVA1QixJQUFBLGdCQUFTLEVBQUM7UUFDVCxRQUFRLEVBQUUsYUFBYTtRQUN2Qiw4Q0FBd0M7UUFFeEMsVUFBVSxFQUFFLEtBQUs7S0FDbEIsQ0FBQztHQUVXLGdCQUFnQixDQU81QiIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvY21hY2tleS9Eb2N1bWVudHMvbWlkd2VzdC5tYWNrZXkvbWlkd2VzdC1tYWNrZXktd2Vic2l0ZS9zcmMvYXBwL2NvbXBvbmVudHMvYWJvdXQtbWUvYWJvdXQtbWUuY29tcG9uZW50LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENvbXBvbmVudCwgT25Jbml0IH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XHJcblxyXG5AQ29tcG9uZW50KHtcclxuICBzZWxlY3RvcjogJ21tLWFib3V0LW1lJyxcclxuICB0ZW1wbGF0ZVVybDogJy4vYWJvdXQtbWUuY29tcG9uZW50Lmh0bWwnLFxyXG4gIHN0eWxlVXJsczogWycuL2Fib3V0LW1lLmNvbXBvbmVudC5zY3NzJ10sXHJcbiAgc3RhbmRhbG9uZTogZmFsc2UsXHJcbn0pXHJcblxyXG5leHBvcnQgY2xhc3MgQWJvdXRNZUNvbXBvbmVudCBpbXBsZW1lbnRzIE9uSW5pdCB7XHJcblxyXG4gIGNvbnN0cnVjdG9yKCkgeyB9XHJcblxyXG4gIG5nT25Jbml0KCk6IHZvaWQge1xyXG4gIH1cclxuXHJcbn1cclxuIl0sInZlcnNpb24iOjN9

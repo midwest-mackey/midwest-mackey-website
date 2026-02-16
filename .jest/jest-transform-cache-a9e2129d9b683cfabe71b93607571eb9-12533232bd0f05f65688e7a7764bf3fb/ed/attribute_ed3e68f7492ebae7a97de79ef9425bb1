@@ -1,0 +1,43 @@
+f844d6a969e83673da115ecaa80fa955
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var attribute_exports = {};
+__export(attribute_exports, {
+  Attribute: () => Attribute
+});
+module.exports = __toCommonJS(attribute_exports);
+/**
+ * @license Angular v20.3.16
+ * (c) 2010-2025 Google LLC. https://angular.dev/
+ * License: MIT
+ */
+const Attribute = {
+  /**
+   * The jsaction attribute defines a mapping of a DOM event to a
+   * generic event (aka jsaction), to which the actual event handlers
+   * that implement the behavior of the application are bound. The
+   * value is a semicolon separated list of colon separated pairs of
+   * an optional DOM event name and a jsaction name. If the optional
+   * DOM event name is omitted, 'click' is assumed. The jsaction names
+   * are dot separated pairs of a namespace and a simple jsaction
+   * name.
+   *
+   * See grammar in README.md for expected syntax in the attribute value.
+   */
+  JSACTION: "jsaction"
+};

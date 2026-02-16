@@ -25,4 +25,5 @@ export default {
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   moduleFileExtensions: ['ts', 'html', 'js', 'json', 'mjs'],
   extensionsToTreatAsEsm: ['.ts'],
+  cacheDirectory: '.jest',
 };
