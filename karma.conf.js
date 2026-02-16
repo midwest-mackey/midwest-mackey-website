@@ -11,7 +11,6 @@ module.exports = function (config) {
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma'),
-      require('karma-bamboo-reporter')
     ],
     client: {
       jasmine: {
@@ -26,17 +25,15 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/ux-team-site'),
+      dir: require('path').join(__dirname, './coverage/midwestmackey'),
       subdir: '.',
       reporters: [
         { type: 'html' },
         { type: 'text-summary' }
       ]
     },
-    reporters: ['progress', 'kjhtml', 'bamboo'],
-    bambooReporter: {
-      filename: 'coverage/mocha.json'
-    },
+    reporters: ['progress', 'kjhtml'],
+
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
