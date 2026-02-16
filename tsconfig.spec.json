@@ -4,15 +4,19 @@
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
     "module": "CommonJs",
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "target": "ES2022",
+    "module": "ES2022"
   },
   
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"],
   "files": [
+    "setup-jest.ts",
     "src/polyfills.ts"
   ],
-  "esModuleInterop": true,
-  "emitDecoratorMetadata": true
+  "scripts": {
+  "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
+  },
 }

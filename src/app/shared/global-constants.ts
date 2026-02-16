@@ -1,6 +1,4 @@
 import pkgApp from 'package.json';
-// import pkgFA from '@fortawesome/fontawesome-svg-core/package.json';
-// import pkgBootstrap from 'bootstrap/package.json';
 
 export class GlobalConstants {
     // URLs
@@ -25,6 +23,4 @@ export class GlobalConstants {
     public static appVersion: string = 'v'+pkgApp.version;
 
     public static fontAwesomeVersion: string = 'v1.0.0';
-    // public static fontAwesomeVersion: string = 'v'+pkgFA.version;
-    // public static BootstrapVersion: string = 'v'+pkgBootstrap.version;
 }
