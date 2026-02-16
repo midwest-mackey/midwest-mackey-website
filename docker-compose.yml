@@ -1,7 +1,0 @@
-services:
-  angular-frontend:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "80:80"
