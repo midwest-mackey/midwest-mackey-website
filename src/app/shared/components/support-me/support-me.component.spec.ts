@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KeepUpToDateComponent } from './support-me.component';
+import { SupportMeComponent } from './support-me.component';
 
-describe('KeepUpToDateComponent', () => {
-  let component: KeepUpToDateComponent;
-  let fixture: ComponentFixture<KeepUpToDateComponent>;
+describe('SupportMeComponent', () => {
+  let component: SupportMeComponent;
+  let fixture: ComponentFixture<SupportMeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ KeepUpToDateComponent ]
+      declarations: [ SupportMeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(KeepUpToDateComponent);
+    fixture = TestBed.createComponent(SupportMeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

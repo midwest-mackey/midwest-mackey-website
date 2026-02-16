@@ -41,7 +41,7 @@ export class SocialLinksComponent implements OnInit {
     icon: this.faTwitch,
     text: 'Twitch',
     link: this.twitchURL,
-    // fragment: 'jumptToBootstrap5',
+    // fragment: 'jumptToBootstrap',
   },
   {
     icon: this.faInstagram,
