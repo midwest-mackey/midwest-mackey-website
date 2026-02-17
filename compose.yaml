@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: docker-angular-sample
+    image: angular-website
     ports:
       - "8080:8080"
 
