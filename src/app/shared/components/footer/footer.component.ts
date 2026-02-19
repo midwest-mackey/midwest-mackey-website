@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { faAngular, faBootstrap, faDiscord, faDocker } from '@fortawesome/free-brands-svg-icons';
 import { GlobalConstants } from '../../global-constants';
 import { ViewportScroller } from '@angular/common';
-import { faPaperPlane, faPhoneAlt, faArrowRight, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faArrowRight, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'mm-footer',
@@ -13,6 +13,7 @@ import { faPaperPlane, faPhoneAlt, faArrowRight, faArrowUp } from '@fortawesome/
 })
 export class FooterComponent implements OnInit {
   @Input() color: string;
+
   faArrowUp = faArrowUp;
   faArrowRight = faArrowRight;
   faDiscord = faDiscord;

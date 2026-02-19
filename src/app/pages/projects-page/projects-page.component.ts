@@ -47,7 +47,7 @@ export class ProjectsPageComponent implements OnInit {
   constructor(private titleService:Title, private sanitizer:DomSanitizer) {
     this.titleService.setTitle('Projects');
     this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'https://192.168.1.28:8199/'
+      'https://seerr.midwestmackey.com'
     );
   }
 

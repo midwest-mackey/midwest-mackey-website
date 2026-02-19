@@ -18,7 +18,7 @@ RUN --mount=type=cache,target=/root/.npm npm ci
 COPY . .
 
 # Build the Angular application
-RUN npm ci && npm run build 
+RUN npm run ci:build 
 
 # =========================================
 # Stage 2: Prepare Nginx to Serve Static Files
@@ -30,7 +30,7 @@ FROM dhi.io/nginx:1.28.0-alpine3.21-dev AS runner
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the static build output from the build stage to Nginx's default HTML serving directory
-COPY --chown=nginx:nginx --from=builder /app/dist/*/browser /usr/share/nginx/html
+COPY --chown=nginx:nginx --from=builder /app/dist/* /usr/share/nginx/html
 
 # Use a non-root user for security best practices
 USER nginx
