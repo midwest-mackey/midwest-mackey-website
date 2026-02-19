@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, Title, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
@@ -44,8 +44,7 @@ export class ProjectsPageComponent implements OnInit {
   },
   ];
 
-  constructor(private titleService:Title, private sanitizer:DomSanitizer) {
-    this.titleService.setTitle('Projects');
+  constructor(private sanitizer:DomSanitizer) {
     this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       'https://seerr.midwestmackey.com'
     );

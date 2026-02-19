@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { faReact, faGithub, faAngular, faFontAwesomeFlag, faJira, faBitbucket, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { GlobalConstants } from 'src/app/shared/global-constants';
@@ -88,10 +87,6 @@ export class ServicesPageComponent implements OnInit {
   // ];
 
   
-
-  constructor(private titleService:Title) {
-    this.titleService.setTitle('Skills');
-  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
 import { faPlaystation, faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faFortniteF } from 'src/app/shared/custom-icons/custom-icons.module';
 import { GlobalConstants } from 'src/app/shared/global-constants';
@@ -65,10 +64,6 @@ export class HomePageComponent implements OnInit {
     link: this.fortniteURL,
   },
   ];
-
-  constructor(private titleService:Title) {
-    this.titleService.setTitle('midwest.mackey');
-  }
 
   ngOnInit(): void {
   }

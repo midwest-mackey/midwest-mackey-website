@@ -6,9 +6,9 @@ import { ServicesPageComponent } from './pages/services-page/services-page.compo
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomePageComponent, data: { title: 'Midwest Mackey' } },
-  { path: 'projects', component: ProjectsPageComponent, data: { title: 'Projects' } },
-  { path: 'skills', component: ServicesPageComponent, data: { title: 'Skills' } },
+  { path: 'home', component: HomePageComponent, title: 'Midwest Mackey' },
+  { path: 'projects', component: ProjectsPageComponent, title: 'Projects'},
+  { path: 'skills', component: ServicesPageComponent, title: 'Skills'},
 
 ];
 

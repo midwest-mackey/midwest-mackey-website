@@ -1,6 +1,29 @@
 @use 'sass:color';
 @use 'styles' as *;
-
+.spacer-top {
+    height: 88px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    &.bg-primary {
+        background-color: color.adjust($primary, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-purple {
+        background-color: color.adjust($purple, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-orange {
+        background-color: color.adjust($orange, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-green {
+        background-color: color.adjust($green, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-secondary {
+        background-color: color.adjust($secondary, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-info {
+        background-color: color.adjust($info, $lightness: $color-adjust-amount) !important;
+}
+}
 section {
     top: 88px;
     margin-bottom: $spacer-size * 2;
@@ -19,26 +42,26 @@ section {
         animation: morph 120s linear infinite;
 
         &.bg-primary {
-            background: linear-gradient(color.adjust($primary, $lightness: $color-adjust-amount), $primary);
+            background: linear-gradient(color.adjust($primary, $lightness: $color-adjust-amount) 1%, $primary);
             // #0044BA
         }
         &.bg-orange {
-            background: linear-gradient(color.adjust($orange, $lightness: $color-adjust-amount), $orange);
+            background: linear-gradient(color.adjust($orange, $lightness: $color-adjust-amount) 1%, $orange);
             // #FC7E14
         }
         &.bg-green {
-            background: linear-gradient(color.adjust($green, $lightness: $color-adjust-amount), $green);
+            background: linear-gradient(color.adjust($green, $lightness: $color-adjust-amount) 1%, $green);
             // #005440
         }
         &.bg-purple {
-            background: linear-gradient(color.adjust($purple, $lightness: $color-adjust-amount), $purple);
+            background: linear-gradient(color.adjust($purple, $lightness: $color-adjust-amount) 1%, $purple);
             // #6610F2
         }
         &.bg-secondary {
-            background: linear-gradient(color.adjust($secondary, $lightness: $color-adjust-amount), $secondary);
+            background: linear-gradient(color.adjust($secondary, $lightness: $color-adjust-amount) 1%, $secondary);
         }
         &.bg-info {
-            background: linear-gradient(color.adjust($info, $lightness: $color-adjust-amount), $info);
+            background: linear-gradient(color.adjust($info, $lightness: $color-adjust-amount) 1%, $info);
         }
     }
     @keyframes morph {

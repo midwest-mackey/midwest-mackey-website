@@ -57,7 +57,8 @@
 // }
 body {
     // Needed to hide overflow of summary-panel divs
-    overflow-x: hidden;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
     // Needed for ViewportScroller scroll to anchor
     // scroll-behavior: smooth !important;
 }
