@@ -5,7 +5,7 @@
 <mm-about-me></mm-about-me>
 
 <section id="social-links" class="container-fluid section-skew section-shadow-top bg-light-subtle">
-    <div class="container py-5">
+    <div class="container my-5">
         <div class="row py-5">
             <div class="col-12">
                 <h1 class="display-0 text-uppercase">Find me online</h1>
@@ -15,8 +15,7 @@
             </div>
         </div>
     </div>
-    <ux-summary-panel [id]="gamerID" [color]="gamerColor" [css]="gamerCss" [title]="gamerTitle" [sideText]="gamerSideText" [bodyText]="gamerBodyText" [subText]="gamerSubText" [img]="gamerImg" [buttons]="gamerButtons"></ux-summary-panel>
-
 </section>
+<mm-summary-panel [id]="gamerID" [color]="gamerColor" [css]="gamerCss" [title]="gamerTitle" [sideText]="gamerSideText" [bodyText]="gamerBodyText" [subText]="gamerSubText" [img]="gamerImg" [buttons]="gamerButtons"></mm-summary-panel>
 <mm-tools-platforms-languages></mm-tools-platforms-languages>
 <mm-footer [color]="currentColor"></mm-footer>

@@ -58,6 +58,12 @@ section {
         margin-top: -40px;
     }
 }
+.gamer {
+    .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+        transform: skewY(-$section-angle);
+    }
+}
+
 @include media-breakpoint-down(lg) {
     section {
         .img-container {

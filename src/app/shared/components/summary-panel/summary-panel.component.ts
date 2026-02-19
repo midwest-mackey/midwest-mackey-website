@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { faCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'ux-summary-panel',
+  selector: 'mm-summary-panel',
   templateUrl: './summary-panel.component.html',
   styleUrls: ['./summary-panel.component.scss'],
   standalone: false,
