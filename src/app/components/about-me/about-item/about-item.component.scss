@@ -61,3 +61,15 @@
         }
     }
 }
+@include media-breakpoint-down(md) {
+    .container {
+        .offset img {
+            margin-bottom: -($spacer-size *1.5);
+            margin-left: 0;
+        }
+        .backset img {
+            margin-right: 0;
+        }
+    }
+    
+}
