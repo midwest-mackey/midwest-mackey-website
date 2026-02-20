@@ -18,10 +18,11 @@ export class HomePageComponent implements OnInit {
   currentArrayText = [
     'designer',
     'gamer',
-    'enthusiast',
+    'creator',
     'dad',
     'husband',
-    'diyer'
+    'diyer',
+    'coffee fanatic',
   ];
   currentID = 'home';
   currentColor = 'primary';

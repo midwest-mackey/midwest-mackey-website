@@ -72,7 +72,7 @@ export const Items: Item[] = [
         id: 'mm-reading',
         firstTitle: 'Education',
         lastTitle: '',
-        subTitle: 'Bachelors of Fine Arts, Graphic Design, Iowa State University',
+        subTitle: 'Bachelor\'s of Fine Arts • Graphic Design • Iowa State University',
         about: 'Attended ISU from 2008 - 2013 to attain a degree in design to pursue a career. I spent much of my time focusing on digital media, additional focus in computer science, engineering studies, and Human Computer Interaction. I had a desire to utilize my degree toward digital web interfaces, and never knew where it would actually lead me. ',
         link1: 'https://www.linkedin.com/in/calebmackey',
         link2: '',
