@@ -111,12 +111,13 @@ section {
         }
     }
     .container {
-        margin-top: -$spacer-size;
+        margin-top: -88px;
         .display-0 {
             font-size: clamp(80px, calc(100% + 20vw), 300px);
         }
     }
     &#panel {
+        // top: 0;
         button {
             left: 3rem;
         }
