@@ -175,9 +175,23 @@ section {
         button {
             left: 1rem;
         }
+        .body-img {
+            max-height: 150px;
+            max-width: 150px;
+        }
     }
     .translate-middle-y {
         transform: translateY(0) !important;
+    }
+}
+}
+@include media-breakpoint-down(md) {
+    section {
+    &#panel {
+        .body-img {
+            max-height: 150px;
+            max-width: 150px;
+        }
     }
 }
 }
