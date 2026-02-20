@@ -16,11 +16,11 @@
                     </div>
                 </div>
             </div>
-            <ng-container *ngIf="img">
-            <div class="d-flex col justify-content-end align-items-center order-1 order-lg-2 m-0 img-container">
-                <img src="{{img}}" class="">
-            </div>
-        </ng-container>
+        @if (img) {
+        <div class="d-flex col justify-content-end align-items-center order-1 order-lg-2 m-0 img-container">
+            <img src="{{img}}" class="">
+        </div>
+        }
         </div>
         <div id="summary-buttons" class="row justify-content-center">
             <div class="col-12 col-md-auto d-grid gap-2 gap-lg-4 d-md-flex">

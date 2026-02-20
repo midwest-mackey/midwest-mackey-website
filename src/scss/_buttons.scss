@@ -14,21 +14,21 @@
         transform: scale(1.025) translateY(-3px);
         transition: transform 0.2s;
     }
-    // &:hover fa-layers fa-icon:first-child svg,
-    // &:active fa-layers fa-icon:first-child svg {
-    //     -moz-transform: scale(10);
-    //     -webkit-transform: scale(10);
-    //     transform: scale(10);
-    //     opacity: 0;
-    //     transition: transform 0.8s, opacity 0.6s;
-    // }
-    // &:hover fa-layers fa-icon:nth-child(2) svg,
-    // &:active fa-layers fa-icon:nth-child(2) svg {
-    //     -moz-transform: scale(1.6);
-    //     -webkit-transform: scale(1.6);
-    //     transform: scale(1.6) translateX(-2px);
-    //     transition: 0.2s;
-    // }
+    &:hover .fa-layers .ng-fa-icon:first-child svg,
+    &:active .fa-layers .ng-fa-icon:first-child svg {
+        -moz-transform: scale(10);
+        -webkit-transform: scale(10);
+        transform: scale(10);
+        opacity: 0;
+        transition: transform 0.8s, opacity 0.6s;
+    }
+    &:hover .fa-layers .ng-fa-icon:nth-child(2) svg,
+    &:active .fa-layers .ng-fa-icon:nth-child(2) svg {
+        -moz-transform: scale(1.6);
+        -webkit-transform: scale(1.6);
+        transform: scale(1.6) translateX(-2px);
+        transition: 0.2s;
+    }
     svg {
         opacity: 1;
     }
