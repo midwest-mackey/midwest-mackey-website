@@ -1,7 +1,7 @@
 
 <div class="container {{containerCss}}">
     <div class="row d-flex">
-    <ng-container *ngFor="let item of items | slice:start:end">
+    @for (item of items | slice:start:end; track item.id) {
         <div id="{{item.id}}" class="item {{item.css}} col d-md-flex d-sm-column pb-5 pb-xl-0">
             <div class="col-auto">
                 <img src="./assets/me/{{item.id | lowercase}}.png" alt="{{item.firstTitle}} {{item.lastTitle}}"/>
@@ -28,6 +28,6 @@
                 </div>
             </div>
         </div>
-    </ng-container>
+    }
     </div>
 </div>

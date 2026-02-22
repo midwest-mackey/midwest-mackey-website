@@ -3,7 +3,7 @@ import { Items } from './about-item';
 import { faDiscord, faGithubAlt, faInstagram, faLinkedinIn, faTiktok, faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faBerkleyB, faBMC, faLT, faMumoSystems, faVermeer } from 'src/app/shared/custom-icons/custom-icons.module';
 import { faArrowRight, faGraduationCap, faList } from '@fortawesome/free-solid-svg-icons';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/app.constants';
 
 @Component({
   selector: 'mm-about-item',

@@ -1,19 +1,20 @@
 @use 'sass:color';
 
 // Colors
-$primary: #003BFF;
-$green:   #308D04;
-$purple:  #8540F5;
-$orange:  #FC7E14;
+$primary:  #003BFF !default;
+$blue:  #003BFF !default;
+$green:   #308D04 !default;
+$purple:  #8540F5 !default;
+$orange:  #FC7E14 !default;
 
 
-$carousel-indicator-opacity:        .25;
-$box-shadow-lg:                     0 1rem 3rem rgba(#000000, .3);
-$navbar-padding-y:                  1rem * 1.5;
+$carousel-indicator-opacity:        .25 !default;
+$box-shadow-lg:                     0 1rem 3rem rgba(0, 0, 0, 0.3) !default;
+$navbar-padding-y:                  1rem * 1.5 !default;
 
 
 // MM Site Variables
-$spacer-size:                       50px;
-$section-angle:                     5deg;
-$color-adjust-amount:               -25%;
-$font-family-alt:                   'Anton', sans-serif;
+$spacer-size:                       50px !default;
+$section-angle:                     5deg !default;
+$color-adjust-amount:               -25% !default;
+$font-family-alt:                   'Anton', sans-serif !default;

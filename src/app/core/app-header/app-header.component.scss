@@ -1,12 +1,13 @@
 @use 'sass:color';
 @use 'styles' as *;
+
 .spacer-top {
     height: 88px;
     width: 100%;
     position: absolute;
     top: 0;
-    &.bg-primary {
-        background-color: color.adjust($primary, $lightness: $color-adjust-amount) !important;
+    &.bg-blue {
+        background-color: color.adjust($blue, $lightness: $color-adjust-amount) !important;
     }
     &.bg-purple {
         background-color: color.adjust($purple, $lightness: $color-adjust-amount) !important;
@@ -41,8 +42,8 @@ section {
             line to 0% 0%);
         animation: morph 120s linear infinite;
 
-        &.bg-primary {
-            background: linear-gradient(color.adjust($primary, $lightness: $color-adjust-amount) 1%, $primary);
+        &.bg-blue {
+            background: linear-gradient(color.adjust($blue, $lightness: $color-adjust-amount) 1%, $blue);
             // #0044BA
         }
         &.bg-orange {
@@ -127,8 +128,8 @@ section {
         .body-img {
             max-height: 200px;
             max-width: 200px;
-        .svg-primary {
-            fill: $primary
+        .svg-blue {
+            fill: $blue
             }
         .svg-purple {
             fill: $purple

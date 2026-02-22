@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faLinkedinIn, faTwitch, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { GlobalConstants } from '../../global-constants';
+import { GlobalConstants } from '../../app.constants';
 
 @Component({
   selector: 'mm-app-navbar',

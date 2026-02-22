@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faPlaystation, faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faFortniteF } from 'src/app/shared/custom-icons/custom-icons.module';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/app.constants';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class HomePageComponent implements OnInit {
     'coffee fanatic',
   ];
   currentID = 'home';
-  currentColor = 'primary';
+  currentColor = 'blue';
   currentTitle = 'Midwest Mackey';
   currentButtonText = 'get to know me';
   currentBodyText = 'Hey! 👋\nI\'m midwest mackey,'

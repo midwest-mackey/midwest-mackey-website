@@ -7,20 +7,19 @@ import { FontAwesomeModule, } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { AppNavbarComponent } from './shared/components/app-navbar/app-navbar.component';
-import { AppHeaderComponent } from './shared/components/app-header/app-header.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
+import { AppNavbarComponent } from './core/app-navbar/app-navbar.component';
+import { AppHeaderComponent } from './core/app-header/app-header.component';
+import { FooterComponent } from './core/footer/footer.component';
 
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ProjectsPageComponent } from './pages/projects-page/projects-page.component';
 import { ServicesPageComponent } from './pages/services-page/services-page.component';
 
-import { AboutMeComponent } from './components/about-me/about-me.component';
+import { AboutMeComponent } from './shared/components/about-me/about-me.component';
 import { SupportMeComponent } from './shared/components/support-me/support-me.component';
-import { WhatIDoComponent } from './components/what-i-do/what-i-do.component';
-import { ToolsPlatformsLanguagesComponent } from './components/tools-platforms-languages/tools-platforms-languages.component';
+import { ToolsPlatformsLanguagesComponent } from './shared/components/tools-platforms-languages/tools-platforms-languages.component';
 import { SummaryPanelComponent } from './shared/components/summary-panel/summary-panel.component';
-import { TeammateComponent } from './components/about-me/about-item/about-item.component';
+import { TeammateComponent } from './shared/components/about-me/about-item/about-item.component';
 import { SocialLinksComponent } from './shared/components/social-links/social-links.component';
 import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
 
@@ -34,7 +33,6 @@ import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
     ProjectsPageComponent,
     ServicesPageComponent,
     AboutMeComponent,
-    WhatIDoComponent,
     SupportMeComponent,
     ToolsPlatformsLanguagesComponent,
     SummaryPanelComponent,

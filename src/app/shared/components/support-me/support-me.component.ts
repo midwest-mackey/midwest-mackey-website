@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { GlobalConstants } from '../../global-constants';
+import { Component, Input, OnInit } from '@angular/core';
+import { GlobalConstants } from '../../../app.constants';
 import { faTwitch } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
@@ -13,7 +13,8 @@ export class SupportMeComponent implements OnInit {
   faTwitch = faTwitch;
   bmcURL = GlobalConstants.bmcURL;
   twitchURL = GlobalConstants.twitchURL;
-
+  
+  
   constructor() { }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faReact, faGithub, faAngular, faFontAwesomeFlag, faJira, faBitbucket, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/app.constants';
 
 @Component({
   selector: 'mm-services-page',

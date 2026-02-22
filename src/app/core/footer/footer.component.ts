@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faAngular, faBootstrap, faDiscord, faDocker } from '@fortawesome/free-brands-svg-icons';
-import { GlobalConstants } from '../../global-constants';
+import { GlobalConstants } from '../../app.constants';
 import { ViewportScroller } from '@angular/common';
 import { faPaperPlane, faArrowRight, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 

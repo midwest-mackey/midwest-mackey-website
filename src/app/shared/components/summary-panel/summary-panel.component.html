@@ -24,7 +24,8 @@
         </div>
         <div id="summary-buttons" class="row justify-content-center">
             <div class="col-12 col-md-auto d-grid gap-2 gap-lg-4 d-md-flex">
-                <a *ngFor="let button of buttons let i=index" href="{{button.link}}" target="_blank"
+                @for (button of buttons; track $index) {
+                <a href="{{button.link}}" target="_blank"
                 class="btn btn-light card p-0">
                     <div class="card-body">
                         <div class="row">
@@ -47,6 +48,7 @@
                         </div>
                     </div>
                 </a>
+                }
             </div>
                 <!-- <button (click)="onClick('appHeaderScrollTarget')" class="float-end btn btn-{{color}} btn-card">
                     <div class="card-body">

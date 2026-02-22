@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faDiscord, faGithubAlt, faInstagram, faLinkedinIn, faPlaystation, faReddit, faTiktok, faTwitch, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { GlobalConstants } from '../../global-constants';
+import { GlobalConstants } from '../../../app.constants';
 
 @Component({
   selector: 'mm-social-links',

@@ -1,4 +1,5 @@
-import pkgApp from 'package.json';
+import pkg from '../../package.json';
+
 
 export class GlobalConstants {
     // URLs
@@ -15,12 +16,10 @@ export class GlobalConstants {
     public static fortniteTrackerURL: string = 'https://fortnitetracker.com/profile/all/midwest.mackey';
     public static linkstackURL: string = 'https://stack.midwestmackey.com/';
     public static statusURL: string = 'https://stats.uptimerobot.com/oWvEXLAYAm';
+    public static plexProfileURL: string = 'https://l.plex.tv/bCnMp8b';
 
     // Email
     public static emailAddress: string = 'midwestmackey@gmail.com';
 
     // Versions
-    public static appVersion: string = 'v'+pkgApp.version;
-
-    public static fontAwesomeVersion: string = 'v1.0.0';
-}
+    public static appVersion: string = 'v'+pkg.version;}

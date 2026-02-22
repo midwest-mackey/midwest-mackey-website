@@ -1,4 +1,4 @@
-<div class="container-fluid bg-primary text-white">
+<div class="container-fluid bg-curve bg-{{color}} text-white">
     <div class="container mt-5">
         <div class="row">
             <h1 class="display-4 mb-3 mt-5">A few of the platforms, languages, and tools I have worked with</h1>
@@ -13,19 +13,19 @@
     <div class="text-nowrap overflow-hidden text-center">
         <div class="ticker width-100">
             <div class="ticker-track d-flex gap-0">
-                <ng-container *ngFor="let icon of icons">
+                @for (icon of icons; track icon) {
                     <a href="{{icon.link}}" target="_blank" id="to-hover" class="btn btn-link text-white d-flex align-items-center rounded-pill p-3">
                         <fa-icon class="display-4" [icon]="icon.icon"></fa-icon>
                     <fa-icon [icon]="faArrowRight" id="to-show"></fa-icon>
                     </a>
-                </ng-container>
+                }
                 <!-- duplicate -->
-                <ng-container *ngFor="let icon of icons">
+                @for (icon of icons; track icon) {
                     <a href="{{icon.link}}" target="_blank" id="to-hover" class="btn btn-link text-white d-flex align-items-center rounded-pill p-3">
                         <fa-icon class="display-4" [icon]="icon.icon"></fa-icon>
                     <fa-icon [icon]="faArrowRight" id="to-show"></fa-icon>
                     </a>
-                </ng-container>
+                }
             </div>
         </div>
     </div>

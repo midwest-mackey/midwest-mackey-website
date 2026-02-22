@@ -14,15 +14,15 @@
             padding: 0.5rem 0.75rem;
         }
     }
-    &.bg-primary {
-        background-color: color.adjust($primary, $lightness: $color-adjust-amount) !important;
+    &.bg-blue {
+        background-color: color.adjust($blue, $lightness: $color-adjust-amount) !important;
         #navbar-links, #social-links {
             .nav-link {
                 &:hover:not(.active) {
-                    background-color:  $primary;
+                    background-color:  $blue;
                 }
                 &.active {
-                    color: $primary !important;
+                    color: $blue !important;
                 }
             }
         }

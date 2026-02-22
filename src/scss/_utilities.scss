@@ -2,6 +2,7 @@ $custom-colors: (
   "green":  $green,
   "purple": $purple,
   "orange": $orange,
+  "blue":   $blue,
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);

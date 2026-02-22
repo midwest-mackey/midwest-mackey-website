@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { faList } from '@fortawesome/free-solid-svg-icons';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/app.constants';
 
 @Component({
   selector: 'mm-projects-page',

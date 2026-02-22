@@ -43,14 +43,14 @@ section {
         //     line to 0% 100%);
         // }
     }
-    &.primary {
+    &.blue {
         #navbar-links, #social-links {
             .nav-link {
                 &:hover:not(.active) {
-                    background-color: $primary;
+                    background-color: $blue;
                 }
                 &.active {
-                    background-color: $primary;
+                    background-color: $blue;
                 }
             }
         }

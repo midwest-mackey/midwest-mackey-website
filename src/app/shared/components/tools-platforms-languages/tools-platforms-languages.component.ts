@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faAngular, faAtlassian, faBootstrap, faCss3Alt, faDocker, faFigma, faFontAwesome, faGit, faGithub, faGitkraken, faHtml5, faJsSquare, faLess, faMarkdown, faNodeJs, faNpm, faPython, faReact, faSass, faSketch, faSlack, faYarn } from '@fortawesome/free-brands-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faAdobe, faAxure, faGoogleMarketing } from 'src/app/shared/custom-icons/custom-icons.module';
 import { IconLink } from './iconlink.model';
-import { GlobalConstants } from 'src/app/shared/global-constants';
+import { GlobalConstants } from 'src/app/app.constants';
 
 
 @Component({
@@ -13,6 +13,8 @@ import { GlobalConstants } from 'src/app/shared/global-constants';
   standalone: false,
 })
 export class ToolsPlatformsLanguagesComponent implements OnInit {
+
+  @Input() color: string;
 
   githubBaseURL = GlobalConstants.githubBaseURL;
 
