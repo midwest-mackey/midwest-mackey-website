@@ -1,11 +1,8 @@
 @use 'sass:color';
-@use 'styles' as *;
+@use 'custom' as *;
 
 section#social-links {
     margin-bottom: -200px;
     padding-bottom: 200px;
     
 }
-// .bg-gradient-primary {
-//     background: linear-gradient(#f8f9fa, $primary);
-// }

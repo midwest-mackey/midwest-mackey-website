@@ -22,7 +22,6 @@ export class HomePageComponent implements OnInit {
     'dad',
     'husband',
     'diyer',
-    'coffee fanatic',
   ];
   currentID = 'home';
   currentColor = 'blue';
@@ -43,7 +42,7 @@ export class HomePageComponent implements OnInit {
 
   gamerID = 'gamer';
   gamerColor = this.currentColor;
-  gamerCss = 'right';
+  gamerCss = 'end';
   gamerTitle = 'Game Time';
   gamerSideText = 'PS5';
   gamerBodyText = 'Hop on, join up, and, play some games. I am usually on most nights, just trying to have fun. Who knows, maybe I will start streaming to make a thing of it!';

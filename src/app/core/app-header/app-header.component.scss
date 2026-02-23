@@ -1,8 +1,8 @@
 @use 'sass:color';
-@use 'styles' as *;
-
+@use 'custom' as *;
+$top-space:                       103px;
 .spacer-top {
-    height: 88px;
+    height: $top-space;
     width: 100%;
     position: absolute;
     top: 0;
@@ -21,12 +21,16 @@
     &.bg-secondary {
         background-color: color.adjust($secondary, $lightness: $color-adjust-amount) !important;
     }
-    &.bg-info {
-        background-color: color.adjust($info, $lightness: $color-adjust-amount) !important;
-}
+    &.bg-cyan {
+        background-color: color.adjust($cyan, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-teal {
+        background-color: color.adjust($teal, $lightness: $color-adjust-amount) !important;
+    }
+    
 }
 section {
-    top: 88px;
+    top: $top-space;
     margin-bottom: $spacer-size * 2;
 
     &.bg-color {
@@ -61,8 +65,11 @@ section {
         &.bg-secondary {
             background: linear-gradient(color.adjust($secondary, $lightness: $color-adjust-amount) 1%, $secondary);
         }
-        &.bg-info {
-            background: linear-gradient(color.adjust($info, $lightness: $color-adjust-amount) 1%, $info);
+        &.bg-cyan {
+            background: linear-gradient(color.adjust($cyan, $lightness: $color-adjust-amount) 1%, $cyan);
+        }
+        &.bg-teal {
+            background: linear-gradient(color.adjust($teal, $lightness: $color-adjust-amount) 1%, $teal);
         }
     }
     @keyframes morph {
@@ -112,7 +119,7 @@ section {
         }
     }
     .container {
-        margin-top: -88px;
+        margin-top: -103px;
         .display-0 {
             font-size: clamp(80px, calc(100% + 20vw), 300px);
         }
@@ -128,21 +135,24 @@ section {
         .body-img {
             max-height: 200px;
             max-width: 200px;
-        .svg-blue {
-            fill: $blue
+            .svg-blue {
+                fill: $blue
             }
-        .svg-purple {
-            fill: $purple
+            .svg-purple {
+                fill: $purple
             }
-        .svg-orange {
-            fill: $orange
+            .svg-orange {
+                fill: $orange
             }
-        .svg-green {
-            fill: $green
+            .svg-green {
+                fill: $green
             }
-        .svg-info {
-            fill: $info;
-            }    
+            .svg-cyan {
+                fill: $cyan;
+            }
+            .svg-teal {
+                fill: $teal;
+            }
         }
         h1 {
             font-size: 2.5em;

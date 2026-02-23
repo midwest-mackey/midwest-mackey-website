@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faAngular, faBootstrap, faDiscord, faDocker } from '@fortawesome/free-brands-svg-icons';
+import { faAngular, faBootstrap, faDiscord, faDocker, faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { GlobalConstants } from '../../app.constants';
 import { ViewportScroller } from '@angular/common';
-import { faPaperPlane, faArrowRight, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faArrowRight, faArrowUp, faRobot } from '@fortawesome/free-solid-svg-icons';
+import { faPlex, faSeerr } from 'src/app/shared/custom-icons/custom-icons.module';
 
 @Component({
   selector: 'mm-footer',
@@ -21,6 +22,11 @@ export class FooterComponent implements OnInit {
   faDocker = faDocker;
   faAngular = faAngular;
   faBootstrap = faBootstrap;
+  faSeerr = faSeerr;
+  faPlex = faPlex;
+  faSpotify = faSpotify;
+  faRobot = faRobot;
+  faGithub = faGithub
 
   githubBaseURL = GlobalConstants.githubBaseURL;
   discordURL = GlobalConstants.discordURL;
@@ -28,6 +34,9 @@ export class FooterComponent implements OnInit {
   emailAddress = GlobalConstants.emailAddress;
   linkstackURL = GlobalConstants.linkstackURL;
   statusURL = GlobalConstants.statusURL;
+  plexURL = GlobalConstants.plexURL;
+  spotifyURL = GlobalConstants.spotifyURL;
+  seerrURL = GlobalConstants.seerrURL;
 
   constructor(private viewportScroller: ViewportScroller) { }
 

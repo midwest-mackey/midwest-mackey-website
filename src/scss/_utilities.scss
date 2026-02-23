@@ -3,7 +3,10 @@ $custom-colors: (
   "purple": $purple,
   "orange": $orange,
   "blue":   $blue,
+  "teal":   $teal,
+  "cyan":   $cyan,
 );
+
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
 
@@ -27,12 +30,13 @@ $utilities: map-merge(
     ),
   )
 );
+
 $all-colors: map-merge-multiple($blues, $indigos, $purples, $pinks, $reds, $oranges, $yellows, $greens, $teals, $cyans, $grays, $custom-colors);
 
 $utilities: map-merge(
   $utilities,
   (
-    "color,": map-merge(
+    "color": map-merge(
       map-get($utilities, "color"),
       (
         values: map-merge(
@@ -44,7 +48,7 @@ $utilities: map-merge(
       ),
     ),
 
-    "background-color,": map-merge(
+    "background-color": map-merge(
       map-get($utilities, "background-color"),
       (
         values: map-merge(
@@ -56,7 +60,7 @@ $utilities: map-merge(
       ),
     ),
 
-    "border-color,": map-merge(
+    "border-color": map-merge(
       map-get($utilities, "border-color"),
       (
         values: map-merge(
@@ -67,6 +71,5 @@ $utilities: map-merge(
         ),
       ),
     ),
-
   )
 );

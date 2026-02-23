@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faDiscord, faGithubAlt, faInstagram, faLinkedinIn, faPlaystation, faReddit, faTiktok, faTwitch, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faGithubAlt, faInstagram, faLinkedinIn, faPlaystation, faReddit, faSpotify, faTiktok, faTwitch, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { GlobalConstants } from '../../../app.constants';
 
@@ -23,6 +23,7 @@ export class SocialLinksComponent implements OnInit {
   faYouTube = faYoutube;
   faLinkedin = faLinkedinIn;
   faPlaystation = faPlaystation;
+  faSpotify = faSpotify;
 
   
   twitchURL = GlobalConstants.twitchURL;
@@ -34,6 +35,7 @@ export class SocialLinksComponent implements OnInit {
   redditURL = GlobalConstants.redditURL;
   linkedinURL = GlobalConstants.linkedinURL;
   playstationURL = GlobalConstants.playstationURL;
+  spotifyURL = GlobalConstants.spotifyURL;
 
 
   buttons: any[] = [{
@@ -82,6 +84,11 @@ export class SocialLinksComponent implements OnInit {
     icon: this.faPlaystation,
     text: 'Playstation',
     link: this.playstationURL,
+  },
+  {
+    icon: this.faSpotify,
+    text: 'Spotify',
+    link: this.spotifyURL,
   }
 ];
 

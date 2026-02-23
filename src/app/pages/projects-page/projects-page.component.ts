@@ -32,7 +32,7 @@ export class ProjectsPageComponent implements OnInit {
 
   projectsID = 'projects';
   projectsColor = this.currentColor;
-  projectsCss = 'left';
+  projectsCss = 'start';
   projectsTitle = 'Check back later';
   projectsSideText = "MM";
   projectsBodyText = 'more coming soon';

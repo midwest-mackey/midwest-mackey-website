@@ -46,25 +46,30 @@
             </ul>
         </div>
         <div class="row pt-5">
-            <ul id="navbar-links" class="nav nav-pills justify-content-center col gap-2 mb-2 z-3">
-                <li class="nav-item">
-                    <a class="nav-link link-light" href="{{linkstackURL}}" target="linktree">Linktree</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link-light" href="{{statusURL}}" target="status">Status</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link-light" href="{{githubBaseURL}}/" target="version">{{appVersion}}</a>
-                </li>
-            </ul>
+        <div class="flex-wrap d-grid justify-content-center gap-2 d-flex">
+            <a href="{{seerrURL}}" class="btn btn-outline-{{color}} rounded-pill" title="Link to Seerr, Plex request"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faSeerr"></fa-icon> Seerr</a>
+            <a href="{{plexURL}}" class="btn btn-outline-{{color}} rounded-pill" title="Link to Plex Profile"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faPlex"></fa-icon> Plex</a>
+            <a href="{{spotifyURL}}" class="btn btn-outline-{{color}} rounded-pill" title="Link to Spotify Profile"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faSpotify"></fa-icon> Spotify</a>
+            <a href="{{statusURL}}" class="btn btn-outline-{{color}} rounded-pill" title="Link to MM Services Status"><fa-icon class="fa-lg" [fixedWidth]="true" [icon]="faRobot"></fa-icon> Status</a>
+        </div>
         </div>
     </div>
 </section>
-<section class="container-fluid sub-footer-2 bg-black {{color}} z-n1 position-relative ">
+<section class="container-fluid sub-footer-2 position-relative z-1 bg-black text-white-50 {{color}}">
     <div class="container">
-        <div class="row d-flex text-center text-white p-4 rounded-top-4 border-bottom-0 footer-gradient">
-            <div class="col-md order-2 order-md-1"><p class="m-0 text-md-start"><small class="text-white space-mono-regular text-white-50">Copyright © 2025 MidwestMackey</small></p></div>
-            <div class="col-md order-1 order-md-2"><p class="m-0 text-md-end"><small class="">Built with<fa-icon class="fa-xl fa-width-auto mx-1" [icon]="faAngular"></fa-icon> <fa-icon class="fa-xl fa-width-auto mx-" [icon]="faBootstrap"></fa-icon> <fa-icon class="fa-xl fa-width-auto mx-1" [icon]="faDocker"></fa-icon>and lots of learning</small></p></div>
+        <div class="row text-center p-4 rounded-top-4 border-bottom-0 footer-gradient">
+            <div class="col-12 col-md text-md-end gap-2 d-flex justify-content-center align-items-center justify-content-md-end order-md-2">
+                <div class="row">
+                    <div class="col-12 col-md-auto p-0"><small class="m-0">Built with</small></div>
+                    <div class="col-12 col-md-auto gap-2 d-flex justify-content-center justify-content-md-start my-3 my-md-0">
+                        <a href="https://angular.dev/" class="btn btn-sm btn-outline-dark"><fa-icon class="fa-width-auto text-danger mx-1" [icon]="faAngular"></fa-icon></a>
+                        <a href="https://getbootstrap.com/" class="btn btn-sm btn-outline-dark"><fa-icon class="fa-width-auto text-purple mx-1" [icon]="faBootstrap"></fa-icon></a>
+                        <a href="https://www.docker.com/" class="btn btn-sm btn-outline-dark"><fa-icon class="fa-width-auto mx-1 text-blue" [icon]="faDocker"></fa-icon></a>
+                        <a class="btn btn-sm btn-outline-dark text-{{color}}" href="{{githubBaseURL}}/midwest-mackey-website" target="version"><fa-icon class="fa-width-auto mx-1" [icon]="faGithub"></fa-icon> {{appVersion}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md text-md-start order-md-1"><small class="m-0 space-mono-regular">Copyright © 2025 MidwestMackey</small></div>
         </div>
     </div>
 </section>

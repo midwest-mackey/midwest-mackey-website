@@ -1,7 +1,12 @@
 <section class="container-fluid">
     <div class="container">
         <div class="row d-flex {{css}}">
-            <div class="col-11 order-2 order-lg-1" [ngClass]="img ? 'col-lg-8' : 'col-lg-9'">
+            @if (img) {
+            <div class="d-flex justify-content-end align-items-center order-xxl-2 m-0 img-container">
+                <div class="col col-auto"><img src="{{img}}" class=""></div>
+            </div>
+            }
+            <div class="col-12 order-xxl-1" >
                 <div id="side-text-wrapper" class="position-relative">
                     <div id="side-text-outer" class="position-absolute">
                         <h1 id="side-text" class="text-{{color}} fw-black font-family-alt">{{sideText}}</h1>
@@ -16,14 +21,10 @@
                     </div>
                 </div>
             </div>
-        @if (img) {
-        <div class="d-flex col justify-content-end align-items-center order-1 order-lg-2 m-0 img-container">
-            <img src="{{img}}" class="">
+        
         </div>
-        }
-        </div>
-        <div id="summary-buttons" class="row justify-content-center">
-            <div class="col-12 col-md-auto d-grid gap-2 gap-lg-4 d-md-flex">
+        <div id="summary-buttons" class="row justify-content-md-{{css}}">
+            <div class="col-11 col-offset-md-1 col-md-auto d-grid gap-2 gap-lg-4 d-md-flex">
                 @for (button of buttons; track $index) {
                 <a href="{{button.link}}" target="_blank"
                 class="btn btn-light card p-0">

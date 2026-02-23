@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use 'styles' as *;
+@use 'custom' as *;
 
 .navbar {
     #navbar-links .nav-link {
@@ -79,15 +79,28 @@
             }
         }
     }
-    &.bg-info {
-        background-color: color.adjust($info, $lightness: $color-adjust-amount) !important;
+    &.bg-cyan {
+        background-color: color.adjust($cyan, $lightness: $color-adjust-amount) !important;
         #navbar-links, #social-links {
             .nav-link {
                 &:hover:not(.active) {
-                    background-color:  $info;
+                    background-color:  $cyan;
                 }
                 &.active {
-                    color: $info !important;
+                    color: $cyan !important;
+                }
+            }
+        }
+    }
+    &.bg-teal {
+        background-color: color.adjust($teal, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $teal;
+                }
+                &.active {
+                    color: $teal !important;
                 }
             }
         }

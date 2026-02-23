@@ -1,19 +1,18 @@
 @use 'sass:color';
 
-// Colors
-$primary:  #003BFF !default;
-$blue:  #003BFF !default;
-$green:   #308D04 !default;
-$purple:  #8540F5 !default;
-$orange:  #FC7E14 !default;
+// Bootstrap Color Variable Overrides
+$primary:   #003BFF !default;
+$blue:      #003BFF !default;
+$green:     #308D04 !default;
+$purple:    #8540F5 !default;
 
-
+// Bootstrap Variable Overrides
 $carousel-indicator-opacity:        .25 !default;
 $box-shadow-lg:                     0 1rem 3rem rgba(0, 0, 0, 0.3) !default;
 $navbar-padding-y:                  1rem * 1.5 !default;
 
 
-// MM Site Variables
+// Custom Variables
 $spacer-size:                       50px !default;
 $section-angle:                     5deg !default;
 $color-adjust-amount:               -25% !default;

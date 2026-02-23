@@ -34,7 +34,7 @@ export class ServicesPageComponent implements OnInit {
   ];
 
   currentID = 'services';
-  currentColor = 'info';
+  currentColor = 'cyan';
   currentTitle = 'Skills/ Services';
   currentBodyText = 'Experience with';
   currentSubText = ''
@@ -55,7 +55,7 @@ export class ServicesPageComponent implements OnInit {
 
   designID = 'design';
   designColor = this.currentColor;
-  designCss = 'right';
+  designCss = 'end';
   designTitle = 'Check back later';
   designSideText = "MM";
   designBodyText = 'coming soon';
