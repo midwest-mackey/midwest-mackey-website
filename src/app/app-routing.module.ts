@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-import { ProjectsPageComponent } from './pages/projects-page/projects-page.component';
-import { ServicesPageComponent } from './pages/services-page/services-page.component';
+import { HomePage } from './pages/home-page/home-page';
+import { ProjectsPage } from './pages/projects-page/projects-page';
+import { SkillsPage } from './pages/skills-page/skills-page';
+import { NotFoundPage } from './pages/not-found-page/not-found-page';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomePageComponent, title: 'Midwest Mackey' },
-  { path: 'projects', component: ProjectsPageComponent, title: 'Projects'},
-  { path: 'skills', component: ServicesPageComponent, title: 'Skills'},
+  { path: '', component: HomePage, title: 'Midwest Mackey' },
+  // { path: 'home', component: HomePage, title: 'Midwest Mackey' },
+  { path: 'projects', component: ProjectsPage, title: 'Projects'},
+  { path: 'skills', component: SkillsPage, title: 'Skills'},
 
+  // 404 route (ALWAYS last)
+  { path: '**', component: NotFoundPage, title: '404 - Page Not Found' }
 ];
 
 @NgModule({

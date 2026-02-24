@@ -4,13 +4,13 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { GlobalConstants } from 'src/app/app.constants';
 
 @Component({
-  selector: 'mm-services-page',
-  templateUrl: './services-page.component.html',
-  styleUrls: ['./services-page.component.scss'],
+  selector: 'mm-skills-page',
+  templateUrl: './skills-page.html',
+  styleUrls: ['./skills-page.scss'],
   standalone: false,
 })
 
-export class ServicesPageComponent implements OnInit {
+export class SkillsPage implements OnInit {
 
   currentArrayText = [
     'ux design',
@@ -31,9 +31,10 @@ export class ServicesPageComponent implements OnInit {
     'adobe',
     'bootstrap',
     'axure',
+    'launch darkly',
   ];
 
-  currentID = 'services';
+  currentID = 'skills';
   currentColor = 'cyan';
   currentTitle = 'Skills/ Services';
   currentBodyText = 'Experience with';

@@ -5,12 +5,12 @@ import { GlobalConstants } from 'src/app/app.constants';
 
 @Component({
   selector: 'mm-projects-page',
-  templateUrl: './projects-page.component.html',
-  styleUrls: ['./projects-page.component.scss'],
+  templateUrl: './projects-page.html',
+  styleUrls: ['./projects-page.scss'],
   standalone: false,
 })
 
-export class ProjectsPageComponent implements OnInit {
+export class ProjectsPage implements OnInit {
 
   currentArrayText = [
     'Plex',

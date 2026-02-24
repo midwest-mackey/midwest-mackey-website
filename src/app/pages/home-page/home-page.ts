@@ -6,14 +6,14 @@ import { GlobalConstants } from 'src/app/app.constants';
 
 @Component({
   selector: 'mm-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss'],
+  templateUrl: './home-page.html',
+  styleUrls: ['./home-page.scss'],
   standalone: false,
 })
 
 
 
-export class HomePageComponent implements OnInit {
+export class HomePage implements OnInit {
 
   currentArrayText = [
     'designer',
