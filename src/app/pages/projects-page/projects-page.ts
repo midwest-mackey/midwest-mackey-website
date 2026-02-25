@@ -34,7 +34,7 @@ export class ProjectsPage implements OnInit {
 
   constructor(private sanitizer:DomSanitizer) {
     this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'https://seerr.midwestmackey.com'
+      'https://stack.midwestmackey.com'
     );
   }
 
