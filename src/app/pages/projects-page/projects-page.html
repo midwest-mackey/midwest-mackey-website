@@ -4,16 +4,7 @@
     <h1 class="display-4 section-title">Projects</h1>
 </div>
 <div class="container iframe">
-    <div class="card overflow-hidden">
-        <iframe
-            class="linkstack"
-            [src]="iframeUrl"
-            width="100%"
-            height="1000"
-            frameborder="0"
-            loading="lazy">
-        </iframe>
-    </div>
+    <mm-project-list></mm-project-list>
 </div>
 <mm-summary-panel [id]="projectsID" [color]="projectsColor" [css]="projectsCss" [title]="projectsTitle" [sideText]="projectsSideText" [bodyText]="projectsBodyText" [subText]="projectsSubText" [buttons]="projectsButtons"></mm-summary-panel>
 <mm-footer [color]="currentColor"></mm-footer>
