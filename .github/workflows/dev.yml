@@ -26,6 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            midwestmackey/midwestmackey.com:latest
-            midwestmackey/midwestmackey.com:${{ github.sha }}
+          tags: midwestmackey/dev.midwestmackey.com:latest
