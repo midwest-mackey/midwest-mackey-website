@@ -1,8 +1,8 @@
-name: MAIN - Build and Push Docker Image to PRODUCTION
+name: DEV - Build and Push Docker Image to DEV
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
 
 jobs:
   build:
@@ -26,6 +26,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            midwestmackey/midwestmackey.com:latest
-            midwestmackey/midwestmackey.com:${{ github.sha }}
+          tags: midwestmackey/dev.midwestmackey.com:latest
