@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { faAngular, faBootstrap, faDiscord, faDocker, faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { GlobalConstants } from '../../app.constants';
 import { ViewportScroller } from '@angular/common';
-import { faPaperPlane, faArrowRight, faArrowUp, faRobot } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faBarsProgress } from '@fortawesome/free-solid-svg-icons';
 import { faPlex, faSeerr } from 'src/app/shared/custom-icons/custom-icons.module';
 
 @Component({
@@ -16,16 +16,13 @@ export class Footer implements OnInit {
   @Input() color: string;
 
   faArrowUp = faArrowUp;
-  faArrowRight = faArrowRight;
-  faDiscord = faDiscord;
-  faPaperPlane = faPaperPlane;
   faDocker = faDocker;
   faAngular = faAngular;
   faBootstrap = faBootstrap;
   faSeerr = faSeerr;
   faPlex = faPlex;
   faSpotify = faSpotify;
-  faRobot = faRobot;
+  faStatus = faBarsProgress;
   faGithub = faGithub
 
   githubBaseURL = GlobalConstants.githubBaseURL;

@@ -23,6 +23,7 @@ import { ToolsPlatformsLanguages } from './shared/components/tools-platforms-lan
 import { SummaryPanel } from './shared/components/summary-panel/summary-panel';
 import { SocialLinks } from './shared/components/social-links/social-links';
 import { WhatIDo } from './shared/components/what-i-do/what-i-do';
+import { ProjectList } from './shared/components/project-list/project-list';
 
 import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
@@ -37,6 +38,7 @@ import { NotFoundPage } from './pages/not-found-page/not-found-page';
     HomePage,
     ProjectsPage,
     SkillsPage,
+    NotFoundPage,
     AboutMe,
     SupportMe,
     ToolsPlatformsLanguages,
@@ -44,7 +46,7 @@ import { NotFoundPage } from './pages/not-found-page/not-found-page';
     AboutItem,
     SocialLinks,
     WhatIDo,
-    NotFoundPage
+    ProjectList
     ],
   imports: [
     BrowserModule,
