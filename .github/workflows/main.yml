@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: MAIN - Build and Push Docker Image to PRODUCTION
 
 on:
   push:
