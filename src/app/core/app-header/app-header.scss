@@ -1,0 +1,202 @@
+@use 'sass:color';
+@use 'custom' as *;
+$top-space:                       103px;
+.spacer-top {
+    height: $top-space;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    &.bg-blue {
+        background-color: color.adjust($blue, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-purple {
+        background-color: color.adjust($purple, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-orange {
+        background-color: color.adjust($orange, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-green {
+        background-color: color.adjust($green, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-secondary {
+        background-color: color.adjust($secondary, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-cyan {
+        background-color: color.adjust($cyan, $lightness: $color-adjust-amount) !important;
+    }
+    &.bg-teal {
+        background-color: color.adjust($teal, $lightness: $color-adjust-amount) !important;
+    }
+    
+}
+section {
+    top: $top-space;
+    margin-bottom: $top-space;
+
+    &.bg-color {
+        opacity: 1;
+        // -webkit-clip-path: polygon(0 0, 100% 0, 100% 20%, 0 75%);
+        // clip-path: polygon(0 0, 100% 0, 100% 20%, 0 75%);
+
+        clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 5%,
+            smooth to 55% 66% with 75% 5%,
+            smooth to 0% 65% with 10% 50%,
+            line to 0% 0%);
+        animation: morph 120s linear infinite;
+
+        &.bg-blue {
+            background: linear-gradient(color.adjust($blue, $lightness: $color-adjust-amount) 1%, $blue);
+            // #0044BA
+        }
+        &.bg-orange {
+            background: linear-gradient(color.adjust($orange, $lightness: $color-adjust-amount) 1%, $orange);
+            // #FC7E14
+        }
+        &.bg-green {
+            background: linear-gradient(color.adjust($green, $lightness: $color-adjust-amount) 1%, $green);
+            // #005440
+        }
+        &.bg-purple {
+            background: linear-gradient(color.adjust($purple, $lightness: $color-adjust-amount) 1%, $purple);
+            // #6610F2
+        }
+        &.bg-secondary {
+            background: linear-gradient(color.adjust($secondary, $lightness: $color-adjust-amount) 1%, $secondary);
+        }
+        &.bg-cyan {
+            background: linear-gradient(color.adjust($cyan, $lightness: $color-adjust-amount) 1%, $cyan);
+        }
+        &.bg-teal {
+            background: linear-gradient(color.adjust($teal, $lightness: $color-adjust-amount) 1%, $teal);
+        }
+    }
+    @keyframes morph {
+        0%, 100% {
+            clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 5%,
+            smooth to 55% 66% with 75% 5%,
+            smooth to 0% 65% with 10% 50%,
+            line to 0% 0%);
+            
+        }
+        25% {
+            clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 45%,
+            smooth to 45% 55% with 58% 100%,
+            smooth to 0% 50% with 10% 10%,
+            line to 0% 0%);
+        }
+        50% {
+            // clip-path: shape(from 0% 0%,
+            // line to 100% 0%,
+            // line to 100% 100%,
+            // smooth to 20% 60% with 40% 68%,
+            // smooth to 0% 5% with 36% 0%,
+            // line to 0% 0%);
+            clip-path: shape(from 0% 0%, 
+            line to 100% 0%,
+            line to 100% 90%,
+            smooth to 20% 57% with -45% 104%,
+            smooth to 0% 5% with 36% 0%,
+            line to 0% 0%);
+        }
+        75% {
+            // clip-path: shape(from 0% 0%,
+            // line to 100% 0%,
+            // line to 100% 25%,
+            // smooth to 19% 67% with 60% 75%,
+            // smooth to 0% 25% with 50% 0%,
+            // line to 0% 0%);
+            clip-path: shape(from 0% 0%,
+            line to 100% 0%,
+            line to 100% 25%,
+            smooth to 20% 90% with 30% 126%, 
+            smooth to 0% 25% with 84% -30%,
+            line to 0% 0%);
+        }
+    }
+    .container {
+        margin-top: -103px;
+        .display-0 {
+            font-size: clamp(80px, calc(100% + 20vw), 300px);
+        }
+    }
+    &#panel {
+        // top: 0;
+        button {
+            left: 3rem;
+        }
+        h2 {
+            white-space: pre-line;
+        }
+        .body-img {
+            max-height: 200px;
+            max-width: 200px;
+            .svg-blue {
+                fill: $blue
+            }
+            .svg-purple {
+                fill: $purple
+            }
+            .svg-orange {
+                fill: $orange
+            }
+            .svg-green {
+                fill: $green
+            }
+            .svg-cyan {
+                fill: $cyan;
+            }
+            .svg-teal {
+                fill: $teal;
+            }
+        }
+        h1 {
+            font-size: 2.5em;
+            font-family: 'Sigmar', sans-serif;
+        }
+    }
+}
+
+// Media Breakpoints
+@include media-breakpoint-down(md) {
+    section {
+        top: 56px;
+        text-align: center;
+        // &.bg-color {
+        
+        // }
+    &#title {
+        .top-50 {
+            top: 130px !important;
+        }
+    }
+
+    &#panel {
+        button {
+            left: 1rem;
+        }
+        .body-img {
+            max-height: 150px;
+            max-width: 150px;
+        }
+    }
+    .translate-middle-y {
+        transform: translateY(0) !important;
+    }
+}
+}
+@include media-breakpoint-down(md) {
+    section {
+    &#panel {
+        .body-img {
+            max-height: 150px;
+            max-width: 150px;
+        }
+    }
+}
+}

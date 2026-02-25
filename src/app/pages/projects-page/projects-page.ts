@@ -12,19 +12,7 @@ import { GlobalConstants } from 'src/app/app.constants';
 
 export class ProjectsPage implements OnInit {
 
-  currentArrayText = [
-    'Plex',
-    'spotify',
-    'projects',
-    'status',
-    'twitch'
-  ];
-
-  currentID = 'projects';
   currentColor = 'purple';
-  currentTitle = 'Projects';
-  currentBodyText = 'Checkout my';
-  currentButtonText = 'learn more';
   iframeUrl!: SafeResourceUrl;
 
   faList = faList;

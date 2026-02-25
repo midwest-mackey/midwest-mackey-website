@@ -12,34 +12,7 @@ import { GlobalConstants } from 'src/app/app.constants';
 
 export class SkillsPage implements OnInit {
 
-  currentArrayText = [
-    'ux design',
-    'google analytics',
-    'web hosting',
-    'networking',
-    'angular',
-    'docker',
-    'fontAwesome',
-    'git',
-    'html',
-    'javascript',
-    'less/sass/css',
-    'npm',
-    'yarn',
-    'sketch',
-    'figma',
-    'adobe',
-    'bootstrap',
-    'axure',
-    'launch darkly',
-  ];
-
-  currentID = 'skills';
   currentColor = 'cyan';
-  currentTitle = 'Skills/ Services';
-  currentBodyText = 'Experience with';
-  currentSubText = ''
-  currentButtonText = 'see what I do';
 
   faFontAwesome = faFontAwesomeFlag;
   faGithub = faGithub;

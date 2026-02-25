@@ -1,3 +1,8 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
 .theme-invert-text {
   color: var(--bs-inverted-text);
   &.footer {

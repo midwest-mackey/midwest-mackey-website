@@ -9,7 +9,7 @@ import { ThemeService } from 'src/app/theme-service';
   styleUrl: './theme-toggle.scss'
 })
 export class ThemeToggle {
-  constructor(private theme: ThemeService) {}
+  constructor(private themeService: ThemeService) {}
 
   faMoon = faMoon;
   faSun = faSun;
@@ -19,6 +19,6 @@ export class ThemeToggle {
   }
 
   toggle() {
-    this.theme.toggleTheme();
+    this.themeService.toggleTheme();
   }
 }

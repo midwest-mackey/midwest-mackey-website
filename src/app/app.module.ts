@@ -4,40 +4,47 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, } from '@fortawesome/angular-fontawesome';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app.routing';
 
-import { AppComponent } from './app.component';
-import { AppNavbarComponent } from './core/app-navbar/app-navbar.component';
-import { AppHeaderComponent } from './core/app-header/app-header.component';
-import { FooterComponent } from './core/footer/footer.component';
+import { App } from './app';
+import { AppNavbar } from './core/app-navbar/app-navbar';
+import { AppHeader } from './core/app-header/app-header';
+import { Footer } from './core/footer/footer';
 
 import { HomePage } from './pages/home-page/home-page';
-import { ProjectsPage } from './pages/projects-page/projects-page';
 import { SkillsPage } from './pages/skills-page/skills-page';
+import { ProjectsPage } from './pages/projects-page/projects-page';
 
-import { AboutMeComponent } from './shared/components/about-me/about-me.component';
-import { SupportMeComponent } from './shared/components/support-me/support-me.component';
-import { ToolsPlatformsLanguagesComponent } from './shared/components/tools-platforms-languages/tools-platforms-languages.component';
-import { SummaryPanelComponent } from './shared/components/summary-panel/summary-panel.component';
-import { TeammateComponent } from './shared/components/about-me/about-item/about-item.component';
-import { SocialLinksComponent } from './shared/components/social-links/social-links.component';
+
+import { AboutMe } from './shared/components/about-me/about-me';
+import { AboutItem } from './shared/components/about-me/item/about-item';
+import { SupportMe } from './shared/components/support-me/support-me';
+import { ToolsPlatformsLanguages } from './shared/components/tools-platforms-languages/tools-platforms-languages';
+import { SummaryPanel } from './shared/components/summary-panel/summary-panel';
+import { SocialLinks } from './shared/components/social-links/social-links';
+import { WhatIDo } from './shared/components/what-i-do/what-i-do';
+
 import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
+import { NotFoundPage } from './pages/not-found-page/not-found-page';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AppNavbarComponent,
-    AppHeaderComponent,
-    FooterComponent,
+    App,
+    AppNavbar,
+    AppHeader,
+    Footer,
     HomePage,
     ProjectsPage,
     SkillsPage,
-    AboutMeComponent,
-    SupportMeComponent,
-    ToolsPlatformsLanguagesComponent,
-    SummaryPanelComponent,
-    TeammateComponent,
-    SocialLinksComponent,
+    AboutMe,
+    SupportMe,
+    ToolsPlatformsLanguages,
+    SummaryPanel,
+    AboutItem,
+    SocialLinks,
+    WhatIDo,
+    NotFoundPage
     ],
   imports: [
     BrowserModule,
@@ -53,7 +60,7 @@ import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
   ],
   providers: [],
   bootstrap: [
-    AppComponent,
+    App,
   ],
   schemas: [
   CUSTOM_ELEMENTS_SCHEMA

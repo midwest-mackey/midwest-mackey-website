@@ -1,0 +1,122 @@
+@use 'sass:color';
+@use 'custom' as *;
+
+.navbar {
+    .navbar-toggler {
+        border: none;
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+    }
+    #navbar-links .nav-link {
+        background: color.adjust($white, $alpha: -0.9);
+        &.active {
+            background: $white;
+        }
+    }
+    #social-links {
+        background: color.adjust($white, $alpha: -0.9);
+        .nav-link {
+            padding: 0.5rem 0.75rem;
+        }
+    }
+    &.bg-blue {
+        background-color: color.adjust($blue, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $blue;
+                }
+                &.active {
+                    color: $blue !important;
+                }
+            }
+        }
+    }
+    &.bg-purple {
+        background-color: color.adjust($purple, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $purple;
+                }
+                &.active {
+                    color: $purple !important;
+                }
+            }
+        }
+    }
+    &.bg-orange {
+        background-color: color.adjust($orange, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $orange;
+                }
+                &.active {
+                    color: $orange !important;
+                }
+            }
+        }
+    }
+    &.bg-green {
+        background-color: color.adjust($green, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $green;
+                }
+                &.active {
+                    color: $green !important;
+                }
+            }
+        }
+    }
+    &.bg-secondary {
+        background-color: color.adjust($secondary, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $secondary;
+                }
+                &.active {
+                    color: $secondary !important;
+                }
+            }
+        }
+    }
+    &.bg-cyan {
+        background-color: color.adjust($cyan, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $cyan;
+                }
+                &.active {
+                    color: $cyan !important;
+                }
+            }
+        }
+    }
+    &.bg-teal {
+        background-color: color.adjust($teal, $lightness: $color-adjust-amount) !important;
+        #navbar-links, #social-links {
+            .nav-link {
+                &:hover:not(.active) {
+                    background-color:  $teal;
+                }
+                &.active {
+                    color: $teal !important;
+                }
+            }
+        }
+    }
+}
+
+// Media Breakpoints
+@include media-breakpoint-down(md) {
+   .navbar {
+       padding-top: .5rem;
+       padding-bottom: .5rem;
+   }
+}
