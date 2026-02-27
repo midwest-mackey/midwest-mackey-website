@@ -1,17 +1,19 @@
 // Custom Global Styles
 
-* {
-  transition: background-color 0.5s ease, color 0.2s ease;
-}
+// * {
+//   transition: background-color 0.5s ease, color 0.2s ease;
+// }
 html, body {
     // Needed to hide overflow of summary-panel divs
     width: 100% !important;
     max-width: 100% !important;
-    overflow-x: hidden !important;
+    overflow-x: clip !important;
     // Needed for ViewportScroller scroll to anchor
     scroll-behavior: smooth !important;
 }
-
+input {
+    font-family: 'Space Mono', monospace;
+}
 .mirror img {
     transform: scaleX(-1);
 }
@@ -25,7 +27,6 @@ html, body {
 .pre-wrap {
   white-space: pre-wrap;
 }
-
 
 // .fade-in1 {
 //   opacity: 0;

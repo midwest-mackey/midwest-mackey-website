@@ -1,0 +1,30 @@
+<div id="search" class="position-sticky z-3 ms-auto">
+    <div class="justify-content-end align-items-center">
+        <div class="col-auto">
+            <div class="row">
+                <div class="col-auto card shadow-lg" >
+                    <div class="row d-flex">
+                        <div class="btn btn-outline-{{color}} border-0 rounded-4 d-flex col-auto order-2 align-items-center p-4" (click)="clickEvent()" [ngClass]="open ? 'open' : 'closed'">
+                            <fa-icon class="fa-fw fa-lg" id="open" [icon]="faMagnifyingGlass" [fixedWidth]="true"></fa-icon>
+                            <fa-icon class="fa-fw fa-lg" id="close" [icon]="faXmark" [fixedWidth]="true"></fa-icon>
+                        </div>
+                        <div class="col order-1 form my-auto">
+                            <div class="inner-addon">
+                                <fa-icon class="fa-lg input-icon addon-end text-{{color}}" [icon]="faMagnifyingGlass" [fixedWidth]="true"></fa-icon>
+                                <input #searchInput type="text" class="form-control rounded-pill pe-5" aria-describedby="searchValue" [placeholder]="placeHolder" [(ngModel)]="searchValue" (ngModelChange)="searchValueChange.emit($event)">
+                            </div>
+                        </div>
+                    </div>
+                    @if (searchValue) {
+                        <span id="indicator-container" class="h-0 position-absolute top-0 end-0">
+                            <div title="search filter active" id="indicator" class="position-relative p-1 border-none rounded-circle shadow animated loop pulse">
+                                <span class="visually-hidden">New alerts</span>
+                            </div>
+                        </span>
+                        
+                    }
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>

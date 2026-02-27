@@ -1,0 +1,98 @@
+.project-grid {
+    margin-bottom: $spacer-size * 1.75;
+     .btn.card {
+        padding: 55px;
+        padding-bottom: 0;
+        background-color: transparent;
+        
+        .content {
+            height: 160px;
+            .carousel {
+                height: 100%;
+                width: 100%;
+                .carousel-inner {
+                    height: 100%;
+                    width: 100%;
+                    .carousel-item {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            }
+
+            img {
+                height: auto;
+                width: auto;
+                max-height: 100%;
+                max-width: 250px;
+                &::before {
+                    content: " ";
+                    display: block;
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                    height: 160px;
+                    width: 250px;
+                    background-color: $gray-100;
+                    border: 2px dotted $gray-500;
+                    border-radius: $border-radius-lg;
+                }
+    
+                &::after {
+                    content: "🫠\A Missing File\A" "'"attr(src)"'";
+                    font-size: .8rem;
+                    white-space: pre-wrap;
+                    word-break: break-all;
+                    display: block;
+                    position: absolute;
+                    color: $gray-800;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+            }
+        }
+
+        .carousel-caption {
+            visibility: hidden;
+        }
+        .btn {
+            visibility: hidden;
+
+            &.dropdown-toggle::after {
+                content: none;
+            }
+        }
+        .badges {
+            position: absolute;
+            left: 20px;
+            top: 16px;
+
+            .badge {
+                margin-right: .5rem;
+                display: none;
+                font-size: .6em;
+            }
+        }
+
+        &:hover, &:focus, &:focus-within, &.active {
+            background-color: $white;
+            box-shadow: $box-shadow-lg;
+            z-index: 1;
+            .btn {
+                visibility: visible;
+            }
+            .carousel-caption {
+                visibility: visible;
+            }
+            .carousel-indicators {
+                button {
+                    background-color: $gray-300;
+                    &.active {
+                        background-color: $primary;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,3 +1,61 @@
 .icon-gray {
     color: rgba($black, .1);
 }
+
+// Social Icon Colors
+.twitch {
+    color: #8956FB;
+}
+.instagram {
+   path {
+        fill: url(#instagram) !important;
+    }
+}
+.discord {
+    color: #5865F2;
+}
+.tiktok {
+    color: #040404;
+    svg {
+    filter: drop-shadow(1px 1px 0px #FD3E3E) drop-shadow(-1px -1px 0px #4DE8F4);
+    }
+}
+.youtube {
+    color: #FF0000;
+}
+.reddit {
+    color: #FF4500;
+}
+.linkedin {
+    color: #0A66C2;
+}
+.github {
+    color: #101411;
+}
+.playstation {
+    color: #0070d1;
+}
+.spotify {
+    color: #1ED760;
+}
+
+
+.instagram-stop1 {
+  stop-color: #fdf497;
+}
+
+.instagram-stop2 {
+  stop-color: #fdf497;
+}
+
+.instagram-stop3 {
+  stop-color: #fd5949;
+}
+
+.instagram-stop4 {
+  stop-color: #d6249f;
+}
+
+.instagram-stop5 {
+  stop-color: #285aeb;
+}

@@ -4,9 +4,9 @@
             <h1 class="display-4 mb-3 mt-5">A few of the platforms, languages, and tools I have worked with</h1>
         </div>
         <div class="row">
-            <div class="col-auto">
-                <a routerLink="/skills" class="btn btn-link fw-bold text-white mb-5">see my skills & services <fa-icon [icon]="faArrowRight" [fixedWidth]="true"></fa-icon></a>
-                <a href="{{githubBaseURL}}" class="btn btn-link fw-bold text-white mb-5">checkout my github <fa-icon [icon]="faArrowRight" [fixedWidth]="true"></fa-icon></a>
+            <div class="col-auto d-flex flex-wrap gap-2">
+                <a routerLink="/skills" class="btn btn-link fw-bold text-white">skills & services <fa-icon [icon]="faArrowRight" [fixedWidth]="true"></fa-icon></a>
+                <a href="{{githubBaseURL}}" class="btn btn-link fw-bold text-white">github <fa-icon [icon]="faArrowRight" [fixedWidth]="true"></fa-icon></a>
             </div>
         </div>
     </div>
@@ -14,15 +14,15 @@
         <div class="ticker width-100">
             <div class="ticker-track d-flex gap-0">
                 @for (icon of icons; track icon) {
-                    <a href="{{icon.link}}" target="_blank" id="to-hover" class="btn btn-link text-white d-flex align-items-center rounded-pill p-3">
-                        <fa-icon class="display-4" [icon]="icon.icon"></fa-icon>
+                    <a href="{{icon.link}}" target="_blank" id="to-hover" class="btn card text-white d-flex align-items-center rounded-pill p-3 pt-5">
+                        <fa-icon class="display-5" [icon]="icon.icon"></fa-icon>
                     <fa-icon [icon]="faArrowRight" id="to-show"></fa-icon>
                     </a>
                 }
                 <!-- duplicate -->
                 @for (icon of icons; track icon) {
-                    <a href="{{icon.link}}" target="_blank" id="to-hover" class="btn btn-link text-white d-flex align-items-center rounded-pill p-3">
-                        <fa-icon class="display-4" [icon]="icon.icon"></fa-icon>
+                    <a href="{{icon.link}}" target="_blank" id="to-hover" class="btn card text-white d-flex align-items-center rounded-pill p-3 pt-5">
+                        <fa-icon class="display-5" [icon]="icon.icon"></fa-icon>
                     <fa-icon [icon]="faArrowRight" id="to-show"></fa-icon>
                     </a>
                 }

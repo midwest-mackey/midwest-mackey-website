@@ -17,10 +17,20 @@
             transition: all 0.2s;
 
         }
-        &:hover #to-show {
-            left: 0;
-            opacity: 1;
-            transition: all 0.2s;
+        &:hover, &:active, &:focus {
+            -moz-transform: scale(1.35) translateY(-6px);
+            -webkit-transform: scale(1.35) translateY(-6px);
+            transform: scale(1.35) translateY(-6px);
+            transition: transform 0.2s;
+            .ng-fa-icon:first-child {
+                text-shadow: $box-shadow-lg;
+                filter: drop-shadow(2px 4px 8px rgb(0 0 0 / 0.3));
+            }
+            #to-show {
+                left: 0;
+                opacity: 1;
+                transition: all 0.2s;
+            }
         }
     }
     .ng-fa-icon {
@@ -43,7 +53,7 @@
     width: max-content;
     will-change: transform;
     animation: tickerScroll linear infinite;
-    animation-duration: clamp(16s, 20s, 28s);
+    animation-duration: clamp(45s, 60s, 75s);
 }
 @keyframes tickerScroll {
    from {
@@ -54,3 +64,8 @@
   }
   }
 .ticker-track:hover { animation-play-state: paused; }
+@include media-breakpoint-down(md) {
+    .ticker-track {
+        animation-duration: clamp(20s, 30s, 40s);
+    }
+}

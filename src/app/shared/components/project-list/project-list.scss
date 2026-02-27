@@ -1,37 +1,5 @@
 @use 'custom' as *;
 
-.resources-grid {
-    div.card.card-body {
-        .browser-tab {
-            height: 36px;
-            margin: 0 $spacer * 3;
-            border-radius: $border-radius $border-radius 0 0;
-        }
-        .background-demo {
-            height: 80px;
-            width: 80px;
-        }
-        img {
-            &.icon {
-                height: 80px;
-                width: 80px;
-            }
-            &.fav {
-                height: 20px;
-                width: 20px;
-                min-height: 20px;
-            }
-            &.no-logo {
-                height: 50px;
-                width: 50px;
-                filter: grayscale(100%);
-                opacity: .5;
-            }
-        }
-    }
-}
-
 .no-results .card {
-    background: linear-gradient(135deg, $green-900 15%, $green 100%);
-    box-shadow: none;
+    background: linear-gradient(135deg, $gray-200 15%, transparent 100%);
 }

@@ -1,318 +1,121 @@
-<p>project-list works!</p>
-
-
-
-
-<!-- <section class="container-fluid section-skew section-shadow-2 bg-200" #showScrollTarget>
+ <section class="container-fluid section-shadow-2" #showScrollTarget>
     <div class="container">
-      <ux-search [(searchValue)]="searchValue" placeHolder="search company logos"></ux-search>
-      <div class="row">
-          <div class="col">
-              <h1 class="display-4 section-title">Company Logos</h1>
-          </div>
-      </div>
-    <ng-container *ngIf="(logos | tableFilter : { id: searchValue, name: searchValue }) as filteredLogos">
-    <ng-container *ngIf="filteredLogos.length > 0">
-        <div class="">
-            <div class="col alert"  *ngIf="!searchValue">
-                <span class="fs-4 text-muted">{{logos.length}} companies available in ux-logos repository</span>
-            </div>
-            <div class="col alert alert-success shadow" *ngIf="searchValue">
-                <span class="fs-4"><fa-icon class="text-success me-2" [icon]="faMagnifyingGlass"></fa-icon> {{filteredLogos.length}} logo<span *ngIf="filteredLogos.length !== 1">s</span> found for <span class="fw-bold">"{{searchValue}}"</span></span>
+        <div class="row">
+            <div class="col">
+                <h1 class="display-4">Projects</h1>
+                <h1><span *ngIf="searchValue" class="text-secondary sigmar-regular"> {{filteredProjects.length}}<span class="text-black-50"> /</span></span><span class="text-{{color}} sigmar-regular"> {{projects.length}}</span></h1>
             </div>
         </div>
-        <div class="resources-grid">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                <ng-container *ngFor="let logo of filteredLogos">
-                    <div id="{{logo.id}}" class="col card card-body">
-                        <div class="badges">
-                            <ng-template [ngIf]='logo.alts !== ""'>
-                                <span class="badge rounded-pill bg-success">Alternatives</span>
-                            </ng-template>
+        <mm-search [color]="currentColor" [(searchValue)]="searchValue" placeHolder="search projects"></mm-search>
 
-                            <ng-template [ngIf]='logo.ico === "●"'>
-                                <span class="badge rounded-pill bg-success">Icon</span>
-                            </ng-template>
+        <!-- <div class="row">
+            <div class="col alert alert-success shadow" *ngIf="searchValue">
+                <span class="fs-4"><fa-icon class="text-success me-2" [icon]="faMagnifyingGlass"></fa-icon> {{filteredProjects.length}} project<span *ngIf="filteredProjects.length !== 1">s</span> found for <span class="fw-bold">"{{searchValue}}"</span></span>
+            </div>
+        </div> -->
+    <ng-container *ngIf="(projects | Filter : { id: searchValue, name: searchValue }) as filteredProjects">
+        <ng-container *ngIf="filteredProjects.length > 0">
+            
+            <div class="project-grid mt-5">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                    @for (project of filteredProjects; track project.id) {
+                        <div id="{{project.id}}" class="btn col card" routerLink="/{{project.id | lowercase}}">
+                            <div class="text-center card-body">
+                                <div class="content d-flex justify-content-center align-items-center">
 
-                            <ng-template [ngIf]='logo.fav === "●"'>
-                                <span class="badge rounded-pill bg-success">Favicon</span>
-                            </ng-template>
-
-                            <ng-template [ngIf]='logo.alpha !== ""'>
-                                <span class="indicator"><fa-icon [icon]="faCircle" class="text-orange" transform="shrink-10" [fixedWidth]="true"></fa-icon></span>
-                                <span class="badge rounded-pill bg-orange">ALPHA - In Approval Status</span>
-                            </ng-template>
-
-                            <ng-template [ngIf]='logo.primary !== "●" && logo.primary !== ""'>
-                                <span class="indicator"><fa-icon [icon]="faCircle" class="text-purple" transform="shrink-10" [fixedWidth]="true"></fa-icon></span>
-                                <span class="badge rounded-pill bg-purple">Shared</span>
-                            </ng-template>
-
-                            <ng-template [ngIf]="logo.name.indexOf('NON BERKLEY') > -1">
-                                <span class="indicator"><fa-icon [icon]="faCircle" class="text-info" transform="shrink-10" [fixedWidth]="true"></fa-icon></span>
-                                <span class="badge rounded-pill bg-info">Non Berkley</span>
-                            </ng-template>
-
-                            <ng-template [ngIf]='logo.primary === ""'>
-                                <span class="indicator"><fa-icon [icon]="faCircle" class="text-danger" transform="shrink-10" [fixedWidth]="true"></fa-icon></span>
-                                <span class="badge rounded-pill bg-danger">NO LOGO AVAILABLE</span>
-                            </ng-template>
-                        </div>
-
-                        <div class="text-center">
-                            <div class="content d-flex justify-content-center align-items-center">
-                                <ng-template [ngIf]='logo.primary !== ""' [ngIfElse]="noLogoImg">
-                                    <ng-template [ngIf]='logo.alts === "" && logo.ico !== "●" && logo.fav !== "●"' [ngIfElse]="altLogoImg">
-                                        <ng-template [ngIf]='logo.primary === "●" && logo.primary !== ""' [ngIfElse]="shareLogoImg"><img src="./assets/@ux/logos/company/{{logo.id | lowercase}}{{logo.alpha}}.svg" alt="{{logo.id}} company logo" class=""/></ng-template>
-                                        <ng-template #shareLogoImg><img src="./assets/@ux/logos/company/{{logo.primary | lowercase}}{{logo.alpha}}.svg" alt="{{logo.primary}} company logo" class=""/></ng-template>
+                                    <ng-template [ngIf]='project.alts === ""' [ngIfElse]="altProjectImg">
+                                        <img src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}.png" alt="{{project.id}} project" class=""/>
                                     </ng-template>
 
-                                    <ng-template #altLogoImg>
+                                    <ng-template #altProjectImg>
                                         <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
                                             <ng-template ngbSlide>
-                                                <img class="" src="./assets/@ux/logos/company/{{logo.id | lowercase}}{{logo.alpha}}.svg" alt="Primary Company Logo"/>
-                                                <span class="carousel-caption small">primary</span>
+                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}.png" alt="Image 1"/>
+                                                <span class="carousel-caption small">1</span>
                                             </ng-template>
-                                            <ng-template *ngIf='logo.alts !== ""' ngbSlide>
-                                                <img class="" src="./assets/@ux/logos/company/{{logo.id | lowercase}}{{logo.alpha}}-alt.svg" alt="Alternate Company Logo"/>
-                                                <span class="carousel-caption small">alt</span>
+                                            <ng-template *ngIf='project.alts !== ""' ngbSlide>
+                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt.png" alt="Image 2"/>
+                                                <span class="carousel-caption small">2</span>
                                             </ng-template>
-                                            <ng-template *ngIf="logo.alts.length >= 2" ngbSlide>
-                                                <img class="" src="./assets/@ux/logos/company/{{logo.id | lowercase}}{{logo.alpha}}-alt-1.svg" alt="Alternate Company Logo 1"/>
-                                                <span class="carousel-caption small">alt-1</span>
+                                            <ng-template *ngIf="project.alts.length >= 2" ngbSlide>
+                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt-1.png" alt="Image 3"/>
+                                                <span class="carousel-caption small">3</span>
                                             </ng-template>
-                                            <ng-template *ngIf="logo.alts.length >= 3" ngbSlide>
-                                                <img class="" src="./assets/@ux/logos/company/{{logo.id | lowercase}}{{logo.alpha}}-alt-2.svg" alt="Alternate Company Logo 2"/>
-                                                <span class="carousel-caption small">alt-2</span>
+                                            <ng-template *ngIf="project.alts.length >= 3" ngbSlide>
+                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt-2.png" alt="Image 4"/>
+                                                <span class="carousel-caption small">4</span>
                                             </ng-template>
-                                            <ng-template *ngIf="logo.alts.length >= 4" ngbSlide>
-                                                <img class="" src="./assets/@ux/logos/company/{{logo.id | lowercase}}{{logo.alpha}}-alt-3.svg" alt="Alternate Company Logo 3"/>
-                                                <span class="carousel-caption small">alt-3</span>
+                                            <ng-template *ngIf="project.alts.length >= 4" ngbSlide>
+                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt-3.png" alt="Image 5"/>
+                                                <span class="carousel-caption small">5</span>
                                             </ng-template>
-                                            <ng-template *ngIf="logo.alts.length >= 5" ngbSlide>
-                                                <img class="" src="./assets/@ux/logos/company/{{logo.id | lowercase}}{{logo.alpha}}-alt-4.svg" alt="Alternate Company Logo 4"/>
-                                                <span class="carousel-caption small">alt-4</span>
-                                            </ng-template>
-                                            <ng-template *ngIf='logo.ico === "●"' ngbSlide>
-                                                <img class="icon" src="./assets/@ux/logos/company/{{logo.id | lowercase}}{{logo.alpha}}-icon.svg" alt="Icon Company Logo"/>
-                                                <span class="carousel-caption small">icon</span>
-                                            </ng-template>
-                                            <ng-template *ngIf='logo.fav === "●"' ngbSlide>
-                                                <div class="browser-tab bg-secondary row flex-fill d-flex align-items-center shadow-lg">
-                                                    <div class="col-auto">
-                                                        <img class="fav align-middle" src="./assets/@ux/logos/favicon/{{logo.id | lowercase}}{{logo.alpha}}.png" alt="Favicon Company Logo"/>
-                                                    </div>
-                                                    <div class="col px-0 text-start text-white"><small><small>{{logo.id}} Demo</small></small></div>
-                                                    <div class="col-auto"><fa-icon [icon]="faXmark" class="text-white" transform="shrink-1" [fixedWidth]="true"></fa-icon>
-                                                    </div>
-                                                </div>
-                                                <span class="carousel-caption small">fav</span>
+                                            <ng-template *ngIf="project.alts.length >= 5" ngbSlide>
+                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt-4.png" alt="Image 6"/>
+                                                <span class="carousel-caption small">6</span>
                                             </ng-template>
                                         </ngb-carousel>
                                     </ng-template>
-                                </ng-template>
-                                
-                                <ng-template #noLogoImg><img src="./assets/@ux/logos/company/wrb-icon.svg" alt="{{logo.id}} company logo" class="no-logo"/></ng-template>
-                            </div>
+                                </div>
 
-                            <h6 class="text-truncate fw-bold mt-2 mb-1">{{logo.name}}</h6>
-                            <p class="text-secondary">{{logo.id | uppercase}}<span *ngIf='logo.primary !== "●" && logo.primary !== ""'> relies on {{logo.primary | uppercase}} logo</span></p>
+                                <h6 class="text-truncate fw-bold mt-2 mb-1">{{project.name}}</h6>
 
-                            <ng-template [ngIf]='logo.primary !== ""' [ngIfElse]="noLogoButton">
-                                <ng-template [ngIf]='logo.alts === ""  && logo.ico !== "●" && logo.fav !== "●"' [ngIfElse]="altLogoButton">
-                                    <ng-template [ngIf]='logo.primary === "●"' [ngIfElse]="shareLogoButton">
-                                        <div class="d-md-flex justify-content-center">
-                                            <a class="btn btn-light card mt-5 p-0"
-                                                href= "{{githubBaseURL}}/UX/repos/ux-logos/browse/company/{{logo.id | lowercase}}{{logo.alpha}}.svg"
-                                                title="Bitbucket Source" target="_blank">
-                                                <div class="card-body">
-                                                <div class="row align-items-center g-0">
-                                                    <div class="col-auto me-1">
-                                                    <fa-layers [fixedWidth]="true" size="3x">
-                                                        <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                                                        <fa-icon class="text-primary" [icon]="faBitbucket" transform="shrink-8"></fa-icon>
-                                                    </fa-layers>
-                                                    </div>
-                                                    <div class="col text-start me-2">
-                                                    <div class="h6 mb-0">
-                                                        <span class="fw-bold">View in Bitbucket</span>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-auto mx-2">
-                                                    <fa-icon class="text-primary" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </ng-template>
-                                    <ng-template #shareLogoButton>
-                                        <div class="d-md-flex justify-content-center">
-                                            <a class="btn btn-light card mt-5 p-0"
-                                                href="{{githubBaseURL}}/UX/repos/ux-logos/browse/company/{{logo.primary | lowercase}}{{logo.alpha}}.svg"
-                                                title="Bitbucket Source" target="_blank">
-                                                <div class="card-body">
-                                                <div class="row align-items-center g-0">
-                                                    <div class="col-auto me-1">
-                                                    <fa-layers [fixedWidth]="true" size="3x">
-                                                        <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                                                        <fa-icon class="text-primary" [icon]="faBitbucket" transform="shrink-8"></fa-icon>
-                                                    </fa-layers>
-                                                    </div>
-                                                    <div class="col text-start me-2">
-                                                    <div class="h6 mb-0">
-                                                        <span class="fw-bold">View in Bitbucket</span>
-                                                    </div>
-                                                    </div>
-                                                    <div class="col-auto mx-2">
-                                                    <fa-icon class="text-primary" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </ng-template>
-                                </ng-template>
-                                <ng-template #altLogoButton>
-                                    <div ngbDropdown placement="bottom">
-                                        <div class="d-md-flex justify-content-center">
-                                            <a class="btn btn-light card mt-5 p-0" id="LogoDropdownMenu" ngbDropdownToggle>
-                                                <div class="card-body">
-                                                    <div class="row align-items-center g-0">
-                                                        <div class="col-auto me-1">
-                                                            <fa-layers [fixedWidth]="true" size="3x">
-                                                                <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                                                                <fa-icon class="text-primary" [icon]="faBitbucket" transform="shrink-8"></fa-icon>
-                                                            </fa-layers>
-                                                        </div>
-                                                        <div class="col text-start me-2">
-                                                            <div class="h6 mb-0">
-                                                                <span class="fw-bold">View in Bitbucket</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-auto ms-auto">
-                                                            <fa-icon class="text-primary" [fixedWidth]="true" [icon]="faSquareCaretDown"></fa-icon>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <div ngbDropdownMenu aria-labelledby="LogoDropdownMenu" class="">
-                                                <a ngbDropdownItem
-                                                    href="{{githubBaseURL}}"
-                                                    title="Bitbucket Company Logo {{logo.id | lowercase}}{{logo.alpha}}"
-                                                    target="_blank">
-                                                    <span class="me-5">Primary</span><fa-icon class="text-primary float-end ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                </a>
-                                                <a ngbDropdownItem
-                                                    href="{{githubBaseURL}}"
-                                                    title="Bitbucket Company Logo {{logo.id | lowercase}}{{logo.alpha}}-alt-1"
-                                                    target="_blank">
-                                                    <span class="me-5">Alternate</span><fa-icon class="text-primary float-end ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                </a>
-                                                <a *ngIf="logo.alts.length >= 2" ngbDropdownItem
-                                                    href="{{githubBaseURL}}"
-                                                    title="Bitbucket Company Logo {{logo.id | lowercase}}{{logo.alpha}}-alt-1"
-                                                    target="_blank">
-                                                    <span class="me-5">Alternate 1</span><fa-icon class="text-primary float-end ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                </a>
-                                                <a *ngIf="logo.alts.length >= 3" ngbDropdownItem
-                                                    href="{{githubBaseURL}}"
-                                                    title="Bitbucket Company Logo {{logo.id | lowercase}}{{logo.alpha}}-alt-2"
-                                                    target="_blank">
-                                                    <span class="me-5">Alternate 2</span><fa-icon class="text-primary float-end ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                </a>
-                                                <a *ngIf="logo.alts.length >= 4" ngbDropdownItem
-                                                    href="{{githubBaseURL}}"
-                                                    title="Bitbucket Company Logo {{logo.id | lowercase}}{{logo.alpha}}-alt-3"
-                                                    target="_blank">
-                                                    <span class="me-5">Alternate 3</span><fa-icon class="text-primary float-end ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                </a>
-                                                <a *ngIf="logo.alts.length >= 5" ngbDropdownItem
-                                                    href="{{githubBaseURL}}"
-                                                    title="Bitbucket Company Logo {{logo.id | lowercase}}{{logo.alpha}}-alt-4"
-                                                    target="_blank">
-                                                    <span class="me-5">Alternate 4</span><fa-icon class="text-primary float-end ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                </a>
-                                                <a *ngIf='logo.ico === "●"' ngbDropdownItem
-                                                    href="{{githubBaseURL}}"
-                                                    title="Bitbucket Company Logo {{logo.id | lowercase}}{{logo.alpha}}-icon"
-                                                    target="_blank">
-                                                    <span class="me-5">Icon</span><fa-icon class="text-primary float-end ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                </a>
-                                                <a *ngIf='logo.fav === "●"' ngbDropdownItem
-                                                    href="{{githubBaseURL}}"
-                                                    title="Bitbucket Company Logo {{logo.id | lowercase}}{{logo.alpha}}"
-                                                    target="_blank">
-                                                    <span class="me-5">Favicon</span><fa-icon class="text-primary float-end ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </ng-template>
-                            </ng-template>
-                            <ng-template #noLogoButton>
                                 <div class="d-md-flex justify-content-center">
-                                    <a class="btn btn-light card mt-5 p-0"
-                                        href="{{githubBaseURL}}"
-                                        title="Bitbucket Source" target="_blank">
+                                    <div class="card p-0" >
                                         <div class="card-body">
                                         <div class="row align-items-center g-0">
                                             <div class="col-auto me-1">
                                             <fa-layers [fixedWidth]="true" size="3x">
                                                 <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                                                <fa-icon class="text-primary" [icon]="faJira" transform="shrink-8"></fa-icon>
+                                                <fa-icon class="text-{{color}}" [icon]="faMmLogo" transform="shrink-8"></fa-icon>
                                             </fa-layers>
                                             </div>
                                             <div class="col text-start me-2">
                                             <div class="h6 mb-0">
-                                                <span class="fw-bold">Submit Request</span>
+                                                <span class="fw-bold">{{project.id | uppercase}}</span>
                                             </div>
                                             </div>
                                             <div class="col-auto mx-2">
-                                            <fa-icon class="text-primary" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
+                                            <fa-icon class="text-{{color}}" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
                                             </div>
                                         </div>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
-                            </ng-template>
+                            </div>
                         </div>
-                    </div>
-                </ng-container>
+                    }
+                </div>
             </div>
-        </div>
-    </ng-container>
+        </ng-container>
 
-    <ng-container *ngIf="filteredLogos.length === 0">
-        <div class="no-results mb-5">
-          <div class="card card-body text-white shadow">
-            <div class="row d-flex">
-              <div class="col-12 col-md-auto text-center">
-                <fa-layers [fixedWidth]="true" size="6x">
-                  <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                  <fa-icon class="" [icon]="faHorse" transform="shrink-8"></fa-icon>
-              </fa-layers>
-              </div>
-              <div class="col">
-                <h2 class="mt-4 display-0 fs-6">"{{searchValue}}" is as mythical as this Narwhal</h2>
-                <p class="fs-5">No logos matching "{{searchValue}}"</p>
-                <ul>
-                  <li>Try full company name</li>
-                  <li>Try company 3 letter abbreviation</li>
-                  <li>The company may no longer exist</li>
-                  <li>The company may have changed name or abbreviation</li>
-                </ul>
-                <a class="btn btn-outline-light"
-                  href="{{githubBaseURL}}/UX/repos/ux-logos/browse/company"
-                  title="Bitbucket Company Logos Source"
-                  target="_blank" rel="noopener">
-                  View Bitbucket Company Logos Source <fa-icon class="ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                </a>
-              </div>
+        <ng-container *ngIf="filteredProjects.length === 0">
+            <div class="no-results my-5 mx-md-5">
+                <div class="card card-body">
+                    <div class="row d-flex">
+                    <div class="col-12 col-md-auto text-center">
+                        <fa-layers [fixedWidth]="true" size="6x">
+                        <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
+                        <fa-icon class="" [icon]="faDragon" transform="shrink-8"></fa-icon>
+                    </fa-layers>
+                    </div>
+                    <div class="col">
+                        <h2 class="mt-4 display-0 fs-6">"{{searchValue}}" is as mythical as this Dragon</h2>
+                        <p class="fs-5">No projects matching "{{searchValue}}"</p>
+                        <ul>
+                            <li>Try again</li>
+                            <li>Check your spelling</li>
+                        </ul>
+                        <a class="btn btn-outline-{{color}}"
+                        href="{{githubBaseURL}}/test"
+                        title="Github Project Source"
+                        target="_blank" rel="noopener">
+                        View Github Project Source <fa-icon class="ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
+                        </a>
+                    </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-    </ng-container>
+        </ng-container>
     </ng-container>
     </div>
-</section> -->
+</section>

@@ -1,26 +1,36 @@
-<div class="row">
+
+    <svg width="0" height="0" style="position:absolute; width:0; height:0;" aria-hidden="true" focusable="false">
+    <!-- Define the Instagram radial gradient -->
+        <radialGradient id="instagram" fx="0.3" fy="1.07" r="1">
+            <stop class="instagram-stop1" offset="0%"></stop>
+            <stop class="instagram-stop2" offset="5%"></stop>
+            <stop class="instagram-stop3" offset="45%"></stop>
+            <stop class="instagram-stop4" offset="60%"></stop>
+            <stop class="instagram-stop5" offset="90%"></stop>
+        </radialGradient>
+    </svg>
+    <div class="row">
     <div class="flex-wrap gap-4 d-flex">
         @for (button of buttons; track button) {
-        <a href="{{button.link}}"
-        class="btn btn-light card p-0 col-auto">
+        <a href="{{button.link}}" class="btn btn-light card shadow p-0 col-auto">
             <div class="card-body">
                 <div class="row">
-                <div class="d-flex align-items-center justify-content-center">
-                    <div class="col-auto me-1">
-                        <fa-layers [fixedWidth]="true" size="3x">
-                        <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                        <fa-icon class="text-primary" [icon]="button.icon" transform="shrink-8"></fa-icon>
-                        </fa-layers>
-                    </div>
-                    <div class="col-auto text-start me-2">
-                        <div class="mb-0">
-                        <span class="fw-bold">{{button.text}}</span>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="col-auto me-1">
+                            <fa-layers [fixedWidth]="true" size="3x">
+                            <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
+                            <fa-icon class="{{button.css}}" [icon]="button.icon" transform="shrink-8"></fa-icon>
+                            </fa-layers>
                         </div>
+                        <div class="col-auto text-start me-2">
+                            <div class="mb-0">
+                            <span class="fw-bold">{{button.text}}</span>
+                            </div>
+                        </div>
+                        <!-- <div class="col-auto ms-auto">
+                            <fa-icon class="text-primary" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
+                        </div> -->
                     </div>
-                    <!-- <div class="col-auto ms-auto">
-                        <fa-icon class="text-primary" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                    </div> -->
-                </div>
                 </div>
             </div>
         </a>

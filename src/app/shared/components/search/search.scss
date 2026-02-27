@@ -1,0 +1,96 @@
+@use 'custom' as *;
+
+#search {
+    padding-top: 0 !important;
+
+    &.h-0, .h-0 {
+        height: 0;
+    }
+}
+#indicator-container {
+
+    #indicator {
+        background-color: $success-color;
+        outline: 3px solid rgba($success-color, .1);
+    }
+}
+
+.closed {
+    #close {
+        display: none;
+    }
+    & + .form {
+        display: none;
+    }
+}
+.open {
+    #open {
+        display: none;
+    }
+}
+.position-sticky {
+    top: 113px;
+}
+.form-control {
+    border: none;
+    box-shadow: none;
+    &::placeholder {
+        font-style: italic;
+        color: $gray-400;
+    }
+}
+
+// Media Breakpoints
+@include media-breakpoint-down(md) {
+    .position-sticky {
+        top: 81px;
+    }
+ }
+
+ @-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    outline: 0 solid rgba(0 220 84 / 1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+    outline: 10px solid rgba(0 220 84 / 0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    outline: 0 solid rgba(0 220 84 / 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    outline: 0 solid rgba(0 220 84 / 1);
+  }
+
+  50% {
+    -webkit-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    transform: scale(1.25);
+    outline: 10px solid rgba(0 220 84 / 0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    outline: 0 solid rgba(0 220 84 / 0);
+  }
+}
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
+}

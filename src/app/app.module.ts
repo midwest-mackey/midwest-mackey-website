@@ -14,6 +14,7 @@ import { Footer } from './core/footer/footer';
 import { HomePage } from './pages/home-page/home-page';
 import { SkillsPage } from './pages/skills-page/skills-page';
 import { ProjectsPage } from './pages/projects-page/projects-page';
+import { NotFoundPage } from './pages/not-found-page/not-found-page';
 
 
 import { AboutMe } from './shared/components/about-me/about-me';
@@ -26,8 +27,8 @@ import { WhatIDo } from './shared/components/what-i-do/what-i-do';
 import { ProjectList } from './shared/components/project-list/project-list';
 
 import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
-import { NotFoundPage } from './pages/not-found-page/not-found-page';
-
+import { Search } from './shared/components/search/search';
+import { FilterPipe } from './shared/pipes/filter-pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,9 @@ import { NotFoundPage } from './pages/not-found-page/not-found-page';
     AboutItem,
     SocialLinks,
     WhatIDo,
-    ProjectList
+    ProjectList,
+    Search,
+    FilterPipe
     ],
   imports: [
     BrowserModule,
