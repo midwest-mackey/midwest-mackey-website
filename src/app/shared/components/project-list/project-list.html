@@ -19,7 +19,7 @@
             <div class="project-grid mt-5">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                     @for (project of filteredProjects; track project.id) {
-                        <div id="{{project.id}}" class="btn col card" routerLink="/{{project.id | lowercase}}">
+                        <div id="{{project.id}}" class="btn col card" [routerLink]="['/projects', project.id | lowercase]">
                             <div class="text-center card-body">
                                 <div class="content d-flex justify-content-center align-items-center">
 

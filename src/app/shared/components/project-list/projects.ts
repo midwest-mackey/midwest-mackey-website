@@ -2,7 +2,6 @@
 import { Project } from './project.model';
 
 export const Projects: Project[] = [
-    { id: 'MMM', name: 'Midwest Mackey Test', alts: '●'   },
     { id: '1', name: 'coming-soon', alts: ''   },
     { id: '3', name: 'mm-battery-empty', alts: ''  },
     { id: '4', name: 'left-shark', alts: ''  },
@@ -40,5 +39,4 @@ export const Projects: Project[] = [
     { id: '36', name: 'mm-standing-proud', alts: ''  },
     { id: '37', name: 'mm-wave', alts: ''  },
     { id: '38', name: 'mm-work', alts: ''  },
-
 ];

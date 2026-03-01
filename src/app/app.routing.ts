@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './pages/home-page/home-page';
-import { ProjectsPage } from './pages/projects-page/projects-page';
 import { SkillsPage } from './pages/skills-page/skills-page';
+import { ProjectsListPage } from './pages/projects-list-page/projects-list-page';
+import { ProjectDetailsPage } from './pages/project-details-page/project-details-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
 import { faArrowDown, faHouseChimney } from '@fortawesome/free-solid-svg-icons';
 
 const routes: Routes = [
-  { path: 'home', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '', component: HomePage, title: 'Midwest Mackey',
       data: {
         header: {
-          id: 'home',
           color: 'blue',
           title: 'Midwest\nMackey',
           bodyText: 'Hey! 👋\nI\'m midwest mackey,',
@@ -26,7 +26,6 @@ const routes: Routes = [
   { path: 'skills', component: SkillsPage, title: 'Skills',
     data: {
         header: {
-          id: 'skills',
           color: 'cyan',
           title: 'Skills\nServices',
           bodyText: 'Experience with',
@@ -38,10 +37,9 @@ const routes: Routes = [
         }
     }
   },
-  { path: 'projects', component: ProjectsPage, title: 'Projects',
+  { path: 'projects', component: ProjectsListPage, title: 'Projects',
     data: {
         header: {
-          id: 'projects',
           color: 'purple',
           title: 'Projects',
           bodyText: 'Checkout my',
@@ -53,12 +51,26 @@ const routes: Routes = [
         }
     }
   },
+  { path: 'projects/1', component: ProjectDetailsPage, title: '0 - Project Details',
+    data: {
+        header: {
+          color: 'orange',
+          title: 'Project\nOrange',
+          bodyText: 'Project details for',
+          subText: "",
+          img: '',
+          buttonText: 'See project',
+          icon: faArrowDown,
+          textArray: ['Orange']
+        }
+    }
+  },
+
 
   // 404 route (ALWAYS last)
   { path: '**', component: NotFoundPage, title: '404 - Page Not Found',
     data: {
         header: {
-          id: '404',
           color: 'secondary',
           title: 'you\nlost?',
           bodyText: 'Oops! The page you are looking for does not exist.',

@@ -7,13 +7,16 @@ import { FontAwesomeModule, } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app.routing';
 
 import { App } from './app';
+import { MainLayout } from './main-layout';
+
 import { AppNavbar } from './core/app-navbar/app-navbar';
 import { AppHeader } from './core/app-header/app-header';
 import { Footer } from './core/footer/footer';
 
 import { HomePage } from './pages/home-page/home-page';
 import { SkillsPage } from './pages/skills-page/skills-page';
-import { ProjectsPage } from './pages/projects-page/projects-page';
+import { ProjectsListPage } from './pages/projects-list-page/projects-list-page';
+import { ProjectDetailsPage } from './pages/project-details-page/project-details-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
 
 
@@ -33,11 +36,13 @@ import { FilterPipe } from './shared/pipes/filter-pipe';
 @NgModule({
   declarations: [
     App,
+    MainLayout,
     AppNavbar,
     AppHeader,
     Footer,
     HomePage,
-    ProjectsPage,
+    ProjectsListPage,
+    ProjectDetailsPage,
     SkillsPage,
     NotFoundPage,
     AboutMe,
