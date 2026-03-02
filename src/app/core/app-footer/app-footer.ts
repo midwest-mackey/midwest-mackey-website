@@ -1,18 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faAngular, faBootstrap, faDiscord, faDocker, faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { faAngular, faBootstrap, faDocker, faGithub, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { GlobalConstants } from '../../app.constants';
 import { ViewportScroller } from '@angular/common';
 import { faArrowUp, faBarsProgress } from '@fortawesome/free-solid-svg-icons';
 import { faPlex, faSeerr } from 'src/app/shared/custom-icons/custom-icons.module';
 
 @Component({
-  selector: 'mm-footer',
-  templateUrl: './footer.html',
-  styleUrls: ['./footer.scss'],
+  selector: 'mm-app-footer',
+  templateUrl: './app-footer.html',
+  styleUrls: ['./app-footer.scss'],
   standalone: false,
 
 })
-export class Footer implements OnInit {
+export class AppFooter implements OnInit {
   @Input() color: string;
 
   faArrowUp = faArrowUp;

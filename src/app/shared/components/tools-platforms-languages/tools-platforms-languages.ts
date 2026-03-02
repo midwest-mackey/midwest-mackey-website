@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faAngular, faAtlassian, faBootstrap, faCss3Alt, faDocker, faFigma, faFontAwesome, faGit, faGithub, faGitkraken, faHtml5, faJsSquare, faLess, faMarkdown, faNodeJs, faNpm, faPython, faReact, faSass, faSketch, faSlack, faYarn } from '@fortawesome/free-brands-svg-icons';
+import { faAngular, faAtlassian, faBootstrap, faCss3Alt, faDocker, faFigma, faGit, faGithub, faGitkraken, faHtml5, faJsSquare, faLess, faMarkdown, faNodeJs, faNpm, faPython, faReact, faSass, faSketch, faSlack, faYarn } from '@fortawesome/free-brands-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faAdobe, faAxure, faGoogleMarketing } from 'src/app/shared/custom-icons/custom-icons.module';
 import { IconLink } from './iconlink.model';
 import { GlobalConstants } from 'src/app/app.constants';
+import { faFontAwesomeLogoFull } from '@fortawesome/free-regular-svg-icons';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class ToolsPlatformsLanguages implements OnInit {
   faAngular = faAngular;
   faCss3Alt = faCss3Alt;
   faDocker = faDocker;
-  faFontAwesome = faFontAwesome;
+  faFontAwesome = faFontAwesomeLogoFull;
   faGit = faGit;
   faHtml5 = faHtml5;
   faJsSquare = faJsSquare;
@@ -53,7 +54,7 @@ icons: IconLink[] = [
     { icon: faAngular, link: 'https://angular.io/' },
     { icon: faCss3Alt, link: 'https://www.w3.org/Style/CSS/Overview.en.html' },
     { icon: faDocker, link: 'https://www.docker.com/' },
-    { icon: faFontAwesome, link: 'https://fontawesome.com/' },
+    { icon: faFontAwesomeLogoFull, link: 'https://fontawesome.com/' },
     { icon: faGit, link: 'https://git-scm.com/' },
     { icon: faHtml5, link: 'https://developer.mozilla.org/en-US/docs/Glossary/HTML5' },
     { icon: faJsSquare, link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },

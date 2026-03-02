@@ -7,13 +7,17 @@ import { FontAwesomeModule, } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app.routing';
 
 import { App } from './app';
+import { MainLayout } from './main-layout';
+
 import { AppNavbar } from './core/app-navbar/app-navbar';
 import { AppHeader } from './core/app-header/app-header';
-import { Footer } from './core/footer/footer';
+import { AppFooter } from './core/app-footer/app-footer';
 
 import { HomePage } from './pages/home-page/home-page';
 import { SkillsPage } from './pages/skills-page/skills-page';
-import { ProjectsPage } from './pages/projects-page/projects-page';
+import { ProjectsListPage } from './pages/projects-list-page/projects-list-page';
+import { ProjectDetailsPage } from './pages/project-details-page/project-details-page';
+import { NotFoundPage } from './pages/not-found-page/not-found-page';
 
 
 import { AboutMe } from './shared/components/about-me/about-me';
@@ -26,17 +30,19 @@ import { WhatIDo } from './shared/components/what-i-do/what-i-do';
 import { ProjectList } from './shared/components/project-list/project-list';
 
 import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
-import { NotFoundPage } from './pages/not-found-page/not-found-page';
-
+import { Search } from './shared/components/search/search';
+import { FilterPipe } from './shared/pipes/filter-pipe';
 
 @NgModule({
   declarations: [
     App,
+    MainLayout,
     AppNavbar,
     AppHeader,
-    Footer,
+    AppFooter,
     HomePage,
-    ProjectsPage,
+    ProjectsListPage,
+    ProjectDetailsPage,
     SkillsPage,
     NotFoundPage,
     AboutMe,
@@ -46,7 +52,9 @@ import { NotFoundPage } from './pages/not-found-page/not-found-page';
     AboutItem,
     SocialLinks,
     WhatIDo,
-    ProjectList
+    ProjectList,
+    Search,
+    FilterPipe
     ],
   imports: [
     BrowserModule,

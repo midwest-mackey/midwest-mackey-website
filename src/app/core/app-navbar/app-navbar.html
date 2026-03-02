@@ -16,13 +16,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{twitchURL}}" title="Twitch" target="twitch">
-            <fa-icon [icon]="faTwitch"></fa-icon>
+          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{instagramURL}}" title="Instagram" target="instagram">
+            <fa-icon [icon]="faInstagram"></fa-icon>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{instagramURL}}" title="Instagram" target="instagram">
-            <fa-icon [icon]="faInstagram"></fa-icon>
+          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{twitchURL}}" title="Twitch" target="twitch">
+            <fa-icon [icon]="faTwitch"></fa-icon>
           </a>
         </li>
       </ul>
@@ -35,13 +35,13 @@
       <div id="navbar-links" class="mt-4 mt-lg-0">
         <ul class="nav nav-pills col gap-2">
           <li class="nav-item">
-            <a class="nav-link link-light" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">midwest mackey</a>
+            <a class="nav-link link-light rounded-pill" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">midwest mackey</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light" routerLink="/skills" routerLinkActive="active">skills</a>
+            <a class="nav-link link-light rounded-pill" routerLink="/skills" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light" routerLink="/projects" routerLinkActive="active">projects</a>
+            <a class="nav-link link-light rounded-pill" routerLink="/projects" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">projects</a>
           </li>
         </ul>
       </div>

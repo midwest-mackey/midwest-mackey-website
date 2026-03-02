@@ -1,0 +1,17 @@
+
+.inner-addon {
+  position: relative;
+
+  > .form-control {
+    padding-left: 50px;
+  }
+
+  > fa-icon {
+    position: absolute;
+    top:50%;
+    left: 0;
+    transform: translate(0,-50%);
+    padding: $input-padding-y-lg $input-padding-x-lg;
+    pointer-events: none;
+  }
+}

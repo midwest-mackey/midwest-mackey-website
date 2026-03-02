@@ -1,14 +1,12 @@
-<mm-app-navbar [color]="currentColor"></mm-app-navbar>
-<!-- <mm-app-header [id]="currentID" [color]="currentColor" [title]="currentTitle" [bodyText]="currentBodyText" [textArray]="currentArrayText" [subText]="currentSubText" [buttonText]="currentButtonText" [img] ="currentImg"></mm-app-header> -->
 <div id="appHeaderScrollTarget"></div>
 
 <mm-about-me></mm-about-me>
 
-<section id="social-links" class="container-fluid section-skew section-shadow-top bg-light-subtle">
-    <div class="container my-5">
+<section id="social-links" class="container-fluid section-skew section-shadow-top mt-0">
+    <div class="container mt-0 mb-5">
         <div class="row py-5">
-            <div class="col-12">
-                <h1 class="display-0 text-uppercase">Find me online</h1>
+            <div class="col-12 py-5">
+                <h1 class="display-0 text-uppercase pt-5">Find me online</h1>
                 <p class="mb-4">See what I am up to on social media</p>
                 <mm-social-links></mm-social-links>
                 <span class="badge text-bg-warning mt-4">spoiler: its probably not much!</span>
@@ -18,4 +16,3 @@
     <mm-summary-panel [id]="gamerID" [color]="gamerColor" [css]="gamerCss" [title]="gamerTitle" [sideText]="gamerSideText" [bodyText]="gamerBodyText" [subText]="gamerSubText" [img]="gamerImg" [buttons]="gamerButtons"></mm-summary-panel>
 </section>
 <mm-tools-platforms-languages [color]="currentColor"></mm-tools-platforms-languages>
-<mm-footer [color]="currentColor"></mm-footer>

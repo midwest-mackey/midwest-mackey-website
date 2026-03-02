@@ -41,52 +41,62 @@ export class SocialLinks implements OnInit {
   buttons: any[] = [{
 
     icon: this.faTwitch,
+    css: 'twitch',
     text: 'Twitch',
     link: this.twitchURL,
     // fragment: 'jumptToBootstrap',
   },
   {
     icon: this.faInstagram,
+    css: 'instagram',
     text: 'Instagram',
     link: this.instagramURL,
   },
   {
     icon: this.faDiscord,
+    css: 'discord',
     text: 'Discord',
     link: this.discordURL,
   },
   {
     icon: this.faTikTok,
+    css: 'tiktok',
     text: 'TikTok',
     link: this.tiktokURL,
   },
   {
     icon: this.faYouTube,
+    css: 'youtube',
     text: 'YouTube',
     link: this.youtubeURL,
   },
   {
     icon: this.faReddit,
+    css: 'reddit',
     text: 'Reddit',
     link: this.redditURL,
   },
   {
     icon: this.faLinkedin,
+    css: 'linkedin',
     text: 'Linkedin',
     link: this.linkedinURL,
   },
   {
     icon: this.faGithub,
+    css: 'github',
     text: 'Github',
     link: this.githubBaseURL,
   },
   {
     icon: this.faPlaystation,
+    css: 'playstation',
     text: 'Playstation',
     link: this.playstationURL,
   },
   {
     icon: this.faSpotify,
+    css: 'spotify',
     text: 'Spotify',
     link: this.spotifyURL,
   }

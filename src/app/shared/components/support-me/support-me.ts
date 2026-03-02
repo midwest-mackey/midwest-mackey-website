@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalConstants } from '../../../app.constants';
 import { faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faBMC } from '../../custom-icons/custom-icons.module';

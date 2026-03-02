@@ -1,10 +1,8 @@
-export interface Logo {
+import { Icon, IconDefinition } from "@fortawesome/fontawesome-svg-core";
+
+export interface Project {
     id: string;
     name: string;
-    primary: string;
-    alts: string;
-    ico: string;
-    fav: string;
-    theme: string;
-    alpha: string;
+    icon: Icon | IconDefinition;
+    images: string;
 }

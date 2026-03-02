@@ -22,7 +22,6 @@ section {
         #summary-panel {
             margin-left: -30vw !important;
             padding-left: 30vw !important;
-
             margin-right: $spacer-size;
         // &::before {
         //     content: '';
@@ -70,12 +69,11 @@ section {
         margin-top: -40px;
         &.justify-content-md-end {
             justify-content: flex-start !important;
-            margin-left: $spacer-size / 2;
+            margin-left: calc($spacer-size / 2);
         }
         &.justify-content-md-start {
             justify-content: flex-end !important;
-            margin-right: $spacer-size / 2;
-
+            margin-right: calc($spacer-size / 2);
         }
     }
 }
