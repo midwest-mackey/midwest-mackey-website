@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Items } from './about-item-list';
+import { Items } from './about-items';
 import { faDiscord, faGithubAlt, faInstagram, faLinkedinIn, faTiktok, faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faBerkleyB, faBMC, faLT, faMumoSystems, faVermeer } from 'src/app/shared/custom-icons/custom-icons.module';
 import { faArrowRight, faGraduationCap, faList } from '@fortawesome/free-solid-svg-icons';

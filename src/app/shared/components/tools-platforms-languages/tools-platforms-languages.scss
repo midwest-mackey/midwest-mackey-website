@@ -8,6 +8,18 @@
     smooth to 100% 0% with 50% 33%,
     line to 100% 76%,
     smooth to 0% 90% with 50% 94%);
+}
+.ticker {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
     a {
         overflow: visible;
         #to-show {
@@ -36,18 +48,6 @@
     .ng-fa-icon {
         padding: .5rem;
     }
-}
-.ticker {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
 }
 .ticker-track {
     width: max-content;

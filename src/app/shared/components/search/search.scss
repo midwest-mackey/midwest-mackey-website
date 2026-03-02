@@ -2,10 +2,6 @@
 
 #search {
     padding-top: 0 !important;
-
-    &.h-0, .h-0 {
-        height: 0;
-    }
 }
 #indicator-container {
 
@@ -28,10 +24,9 @@
         display: none;
     }
 }
-.position-sticky {
-    top: 113px;
-}
+
 .form-control {
+    max-width: 225px;
     border: none;
     box-shadow: none;
     &::placeholder {
@@ -40,12 +35,6 @@
     }
 }
 
-// Media Breakpoints
-@include media-breakpoint-down(md) {
-    .position-sticky {
-        top: 81px;
-    }
- }
 
  @-webkit-keyframes pulse {
   0% {

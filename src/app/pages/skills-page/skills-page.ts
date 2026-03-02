@@ -27,14 +27,14 @@ export class SkillsPage implements OnInit {
   emailAddress = GlobalConstants.emailAddress;
 
 
-  designID = 'design';
-  designColor = this.currentColor;
-  designCss = 'end';
-  designTitle = 'Check back later';
-  designSideText = "MM";
-  designBodyText = 'coming soon';
-  designSubText = 'In the meantime, if your interested in anything you have seen or interested in my work, connect with me on Linkedin!';
-  designButtons: any[] = [{
+  id = 'design';
+  Color = this.currentColor;
+  Css = 'end';
+  Title = 'Check back later';
+  SideText = "MM";
+  BodyText = 'coming soon';
+  SubText = 'In the meantime, if your interested in anything you have seen or interested in my work, connect with me on Linkedin!';
+  Buttons: any[] = [{
     icon: this.faLinkedin,
     text: 'Linkedin',
     link: this.linkedinURL,

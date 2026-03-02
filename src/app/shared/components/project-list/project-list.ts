@@ -41,17 +41,32 @@ export class ProjectList implements OnInit {
   public onClick(elementId: string): void {
     this.viewportScroller.scrollToAnchor(elementId);
   }
-  get filteredProjects() {
-    return this.projects.filter(project => {
-      if (!this.searchValue) return true;
 
-      const search = this.searchValue.toLowerCase();
-      return (
-        project.id.toLowerCase().includes(search) ||
-        project.name.toLowerCase().includes(search)
-      );
-    });
+  get filteredProjects() {
+    if (!this.searchValue) return this.projects;
+
+    const search = this.searchValue.toLowerCase();
+
+    return this.projects.filter(p =>
+      p.id?.toLowerCase().includes(search) ||
+      p.name?.toLowerCase().includes(search)
+    );
   }
+
+  getProjectImages(project: any): string[] {
+    const base = `./assets/@mm/projects/mm-images/${project.name.toLowerCase()}`;
+    const images = [`${base}.png`];
+
+    if (!project.images || project.images === 0) {
+      return images;
+    }
+    for (let i = 1; i < project.images; i++) {
+      images.push(`${base}-${i}.png`);
+    }
+
+    return images;
+  }
+
   ngOnInit() { }
 
 }

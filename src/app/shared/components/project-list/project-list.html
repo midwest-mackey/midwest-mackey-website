@@ -1,83 +1,67 @@
  <section class="container-fluid section-shadow-2" #showScrollTarget>
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1 class="display-4">Projects</h1>
-                <h1><span *ngIf="searchValue" class="text-secondary sigmar-regular"> {{filteredProjects.length}}<span class="text-black-50"> /</span></span><span class="text-{{color}} sigmar-regular"> {{projects.length}}</span></h1>
-            </div>
+        <h1 class="display-4">Projects</h1>
+        <div class="row align-items-center position-sticky z-3">
+            <h1 class="col d-flex"><div class="bg-body rounded-4 p-3">
+                @if (searchValue) {
+                  <span class="text-secondary sigmar-regular"> {{filteredProjects.length}}<span class="text-black-50"> /</span></span>
+                }
+                <span class="text-{{color}} sigmar-regular"> {{projects.length}}</span>
+            </div></h1>
+            <mm-search class="col-auto" [color]="currentColor" [(searchValue)]="searchValue" placeHolder="search projects"></mm-search>
         </div>
-        <mm-search [color]="currentColor" [(searchValue)]="searchValue" placeHolder="search projects"></mm-search>
-
         <!-- <div class="row">
             <div class="col alert alert-success shadow" *ngIf="searchValue">
                 <span class="fs-4"><fa-icon class="text-success me-2" [icon]="faMagnifyingGlass"></fa-icon> {{filteredProjects.length}} project<span *ngIf="filteredProjects.length !== 1">s</span> found for <span class="fw-bold">"{{searchValue}}"</span></span>
             </div>
         </div> -->
-    <ng-container *ngIf="(projects | Filter : { id: searchValue, name: searchValue }) as filteredProjects">
-        <ng-container *ngIf="filteredProjects.length > 0">
-            
+        @if (filteredProjects.length > 0) {
             <div class="project-grid mt-5">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
                     @for (project of filteredProjects; track project.id) {
-                        <div id="{{project.id}}" class="btn col card" [routerLink]="['/projects', project.id | lowercase]">
-                            <div class="text-center card-body">
+                        <div [id]="project.id" class="btn card text-center" [routerLink]="['/projects', project.id | lowercase]">
+                            <div class="card-body">
                                 <div class="content d-flex justify-content-center align-items-center">
+                                    @if (project.images === "") {
+                                        <img [src]="'./assets/@mm/projects/mm-images/' + (project.name | lowercase) + '.png'" [alt]="project.id + ' image'" class=""/>
+                                    } @else {
+                                        <ngb-carousel
+                                            [showNavigationArrows]="showNavigationArrows"
+                                            [showNavigationIndicators]="showNavigationIndicators">
 
-                                    <ng-template [ngIf]='project.alts === ""' [ngIfElse]="altProjectImg">
-                                        <img src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}.png" alt="{{project.id}} project" class=""/>
-                                    </ng-template>
-
-                                    <ng-template #altProjectImg>
-                                        <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+                                            @for (image of getProjectImages(project); track image; let i = $index) {
                                             <ng-template ngbSlide>
-                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}.png" alt="Image 1"/>
-                                                <span class="carousel-caption small">1</span>
+                                                <img [src]="image" [alt]="'Image ' + (i + 1)" />
+                                                <span class="carousel-caption small">{{ i + 1 }}</span>
                                             </ng-template>
-                                            <ng-template *ngIf='project.alts !== ""' ngbSlide>
-                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt.png" alt="Image 2"/>
-                                                <span class="carousel-caption small">2</span>
-                                            </ng-template>
-                                            <ng-template *ngIf="project.alts.length >= 2" ngbSlide>
-                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt-1.png" alt="Image 3"/>
-                                                <span class="carousel-caption small">3</span>
-                                            </ng-template>
-                                            <ng-template *ngIf="project.alts.length >= 3" ngbSlide>
-                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt-2.png" alt="Image 4"/>
-                                                <span class="carousel-caption small">4</span>
-                                            </ng-template>
-                                            <ng-template *ngIf="project.alts.length >= 4" ngbSlide>
-                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt-3.png" alt="Image 5"/>
-                                                <span class="carousel-caption small">5</span>
-                                            </ng-template>
-                                            <ng-template *ngIf="project.alts.length >= 5" ngbSlide>
-                                                <img class="" src="./assets/@mm/projects/mm-images/{{project.name | lowercase}}-alt-4.png" alt="Image 6"/>
-                                                <span class="carousel-caption small">6</span>
-                                            </ng-template>
+                                            }
+
                                         </ngb-carousel>
-                                    </ng-template>
+                                    }
                                 </div>
 
-                                <h6 class="text-truncate fw-bold mt-2 mb-1">{{project.name}}</h6>
+                                <!-- <h6 class="text-truncate fw-bold my-2">{{project.name}}</h6> -->
 
-                                <div class="d-md-flex justify-content-center">
-                                    <div class="card p-0" >
+                                <div class="d-flex justify-content-center">
+                                    <div class="card">
                                         <div class="card-body">
-                                        <div class="row align-items-center g-0">
-                                            <div class="col-auto me-1">
-                                            <fa-layers [fixedWidth]="true" size="3x">
-                                                <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                                                <fa-icon class="text-{{color}}" [icon]="faMmLogo" transform="shrink-8"></fa-icon>
-                                            </fa-layers>
+                                            <div class="row align-items-center g-0">
+                                                <div class="col-auto me-1">
+                                                    <fa-layers [fixedWidth]="true" size="3x">
+                                                        <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
+                                                        <fa-icon class="text-{{color}}" [icon]="project.icon" transform="shrink-8"></fa-icon>
+                                                    </fa-layers>
+                                                </div>
+                                                <div class="col text-start me-2">
+                                                    <div class="h6 mb-0">
+                                                        <span class="fw-bold">{{project.name | titlecase }}</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-auto mx-2">
+                                                <fa-icon class="text-{{color}}" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
+                                                </div>
                                             </div>
-                                            <div class="col text-start me-2">
-                                            <div class="h6 mb-0">
-                                                <span class="fw-bold">{{project.id | uppercase}}</span>
-                                            </div>
-                                            </div>
-                                            <div class="col-auto mx-2">
-                                            <fa-icon class="text-{{color}}" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                                            </div>
-                                        </div>
                                         </div>
                                     </div>
                                 </div>
@@ -86,10 +70,9 @@
                     }
                 </div>
             </div>
-        </ng-container>
-
-        <ng-container *ngIf="filteredProjects.length === 0">
-            <div class="no-results my-5 mx-md-5">
+        }
+        @if (filteredProjects.length === 0) {
+            <div class="no-results text-dark my-5 mx-md-5">
                 <div class="card card-body">
                     <div class="row d-flex">
                     <div class="col-12 col-md-auto text-center">
@@ -106,7 +89,7 @@
                             <li>Check your spelling</li>
                         </ul>
                         <a class="btn btn-outline-{{color}}"
-                        href="{{githubBaseURL}}/test"
+                        [href]="githubBaseURL + '/test'"
                         title="Github Project Source"
                         target="_blank" rel="noopener">
                         View Github Project Source <fa-icon class="ms-2" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
@@ -115,7 +98,6 @@
                     </div>
                 </div>
             </div>
-        </ng-container>
-    </ng-container>
+        }
     </div>
 </section>

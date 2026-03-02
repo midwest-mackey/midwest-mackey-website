@@ -11,7 +11,7 @@ import { MainLayout } from './main-layout';
 
 import { AppNavbar } from './core/app-navbar/app-navbar';
 import { AppHeader } from './core/app-header/app-header';
-import { Footer } from './core/footer/footer';
+import { AppFooter } from './core/app-footer/app-footer';
 
 import { HomePage } from './pages/home-page/home-page';
 import { SkillsPage } from './pages/skills-page/skills-page';
@@ -39,7 +39,7 @@ import { FilterPipe } from './shared/pipes/filter-pipe';
     MainLayout,
     AppNavbar,
     AppHeader,
-    Footer,
+    AppFooter,
     HomePage,
     ProjectsListPage,
     ProjectDetailsPage,
