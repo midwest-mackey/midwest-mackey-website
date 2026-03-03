@@ -40,10 +40,11 @@
 
   .whitescreen {
     display: none; /* do not display on start */
-    z-index: -1000; /* moves behind mm-root */
-    position: absolute;
+    z-index: 0; /* moves behind mm-root */
+    position: fixed;
+    inset: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     min-height: 100%;
     font-size: 24px;
     font-weight: 100;
@@ -93,35 +94,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- White screen error handling -->
-  <script>
-    var whitescreen_EMPTY_APP_ROOT_DELAY = 8000;
-    var whitescreen_ERROR_DELAY = 5000;
+<script>
+  var whitescreen_EMPTY_APP_ROOT_DELAY = 8000;
+  var whitescreen_ERROR_DELAY = 5000;
+  var whitescreenShown = false;
 
-    // Show white screen error
-    function showwhitescreenError(error) {
-      console.error(error);
-      var whitescreen = document.getElementById("whitescreen");
-      if (whitescreen.style.display !== "block") {
-        document.getElementById("whitescreen-stack").innerHTML = error.stack.replace(/\n/g, '<br/>');
-        whitescreen.style.display = "block";
-        document.body.style.display = "block"; // only for ionic
-      }
+  function showwhitescreenError(error) {
+    if (whitescreenShown) return;
+    whitescreenShown = true;
+
+    console.error("Whitescreen Error:", error);
+
+    var whitescreen = document.getElementById("whitescreen");
+    var stackEl = document.getElementById("whitescreen-stack");
+
+    if (!whitescreen) return;
+
+    var message = "Unknown error";
+
+    if (error) {
+      message =
+        (error.stack && String(error.stack)) ||
+        (error.message && String(error.message)) ||
+        String(error);
     }
 
-    // Handle global errors
-    window.addEventListener("error", function (event) {
-      setTimeout(() => {
-        showwhitescreenError(event.error);
-      }, whitescreen_ERROR_DELAY);
-    });
+    if (stackEl) {
+      stackEl.innerHTML = message.replace(/\n/g, "<br/>");
+    }
 
-    // Detect empty mm-root
+    whitescreen.style.display = "block";
+    document.body.style.display = "block"; // keep if using ionic
+  }
+
+  // Global JS errors
+  window.addEventListener("error", function (event) {
     setTimeout(function () {
-      if (!document.getElementsByTagName("mm-root")[0].children.length) {
-        showwhitescreenError(new Error("Empty mm-root"));
-      }
-    }, whitescreen_EMPTY_APP_ROOT_DELAY);
-  </script>
+      showwhitescreenError(event.error || event.message || event);
+    }, whitescreen_ERROR_DELAY);
+  });
+
+  // Unhandled promise rejections (VERY important for Angular)
+  window.addEventListener("unhandledrejection", function (event) {
+    setTimeout(function () {
+      showwhitescreenError(event.reason || event);
+    }, whitescreen_ERROR_DELAY);
+  });
+
+  // Detect empty mm-root safely
+  setTimeout(function () {
+    var root = document.getElementsByTagName("mm-root")[0];
+
+    if (!root || !root.children.length) {
+      showwhitescreenError(new Error("Empty mm-root"));
+    }
+  }, whitescreen_EMPTY_APP_ROOT_DELAY);
+</script>
 
 <!-- <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="midwestmackey" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ffdd00" data-position="Right" data-x_margin="18" data-y_margin="18"></script> -->
 </body>
