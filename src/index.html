@@ -36,34 +36,7 @@
 
 </head>
 <!-- Style white screen error message -->
-<style>
 
-  .whitescreen {
-    display: none; /* do not display on start */
-    z-index: 0; /* moves behind mm-root */
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100dvh;
-    min-height: 100%;
-    font-size: 24px;
-    font-weight: 100;
-    background: #0078D7;
-    padding-top: 35%;
-    padding-left: 100px;
-    padding-right: 50px;
-    padding-bottom: 20px;
-    color: #fff;
-  }
-  .whitescreen-icon {
-    font-size: 100px;
-    padding-bottom: 20px;
-    line-height: 125px;
-  }
-  .whitescreen-stack {
-    font-size: 10px;
-  }
-</style>
 <body>
 
 <!-- Google Tag Manager (noscript) -->
@@ -71,84 +44,47 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <mm-root id="top"></mm-root>
+  <!-- <mm-root id="top"></mm-root> -->
 
 
-  <!-- No javascript message -->
-  <noscript>Javascript must be enabled to continue</noscript>
   <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
   <!-- White screen error message -->
-  <div id="whitescreen" class="whitescreen">
-      <p class="whitescreen-icon">:(</p>
-      <p class="whitescreen-message">
-        The website ran into a problem and is unable to run.
-        Please ensure you are using a modern browser.
-      </p>
-      <div class="whitescreen-stack">
-        <p>Try another device or browser, if issue persist, I apologize, the problem is on my end.</p>
-        <p>There is no person to give this error to, sorry...</p>
-        <p id="whitescreen-stack"></p>
-      </div>
-  </div>
+    <!-- No javascript message -->
+    <noscript>Javascript must be enabled to continue</noscript>
 
-  <!-- White screen error handling -->
-<script>
-  var whitescreen_EMPTY_APP_ROOT_DELAY = 8000;
-  var whitescreen_ERROR_DELAY = 5000;
-  var whitescreenShown = false;
+    <!-- White screen error handling -->
+   <script>
+    window.addEventListener("load", function () {
 
-  function showwhitescreenError(error) {
-    if (whitescreenShown) return;
-    whitescreenShown = true;
+      // If Angular never bootstrapped after 10s
+      setTimeout(function () {
 
-    console.error("Whitescreen Error:", error);
+        if (!window.__app_bootstrapped) {
 
-    var whitescreen = document.getElementById("whitescreen");
-    var stackEl = document.getElementById("whitescreen-stack");
+          var ws = document.getElementById("bootstrap-whitescreen");
 
-    if (!whitescreen) return;
+          if (!ws) {
+            ws = document.createElement("div");
+            ws.id = "bootstrap-whitescreen";
+            ws.style.position = "fixed";
+            ws.style.inset = "0";
+            ws.style.zIndex = "999999";
+            ws.style.paddingTop = "100px";
+            ws.style.background = "#0078D7";
+            ws.style.color = "white";
+            ws.style.padding = "40px";
+            ws.innerHTML = "<h1 class=>:(</h1><h2>Application Failed To Start</h2><br><p>The website ran into a problem and is unable to run. Please ensure you are using a modern browser.</p>";
 
-    var message = "Unknown error";
+            document.body.appendChild(ws);
+          }
+        }
 
-    if (error) {
-      message =
-        (error.stack && String(error.stack)) ||
-        (error.message && String(error.message)) ||
-        String(error);
-    }
+      }, 10000);
 
-    if (stackEl) {
-      stackEl.innerHTML = message.replace(/\n/g, "<br/>");
-    }
-
-    whitescreen.style.display = "block";
-    document.body.style.display = "block"; // keep if using ionic
-  }
-
-  // Global JS errors
-  window.addEventListener("error", function (event) {
-    setTimeout(function () {
-      showwhitescreenError(event.error || event.message || event);
-    }, whitescreen_ERROR_DELAY);
-  });
-
-  // Unhandled promise rejections (VERY important for Angular)
-  window.addEventListener("unhandledrejection", function (event) {
-    setTimeout(function () {
-      showwhitescreenError(event.reason || event);
-    }, whitescreen_ERROR_DELAY);
-  });
-
-  // Detect empty mm-root safely
-  setTimeout(function () {
-    if (!window.__app_bootstrapped) {
-      showwhitescreenError(new Error("Angular failed to bootstrap"));
-    }
-  }, whitescreen_EMPTY_APP_ROOT_DELAY);
-</script>
-
+    });
+  </script>
 <!-- <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="midwestmackey" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ffdd00" data-position="Right" data-x_margin="18" data-y_margin="18"></script> -->
 </body>
 </html>

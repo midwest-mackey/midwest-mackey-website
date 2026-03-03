@@ -1,9 +1,13 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-.then(() => {
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .then(() => {
     (window as any).__app_bootstrapped = true;
+  })
+  .catch(err => {
+    console.error(err);
   });  
   
 function detectSafari(): boolean {
