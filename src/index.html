@@ -143,10 +143,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // Detect empty mm-root safely
   setTimeout(function () {
-    var root = document.getElementsByTagName("mm-root")[0];
-
-    if (!root || !root.children.length) {
-      showwhitescreenError(new Error("Empty mm-root"));
+    if (!window.__app_bootstrapped) {
+      showwhitescreenError(new Error("Angular failed to bootstrap"));
     }
   }, whitescreen_EMPTY_APP_ROOT_DELAY);
 </script>
