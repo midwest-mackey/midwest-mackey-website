@@ -7,7 +7,7 @@ import { FontAwesomeModule, } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app.routing';
 
 import { App } from './app';
-import { MainLayout } from './main-layout';
+import { MainLayout } from './layouts/main/main-layout';
 
 import { AppNavbar } from './core/app-navbar/app-navbar';
 import { AppHeader } from './core/app-header/app-header';
@@ -32,14 +32,20 @@ import { ProjectList } from './shared/components/project-list/project-list';
 import { ThemeToggle } from './shared/components/theme-toggle/theme-toggle';
 import { Search } from './shared/components/search/search';
 import { FilterPipe } from './shared/pipes/filter-pipe';
+import { ProjectLayout } from './layouts/projects/project-layout';
+import { ProjectNavbar } from './core/project-navbar/project-navbar';
+import { ProjectHeader } from './core/project-header/project-header';
 
 @NgModule({
   declarations: [
     App,
     MainLayout,
+    ProjectLayout,
     AppNavbar,
     AppHeader,
     AppFooter,
+    ProjectNavbar,
+    ProjectHeader,
     HomePage,
     ProjectsListPage,
     ProjectDetailsPage,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from './theme-service';
+import { ThemeService } from '../../theme-service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { LayoutService } from './shared/services/color.service';
+import { LayoutService } from '../../shared/services/color.service';
 
 @Component({
   selector: 'mm-main-layout',

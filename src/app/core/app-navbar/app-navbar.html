@@ -45,11 +45,15 @@
           </li>
         </ul>
       </div>
-      <div id="theme-toggle" class="d-flex order-2 rounded-pill ms-auto me-2 float-end">
-      <ul class="nav">
-          <mm-theme-toggle></mm-theme-toggle>
-      </ul>
     </div>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+      <div id="theme-toggle" class="d-flex ms-auto me-2 rounded-pill float-end">
+        <ul class="nav">
+          <li class="nav-item">
+            <mm-theme-toggle></mm-theme-toggle>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

@@ -175,7 +175,6 @@ section {
         // &.bg-color {
         
         // }
-        
         &#title {
             .top-50 {
                 top: 130px !important;
@@ -193,11 +192,7 @@ section {
         }
         .container {
             margin-top: -$top-space;
-            .display-0 {
-                font-size: clamp(80px, calc(100% + 20vw), 300px);
-            }
         }
-
         .translate-middle-y {
             transform: translateY(0) !important;
         }

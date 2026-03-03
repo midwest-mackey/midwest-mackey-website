@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand navbar-dark bg-{{color}} fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="" routerLinkActive="active">
+      <img src="./assets/mm-logo.svg" alt="Midwest Mackey Logo" width="45">
+    </a>
+    <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+      <div id="navbar-links" class="">
+        <ul class="nav nav-pills col gap-2">
+          <li class="nav-item">
+            <a class="nav-link link-light rounded-pill btn" (click)="goBack()"><fa-icon [icon]="faArrowLeft"></fa-icon> Back to projects</a>
+          </li>
+        </ul>
+      </div>
+      <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+      <div id="theme-toggle" class="d-flex ms-auto me-2 rounded-pill float-end">
+        <ul class="nav">
+          <li class="nav-item">
+            <mm-theme-toggle></mm-theme-toggle>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </div>
+</nav>

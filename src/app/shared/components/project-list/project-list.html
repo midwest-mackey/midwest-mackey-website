@@ -19,7 +19,7 @@
             <div class="project-grid mt-5">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
                     @for (project of filteredProjects; track project.id) {
-                        <div [id]="project.id" class="btn card text-center" [routerLink]="['/projects', project.id | lowercase]">
+                        <div [id]="project.id" class="btn card text-center py-4" [routerLink]="['/projects/details', project.name | lowercase]">
                             <div class="card-body">
                                 <div class="content d-flex justify-content-center align-items-center">
                                     @if (project.images === "") {
@@ -43,8 +43,8 @@
                                 <!-- <h6 class="text-truncate fw-bold my-2">{{project.name}}</h6> -->
 
                                 <div class="d-flex justify-content-center">
-                                    <div class="card">
-                                        <div class="card-body">
+                                    <div class="card pt-5">
+                                        <div class="">
                                             <div class="row align-items-center g-0">
                                                 <div class="col-auto me-1">
                                                     <fa-layers [fixedWidth]="true" size="3x">

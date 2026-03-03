@@ -1,5 +1,3 @@
-<li class="nav-item">
-    <a (click)="toggle()" aria-label="Toggle theme" class="nav-link link-light rounded-pill">
-      <i class="bi h5 theme-icon" [class.bi-moon-stars-fill]="isDark" [class.bi-sun-fill]="!isDark"></i>
-    </a>
-</li>
+<a (click)="toggle()" aria-label="Toggle theme" class="theme-toggle nav-link rounded-pill d-flex align-items-center justify-content-center">
+  <i class="bi theme-icon" [class.bi-moon-stars-fill]="isDark" [class.bi-sun-fill]="!isDark"></i>
+</a>
