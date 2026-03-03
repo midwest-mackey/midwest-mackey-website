@@ -10,7 +10,7 @@ html, body {
     overflow-x: clip !important;
     // Needed for ViewportScroller scroll to anchor
     scroll-behavior: smooth !important;
-    background-color: $black;
+    background-color: $black !important;
 }
 input {
     font-family: 'Space Mono', monospace;

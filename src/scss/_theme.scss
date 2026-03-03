@@ -20,6 +20,10 @@
     // background-color: rgba(255, 255, 255, 0.1);;
     color: var(--bs-inverted-toggle-color);
 }
+.app-shell {
+  background-color: var(--bs-body-bg);
+  min-height: 100vh;
+}
 
 [data-bs-theme="light"] {
   --bs-inverted-text: #fff;
