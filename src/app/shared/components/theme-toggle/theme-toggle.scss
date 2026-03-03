@@ -1,12 +1,8 @@
 @use 'sass:color';
 @use 'custom' as *;
 
-.theme-icon {
-    transition: 0.5s ease;
-    &.bi-sun-fill {
-        color: $warning;
-    }
-    &.bi-moon-stars-fill {
-        color: $purple;
-    }
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
 }

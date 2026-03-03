@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { ThemeService } from 'src/app/theme-service';
 
 @Component({
   selector: 'mm-theme-toggle',
-  imports: [],
+  imports: [FontAwesomeModule],
   templateUrl: './theme-toggle.html',
   styleUrl: './theme-toggle.scss'
 })

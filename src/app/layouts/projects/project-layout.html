@@ -1,0 +1,16 @@
+<mm-project-navbar [color]="headerConfig.color"></mm-project-navbar>
+<mm-project-header 
+    [color]="headerConfig.color"
+    [title]="headerConfig.title"
+    [bodyText]="headerConfig.bodyText"
+    [subText]="headerConfig.subText"
+    [textArray]="headerConfig.textArray"
+    [buttonText]="headerConfig.buttonText"
+    [icon]="headerConfig.icon"
+    [img]="headerConfig.img"
+    [url]="headerConfig.url">
+</mm-project-header>
+
+<router-outlet></router-outlet>
+
+<mm-app-footer [color]="headerConfig.color"></mm-app-footer>

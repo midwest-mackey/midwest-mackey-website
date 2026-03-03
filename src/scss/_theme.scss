@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @media (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
@@ -14,15 +16,28 @@
         fill: var(--bs-inverted-svg-bg);
     }
 }
+.theme-toggle {
+    // background-color: rgba(255, 255, 255, 0.1);;
+    color: var(--bs-inverted-toggle-color);
+}
+.app-shell {
+  background-color: var(--bs-body-bg);
+  min-height: 100vh;
+}
 
 [data-bs-theme="light"] {
   --bs-inverted-text: #fff;
   --bs-inverted-footer-text: #212529;
-  --bs-inverted-svg-bg: #212529;  
+  --bs-inverted-svg-bg: #212529; 
+  --bs-inverted-toggle-bg: #fff; 
+  --bs-inverted-toggle-color: #ffc107;
 }
 
 [data-bs-theme="dark"] {
   --bs-inverted-text: #212529;
   --bs-inverted-footer-text: #000;
   --bs-inverted-svg-bg: #000;
+  --bs-inverted-toggle-bg: rgba(255, 255, 255, 0.1);
+  --bs-inverted-toggle-color: #fff;
+
 }

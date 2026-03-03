@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { provideRouter, RouterModule, Routes, withInMemoryScrolling } from '@angular/router';
 import { HomePage } from './pages/home-page/home-page';
 import { SkillsPage } from './pages/skills-page/skills-page';
 import { ProjectsListPage } from './pages/projects-list-page/projects-list-page';
 import { ProjectDetailsPage } from './pages/project-details-page/project-details-page';
 import { NotFoundPage } from './pages/not-found-page/not-found-page';
 import { faArrowDown, faHouseChimney } from '@fortawesome/free-solid-svg-icons';
-import { MainLayout } from './main-layout';
+import { MainLayout } from './layouts/main/main-layout';
+import { ProjectLayout } from './layouts/projects/project-layout';
 
 const routes: Routes = [
   // { path: '', redirectTo: '', pathMatch: 'full' },
@@ -26,7 +27,7 @@ const routes: Routes = [
             }
         }
       },
-      { path: 'skills', component: SkillsPage, pathMatch: 'full', title: 'Skills',
+      { path: 'skills', component: SkillsPage, title: 'Skills',
         data: {
             header: {
               color: 'cyan',
@@ -40,7 +41,7 @@ const routes: Routes = [
             }
         }
       },
-      { path: 'projects', component: ProjectsListPage, pathMatch: 'full', title: 'Projects',
+      { path: 'projects', component: ProjectsListPage, title: 'Projects',
         data: {
             header: {
               color: 'purple',
@@ -56,24 +57,26 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'projects/1', component: ProjectDetailsPage, title: '0 - Project Details',
-    data: {
-        header: {
-          color: 'orange',
-          title: 'Project\nOrange',
-          bodyText: 'Project details for',
-          subText: "",
-          img: '',
-          buttonText: 'See project',
-          icon: faArrowDown,
-          textArray: ['Orange']
+  { path: 'projects/details', component: ProjectLayout,
+    children: [
+      { path: 'coming-soon', component: ProjectDetailsPage, title: 'Coming Soon',
+        data: {
+            header: {
+              color: 'orange',
+              title: 'Project\nOrange',
+              bodyText: 'Project details for',
+              subText: "",
+              img: '',
+              buttonText: 'See project',
+              icon: faArrowDown,
+              textArray: ['coming soon']
+            }
         }
-    }
+      },
+    ]
   },
-
-
   // 404 route (ALWAYS last)
-  {path: '**', component: MainLayout,  pathMatch: 'full',
+  {path: '**', component: MainLayout,
     children: [
       { path: '**', component: NotFoundPage, title: '404 - Page Not Found',
       data: {
@@ -98,8 +101,14 @@ const routes: Routes = [
     {
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
-      scrollOffset: [0, 100],
+      scrollOffset: [0, 113],
     })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+  
+}
+provideRouter(routes, withInMemoryScrolling({
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled'
+}))
