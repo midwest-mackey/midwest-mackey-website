@@ -38,7 +38,7 @@
 <!-- Style white screen error message -->
 <style>
 
-  .bluescreen {
+  .whitescreen {
     display: none; /* do not display on start */
     z-index: -1000; /* moves behind mm-root */
     position: absolute;
@@ -54,12 +54,12 @@
     padding-bottom: 20px;
     color: #fff;
   }
-  .bluescreen-icon {
+  .whitescreen-icon {
     font-size: 100px;
     padding-bottom: 20px;
     line-height: 125px;
   }
-  .bluescreen-stack {
+  .whitescreen-stack {
     font-size: 10px;
   }
 </style>
@@ -79,31 +79,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
   <!-- White screen error message -->
-  <div id="bluescreen" class="bluescreen">
-      <p class="bluescreen-icon">:(</p>
-      <p class="bluescreen-message">
+  <div id="whitescreen" class="whitescreen">
+      <p class="whitescreen-icon">:(</p>
+      <p class="whitescreen-message">
         The website ran into a problem and is unable to run.
         Please ensure you are using a modern browser.
       </p>
-      <div class="bluescreen-stack">
+      <div class="whitescreen-stack">
         <p>Try another device or browser, if issue persist, I apologize, the problem is on my end.</p>
         <p>There is no person to give this error to, sorry...</p>
-        <p id="bluescreen-stack"></p>
+        <p id="whitescreen-stack"></p>
       </div>
   </div>
 
   <!-- White screen error handling -->
   <script>
-    var bluescreen_EMPTY_APP_ROOT_DELAY = 8000;
-    var bluescreen_ERROR_DELAY = 5000;
+    var whitescreen_EMPTY_APP_ROOT_DELAY = 8000;
+    var whitescreen_ERROR_DELAY = 5000;
 
     // Show white screen error
-    function showbluescreenError(error) {
+    function showwhitescreenError(error) {
       console.error(error);
-      var bluescreen = document.getElementById("bluescreen");
-      if (bluescreen.style.display !== "block") {
-        document.getElementById("bluescreen-stack").innerHTML = error.stack.replace(/\n/g, '<br/>');
-        bluescreen.style.display = "block";
+      var whitescreen = document.getElementById("whitescreen");
+      if (whitescreen.style.display !== "block") {
+        document.getElementById("whitescreen-stack").innerHTML = error.stack.replace(/\n/g, '<br/>');
+        whitescreen.style.display = "block";
         document.body.style.display = "block"; // only for ionic
       }
     }
@@ -111,16 +111,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     // Handle global errors
     window.addEventListener("error", function (event) {
       setTimeout(() => {
-        showbluescreenError(event.error);
-      }, bluescreen_ERROR_DELAY);
+        showwhitescreenError(event.error);
+      }, whitescreen_ERROR_DELAY);
     });
 
     // Detect empty mm-root
     setTimeout(function () {
       if (!document.getElementsByTagName("mm-root")[0].children.length) {
-        showWhitesreenError(new Error("Empty mm-root"));
+        showwhitescreenError(new Error("Empty mm-root"));
       }
-    }, bluescreen_EMPTY_APP_ROOT_DELAY);
+    }, whitescreen_EMPTY_APP_ROOT_DELAY);
   </script>
 
 <!-- <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="midwestmackey" data-description="Support me on Buy me a coffee!" data-message="" data-color="#ffdd00" data-position="Right" data-x_margin="18" data-y_margin="18"></script> -->
