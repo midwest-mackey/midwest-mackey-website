@@ -1,38 +1,60 @@
 import { Injectable } from '@angular/core';
 
-type Theme = 'light' | 'dark';
+export type ThemeMode = 'light' | 'dark' | 'auto';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
+
   private mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  private userSet = false;
+
+  private currentMode: ThemeMode = 'auto';
+
+  constructor() {
+    this.initTheme();
+
+    // Auto mode should react to system changes
+    this.mediaQuery.addEventListener('change', () => {
+      if (this.currentMode === 'auto') {
+        this.applyTheme('auto');
+      }
+    });
+  }
 
   initTheme() {
-    const saved = localStorage.getItem('theme');
+    const saved = localStorage.getItem('theme') as ThemeMode | null;
 
-    if (saved) {
-      this.applyTheme(saved as 'light' | 'dark');
-      return; // 🚨 stop here
-    }
+    this.currentMode = saved ?? 'auto';
 
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    this.applyTheme(prefersDark ? 'dark' : 'light');
+    this.applyTheme(this.currentMode);
   }
 
-  toggleTheme() {
-    const current = this.getCurrentTheme();
-    const newTheme: Theme = current === 'dark' ? 'light' : 'dark';
+  cycleTheme() {
 
-    this.userSet = true;
-    localStorage.setItem('theme', newTheme);
-    this.applyTheme(newTheme);
+    const next: ThemeMode =
+      this.currentMode === 'light' ? 'dark' :
+      this.currentMode === 'dark' ? 'auto' :
+      'light';
+
+    this.setTheme(next);
   }
 
-  private applyTheme(theme: Theme) {
-    document.documentElement.setAttribute('data-bs-theme', theme);
+  setTheme(mode: ThemeMode) {
+    this.currentMode = mode;
+    localStorage.setItem('theme', mode);
+    this.applyTheme(mode);
   }
 
-  private getCurrentTheme(): Theme {
-    return document.documentElement.getAttribute('data-bs-theme') as Theme;
+  private applyTheme(mode: ThemeMode) {
+
+    const resolved =
+      mode === 'auto'
+        ? (this.mediaQuery.matches ? 'dark' : 'light')
+        : mode;
+
+    document.documentElement.setAttribute('data-bs-theme', resolved);
+  }
+
+  getCurrentMode(): ThemeMode {
+    return this.currentMode;
   }
 }

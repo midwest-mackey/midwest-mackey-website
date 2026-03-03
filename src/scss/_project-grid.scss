@@ -74,6 +74,13 @@
 
         &:hover, &:focus, &:focus-within, &.active {
             box-shadow: $box-shadow-lg;
+            background-image:linear-gradient(180deg,rgba(var(--bs-body-bg-rgb),.01),
+        rgba(var(--bs-body-bg-rgb),1) 85%),
+        radial-gradient(ellipse at top left,
+        rgba(var(--bs-primary-rgb),.5),transparent 50%),
+        radial-gradient(ellipse at top right,rgba(255, 228, 132, .5),transparent 50%),
+        radial-gradient(ellipse at center right,rgba(113, 44, 249, .5),transparent 50%),
+        radial-gradient(ellipse at center left,rgba(214, 51, 132, .5),transparent 50%);
             z-index: 1;
             .btn {
                 visibility: visible;

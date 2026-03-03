@@ -3,6 +3,7 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { ViewportScroller } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
+import { HostListener } from '@angular/core';
 
 
 @Component({
@@ -67,4 +68,41 @@ export class AppHeader implements OnInit, OnDestroy, OnChanges {
     this.sub?.unsubscribe();
   }
   
+  @HostListener('window:scroll', [])
+onScroll() {
+
+  const scrollY = window.scrollY;
+  const opacity = Math.max(0.0, 1 - scrollY / 800);
+  const blur = Math.min(20, scrollY / 100);
+
+  const layer0 = scrollY * .3;
+  const layer1 = scrollY * 0.8;
+  const layer2 = scrollY * 0.4;
+  const layer3 = scrollY * 1;
+
+  document.documentElement.style.setProperty(
+    '--parallax-layer-0',
+    `${layer0}px`
+  );
+  document.documentElement.style.setProperty(
+    '--parallax-layer-1',
+    `-${layer1}px`
+  );
+  document.documentElement.style.setProperty(
+    '--parallax-layer-2',
+    `-${layer2}px`
+  );
+  document.documentElement.style.setProperty(
+    '--parallax-layer-3',
+    `${layer3}px`
+  );
+  document.documentElement.style.setProperty(
+    '--parallax-opacity',
+    opacity.toString()
+  );
+  document.documentElement.style.setProperty(
+    '--parallax-blur',
+    `${blur}px`
+  );
+}
 }

@@ -2,7 +2,7 @@
 @use 'custom' as *;
 $top-space:                       103px;
 .spacer-top {
-    height: $top-space;
+    height: $top-space + 10px;
     width: 100%;
     position: absolute;
     top: 0;
@@ -29,6 +29,7 @@ $top-space:                       103px;
     }
     
 }
+
 section {
     top: $top-space;
     margin-bottom: $top-space;
@@ -45,11 +46,11 @@ section {
             smooth to 0% 65% with 10% 50%,
             line to 0% 0%);
         animation: morph 120s linear infinite;
-
         &.bg-blue {
             background: linear-gradient(color.adjust($blue, $lightness: $color-adjust-amount) 1%, $blue);
             // #0044BA
         }
+        
         &.bg-orange {
             background: linear-gradient(color.adjust($orange, $lightness: $color-adjust-amount) 1%, $orange);
             // #FC7E14
@@ -199,4 +200,34 @@ section {
             transform: translateY(0) !important;
         }
     }
+}
+
+// Parallax Layers
+.parallax-content {
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+.layer-fade {
+  opacity: var(--parallax-opacity, 1);
+  transition: opacity 0.1s linear;
+}
+.layer-blur {
+  filter: blur(var(--parallax-blur, 0px));
+}
+.layer-blur {
+  backdrop-filter: blur(var(--parallax-blur, 0px));
+  transition: backdrop-filter 0.1s linear;
+}
+.layer-0 {
+  transform: translateY(var(--parallax-layer-0, 0px));
+}
+.layer-1 {
+  transform: translateY(var(--parallax-layer-1, 0px));
+}
+
+.layer-2 {
+  transform: translateY(var(--parallax-layer-2, 0px));
+}
+.layer-3 {
+  transform: translateY(var(--parallax-layer-3, 0px));
 }

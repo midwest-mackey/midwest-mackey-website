@@ -2,6 +2,7 @@
 @use 'custom' as *;
 
 .navbar {
+    padding: 1rem;
     .navbar-toggler {
         border: none;
         .navbar-toggler-icon {

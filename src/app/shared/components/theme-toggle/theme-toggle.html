@@ -1,3 +1,8 @@
-<a (click)="toggle()" aria-label="Toggle theme" class="theme-toggle nav-link rounded-pill d-flex align-items-center justify-content-center">
+<!-- <a (click)="toggle()" aria-label="Toggle theme" class="theme-toggle nav-link rounded-pill d-flex align-items-center justify-content-center">
   <i class="bi theme-icon" [class.bi-moon-stars-fill]="isDark" [class.bi-sun-fill]="!isDark"></i>
-</a>
+</a> -->
+<button class="nav-link rounded-pill d-flex align-items-center justify-content-center gap-2 theme-toggle" (click)="toggle()">
+  <i *ngIf="mode === 'light'" class="bi bi-sun-fill"></i>
+  <i *ngIf="mode === 'dark'" class="bi bi-moon-stars-fill"></i>
+  <i *ngIf="mode === 'auto'" class="bi bi-circle-half"></i>
+</button>
