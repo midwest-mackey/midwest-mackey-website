@@ -2,13 +2,13 @@
     <div class="container">
         <h1 class="display-4">Projects</h1>
         <div class="row align-items-center position-sticky z-3">
-            <h1 class="col d-flex"><div class="bg-body rounded-4 p-3">
+            <h1 class="col-auto d-flex"><div class="bg-body rounded-4 p-3">
                 @if (searchValue) {
                   <span class="text-secondary sigmar-regular"> {{filteredProjects.length}}<span class="text-black-50"> /</span></span>
                 }
                 <span class="text-{{color}} sigmar-regular"> {{projects.length}}</span>
             </div></h1>
-            <mm-search class="col-auto" [color]="currentColor" [(searchValue)]="searchValue" placeHolder="search projects"></mm-search>
+            <mm-search class="d-flex col justify-content-end" [color]="currentColor" [(searchValue)]="searchValue" placeHolder="search projects"></mm-search>
         </div>
         <!-- <div class="row">
             <div class="col alert alert-success shadow" *ngIf="searchValue">

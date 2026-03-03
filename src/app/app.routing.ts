@@ -26,7 +26,7 @@ const routes: Routes = [
             }
         }
       },
-      { path: 'skills', component: SkillsPage, pathMatch: 'full', title: 'Skills',
+      { path: 'skills', component: SkillsPage, title: 'Skills',
         data: {
             header: {
               color: 'cyan',
@@ -40,7 +40,7 @@ const routes: Routes = [
             }
         }
       },
-      { path: 'projects', component: ProjectsListPage, pathMatch: 'full', title: 'Projects',
+      { path: 'projects', component: ProjectsListPage, title: 'Projects',
         data: {
             header: {
               color: 'purple',
@@ -56,7 +56,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'projects/1', component: ProjectDetailsPage, title: '0 - Project Details',
+  { path: 'projects/1', component: ProjectDetailsPage, title: '1 - Project Details',
     data: {
         header: {
           color: 'orange',
@@ -73,7 +73,7 @@ const routes: Routes = [
 
 
   // 404 route (ALWAYS last)
-  {path: '**', component: MainLayout,  pathMatch: 'full',
+  {path: '**', component: MainLayout,
     children: [
       { path: '**', component: NotFoundPage, title: '404 - Page Not Found',
       data: {
