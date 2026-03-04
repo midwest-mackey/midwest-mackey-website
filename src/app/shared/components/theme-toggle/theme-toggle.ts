@@ -1,25 +1,23 @@
 import { Component } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { CommonModule } from '@angular/common';
 import { ThemeService } from 'src/app/theme-service';
 
 @Component({
   selector: 'mm-theme-toggle',
-  imports: [FontAwesomeModule],
+  standalone: true,
+  imports: [CommonModule],   // 🔥 THIS WAS MISSING
   templateUrl: './theme-toggle.html',
   styleUrl: './theme-toggle.scss'
 })
 export class ThemeToggle {
-  constructor(private themeService: ThemeService) {}
 
-  faMoon = faMoon;
-  faSun = faSun;
-
-  get isDark() {
-    return document.documentElement.getAttribute('data-bs-theme') === 'dark';
-  }
+  constructor(public themeService: ThemeService) {}
 
   toggle() {
-    this.themeService.toggleTheme();
+    this.themeService.cycleTheme();
+  }
+
+  get mode() {
+    return this.themeService.getCurrentMode();
   }
 }

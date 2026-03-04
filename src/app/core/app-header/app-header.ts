@@ -3,6 +3,7 @@ import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { ViewportScroller } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
+import { HostListener } from '@angular/core';
 
 
 @Component({
@@ -67,4 +68,54 @@ export class AppHeader implements OnInit, OnDestroy, OnChanges {
     this.sub?.unsubscribe();
   }
   
+  @HostListener('window:scroll', [])
+  onScroll() {
+
+    const scrollY = window.scrollY;
+    const opacity = Math.max(0.0, 1 - scrollY / 400);
+    const opacity2 = Math.max(0.0, 1 - scrollY / 200);
+    const blur = Math.min(20, scrollY / 100);
+
+    const layerCard = scrollY * 1.2;
+    const layerText1 = scrollY * 1.8;
+    const layerText2 = scrollY * .8;
+
+    document.documentElement.style.setProperty(
+      '--parallax-layer-card',
+      `-${layerCard}px`
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-layer-text1',
+      `${layerText1}px`
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-layer-text2',
+      `-${layerText2}px`
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-opacity',
+      opacity.toString()
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-opacity2',
+      opacity2.toString()
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-blur',
+      `${blur}px`
+    );
+    
+    const duration = 120; // must match CSS duration (seconds)
+
+    const maxScroll = 2500; // adjust to page length
+    const progress = scrollY / maxScroll;
+
+    const time = progress * duration;
+
+    const section = document.querySelector('section.bg-color') as HTMLElement;
+
+    if (!section) return;
+
+    section.style.animationDelay = `-${time}s`;
+  }
 }
