@@ -15,22 +15,7 @@ import { GlobalConstants } from 'src/app/app.constants';
 
 export class HomePage implements OnInit {
 
-  currentArrayText = [
-    'designer',
-    'gamer',
-    'creator',
-    'dad',
-    'husband',
-    'diyer',
-  ];
-  currentID = 'home';
   currentColor = 'blue';
-  currentTitle = 'Midwest Mackey';
-  currentButtonText = 'get to know me';
-  currentBodyText = 'Hey! 👋\nI\'m midwest mackey,'
-  currentSubText = "from the midwest";
-  currentImg = 'assets/me/mm-wave.png';
-
 
   faTwitch = faTwitch;
   faPlaystation = faPlaystation;
