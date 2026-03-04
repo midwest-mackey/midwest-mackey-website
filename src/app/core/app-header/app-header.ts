@@ -69,40 +69,48 @@ export class AppHeader implements OnInit, OnDestroy, OnChanges {
   }
   
   @HostListener('window:scroll', [])
-onScroll() {
+  onScroll() {
 
-  const scrollY = window.scrollY;
-  const opacity = Math.max(0.0, 1 - scrollY / 800);
-  const blur = Math.min(20, scrollY / 100);
+    const scrollY = window.scrollY;
+    const opacity = Math.max(0.0, 1 - scrollY / 400);
+    const opacity2 = Math.max(0.0, 1 - scrollY / 200);
+    const blur = Math.min(20, scrollY / 100);
 
-  const layer0 = scrollY * .3;
-  const layer1 = scrollY * 0.8;
-  const layer2 = scrollY * 0.4;
-  const layer3 = scrollY * 1;
+    const layerCard = scrollY * .8;
+    const layerText = scrollY * 1.8;
 
-  document.documentElement.style.setProperty(
-    '--parallax-layer-0',
-    `${layer0}px`
-  );
-  document.documentElement.style.setProperty(
-    '--parallax-layer-1',
-    `-${layer1}px`
-  );
-  document.documentElement.style.setProperty(
-    '--parallax-layer-2',
-    `-${layer2}px`
-  );
-  document.documentElement.style.setProperty(
-    '--parallax-layer-3',
-    `${layer3}px`
-  );
-  document.documentElement.style.setProperty(
-    '--parallax-opacity',
-    opacity.toString()
-  );
-  document.documentElement.style.setProperty(
-    '--parallax-blur',
-    `${blur}px`
-  );
-}
+    document.documentElement.style.setProperty(
+      '--parallax-layer-card',
+      `-${layerCard}px`
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-layer-text',
+      `${layerText}px`
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-opacity',
+      opacity.toString()
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-opacity2',
+      opacity2.toString()
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-blur',
+      `${blur}px`
+    );
+    
+    const duration = 120; // must match CSS duration (seconds)
+
+    const maxScroll = 1500; // adjust to page length
+    const progress = scrollY / maxScroll;
+
+    const time = progress * duration;
+
+    const section = document.querySelector('section.bg-color') as HTMLElement;
+
+    if (!section) return;
+
+    section.style.animationDelay = `-${time}s`;
+  }
 }

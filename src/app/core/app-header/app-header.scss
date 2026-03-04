@@ -26,14 +26,15 @@ $top-space:                       103px;
     }
     &.bg-teal {
         background-color: color.adjust($teal, $lightness: $color-adjust-amount) !important;
-    }
-    
+    }   
+}
+.spacer-bottom {
+    height: 500px;
 }
 
 section {
     top: $top-space;
-    margin-bottom: $top-space;
-
+    margin-bottom: 100px;
     &.bg-color {
         opacity: 1;
         // -webkit-clip-path: polygon(0 0, 100% 0, 100% 20%, 0 75%);
@@ -127,7 +128,6 @@ section {
         }
     }
     &#panel {
-        // top: 0;
         button {
             left: 3rem;
         }
@@ -206,10 +206,15 @@ section {
 .parallax-content {
   will-change: transform;
   transition: transform 0.05s linear;
+  inset: 0;
 }
 .layer-fade {
   opacity: var(--parallax-opacity, 1);
-  transition: opacity 0.1s linear;
+  transition: opacity 0.0s linear;
+}
+.layer-fade-faster {
+  opacity: var(--parallax-opacity2, 1);
+  transition: opacity 0.0s linear;
 }
 .layer-blur {
   filter: blur(var(--parallax-blur, 0px));
@@ -218,8 +223,8 @@ section {
   backdrop-filter: blur(var(--parallax-blur, 0px));
   transition: backdrop-filter 0.1s linear;
 }
-.layer-0 {
-  transform: translateY(var(--parallax-layer-0, 0px));
+.layer-card {
+  transform: translateY(var(--parallax-layer-card, 0px));
 }
 .layer-1 {
   transform: translateY(var(--parallax-layer-1, 0px));
@@ -228,6 +233,6 @@ section {
 .layer-2 {
   transform: translateY(var(--parallax-layer-2, 0px));
 }
-.layer-3 {
-  transform: translateY(var(--parallax-layer-3, 0px));
+.layer-text {
+  transform: translateY(var(--parallax-layer-text, 0px));
 }
