@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { faLinkedinIn, faTwitch, faGithub, faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { GlobalConstants } from '../../app.constants';
 import { faPlex } from 'src/app/shared/custom-icons/custom-icons.module';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'mm-app-navbar',
@@ -25,11 +27,15 @@ export class AppNavbar implements OnInit {
   spotifyURL = GlobalConstants.spotifyURL;
   plexURL = GlobalConstants.plexURL;
 
-  isMenuCollapsed = true;
+isMenuCollapsed = true;
+  constructor(private router: Router) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+ngOnInit() {
+  this.router.events
+    .pipe(filter(event => event instanceof NavigationEnd))
+    .subscribe(() => {
+      this.isMenuCollapsed = true;
+    });
+}
 
 }
