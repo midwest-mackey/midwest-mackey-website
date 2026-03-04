@@ -1,27 +1,27 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-{{color}} container fixed-top rounded-bottom-4">
   <div class="container px-md-3">
-    <a class="navbar-brand" routerLink="" routerLinkActive="active">
+    <a class="navbar-brand" routerLink="" (click)="isMenuCollapsed = true" routerLinkActive="active">
       <img src="./assets/mm-logo.svg" alt="Midwest Mackey Logo" width="45">
     </a>
     <div id="social-links" class="d-flex order-lg-2 rounded-pill">
       <ul class="nav col gap-2">
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{githubBaseURL}}"  title="Github" target="github">
+          <a class="nav-link link-light rounded-pill" href="{{githubBaseURL}}"  title="Github" target="github">
             <fa-icon [icon]="faGithub"></fa-icon>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{linkedinURL}}" title="linkedin" target="linkedin">
+          <a class="nav-link link-light rounded-pill" href="{{linkedinURL}}" title="linkedin" target="linkedin">
             <fa-icon [icon]="faLinkedinIn"></fa-icon>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{instagramURL}}" title="Instagram" target="instagram">
+          <a class="nav-link link-light rounded-pill" href="{{instagramURL}}" title="Instagram" target="instagram">
             <fa-icon [icon]="faInstagram"></fa-icon>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" (click)="isMenuCollapsed = true" href="{{twitchURL}}" title="Twitch" target="twitch">
+          <a class="nav-link link-light rounded-pill" href="{{twitchURL}}" title="Twitch" target="twitch">
             <fa-icon [icon]="faTwitch"></fa-icon>
           </a>
         </li>
@@ -35,13 +35,13 @@
       <div id="navbar-links" class="mt-4 mt-lg-0">
         <ul class="nav nav-pills col gap-2">
           <li class="nav-item">
-            <a class="nav-link link-light rounded-pill" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">midwest mackey</a>
+            <a class="nav-link link-light rounded-pill" routerLink="/" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">midwest mackey</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light rounded-pill" routerLink="/skills" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">skills</a>
+            <a class="nav-link link-light rounded-pill" routerLink="/skills" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">skills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link-light rounded-pill" routerLink="/projects" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">projects</a>
+            <a class="nav-link link-light rounded-pill" routerLink="/projects" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">projects</a>
           </li>
         </ul>
       </div>
