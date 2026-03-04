@@ -76,16 +76,21 @@ export class AppHeader implements OnInit, OnDestroy, OnChanges {
     const opacity2 = Math.max(0.0, 1 - scrollY / 200);
     const blur = Math.min(20, scrollY / 100);
 
-    const layerCard = scrollY * .8;
-    const layerText = scrollY * 1.8;
+    const layerCard = scrollY * 1.2;
+    const layerText1 = scrollY * 1.8;
+    const layerText2 = scrollY * .8;
 
     document.documentElement.style.setProperty(
       '--parallax-layer-card',
       `-${layerCard}px`
     );
     document.documentElement.style.setProperty(
-      '--parallax-layer-text',
-      `${layerText}px`
+      '--parallax-layer-text1',
+      `${layerText1}px`
+    );
+    document.documentElement.style.setProperty(
+      '--parallax-layer-text2',
+      `-${layerText2}px`
     );
     document.documentElement.style.setProperty(
       '--parallax-opacity',
@@ -102,7 +107,7 @@ export class AppHeader implements OnInit, OnDestroy, OnChanges {
     
     const duration = 120; // must match CSS duration (seconds)
 
-    const maxScroll = 1500; // adjust to page length
+    const maxScroll = 2500; // adjust to page length
     const progress = scrollY / maxScroll;
 
     const time = progress * duration;

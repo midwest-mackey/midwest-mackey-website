@@ -233,6 +233,9 @@ section {
 .layer-2 {
   transform: translateY(var(--parallax-layer-2, 0px));
 }
-.layer-text {
-  transform: translateY(var(--parallax-layer-text, 0px));
+.layer-text1 {
+  transform: translateY(var(--parallax-layer-text1, 0px));
+}
+.layer-text2 {
+  transform: translateY(var(--parallax-layer-text2, 0px));
 }
