@@ -18,7 +18,7 @@ export class TwitchService {
       this.apiUrl = 'http://localhost:3000/twitch/live';
     } else if (hostname.includes('midwestmackey.com')) {
       // Production public domain
-      this.apiUrl = 'https://api.midwestmackey.com/twitch/live';
+      this.apiUrl = 'https://api1.midwestmackey.com/twitch/live';
     } else {
       // Likely running inside Docker Compose network
       this.apiUrl = 'http://twitch-api:3000/twitch/live';

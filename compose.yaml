@@ -1,8 +1,8 @@
 secrets:
   twitch_client_id:
-    file: ./secrets/twitch_client_id
+    file: ./secrets/twitch_client_id.txt
   twitch_client_secret:
-    file: ./secrets/twitch_client_secret
+    file: ./secrets/twitch_client_secret.txt
     
 services:
   angular-prod:

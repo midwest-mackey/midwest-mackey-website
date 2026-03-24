@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
       # Build and push Angular frontend
-      - name: Build and Push
+      - name: Build and Push Frontend
         uses: docker/build-push-action@v5
         with:
           context: .
