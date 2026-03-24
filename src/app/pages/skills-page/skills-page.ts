@@ -14,14 +14,7 @@ export class SkillsPage implements OnInit {
 
   currentColor = 'cyan';
 
-  faFontAwesome = faFontAwesomeFlag;
-  faGithub = faGithub;
-  faAngular = faAngular;
-  faReact = faReact;
-  faJira = faJira;
-  faBitbucket = faBitbucket;
   faLinkedin = faLinkedin;
-  faPaperPlane = faPaperPlane
 
   linkedinURL = GlobalConstants.linkedinURL;
   emailAddress = GlobalConstants.emailAddress;

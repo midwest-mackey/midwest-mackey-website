@@ -11,7 +11,7 @@ import { ProjectLayout } from './layouts/projects/project-layout';
 
 const routes: Routes = [
   // { path: '', redirectTo: '', pathMatch: 'full' },
-  {path: '', component: MainLayout,
+  { path: '', component: MainLayout,
     children: [
       { path: '', component: HomePage, pathMatch: 'full',title: 'Midwest Mackey',
           data: {

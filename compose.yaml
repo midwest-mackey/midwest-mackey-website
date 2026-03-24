@@ -1,3 +1,9 @@
+secrets:
+  twitch_client_id:
+    file: ./secrets/twitch_client_id
+  twitch_client_secret:
+    file: ./secrets/twitch_client_secret
+    
 services:
   angular-prod:
     build:
@@ -24,3 +30,12 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     command: ["npm", "run", "test"]
+
+  twitch-api:
+    build: ./twitch-backend
+    ports:
+      - "3000:3000"
+    secrets:
+      - twitch_client_id
+      - twitch_client_secret
+    restart: unless-stopped

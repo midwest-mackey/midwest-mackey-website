@@ -72,13 +72,13 @@ export class AppHeader implements OnInit, OnDestroy, OnChanges {
   onScroll() {
 
     const scrollY = window.scrollY;
-    const opacity = Math.max(0.0, 1 - scrollY / 400);
+    const opacity = Math.max(0.0, 1 - scrollY / 500);
     const opacity2 = Math.max(0.0, 1 - scrollY / 200);
     const blur = Math.min(20, scrollY / 100);
 
-    const layerCard = scrollY * 1.2;
+    const layerCard = scrollY * .9;
     const layerText1 = scrollY * 1.8;
-    const layerText2 = scrollY * .8;
+    const layerText2 = scrollY * 1.8;
 
     document.documentElement.style.setProperty(
       '--parallax-layer-card',

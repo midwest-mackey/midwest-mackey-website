@@ -1,0 +1,61 @@
+<!-- LIVE STREAM -->
+<div *ngIf="isLive; else offline">
+  <p class="badge text-bg-warning">🔴 Live Now</p>
+
+  <h3 class="display-0">{{ stream.title }}</h3>
+
+  <img
+    [src]="stream.thumbnail_url
+      .replace('{width}', '320')
+      .replace('{height}', '180')"
+    alt="{{ stream.title }}"
+  />
+
+  <p>{{ stream.viewer_count }} viewers</p>
+
+  <div class="d-flex">
+    <a [href]="'https://twitch.tv/' + stream.user_login" target="_blank"
+       class="btn btn-purple btn-card card shadow p-0 col-auto">
+      <div class="card-body">
+        <div class="row">
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="col-auto me-1">
+              <fa-layers [fixedWidth]="true" size="3x">
+                <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
+                <fa-icon class="twitch" [icon]="faTwitch" transform="shrink-8"></fa-icon>
+              </fa-layers>
+            </div>
+            <div class="col-auto text-start me-2">
+              <span class="fw-bold">Watch Live</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- OFFLINE / PAST STREAMS -->
+<ng-template #offline>
+  <div *ngIf="pastStreams?.length > 0; else noContent">
+    <h4>Recent Streams</h4>
+    <div class="row">
+      <div class="col-md-4 mb-3" *ngFor="let vod of pastStreams">
+        <a [href]="vod.url" target="_blank" class="card text-decoration-none">
+          <img
+            class="card-img-top"
+            [src]="getThumbnail(vod.thumbnail_url)"
+          />
+          <div class="card-body">
+            <p class="card-title mb-1">{{ vod.title }}</p>
+            <small>{{ vod.view_count }} views</small>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noContent>
+    <p class="badge text-bg-dark">⚫ OFFLINE</p>
+  </ng-template>
+</ng-template>
