@@ -16,9 +16,12 @@ export class TwitchService {
     if (hostname === 'localhost') {
       // Dev on local machine
       this.apiUrl = 'http://localhost:3000/twitch/live';
+    } else if (hostname.includes('midwestmackey.com')) {
+      // Production public domain
+      this.apiUrl = 'https://api1.midwestmackey.com/twitch/live';
     } else {
       // Likely running inside Docker Compose network
-      this.apiUrl = '/twitch/live';
+      this.apiUrl = 'http://twitch-api:3000/twitch/live';
     }
   }
 
