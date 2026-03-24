@@ -18,7 +18,7 @@ export class TwitchService {
       this.apiUrl = 'http://localhost:3000/twitch/live';
     } else {
       // Likely running inside Docker Compose network
-      this.apiUrl = 'http://twitch-api:3000/twitch/live';
+      this.apiUrl = 'https://twitch-api:3000/twitch/live';
     }
   }
 
