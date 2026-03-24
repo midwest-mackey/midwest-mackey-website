@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule} from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbCarouselModule, NgbCollapseModule, NgbDropdownModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
@@ -35,6 +36,7 @@ import { FilterPipe } from './shared/pipes/filter-pipe';
 import { ProjectLayout } from './layouts/projects/project-layout';
 import { ProjectNavbar } from './core/project-navbar/project-navbar';
 import { ProjectHeader } from './core/project-header/project-header';
+import { TwitchStatus } from './shared/components/twitch-status/twitch-status';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import { ProjectHeader } from './core/project-header/project-header';
     WhatIDo,
     ProjectList,
     Search,
-    FilterPipe
+    FilterPipe,
+    TwitchStatus
     ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { ProjectHeader } from './core/project-header/project-header';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    ThemeToggle
+    ThemeToggle,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [
