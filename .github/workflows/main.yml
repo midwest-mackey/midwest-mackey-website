@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # Build and push Angular frontend
-      - name: Build and Push
+      - name: Build and Push Frontend
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -30,13 +30,12 @@ jobs:
           tags: |
             midwestmackey/midwestmackey.com:latest
             midwestmackey/midwestmackey.com:${{ github.sha }}
-            
+
       # Build and push Twitch backend
       - name: Build and Push Twitch Backend
         uses: docker/build-push-action@v5
         with:
           context: ./twitch-backend
-          file: Dockerfile
           push: true
           tags: |
             midwestmackey/twitch-backend:latest
