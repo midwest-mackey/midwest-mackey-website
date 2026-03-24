@@ -7,9 +7,23 @@ import { map } from 'rxjs/operators';
 })
 export class TwitchService {
 
-  private apiUrl = 'http://localhost:3000/twitch/live';
+  private apiUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // Automatically set backend URL based on environment
+    const hostname = window.location.hostname;
+
+    if (hostname === 'localhost') {
+      // Dev on local machine
+      this.apiUrl = 'http://localhost:3000/twitch/live';
+    } else if (hostname.includes('midwestmackey.com')) {
+      // Production public domain
+      this.apiUrl = 'https://api.midwestmackey.com/twitch/live';
+    } else {
+      // Likely running inside Docker Compose network
+      this.apiUrl = 'http://twitch-api:3000/twitch/live';
+    }
+  }
 
   getStream(username: string) {
     return this.http.get<any>(`${this.apiUrl}/${username}`).pipe(
