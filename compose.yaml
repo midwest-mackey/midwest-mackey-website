@@ -3,7 +3,13 @@ secrets:
     file: ./secrets/twitch_client_id.txt
   twitch_client_secret:
     file: ./secrets/twitch_client_secret.txt
-    
+  spotify_client_id:
+    file: ./secrets/spotify_client_id.txt
+  spotify_client_secret:
+    file: ./secrets/spotify_client_secret.txt
+  spotify_refresh_token:
+    file: ./secrets/spotify_refresh_token.txt
+
 services:
   angular-prod:
     build:
@@ -31,11 +37,14 @@ services:
       dockerfile: Dockerfile.dev
     command: ["npm", "run", "test"]
 
-  twitch-api:
-    build: ./twitch-backend
+  mm-api:
+    build: ./backend
     ports:
       - "3000:3000"
     secrets:
       - twitch_client_id
       - twitch_client_secret
+      - spotify_client_id
+      - spotify_client_secret
+      - spotify_refresh_token
     restart: unless-stopped

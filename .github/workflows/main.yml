@@ -35,8 +35,8 @@ jobs:
       - name: Build and Push Twitch Backend
         uses: docker/build-push-action@v5
         with:
-          context: ./twitch-backend
+          context: ./backend
           push: true
           tags: |
-            midwestmackey/twitch-backend:latest
-            midwestmackey/twitch-backend:${{ github.sha }}
+            midwestmackey/backend:latest
+            midwestmackey/backend:${{ github.sha }}
