@@ -26,12 +26,12 @@ export class HomePage implements OnInit {
   fortniteURL = GlobalConstants.fortniteTrackerURL;
 
   gamerID = 'gamer';
-  gamerColor = this.currentColor;
+  gamerColor = 'purple';
   gamerCss = 'end';
   gamerTitle = 'Game Time';
-  gamerSideText = 'PS5';
-  gamerBodyText = 'Hop on, join up, and, play some games. I am usually on most nights, just trying to have fun. Who knows, maybe I will start streaming to make a thing of it!';
-  gamerSubText = 'See if I have anything on my channels!';
+  gamerSideText = 'Twitch';
+  gamerBodyText = 'Hop on, join up, and, play some games, and enjoy the evening.\nI\'m on most nights after 8:00 PM CST.\nCheck if I\'m live and hop in!';
+  gamerSubText = '';
   gamerImg = 'assets/me/mm-confetti.png';
   gamerButtons: any[] = [{
     icon: this.faTwitch,

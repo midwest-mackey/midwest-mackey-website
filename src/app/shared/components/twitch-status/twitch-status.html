@@ -38,17 +38,19 @@
 <!-- OFFLINE / PAST STREAMS -->
 <ng-template #offline>
   <div *ngIf="pastStreams?.length > 0; else noContent">
-    <h4>Recent Streams</h4>
-    <div class="row">
+    <h1 class="twitch display-0 "><fa-icon class="twitch" [icon]="faTwitch"></fa-icon> RECENT BROADCASTS</h1>
+    <div class="row mt-4">
       <div class="col-md-4 mb-3" *ngFor="let vod of pastStreams">
-        <a [href]="vod.url" target="_blank" class="card text-decoration-none">
-          <img
+        <a [href]="vod.url" target="_blank" class="card text-decoration-none bg-twitch text-white">
+          <div class="card-img-wrapper">
+            <img
             class="card-img-top"
             [src]="getThumbnail(vod.thumbnail_url)"
           />
+          </div>
           <div class="card-body">
-            <p class="card-title mb-1">{{ vod.title }}</p>
-            <small>{{ vod.view_count }} views</small>
+            <h6 class="card-title mb-1">{{ vod.title }}</h6>
+            <small><span class="badge text-bg-purple rounded-pill">{{ vod.view_count }} views</span></small>
           </div>
         </a>
       </div>
