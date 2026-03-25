@@ -33,6 +33,6 @@ jobs:
       - name: Build and Push Twitch Backend
         uses: docker/build-push-action@v5
         with:
-          context: ./twitch-backend
+          context: ./backend
           push: true
-          tags: midwestmackey/twitch-backend:dev
+          tags: midwestmackey/backend:dev
