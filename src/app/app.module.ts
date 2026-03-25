@@ -36,6 +36,7 @@ import { FilterPipe } from './shared/pipes/filter-pipe';
 import { ProjectLayout } from './layouts/projects/project-layout';
 import { ProjectNavbar } from './core/project-navbar/project-navbar';
 import { ProjectHeader } from './core/project-header/project-header';
+import { PulseIndicator } from './shared/components/pulse-indicator/pulse-indicator';
 import { TwitchStatus } from './shared/components/twitch-status/twitch-status';
 
 @NgModule({
@@ -63,6 +64,7 @@ import { TwitchStatus } from './shared/components/twitch-status/twitch-status';
     ProjectList,
     Search,
     FilterPipe,
+    PulseIndicator,
     TwitchStatus
     ],
   imports: [

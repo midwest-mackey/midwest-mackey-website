@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { faLinkedinIn, faTwitch, faGithub, faInstagram, faSpotify } from '@fortawesome/free-brands-svg-icons';
 import { GlobalConstants } from '../../app.constants';
 import { faPlex } from 'src/app/shared/custom-icons/custom-icons.module';
+import { TwitchService } from 'src/app/shared/services/twitch.service';
 
 @Component({
   selector: 'mm-app-navbar',
@@ -25,9 +26,10 @@ export class AppNavbar implements OnInit {
   spotifyURL = GlobalConstants.spotifyURL;
   plexURL = GlobalConstants.plexURL;
 
+
   isMenuCollapsed = true;
 
-  constructor() { }
+  constructor(public twitchService: TwitchService) {}
 
   ngOnInit(): void {
   }
