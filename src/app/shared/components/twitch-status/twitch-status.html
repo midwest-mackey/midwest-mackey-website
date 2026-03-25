@@ -1,54 +1,56 @@
 <!-- LIVE STREAM -->
 <div *ngIf="isLive; else offline">
-  <p class="badge text-bg-warning">🔴 Live Now</p>
-
-  <h3 class="display-0">{{ stream.title }}</h3>
-
-  <img
-    [src]="stream.thumbnail_url
-      .replace('{width}', '320')
-      .replace('{height}', '180')"
-    alt="{{ stream.title }}"
-  />
-
-  <p>{{ stream.viewer_count }} viewers</p>
-
-  <div class="d-flex">
-    <a [href]="'https://twitch.tv/' + stream.user_login" target="_blank"
-       class="btn btn-purple btn-card card shadow p-0 col-auto">
-      <div class="card-body">
-        <div class="row">
-          <div class="d-flex align-items-center justify-content-center">
-            <div class="col-auto me-1">
-              <fa-layers [fixedWidth]="true" size="3x">
-                <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                <fa-icon class="twitch" [icon]="faTwitch" transform="shrink-8"></fa-icon>
-              </fa-layers>
-            </div>
-            <div class="col-auto text-start me-2">
-              <span class="fw-bold">Watch Live</span>
-            </div>
-          </div>
+  <h1 class="twitch display-0 "><fa-icon class="twitch" [icon]="faTwitch"></fa-icon>{{ stream.title }}</h1>
+  <span class="badge text-bg-warning rounded-pill">🔴 Live Now</span>
+  <div class="row mt-4">
+    <div class="col-md-4 mb-3">
+      <a [href]="'https://twitch.tv/' + stream.user_login" target="_twitch" class="card text-decoration-none bg-twitch text-white position-relative">
+        <div class="card-img-wrapper">
+          <img
+          class="card-img-top"
+          [src]="getThumbnail(stream.thumbnail_url)"
+          alt="{{ stream.title }}"
+        />
         </div>
-      </div>
-    </a>
+        <div class="card-body d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="col-auto me-1">
+                <fa-layers [fixedWidth]="true" size="3x">
+                  <mm-pulse-indicator class="position-absolute top-0 end-0"></mm-pulse-indicator>
+                  <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
+                  <fa-icon class="" [icon]="faTwitch" transform="shrink-8"></fa-icon>
+                </fa-layers>
+              </div>
+              <div class="col-auto text-start me-2">
+                <span class="fw-bold">Watch Live</span>
+              </div>
+            </div>
+            <small><span class="badge text-bg-purple rounded-pill">{{ stream.viewer_count }} viewers</span></small>
+        </div>
+      </a>
+    </div>
   </div>
 </div>
 
 <!-- OFFLINE / PAST STREAMS -->
 <ng-template #offline>
   <div *ngIf="pastStreams?.length > 0; else noContent">
-    <h4>Recent Streams</h4>
-    <div class="row">
+    <p class="badge text-bg-dark">⚫ OFFLINE</p>
+    <p class="small text-muted space-mono-regular">I am not live right now. Check back later, view past broadcasts or follow me on Twitch to get notifications when I go live!</p>
+
+    <h1 class="twitch display-0 "><fa-icon class="twitch" [icon]="faTwitch"></fa-icon>PAST BROADCASTS</h1>
+    <div class="row mt-4">
       <div class="col-md-4 mb-3" *ngFor="let vod of pastStreams">
-        <a [href]="vod.url" target="_blank" class="card text-decoration-none">
-          <img
+        <a [href]="vod.url" target="_blank" class="card text-decoration-none bg-twitch text-white">
+          <div class="card-img-wrapper">
+            <img
             class="card-img-top"
             [src]="getThumbnail(vod.thumbnail_url)"
           />
+          </div>
           <div class="card-body">
-            <p class="card-title mb-1">{{ vod.title }}</p>
-            <small>{{ vod.view_count }} views</small>
+            <h6 class="card-title mb-1">{{ vod.title }}</h6>
+            <small><span class="badge text-bg-purple rounded-pill">{{ vod.view_count }} views</span></small>
           </div>
         </a>
       </div>
@@ -57,5 +59,7 @@
 
   <ng-template #noContent>
     <p class="badge text-bg-dark">⚫ OFFLINE</p>
+    <p class="small text-muted space-mono-regular">I am not live right now. Check back later or follow me on Twitch to get notifications when I go live!</p>
+
   </ng-template>
 </ng-template>

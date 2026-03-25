@@ -2,7 +2,7 @@
     <div class="container">
         <h1 class="display-4">Projects</h1>
         <div class="row align-items-center position-sticky z-3">
-            <h1 class="col-auto d-flex"><div class="bg-body rounded-4 p-3">
+            <h1 class="col-auto d-flex"><div class="rounded-4 p-3">
                 @if (searchValue) {
                   <span class="text-secondary sigmar-regular"> {{filteredProjects.length}}<span class="text-black-50"> /</span></span>
                 }
@@ -10,11 +10,6 @@
             </div></h1>
             <mm-search class="d-flex col justify-content-end" [color]="currentColor" [(searchValue)]="searchValue" placeHolder="search projects"></mm-search>
         </div>
-        <!-- <div class="row">
-            <div class="col alert alert-success shadow" *ngIf="searchValue">
-                <span class="fs-4"><fa-icon class="text-success me-2" [icon]="faMagnifyingGlass"></fa-icon> {{filteredProjects.length}} project<span *ngIf="filteredProjects.length !== 1">s</span> found for <span class="fw-bold">"{{searchValue}}"</span></span>
-            </div>
-        </div> -->
         @if (filteredProjects.length > 0) {
             <div class="project-grid mt-5">
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">

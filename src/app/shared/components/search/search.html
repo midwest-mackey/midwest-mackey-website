@@ -16,12 +16,7 @@
                         </div>
                     </div>
                     @if (searchValue) {
-                        <span id="indicator-container" class="h-0 position-absolute top-0 end-0">
-                            <div title="search filter active" id="indicator" class="position-relative p-1 border-none rounded-circle shadow animated loop pulse">
-                                <span class="visually-hidden">New alerts</span>
-                            </div>
-                        </span>
-                        
+                        <mm-pulse-indicator class="position-absolute top-0 end-0"></mm-pulse-indicator>
                     }
                 </div>
             </div>            

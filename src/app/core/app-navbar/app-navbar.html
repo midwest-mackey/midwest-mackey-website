@@ -20,10 +20,12 @@
             <fa-icon [icon]="faInstagram"></fa-icon>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" href="{{twitchURL}}" title="Twitch" target="twitch">
+        <li class="nav-item ">
+          <a class="nav-link link-light rounded-pill position-relative" href="{{twitchURL}}" title="Twitch" target="twitch">
             <fa-icon [icon]="faTwitch"></fa-icon>
+            <mm-pulse-indicator class="position-absolute top-0 end-0" *ngIf="(twitchService.stream$ | async)?.live"></mm-pulse-indicator>
           </a>
+          
         </li>
       </ul>
     </div>
