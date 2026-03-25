@@ -28,8 +28,12 @@ export class TwitchService {
   constructor(private http: HttpClient) {
     const hostname = window.location.hostname;
 
-    if (hostname === 'localhost') {
-      this.apiUrl = 'http://localhost:3000/twitch/live';
+    if (
+      hostname === 'localhost' ||
+      hostname === '0.0.0.0' ||
+      hostname.startsWith('192.168.') // 👈 ADD THIS
+    ) {
+      this.apiUrl = 'http://192.168.1.165:3000/twitch/live';
     } else if (hostname.includes('midwestmackey.com')) {
       this.apiUrl = 'https://api1.midwestmackey.com/twitch/live';
     } else {
