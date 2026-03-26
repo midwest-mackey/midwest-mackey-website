@@ -7,14 +7,27 @@ const router = Router();
 
 router.get('/live/:username', async (req, res) => {
   try {
-    const token = await getTwitchAccessToken(); // fetch valid access token
+    const token = await getTwitchAccessToken();
     const username = req.params.username?.toLowerCase();
+
+    console.log('CLIENT_ID:', CLIENT_ID);
+    console.log('TOKEN (first 10):', token.substring(0, 10));
 
     // Get user info
     const userRes = await fetch(`https://api.twitch.tv/helix/users?login=${username}`, {
-      headers: { 'Client-ID': CLIENT_ID, Authorization: `Bearer ${token}` }, // <-- use Docker secret
+      headers: { 'Client-ID': CLIENT_ID, Authorization: `Bearer ${token}` },
     });
+
+    console.log('USER STATUS:', userRes.status);
+
     const userData = await userRes.json();
+    console.log('USER DATA:', JSON.stringify(userData, null, 2));
+
+    // 🚨 IMPORTANT: handle Twitch errors explicitly
+    if (userData.error) {
+      return res.json({ live: false, error: userData.message });
+    }
+
     const user = userData.data?.[0];
     if (!user) return res.json({ live: false, error: 'User not found' });
 
