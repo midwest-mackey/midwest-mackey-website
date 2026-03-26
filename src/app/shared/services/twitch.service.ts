@@ -37,7 +37,7 @@ export class TwitchService {
     } else if (hostname.includes('midwestmackey.com')) {
       this.apiUrl = 'https://api1.midwestmackey.com/twitch/live';
     } else {
-      this.apiUrl = 'http://twitch-api:3000/twitch/live';
+      this.apiUrl = 'http://mm-api:3000/twitch/live';
     }
 
     // Start polling automatically

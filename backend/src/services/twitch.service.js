@@ -1,3 +1,4 @@
+// twitch.service.js
 import fetch from 'node-fetch';
 import fs from 'fs';
 
@@ -11,6 +12,9 @@ try {
 } catch (err) {
   console.warn('Twitch secrets not found. Twitch API will fail.', err);
 }
+
+// ✅ Export the secrets for use in routes
+export { CLIENT_ID, CLIENT_SECRET };
 
 let accessToken = null;
 let tokenExpiry = 0;
