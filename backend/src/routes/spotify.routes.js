@@ -3,6 +3,7 @@ import { getSpotifyNowPlaying } from '../services/spotify.service.js';
 
 const router = Router();
 
+// Current playing track
 router.get('/now-playing', async (req, res) => {
   try {
     const track = await getSpotifyNowPlaying();
@@ -10,6 +11,17 @@ router.get('/now-playing', async (req, res) => {
   } catch (err) {
     console.error('Spotify error:', err);
     res.status(500).json({ playing: false });
+  }
+});
+
+// Recently played tracks
+router.get('/recently-played', async (req, res) => {
+  try {
+    const recentTracks = await getSpotifyHistory();
+    res.json(recentTracks);
+  } catch (err) {
+    console.error('Spotify history error:', err);
+    res.status(500).json({ error: 'Failed to fetch recently played tracks' });
   }
 });
 

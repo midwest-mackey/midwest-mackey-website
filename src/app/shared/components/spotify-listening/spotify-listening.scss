@@ -1,0 +1,73 @@
+@use 'custom' as *;
+
+.spotify-listening {
+  display: flex;
+  align-items: center;
+
+  .album-art {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease; 
+      display: block;
+    }
+  }
+
+  .song-info {
+    flex: 1;
+
+    h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .status {
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.35em 0.5em;
+      &.bg-success {
+        background-color: $spotify !important;
+        color: black !important;
+      }
+    }
+  }
+
+  // Hover zoom for album art
+  &.card:hover {
+    .album-art img {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Sound visualizer bars
+.sound-visualizer {
+  display: flex;
+  align-items: flex-end; 
+  gap: 2px;
+  height: 20px; 
+
+  span {
+    width: 3px;
+    background-color: $spotify; 
+    display: block;
+    transition: height 0.2s;
+  }
+}
+
+// Card-specific styling
+.spotify-listening.card {
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}

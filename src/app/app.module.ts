@@ -38,6 +38,7 @@ import { ProjectNavbar } from './core/project-navbar/project-navbar';
 import { ProjectHeader } from './core/project-header/project-header';
 import { PulseIndicator } from './shared/components/pulse-indicator/pulse-indicator';
 import { TwitchStatus } from './shared/components/twitch-status/twitch-status';
+import { SpotifyListening } from './shared/components/spotify-listening/spotify-listening';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { TwitchStatus } from './shared/components/twitch-status/twitch-status';
     Search,
     FilterPipe,
     PulseIndicator,
-    TwitchStatus
+    TwitchStatus,
+    SpotifyListening
     ],
   imports: [
     BrowserModule,

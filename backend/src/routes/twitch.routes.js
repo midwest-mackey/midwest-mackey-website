@@ -10,18 +10,12 @@ router.get('/live/:username', async (req, res) => {
     const token = await getTwitchAccessToken();
     const username = req.params.username?.toLowerCase();
 
-    console.log('CLIENT_ID:', CLIENT_ID);
-    console.log('TOKEN (first 10):', token.substring(0, 10));
-
     // Get user info
     const userRes = await fetch(`https://api.twitch.tv/helix/users?login=${username}`, {
       headers: { 'Client-ID': CLIENT_ID, Authorization: `Bearer ${token}` },
     });
 
-    console.log('USER STATUS:', userRes.status);
-
     const userData = await userRes.json();
-    console.log('USER DATA:', JSON.stringify(userData, null, 2));
 
     // 🚨 IMPORTANT: handle Twitch errors explicitly
     if (userData.error) {
@@ -54,7 +48,7 @@ router.get('/live/:username', async (req, res) => {
     // Stream is live
     res.json({ live: true, stream });
   } catch (err) {
-    console.error('Twitch API error:', err);
+    console.error('Twitch API error for user', username, ':', err.message);
     res.json({ live: false, error: err.message || 'Unknown error' });
   }
 });

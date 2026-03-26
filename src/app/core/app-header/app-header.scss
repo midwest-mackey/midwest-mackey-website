@@ -1,6 +1,8 @@
 @use 'sass:color';
 @use 'custom' as *;
+
 $top-space:                       103px;
+
 .spacer-top {
     height: $top-space + 10px;
     width: 100%;

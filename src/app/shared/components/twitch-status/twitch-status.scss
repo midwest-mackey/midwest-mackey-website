@@ -1,5 +1,7 @@
+@use 'custom' as *;
+
 .bg-twitch {
-    background-color: #8956FB !important;
+    background-color: $twitch !important;
 }
 .text-bg-purple {
     background-color: #5e1fe4 !important;

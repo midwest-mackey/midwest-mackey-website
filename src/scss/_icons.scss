@@ -4,7 +4,7 @@
 
 // Social Icon Colors
 .twitch {
-    color: #8956FB;
+    color: $twitch !important;
 }
 .instagram {
    path {
@@ -12,50 +12,50 @@
     }
 }
 .discord {
-    color: #5865F2;
+    color: $discord !important;
 }
 .tiktok {
-    color: #040404;
+    color: $tiktok !important;
     svg {
-    filter: drop-shadow(1px 1px 0px #FD3E3E) drop-shadow(-1px -1px 0px #4DE8F4);
+    filter: drop-shadow(1px 1px 0px $tiktok-accent1) drop-shadow(-1px -1px 0px $tiktok-accent2);
     }
 }
 .youtube {
-    color: #FF0000;
+    color: $youtube !important;
 }
 .reddit {
-    color: #FF4500;
+    color: $reddit !important;
 }
 .linkedin {
-    color: #0A66C2;
+    color: $linkedin !important;
 }
 .github {
-    color: #101411;
+    color: $github !important;
 }
 .playstation {
-    color: #0070d1;
+    color: $playstation !important;
 }
 .spotify {
-    color: #1ED760;
+    color: $spotify !important;
 }
 
 
 .instagram-stop1 {
-  stop-color: #fdf497;
+  stop-color: $instagram-1;
 }
 
 .instagram-stop2 {
-  stop-color: #fdf497;
+  stop-color: $instagram-2;
 }
 
 .instagram-stop3 {
-  stop-color: #fd5949;
+  stop-color: $instagram-3;
 }
 
 .instagram-stop4 {
-  stop-color: #d6249f;
+  stop-color: $instagram-4;
 }
 
 .instagram-stop5 {
-  stop-color: #285aeb;
+  stop-color: $instagram-5;
 }

@@ -1,0 +1,37 @@
+<h1 class="spotify display-0 mb-4 d-flex align-items-center">
+  <fa-icon class="spotify me-2" [icon]="faSpotify"></fa-icon>
+  Now playing
+  <div class="sound-visualizer ms-3" *ngIf="nowPlaying?.isPlaying">
+    <span *ngFor="let bar of bars" [style.height.px]="bar"></span>
+  </div>
+</h1>
+
+<div
+  class="col-12 col-md-4 spotify-listening card p-3 d-flex rounded-4 align-items-start"
+  *ngIf="nowPlaying"
+  (click)="openTrack()"
+  style="cursor: pointer;"
+  [ngStyle]="{
+    'background': dominantGradient || '#1a1a1a'
+  }"
+>
+  <div class="album-art">
+    <img [src]="nowPlaying.albumArtUrl" alt="Album Art" class="rounded" />
+  </div>
+  <div class="song-info flex-grow-1">
+    <h2 class="mb-1 mt-3 sigmar-regular">{{ nowPlaying.songName }}</h2>
+    <p class="mb-0 text-muted space-mono-regular">{{ nowPlaying.artistName }}</p>
+    <p class="mb-0 small text-secondary">{{ nowPlaying.albumName }}</p>
+  </div>
+  <div class="status">
+    <span
+      class="badge"
+      [ngClass]="nowPlaying.isPlaying ? 'bg-success' : 'bg-secondary'"
+      >{{ nowPlaying.isPlaying ? 'Playing' : 'Paused' }}</span
+    >
+  </div>
+</div>
+
+<div class="spotify-listening card p-3 col-12 col-md-4 text-center" *ngIf="!nowPlaying">
+  <p class="mb-0 text-muted">No track currently playing</p>
+</div>

@@ -29,13 +29,13 @@ export async function getSpotifyAccessToken() {
     throw new Error('Spotify secrets missing or incomplete');
   }
 
-  // Return cached token if valid
   if (accessToken && Date.now() < tokenExpiry) return accessToken;
 
   const res = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
-      Authorization: 'Basic ' + Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64'),
+      Authorization:
+        'Basic ' + Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64'),
       'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams({
@@ -52,9 +52,12 @@ export async function getSpotifyAccessToken() {
 
   accessToken = data.access_token;
   tokenExpiry = Date.now() + data.expires_in * 1000;
+  console.log('Spotify access token refreshed, expires in', data.expires_in, 'seconds');
+
   return accessToken;
 }
 
+// ----------------- CURRENTLY PLAYING -----------------
 export async function getSpotifyNowPlaying() {
   const token = await getSpotifyAccessToken();
 
@@ -65,11 +68,36 @@ export async function getSpotifyNowPlaying() {
   if (res.status === 204) return { playing: false };
 
   const data = await res.json();
+
   return {
-    playing: data.is_playing,
-    title: data.item.name,
-    artist: data.item.artists.map(a => a.name).join(', '),
-    albumArt: data.item.album.images[0]?.url,
-    url: data.item.external_urls.spotify,
+    isPlaying: data.is_playing ?? false,
+    songName: data.item?.name ?? '',
+    artistName: data.item?.artists?.map(a => a.name).join(', ') ?? '',
+    albumName: data.item?.album?.name ?? '',
+    albumArtUrl: data.item?.album?.images?.[0]?.url ?? '',
+    url: data.item?.external_urls?.spotify ?? '',
   };
+}
+
+// ----------------- RECENTLY PLAYED -----------------
+export async function getSpotifyHistory(limit = 10) {
+  const token = await getSpotifyAccessToken();
+
+  const res = await fetch(
+    `https://api.spotify.com/v1/me/player/recently-played?limit=${limit}`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+
+  if (!res.ok) throw new Error('Failed to fetch Spotify history');
+
+  const data = await res.json();
+
+  return data.items.map(item => ({
+    songName: item.track?.name ?? '',
+    artistName: item.track?.artists?.map(a => a.name).join(', ') ?? '',
+    albumName: item.track?.album?.name ?? '',
+    albumArtUrl: item.track?.album?.images?.[0]?.url ?? '',
+    url: item.track?.external_urls?.spotify ?? '',
+    playedAt: item.played_at,
+  }));
 }
