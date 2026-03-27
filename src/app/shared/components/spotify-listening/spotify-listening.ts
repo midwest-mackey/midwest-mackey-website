@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SpotifyService, SpotifyNowPlaying } from '../../services/spotify.service';
 import { FastAverageColor } from 'fast-average-color';
 import { faSpotify } from '@fortawesome/free-brands-svg-icons';
+import { SpotifyTrackHistory } from '../../services/spotify.service';
+
 
 @Component({
   selector: 'spotify-listening',
@@ -10,12 +12,17 @@ import { faSpotify } from '@fortawesome/free-brands-svg-icons';
   standalone: false,
 })
 export class SpotifyListening implements OnInit {
+
   nowPlaying: SpotifyNowPlaying | null = null;
+  recentTracks: SpotifyTrackHistory[] = [];
+
   dominantColor: string | null = null;
   dominantGradient: string | null = null;
+
   bars: number[] = Array(5).fill(10); // 5 bars for visualizer
+
   faSpotify = faSpotify;
-  
+
   private fac = new FastAverageColor();
   private visualizerInterval: any;
 
@@ -25,12 +32,27 @@ export class SpotifyListening implements OnInit {
     this.spotifyService.nowPlaying$.subscribe({
       next: (data) => {
         this.nowPlaying = data;
-        this.updateDominantGradient(); // fixed gradient logic
+        this.updateDominantGradient();
 
         if (data?.isPlaying) this.startVisualizer();
         else this.stopVisualizer();
       },
       error: (err) => console.error('Error fetching now playing', err),
+    });
+
+    // 👇 fetch last 5 recently played tracks
+    this.spotifyService.getHistory(5).subscribe({
+      next: (tracks) => {
+        // optional: filter out currently playing track
+        if (this.nowPlaying?.songName) {
+          this.recentTracks = tracks.filter(
+            t => t.songName !== this.nowPlaying?.songName
+          );
+        } else {
+          this.recentTracks = tracks;
+        }
+      },
+      error: (err) => console.error('Error fetching history', err),
     });
   }
 
@@ -78,15 +100,6 @@ export class SpotifyListening implements OnInit {
       this.dominantColor = null;
       this.dominantGradient = null;
     };
-  }
-
-  /**
-   * Open Spotify track in a new tab
-   */
-  openTrack() {
-    if (this.nowPlaying?.url) {
-      window.open(this.nowPlaying.url, '_blank');
-    }
   }
 
   /**

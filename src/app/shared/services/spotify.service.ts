@@ -47,17 +47,16 @@ export class SpotifyService {
 
   getNowPlaying() {
   return this.http.get<any>(this.NOW_PLAYING_URL).pipe(
-    map((res) => {
-      // Backend may return { playing: false } or { isPlaying: false } when nothing is playing
-      if (!res || (!res.isPlaying && !res.playing)) return null;
+    map(res => {
+      if (!res) return null;
 
       return {
-        isPlaying: res.isPlaying ?? res.playing ?? false,
-        songName: res.songName ?? res.title ?? '',
-        artistName: res.artistName ?? res.artist ?? '',
+        isPlaying: res.isPlaying ?? false, // always true/false
+        songName: res.songName ?? '',
+        artistName: res.artistName ?? '',
         albumName: res.albumName ?? '',
-        albumArtUrl: res.albumArtUrl ?? res.albumArt ?? '',
-        url: res.url ?? '',
+        albumArtUrl: res.albumArtUrl ?? '',
+        url: res.url ?? ''
       };
     })
   );
