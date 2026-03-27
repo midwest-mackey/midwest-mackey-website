@@ -65,7 +65,7 @@ export async function getSpotifyNowPlaying() {
     headers: { Authorization: `Bearer ${token}` },
   });
 
-  if (res.status === 204) return { playing: false };
+  if (res.status === 204) return { isPlaying: false };
 
   const data = await res.json();
 
