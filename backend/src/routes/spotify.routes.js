@@ -1,6 +1,5 @@
 import { Router } from 'express';
-import { getSpotifyNowPlaying } from '../services/spotify.service.js';
-
+import { getSpotifyNowPlaying, getSpotifyHistory } from '../services/spotify.service.js';
 const router = Router();
 
 // Current playing track

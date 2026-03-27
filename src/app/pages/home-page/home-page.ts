@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faPlaystation, faSpotify, faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faFortniteF } from 'src/app/shared/custom-icons/custom-icons.module';
 import { GlobalConstants } from 'src/app/app.constants';
+import { icon } from '@fortawesome/fontawesome-svg-core';
 
 
 @Component({
@@ -39,16 +40,19 @@ export class HomePage implements OnInit {
     icon: this.faTwitch,
     text: 'Follow me',
     link: this.twitchURL,
+    iconCss: 'twitch',
   },
   {
     icon: this.faPlaystation,
     text: 'Join the game',
     link: this.playstationURL,
+    iconCss: 'playstation',
   },
   {
     icon: this.faFortnite,
     text: 'Check my stats',
     link: this.fortniteURL,
+    iconCss: 'fortnite',
   },
   ];
 
