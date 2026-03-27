@@ -4,7 +4,7 @@ import { faCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { GlobalConstants } from '../../../app.constants';
 
 @Component({
-  selector: 'mm-social-links',
+  selector: 'mmsocial-links',
   templateUrl: './social-links.html',
   styleUrls: ['./social-links.scss'],
   standalone: false,
@@ -39,7 +39,6 @@ export class SocialLinks implements OnInit {
 
 
   buttons: any[] = [{
-
     icon: this.faTwitch,
     css: 'twitch',
     text: 'Twitch',

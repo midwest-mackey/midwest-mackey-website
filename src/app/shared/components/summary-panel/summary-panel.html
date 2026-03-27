@@ -1,12 +1,14 @@
-<section class="container-fluid">
+<section class="container-fluid" id="{{id}}">
     <div class="container">
         <div class="row d-flex {{css}}">
             @if (img) {
-            <div class="d-flex justify-content-end align-items-center order-xxl-2 m-0 img-container">
-                <div class="col col-auto"><img src="{{img}}" class=""></div>
+            <div class="row d-flex {{css}} order-xxl-3">
+                <div class="d-flex align-items-center m-0 img-container">
+                    <div class="col col-auto"><img src="{{img}}" class=""></div>
+                </div>
             </div>
             }
-            <div class="col-12 order-xxl-1" >
+            <div class="col-12 order-xxl-1">
                 <div id="side-text-wrapper" class="position-relative">
                     <div id="side-text-outer" class="position-absolute">
                         <h1 id="side-text" class="text-{{color}} fw-black font-family-alt">{{sideText}}</h1>
@@ -21,46 +23,32 @@
                     </div>
                 </div>
             </div>
-        
-        </div>
-        <div id="summary-buttons" class="row justify-content-md-{{css}}">
-            <div class="col-11 col-offset-md-1 col-md-auto d-grid gap-2 gap-lg-4 d-md-flex">
-                @for (button of buttons; track $index) {
-                <a href="{{button.link}}" target="_blank"
-                class="btn btn-light card shadow p-0">
-                    <div class="card-body">
-                        <div class="row">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <div class="col-auto me-1">
-                                <fa-layers [fixedWidth]="true" size="3x">
-                                <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                                <fa-icon class="text-primary" [icon]="button.icon" transform="shrink-8"></fa-icon>
-                                </fa-layers>
-                            </div>
-                            <div class="col-auto text-start me-2">
-                                <div class="mb-0">
-                                <span class="fw-bold">{{button.text}}</span>
+            <div id="summary-buttons" class="row d-flex justify-content-md-{{css}} order-xxl-2">
+                <div class="col-11 col-offset-md-1 col-md-auto d-grid gap-2 gap-lg-4 d-md-flex">
+                    @for (button of buttons; track $index) {
+                    <a href="{{button.link}}" target="_blank"
+                    class="btn btn-light card shadow p-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <div class="col-auto me-1">
+                                        <fa-layers [fixedWidth]="true" size="3x">
+                                        <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
+                                        <fa-icon class="text-primary" [class]="button.iconCss" [icon]="button.icon" transform="shrink-8"></fa-icon>
+                                        </fa-layers>
+                                    </div>
+                                    <div class="col-auto text-start me-2">
+                                        <div class="mb-0">
+                                        <span class="fw-bold">{{button.text}}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-auto ms-auto">
-                                <fa-icon class="text-primary" [fixedWidth]="true" [icon]="faArrowRight"></fa-icon>
-                            </div> -->
                         </div>
-                        </div>
-                    </div>
-                </a>
-                }
+                    </a>
+                    }
+                </div>
             </div>
-                <!-- <button (click)="onClick('appHeaderScrollTarget')" class="float-end btn btn-{{color}} btn-card">
-                    <div class="card-body">
-                        <div class="align-items-center g-0">
-                        <span class="text-start fs-5">{{buttonText}}</span>
-                        <span class="ms-4">
-                            <fa-icon [fixedWidth]="true" [icon]="faArrowDown"></fa-icon>
-                        </span>
-                        </div>
-                    </div>
-                </button> -->
         </div>
     </div>
 </section>

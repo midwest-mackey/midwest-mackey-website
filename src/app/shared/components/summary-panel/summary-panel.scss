@@ -35,6 +35,10 @@ section {
         //     z-index: -1;
         // }
         }
+        .img-container {
+            justify-content: flex-start;
+            height: 250px;
+        }
     }
     .end {
         flex-direction: row-reverse!important;
@@ -53,7 +57,9 @@ section {
             padding-right: 30vw !important;
             margin-left: $spacer-size;
         }
-        
+        .img-container {
+            justify-content: flex-end;
+        }
     }
     .img-container {
         height: 0;
@@ -81,16 +87,35 @@ section {
 @include media-breakpoint-down(xl) {
     section {
         .img-container {
-        height: 200px;
+            height: 250px;
+            margin-top: 50px !important;
+        }
+        .start {
+            .img-container {
+                justify-content: flex-start;
+                .col {
+                    margin-top: 0;
+                }
+            }
+        }
     }
-}
 }
 @include media-breakpoint-down(sm) {
     section {
         .img-container {
-        img {
-            transform: scaleX(-1);
+            img {
+                transform: scaleX(-1);
+            }
         }
     }
 }
+// Special Panels
+#spotify {
+    #summary-panel {
+        background-color: $spotify !important;
+        color: black !important;
+    }
+    #side-text {
+        color: $spotify !important;
+    }
 }

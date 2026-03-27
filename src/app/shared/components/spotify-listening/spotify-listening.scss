@@ -1,0 +1,103 @@
+@use 'custom' as *;
+
+.spotify-listening {
+  display: flex;
+  align-items: center;
+
+  .album-art {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    padding: 16px;
+    transition: padding 0.3s ease;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-radius 0.4s ease; // smooth zoom & shadow
+    }
+  }
+
+  .song-info {
+    flex: 1;
+
+    h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .status {
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.35em 0.5em;
+
+      &.bg-success {
+        background-color: $spotify !important;
+        color: black !important;
+      }
+    }
+  }
+
+  // Hover zoom for album art
+  &.card:hover {
+    .album-art {
+      padding: 0; // smooth padding shrink
+
+      img {
+        border-radius: 16px !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      }
+    }
+  }
+}
+
+// Sound visualizer bars
+.sound-visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 20px;
+
+  span {
+    width: 3px;
+    background-color: $spotify;
+    display: block;
+    transition: height 0.2s ease-in-out;
+  }
+}
+
+// Card container
+.spotify-listening.card {
+  overflow: hidden;
+  transition: 0.3s ease; // smooth overall card transitions
+}
+
+.recent-tracks {
+  .recent-track {
+    transition: all 0.25s ease;
+
+    img {
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(4px);
+
+      img {
+        transform: scale(1.35);
+      }
+    }
+  }
+}

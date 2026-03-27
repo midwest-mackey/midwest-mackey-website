@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getSpotifyNowPlaying } from '../services/spotify.service.js';
+import { getSpotifyNowPlaying, getSpotifyHistory } from '../services/spotify.service.js';
 
 const router = Router();
 
+// Current playing track
 router.get('/now-playing', async (req, res) => {
   try {
     const track = await getSpotifyNowPlaying();
@@ -12,12 +13,23 @@ router.get('/now-playing', async (req, res) => {
     res.status(500).json({ playing: false });
   }
 });
-// Callback endpoint for Spotify OAuth
+
+// Recently played tracks
+router.get('/recently-played', async (req, res) => {
+  try {
+    const recentTracks = await getSpotifyHistory();
+    res.json(recentTracks);
+  } catch (err) {
+    console.error('Spotify history error:', err);
+    res.status(500).json({ error: 'Failed to fetch recently played tracks' });
+  }
+});
+
+// OAuth redirect callback
 router.get('/callback', (req, res) => {
   const code = req.query.code;
   if (!code) return res.status(400).send('No code returned by Spotify');
 
-  // You can just log the code or exchange for refresh token manually
   console.log('Spotify auth code:', code);
   res.send('Spotify auth code received. Check server logs.');
 });

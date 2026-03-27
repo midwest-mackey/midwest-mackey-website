@@ -5,3 +5,12 @@ section#social-links {
     margin-bottom: -200px;
     padding-bottom: 200px;
 }
+#spotify {
+    background-color: red;
+    #summary-panel {
+        background-color: $spotify !important;
+    }
+    #side-text {
+        color: $spotify;
+    }
+}
