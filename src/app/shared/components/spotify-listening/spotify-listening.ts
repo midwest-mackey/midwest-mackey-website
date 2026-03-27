@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { SpotifyService, SpotifyNowPlaying } from '../../services/spotify.service';
-import { FastAverageColor } from 'fast-average-color';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { SpotifyService, SpotifyNowPlaying, SpotifyTrackHistory } from '../../services/spotify.service';
+import { ImageColorService, ImageGradientResult } from '../../services/image.color.service';
 import { faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { SpotifyTrackHistory } from '../../services/spotify.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'spotify-listening',
@@ -11,42 +10,59 @@ import { SpotifyTrackHistory } from '../../services/spotify.service';
   styleUrls: ['./spotify-listening.scss'],
   standalone: false,
 })
-export class SpotifyListening implements OnInit {
-
+export class SpotifyListening implements OnInit, OnDestroy {
   nowPlaying: SpotifyNowPlaying | null = null;
   recentTracks: SpotifyTrackHistory[] = [];
 
   dominantColor: string | null = null;
+  accentColor: string | null = null;
   dominantGradient: string | null = null;
 
-  bars: number[] = Array(5).fill(10); // 5 bars for visualizer
+  bars: number[] = Array(5).fill(10); // visualizer bars
 
   faSpotify = faSpotify;
 
-  private fac = new FastAverageColor();
   private visualizerInterval: any;
+  private nowPlayingSub?: Subscription;
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(
+    private spotifyService: SpotifyService,
+    private imageColorService: ImageColorService
+  ) {}
 
   ngOnInit(): void {
-    this.spotifyService.nowPlaying$.subscribe({
-      next: (data) => {
+    // Subscribe to now playing
+    this.nowPlayingSub = this.spotifyService.nowPlaying$.subscribe({
+      next: async (data) => {
         this.nowPlaying = data;
-        this.updateDominantGradient();
 
+        if (data?.albumArtUrl) {
+          // Get colors & gradient from album art
+          const result: ImageGradientResult = await this.imageColorService.getGradientFromImage(
+            data.albumArtUrl
+          );
+          this.dominantColor = result.dominantColor;
+          this.accentColor = result.accentColor;
+          this.dominantGradient = result.gradient;
+        } else {
+          this.dominantColor = null;
+          this.accentColor = null;
+          this.dominantGradient = null;
+        }
+
+        // Start/stop visualizer
         if (data?.isPlaying) this.startVisualizer();
         else this.stopVisualizer();
       },
       error: (err) => console.error('Error fetching now playing', err),
     });
 
-    // 👇 fetch last 5 recently played tracks
+    // Fetch last 5 recently played tracks
     this.spotifyService.getHistory(5).subscribe({
       next: (tracks) => {
-        // optional: filter out currently playing track
         if (this.nowPlaying?.songName) {
           this.recentTracks = tracks.filter(
-            t => t.songName !== this.nowPlaying?.songName
+            (t) => t.songName !== this.nowPlaying?.songName
           );
         } else {
           this.recentTracks = tracks;
@@ -56,55 +72,14 @@ export class SpotifyListening implements OnInit {
     });
   }
 
-  /**
-   * Compute a gradient from album art using a single dominant color
-   */
-  private updateDominantGradient() {
-    if (!this.nowPlaying?.albumArtUrl) {
-      this.dominantColor = null;
-      this.dominantGradient = null;
-      return;
-    }
-
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.src = this.nowPlaying.albumArtUrl;
-
-    img.onload = () => {
-      this.fac.getColorAsync(img)
-        .then(color => {
-          this.dominantColor = color.hex;
-
-          // Darken function to create gradient stops
-          const darkenHex = (hex: string, amount: number) => {
-            const r = Math.max(0, parseInt(hex.slice(1, 3), 16) - amount);
-            const g = Math.max(0, parseInt(hex.slice(3, 5), 16) - amount);
-            const b = Math.max(0, parseInt(hex.slice(5, 7), 16) - amount);
-            return `rgb(${r},${g},${b})`;
-          };
-
-          const midColor = darkenHex(this.dominantColor, 40); // medium shade
-          const darkColor = darkenHex(this.dominantColor, 80); // dark shade
-
-          // Multi-stop gradient: top -> mid -> bottom -> overlay
-          this.dominantGradient = `linear-gradient(to bottom, ${this.dominantColor}, ${midColor}, ${darkColor}, rgba(0,0,0,0.7))`;
-        })
-        .catch(err => {
-          console.error('Error getting dominant color:', err);
-          this.dominantColor = null;
-          this.dominantGradient = null;
-        });
-    };
-
-    img.onerror = () => {
-      this.dominantColor = null;
-      this.dominantGradient = null;
-    };
+  ngOnDestroy(): void {
+    this.stopVisualizer();
+    this.nowPlayingSub?.unsubscribe();
   }
 
-  /**
-   * Start the fake visualizer bars animation
-   */
+  // ----------------------
+  // Visualizer animation
+  // ----------------------
   startVisualizer() {
     this.stopVisualizer(); // clear previous
     this.visualizerInterval = setInterval(() => {
@@ -112,9 +87,6 @@ export class SpotifyListening implements OnInit {
     }, 200);
   }
 
-  /**
-   * Stop the visualizer
-   */
   stopVisualizer() {
     if (this.visualizerInterval) {
       clearInterval(this.visualizerInterval);
