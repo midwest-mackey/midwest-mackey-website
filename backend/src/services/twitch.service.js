@@ -1,4 +1,3 @@
-// twitch.service.js
 import fetch from 'node-fetch';
 import fs from 'fs';
 
@@ -8,20 +7,24 @@ let CLIENT_SECRET = '';
 try {
   CLIENT_ID = fs.readFileSync('/run/secrets/twitch_client_id', 'utf-8').trim();
   CLIENT_SECRET = fs.readFileSync('/run/secrets/twitch_client_secret', 'utf-8').trim();
-  console.log('Twitch secrets loaded');
+
+  console.log('✅ Twitch secrets loaded');
 } catch (err) {
-  console.warn('Twitch secrets not found. Twitch API will fail.', err);
+  console.error('❌ Twitch secrets missing — check Docker secrets mount');
 }
 
-// ✅ Export the secrets for use in routes
+// 🔴 Hard fail (same pattern as Spotify)
+if (!CLIENT_ID || !CLIENT_SECRET) {
+  throw new Error('Twitch CLIENT_ID or CLIENT_SECRET missing');
+}
+
+// Export for routes
 export { CLIENT_ID, CLIENT_SECRET };
 
 let accessToken = null;
 let tokenExpiry = 0;
 
 export async function getTwitchAccessToken() {
-  if (!CLIENT_ID || !CLIENT_SECRET) throw new Error('Twitch CLIENT_ID or CLIENT_SECRET missing');
-
   const now = Date.now();
   if (accessToken && now < tokenExpiry) return accessToken;
 
@@ -35,11 +38,18 @@ export async function getTwitchAccessToken() {
   });
 
   const data = await res.json();
-  if (!data.access_token) throw new Error('Failed to get access token: ' + JSON.stringify(data));
+
+  if (!data.access_token) {
+    throw new Error('Failed to get access token: ' + JSON.stringify(data));
+  }
 
   accessToken = data.access_token;
+
+  // ✅ buffer (you already had this 👍)
   tokenExpiry = now + (data.expires_in * 1000) - 60000;
-  console.log('New Twitch token fetched, expires in', data.expires_in, 'seconds');
+
+  console.log('Twitch token refreshed');
+
   return accessToken;
 }
 
@@ -50,9 +60,7 @@ export function formatTwitchThumbnail(url, width = 320, height = 180) {
 
   try {
     clean = decodeURIComponent(url);
-  } catch (e) {
-    // ignore decoding errors
-  }
+  } catch (e) {}
 
   return clean
     .replace('{width}', width.toString())
