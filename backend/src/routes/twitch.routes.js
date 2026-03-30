@@ -1,7 +1,7 @@
 // twitch.routes.js
 import { Router } from 'express';
 import fetch from 'node-fetch';
-import { getTwitchAccessToken, CLIENT_ID } from '../services/twitch.service.js'; // <-- import CLIENT_ID from secrets
+import { getTwitchAccessToken, CLIENT_ID, formatTwitchThumbnail } from '../services/twitch.service.js';
 
 const router = Router();
 
@@ -17,7 +17,6 @@ router.get('/live/:username', async (req, res) => {
 
     const userData = await userRes.json();
 
-    // 🚨 IMPORTANT: handle Twitch errors explicitly
     if (userData.error) {
       return res.json({ live: false, error: userData.message });
     }
@@ -27,29 +26,47 @@ router.get('/live/:username', async (req, res) => {
 
     // Check if live
     const streamRes = await fetch(`https://api.twitch.tv/helix/streams?user_id=${user.id}`, {
-      headers: { 'Client-ID': CLIENT_ID, Authorization: `Bearer ${token}` }, // <-- Docker secret
+      headers: { 'Client-ID': CLIENT_ID, Authorization: `Bearer ${token}` },
     });
     const streamData = await streamRes.json();
     const stream = streamData.data?.[0] || null;
     const isLive = stream?.type === 'live';
 
+    // Normalize LIVE thumbnail if present
+    if (stream) {
+      stream.thumbnail_url = formatTwitchThumbnail(stream.thumbnail_url, 640, 360);
+    }
+
     // If not live, fetch recent VODs
+    let pastStreams = [];
     if (!isLive) {
       const vodRes = await fetch(
         `https://api.twitch.tv/helix/videos?user_id=${user.id}&type=archive&first=5`,
         {
-          headers: { 'Client-ID': CLIENT_ID, Authorization: `Bearer ${token}` }, // <-- Docker secret
+          headers: { 'Client-ID': CLIENT_ID, Authorization: `Bearer ${token}` },
         }
       );
       const vodData = await vodRes.json();
-      return res.json({ live: false, stream: null, pastStreams: vodData.data || [] });
+
+      // Normalize VOD thumbnails
+      pastStreams = (vodData.data || []).map(v => ({
+        id: v.id,
+        title: v.title,
+        url: v.url,
+        view_count: v.view_count,
+        thumbnail_url: formatTwitchThumbnail(v.thumbnail_url, 320, 180),
+      }));
     }
 
-    // Stream is live
-    res.json({ live: true, stream });
+    // Return response
+    res.json({
+      live: isLive,
+      stream: isLive ? stream : null,
+      pastStreams,
+    });
   } catch (err) {
     console.error('Twitch API error for user', username, ':', err.message);
-    res.json({ live: false, error: err.message || 'Unknown error' });
+    res.json({ live: false, error: err.message || 'Unknown error', stream: null, pastStreams: [] });
   }
 });
 

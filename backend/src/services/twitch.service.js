@@ -42,3 +42,21 @@ export async function getTwitchAccessToken() {
   console.log('New Twitch token fetched, expires in', data.expires_in, 'seconds');
   return accessToken;
 }
+
+export function formatTwitchThumbnail(url, width = 320, height = 180) {
+  if (!url) return null;
+
+  let clean = url;
+
+  try {
+    clean = decodeURIComponent(url);
+  } catch (e) {
+    // ignore decoding errors
+  }
+
+  return clean
+    .replace('{width}', width.toString())
+    .replace('{height}', height.toString())
+    .replace('%{width}', width.toString())
+    .replace('%{height}', height.toString());
+}

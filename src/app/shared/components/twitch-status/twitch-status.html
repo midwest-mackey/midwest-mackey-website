@@ -8,7 +8,7 @@
         <div class="card-img-wrapper rounded-4">
           <img
           class="card-img-top"
-          [src]="getThumbnail(stream.thumbnail_url)"
+          [src]="stream.thumbnail_url || '/assets/placeholder/twitch.jpg'"
           alt="{{ stream.title }}"
         />
         </div>
@@ -45,7 +45,7 @@
           <div class="card-img-wrapper rounded-4">
             <img
             class="card-img-top"
-            [src]="getThumbnail(vod.thumbnail_url)"
+            [src]="vod.thumbnail_url || '/assets/placeholder/twitch.jpg'"
           />
           </div>
           <div class="card-body">

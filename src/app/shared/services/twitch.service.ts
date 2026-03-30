@@ -35,7 +35,7 @@ export class TwitchService {
     ) {
       this.apiUrl = 'http://192.168.1.165:3000/twitch/live';
     } else if (hostname.includes('midwestmackey.com')) {
-      this.apiUrl = 'https://api1.midwestmackey.com/twitch/live';
+      this.apiUrl = 'https://api.midwestmackey.com/twitch/live';
     } else {
       this.apiUrl = 'http://mm-api:3000/twitch/live';
     }
