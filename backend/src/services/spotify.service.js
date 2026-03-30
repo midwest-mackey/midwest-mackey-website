@@ -12,10 +12,9 @@ try {
 
   console.log('✅ Spotify secrets loaded');
 } catch (err) {
-  console.error('❌ Spotify secrets missing — check Docker secrets mount');
+  console.error('❌ Spotify secrets missing — check Docker secrets');
 }
 
-// 🔴 Hard fail if missing (this is good for prod)
 if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET || !SPOTIFY_REFRESH_TOKEN) {
   throw new Error('Spotify secrets missing or incomplete');
 }
@@ -23,7 +22,38 @@ if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET || !SPOTIFY_REFRESH_TOKEN) {
 let accessToken = null;
 let tokenExpiry = 0;
 
-// ----------------- CURRENTLY PLAYING -----------------
+// 🔑 TOKEN
+export async function getSpotifyAccessToken() {
+  if (accessToken && Date.now() < tokenExpiry) return accessToken;
+
+  const res = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      Authorization:
+        'Basic ' + Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64'),
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: SPOTIFY_REFRESH_TOKEN,
+    }),
+  });
+
+  const data = await res.json();
+
+  if (!data.access_token) {
+    throw new Error('Failed to get Spotify access token: ' + JSON.stringify(data));
+  }
+
+  accessToken = data.access_token;
+  tokenExpiry = Date.now() + (data.expires_in * 1000) - 60000;
+
+  console.log('Spotify token refreshed');
+
+  return accessToken;
+}
+
+// 🎵 NOW PLAYING
 export async function getSpotifyNowPlaying() {
   const token = await getSpotifyAccessToken();
 
@@ -45,7 +75,7 @@ export async function getSpotifyNowPlaying() {
   };
 }
 
-// ----------------- RECENTLY PLAYED -----------------
+// 🕘 HISTORY
 export async function getSpotifyHistory(limit = 10) {
   const token = await getSpotifyAccessToken();
 
