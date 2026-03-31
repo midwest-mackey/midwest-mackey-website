@@ -30,7 +30,7 @@ export class HomePage implements OnInit {
 
   gamerID = 'gamer';
   gamerColor = 'purple';
-  gamerCss = 'start';
+  gamerCss = 'start mirror';
   gamerTitle = 'Game Time';
   gamerSideText = 'Twitch';
   gamerBodyText = 'Hop on, join up, and, play some games, and enjoy the evening.\nI\'m on most nights after 8:00 PM CST.\nCheck if I\'m live and hop in!';

@@ -56,13 +56,22 @@ export async function getTwitchAccessToken() {
 export function formatTwitchThumbnail(url, width = 320, height = 180) {
   if (!url) return null;
 
-  return url
-    // 🔥 fix Twitch's broken encoding first
-    .replace(/%(\d+)/g, '$1')   // %320 → 320
+  let clean = url;
 
-    // normal Twitch placeholders
+  try {
+    clean = decodeURIComponent(clean);
+  } catch (e) {}
+
+  return clean
+    // fix encoded dimensions
+    .replace(/%(\d+)/g, '$1')
+
+    // replace twitch placeholders
     .replace('{width}', width.toString())
     .replace('{height}', height.toString())
     .replace('%{width}', width.toString())
-    .replace('%{height}', height.toString());
+    .replace('%{height}', height.toString())
+
+    // 🔥 fix double slashes (but NOT after https://)
+    .replace(/([^:]\/)\/+/g, '$1');
 }

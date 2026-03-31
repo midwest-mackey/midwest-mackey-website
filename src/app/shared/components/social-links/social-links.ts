@@ -4,7 +4,7 @@ import { faCircle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { GlobalConstants } from '../../../app.constants';
 
 @Component({
-  selector: 'mmsocial-links',
+  selector: 'mm-social-links',
   templateUrl: './social-links.html',
   styleUrls: ['./social-links.scss'],
   standalone: false,
