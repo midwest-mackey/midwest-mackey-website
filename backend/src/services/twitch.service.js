@@ -53,32 +53,31 @@ export async function getTwitchAccessToken() {
   return accessToken;
 }
 
-export function formatTwitchThumbnail(url, width = 320, height = 180) {
+export function formatTwitchThumbnail(url, width = 340, height = 360) {
   if (!url) return null;
 
   let clean = url;
 
-  // 🔥 Step 1: aggressive safe decode
+  // Step 1: aggressively decode URI components
   try {
     clean = decodeURIComponent(clean);
   } catch (e) {
-    // fallback: manually fix broken encodings
+    // fallback: replace double-encoded %
     clean = clean.replace(/%25/g, '%');
   }
 
-  return clean
-    // 🔥 Step 2: FIX the exact broken pattern first
-    .replace(/%?(\d+)x%?(\d+)/, `${width}x${height}`)
+  // Step 2: replace any Twitch placeholders {width}/{height}, case-insensitive
+  clean = clean
+    .replace(/{width}/gi, width.toString())
+    .replace(/{height}/gi, height.toString())
+    .replace(/%{width}/gi, width.toString())
+    .replace(/%{height}/gi, height.toString());
 
-    // fallback for any remaining %### cases
-    .replace(/%(\d+)/g, '$1')
+  // Step 3: replace any broken numeric patterns like %320x%180 globally
+  clean = clean.replace(/%?\d+x%?\d+/g, `${width}x${height}`);
 
-    // Twitch placeholders (just in case)
-    .replace('{width}', width.toString())
-    .replace('{height}', height.toString())
-    .replace('%{width}', width.toString())
-    .replace('%{height}', height.toString())
+  // Step 4: remove duplicate slashes (except protocol)
+  clean = clean.replace(/([^:]\/)\/+/g, '$1');
 
-    // 🔥 remove duplicate slashes (except protocol)
-    .replace(/([^:]\/)\/+/g, '$1');
+  return clean;
 }
