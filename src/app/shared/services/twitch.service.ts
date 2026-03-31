@@ -33,7 +33,7 @@ export class TwitchService {
   public stream$ = this.streamSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    // Start polling immediately
+    this.apiUrl = environment.apiUrl;
     this.startPolling('midwestmackey');
   }
 
