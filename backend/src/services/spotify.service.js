@@ -1,4 +1,3 @@
-// src/services/spotify.service.js
 import fetch from 'node-fetch';
 import fs from 'fs';
 
@@ -6,29 +5,25 @@ let SPOTIFY_CLIENT_ID = '';
 let SPOTIFY_CLIENT_SECRET = '';
 let SPOTIFY_REFRESH_TOKEN = '';
 
-// Load Docker secrets
 try {
   SPOTIFY_CLIENT_ID = fs.readFileSync('/run/secrets/spotify_client_id', 'utf-8').trim();
   SPOTIFY_CLIENT_SECRET = fs.readFileSync('/run/secrets/spotify_client_secret', 'utf-8').trim();
   SPOTIFY_REFRESH_TOKEN = fs.readFileSync('/run/secrets/spotify_refresh_token', 'utf-8').trim();
 
-  if (SPOTIFY_CLIENT_ID && SPOTIFY_CLIENT_SECRET && SPOTIFY_REFRESH_TOKEN) {
-    console.log('Spotify secrets loaded');
-  } else {
-    console.warn('Spotify secrets are incomplete. Spotify API will fail.');
-  }
+  console.log('✅ Spotify secrets loaded');
 } catch (err) {
-  console.warn('Spotify secrets missing. Spotify API will fail.', err);
+  console.error('❌ Spotify secrets missing — check Docker secrets');
+}
+
+if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET || !SPOTIFY_REFRESH_TOKEN) {
+  throw new Error('Spotify secrets missing or incomplete');
 }
 
 let accessToken = null;
 let tokenExpiry = 0;
 
+// 🔑 TOKEN
 export async function getSpotifyAccessToken() {
-  if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET || !SPOTIFY_REFRESH_TOKEN) {
-    throw new Error('Spotify secrets missing or incomplete');
-  }
-
   if (accessToken && Date.now() < tokenExpiry) return accessToken;
 
   const res = await fetch('https://accounts.spotify.com/api/token', {
@@ -51,13 +46,14 @@ export async function getSpotifyAccessToken() {
   }
 
   accessToken = data.access_token;
-  tokenExpiry = Date.now() + data.expires_in * 1000;
-  console.log('Spotify access token refreshed, expires in', data.expires_in, 'seconds');
+  tokenExpiry = Date.now() + (data.expires_in * 1000) - 60000;
+
+  console.log('Spotify token refreshed');
 
   return accessToken;
 }
 
-// ----------------- CURRENTLY PLAYING -----------------
+// 🎵 NOW PLAYING
 export async function getSpotifyNowPlaying() {
   const token = await getSpotifyAccessToken();
 
@@ -79,7 +75,7 @@ export async function getSpotifyNowPlaying() {
   };
 }
 
-// ----------------- RECENTLY PLAYED -----------------
+// 🕘 HISTORY
 export async function getSpotifyHistory(limit = 10) {
   const token = await getSpotifyAccessToken();
 

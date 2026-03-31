@@ -8,7 +8,7 @@
         <div class="card-img-wrapper rounded-4">
           <img
           class="card-img-top"
-          [src]="getThumbnail(stream.thumbnail_url)"
+          [src]="stream.thumbnail_url || '/assets/placeholder/twitch.jpg'"
           alt="{{ stream.title }}"
         />
         </div>
@@ -34,19 +34,15 @@
 
 <!-- OFFLINE / PAST STREAMS -->
 <ng-template #offline>
-  <div *ngIf="pastStreams?.length > 0; else noContent">
     <p class="badge text-bg-dark">⚫ OFFLINE</p>
-    <p class="small text-muted space-mono-regular">I am not live right now. Check back later, view past broadcasts or follow me on Twitch to get notifications when I go live!</p>
+    <p class="small text-muted space-mono-regular">Check back later, view past broadcasts and follow me on Twitch to get notifications when I go live!</p>
 
-    <h1 class="twitch display-0 "><fa-icon class="twitch" [icon]="faTwitch"></fa-icon>PAST BROADCASTS</h1>
+    <h1 *ngIf="pastStreams?.length > 0" class="twitch display-0"><fa-icon class="twitch" [icon]="faTwitch"></fa-icon>PAST BROADCASTS</h1>
     <div class="row mt-4">
       <div class="col-md-4 mb-3" *ngFor="let vod of pastStreams">
         <a [href]="vod.url" target="_blank" class="card text-decoration-none bg-twitch text-white">
           <div class="card-img-wrapper rounded-4">
-            <img
-            class="card-img-top"
-            [src]="getThumbnail(vod.thumbnail_url)"
-          />
+            <img class="card-img-top" [src]="vod.thumbnail_url || '/assets/placeholder/twitch.jpg'"/>
           </div>
           <div class="card-body">
             <h6 class="card-title mb-1">{{ vod.title }}</h6>
@@ -55,11 +51,4 @@
         </a>
       </div>
     </div>
-  </div>
-
-  <ng-template #noContent>
-    <p class="badge text-bg-dark">⚫ OFFLINE</p>
-    <p class="small text-muted space-mono-regular">I am not live right now. Check back later or \follow me on Twitch to get notifications when I go live!</p>
-
-  </ng-template>
 </ng-template>

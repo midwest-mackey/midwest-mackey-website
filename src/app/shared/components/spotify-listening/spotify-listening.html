@@ -1,27 +1,28 @@
+<ng-container *ngIf="nowPlaying as data">
 <h1 class="spotify display-0 mb-4 d-flex align-items-center">
   <fa-icon class="spotify me-2" [icon]="faSpotify"></fa-icon>
   Now playing
-  <div class="sound-visualizer ms-3" *ngIf="nowPlaying?.isPlaying">
+  <div class="sound-visualizer ms-3" *ngIf="data?.isPlaying">
     <span *ngFor="let bar of bars" [style.height.px]="bar"></span>
   </div>
 </h1>
 <div class="row">
-    <div class="spotify-listening card p-3 col-12 col-md-6 col-lg-4 text-center" *ngIf="nowPlaying && !nowPlaying.isPlaying && !nowPlaying.songName">
+    <div class="spotify-listening card p-3 col-12 col-md-6 col-lg-4 text-center" *ngIf="data && !data.isPlaying && !data.songName">
         <p class="mb-0 text-secondary">No track currently playing</p>
     </div>
-    <div class="col-12 col-md-6 col-lg-4" *ngIf="nowPlaying.isPlaying || nowPlaying.songName">
-        <a class="spotify-listening card d-flex rounded-4 align-items-start" [href]="nowPlaying?.url" [style.background-image]="dominantGradient">
+    <div class="col-12 col-md-6 col-lg-4" *ngIf="data?.isPlaying || data.songName">
+        <a class="spotify-listening card d-flex rounded-4 align-items-start" [href]="data?.url" [style.background-image]="dominantGradient">
             <div class="album-art align-self-center">
-                <img [src]="nowPlaying.albumArtUrl" alt="Album Art" class="rounded" />
+                <img [src]="data.albumArtUrl" alt="Album Art" class="rounded" />
             </div>
             <div class="card-body text-start">
                 <div class="song-info">
-                    <small class="text-white-50 space-mono-regular">{{ nowPlaying.albumName }}</small>
-                    <h2 class="mb-1 text-white sigmar-regular">{{ nowPlaying.songName }}</h2>
-                    <h5 class="mb-3 text-white space-mono-bold fst-italic">{{ nowPlaying.artistName }}</h5>
+                    <small class="text-white-50 space-mono-regular">{{ data.albumName }}</small>
+                    <h2 class="mb-1 text-white sigmar-regular">{{ data.songName }}</h2>
+                    <h5 class="mb-3 text-white space-mono-bold fst-italic">{{ data.artistName }}</h5>
                 </div>
                 <div class="status">
-                    <span class="badge" [ngClass]="nowPlaying.isPlaying ? 'bg-success' : 'bg-secondary'">{{ nowPlaying.isPlaying ? 'Playing' : 'Paused' }}</span>
+                    <span class="badge" [ngClass]="data.isPlaying ? 'bg-success' : 'bg-secondary'">{{ data.isPlaying ? 'Playing' : 'Paused' }}</span>
                 </div>
             </div>
         </a>
@@ -39,3 +40,4 @@
         </a>
     </div>
 </div>
+</ng-container>

@@ -25,10 +25,4 @@ export class TwitchStatus implements OnInit {
       this.pastStreams = data.pastStreams;
     });
   }
-
-  getThumbnail(url: string | undefined, width = 320, height = 180): string {
-    const fallback = '/assets/twitch-placeholder.jpg';
-    if (!url) return fallback;
-    return url.replace(/%{width}/g, width.toString()).replace(/%{height}/g, height.toString());
-  }
 }

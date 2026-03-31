@@ -1,49 +1,43 @@
-// twitch.service.ts
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, interval } from 'rxjs';
-import { startWith, switchMap, map, tap } from 'rxjs/operators';
+import { BehaviorSubject, interval, Observable } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
+export interface TwitchStreamData {
+  id: string;
+  title?: string;
+  url: string;
+  view_count?: number;
+  thumbnail_url?: string;
+}
 
 export interface TwitchStream {
-  stream: any;
+  stream: TwitchStreamData | null;
   live: boolean;
-  pastStreams: any[];
+  pastStreams: TwitchStreamData[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class TwitchService {
-  private apiUrl: string;
+  private apiUrl: string = environment.apiUrl;
 
-  // Observable for components to subscribe
   private streamSubject = new BehaviorSubject<TwitchStream>({
     stream: null,
     live: false,
     pastStreams: [],
   });
+
   public stream$ = this.streamSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    const hostname = window.location.hostname;
-
-    if (
-      hostname === 'localhost' ||
-      hostname === '0.0.0.0' ||
-      hostname.startsWith('192.168.') // 👈 ADD THIS
-    ) {
-      this.apiUrl = 'http://192.168.1.165:3000/twitch/live';
-    } else if (hostname.includes('midwestmackey.com')) {
-      this.apiUrl = 'https://api1.midwestmackey.com/twitch/live';
-    } else {
-      this.apiUrl = 'http://mm-api:3000/twitch/live';
-    }
-
-    // Start polling automatically
+    this.apiUrl = environment.apiUrl;
     this.startPolling('midwestmackey');
   }
 
+  /** Poll Twitch API every 30s */
   private startPolling(username: string) {
     interval(30000)
       .pipe(
@@ -51,15 +45,13 @@ export class TwitchService {
         switchMap(() => this.getStream(username))
       )
       .subscribe((res) => {
-        this.streamSubject.next({
-          stream: res.stream,
-          live: res.live,
-          pastStreams: res.pastStreams || [],
-        });
+        // Backend already returns fully formatted thumbnails
+        this.streamSubject.next(res);
       });
   }
 
-  getStream(username: string) {
-    return this.http.get<any>(`${this.apiUrl}/${username}`).pipe(map((res) => res));
+  /** Fetch Twitch stream data from backend */
+  getStream(username: string): Observable<TwitchStream> {
+    return this.http.get<TwitchStream>(`${this.apiUrl}/${username}`);
   }
 }
