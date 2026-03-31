@@ -58,20 +58,27 @@ export function formatTwitchThumbnail(url, width = 320, height = 180) {
 
   let clean = url;
 
+  // 🔥 Step 1: aggressive safe decode
   try {
     clean = decodeURIComponent(clean);
-  } catch (e) {}
+  } catch (e) {
+    // fallback: manually fix broken encodings
+    clean = clean.replace(/%25/g, '%');
+  }
 
   return clean
-    // fix encoded dimensions
+    // 🔥 Step 2: FIX the exact broken pattern first
+    .replace(/%?(\d+)x%?(\d+)/, `${width}x${height}`)
+
+    // fallback for any remaining %### cases
     .replace(/%(\d+)/g, '$1')
 
-    // replace twitch placeholders
+    // Twitch placeholders (just in case)
     .replace('{width}', width.toString())
     .replace('{height}', height.toString())
     .replace('%{width}', width.toString())
     .replace('%{height}', height.toString())
 
-    // 🔥 fix double slashes (but NOT after https://)
+    // 🔥 remove duplicate slashes (except protocol)
     .replace(/([^:]\/)\/+/g, '$1');
 }

@@ -47,7 +47,7 @@ router.get('/live/:username', async (req, res) => {
       title: v.title,
       url: v.url,
       view_count: v.view_count,
-      thumbnail_url: formatTwitchThumbnail(v.thumbnail_url, 320, 180),
+      thumbnail_url: formatTwitchThumbnail(v.thumbnail_url, 640, 360),
     }));
 
     // Return response
