@@ -22,7 +22,7 @@ if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET || !SPOTIFY_REFRESH_TOKEN) {
 let accessToken = null;
 let tokenExpiry = 0;
 
-// 🔑 TOKEN
+// TOKEN
 export async function getSpotifyAccessToken() {
   if (accessToken && Date.now() < tokenExpiry) return accessToken;
 
@@ -53,7 +53,7 @@ export async function getSpotifyAccessToken() {
   return accessToken;
 }
 
-// 🎵 NOW PLAYING
+// NOW PLAYING
 export async function getSpotifyNowPlaying() {
   const token = await getSpotifyAccessToken();
 
@@ -75,7 +75,7 @@ export async function getSpotifyNowPlaying() {
   };
 }
 
-// 🕘 HISTORY
+// HISTORY
 export async function getSpotifyHistory(limit = 10) {
   const token = await getSpotifyAccessToken();
 

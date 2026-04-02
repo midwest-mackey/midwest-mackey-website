@@ -3,36 +3,42 @@
   <div class="row">
     <div class="col-12">
       <a *ngIf="twitchUrl" [href]="'https://twitch.tv/' + channel.login" target="_twitch" id="liveCard" class="card w-100 btn text-start border border-1 border-twitch mb-5 p-0">
-        <div class="card-body p-5 pb-3">
-          <div class="row d-flex align-items-center">
-            <div class="col-auto position-relative">
+        <div class="card-body p-5 pb-3 pb-lg-5">
+          <div class="row d-flex justify-content-center justify-content-md-start align-items-center">
+            <div class="col-12 col-sm-auto text-center position-relative">
               <img [src]="channel.profile_image_url" class="rounded-circle" width="70" height="70"/>
-              <!-- <fa-layers [fixedWidth]="true" size="2x" class="position-absolute bottom-0 end-0">
-                <fa-icon class="text-white" [icon]="faCircle"></fa-icon>
-                <fa-icon class="twitch" [icon]="faTwitch" transform="shrink-8"></fa-icon>
-              </fa-layers> -->
             </div>
-            <div class="col-auto">
-              <div><span class="badge text-bg-danger">Live Now</span></div>
+            <div class="col-12 col-sm-auto text-center text-sm-start pt-3 pt-sm-0">
+              <div>
+                <mm-live-indicator
+                  label="LIVE"
+                  [duration]="isLive ? liveDuration : ''"
+                  color="text-bg-danger">
+                </mm-live-indicator>
+              </div>
               <h4 class="h4 m-0">{{ channel.display_name }}</h4>
               <small class="twitch">{{ channel.followerCount_readable }} followers</small>
             </div>
-            <div class="col d-flex align-items-top justify-content-end fw-bold text-danger">
-              WATCH LIVE<mm-pulse-indicator class="ms-3 align-middle d-flex align-items-center"></mm-pulse-indicator>
+            <div class="col d-flex align-items-top mt-3 mt-sm-0 justify-content-center justify-content-md-end fw-bold twitch">
+              WATCH LIVE<mm-live-indicator class="ms-3 align-middle d-flex align-items-center"></mm-live-indicator>
             </div>
           </div>
-          <div class="row mt-4">
+        </div>
+        <div class="card-body px-sm-5 pb-lg-5">
+          <div class="row text-center text-sm-start">
             <h1 class="twitch display-0">
               <fa-icon [icon]="faTwitch"></fa-icon> {{ stream.title }}
             </h1>
-            <div class="d-flex align-items-center gap-2 mb-2">
-              <span class="badge text-bg-purple rounded-pill">{{ stream.viewer_count_readable }} viewers</span>
-              <span class="badge text-bg-purple rounded-pill">{{ stream.game_name }}</span>
-            </div>
           </div>
         </div>
         <div class="card-img-wrapper rounded-4 position-relative">
           <img class="card-img-top" [src]="stream.thumbnail_url || '/assets/placeholder/twitch.jpg'" />
+          <div class="position-absolute top-0 start-0 m-3">
+            <span class="badge text-bg-warning">{{ stream.viewer_count_readable}} viewers</span>
+          </div>
+          <div class="position-absolute top-0 end-0 m-3">
+            <span class="badge text-bg-purple">{{ stream.game_name }}</span>
+          </div>
         </div>
       </a>
     </div>
@@ -58,7 +64,7 @@
               <h4 class="h4 m-0">{{ channel.display_name }}</h4>
               <small class="twitch">{{ channel.followerCount_readable }} followers</small>
             </div>
-            <div class="col twitch text-end">
+            <div class="col twitch text-center text-md-end mt-3 mt-sm-0">
               Visit channel
             </div>
           </div>

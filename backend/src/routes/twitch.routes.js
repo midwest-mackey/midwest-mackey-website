@@ -42,30 +42,30 @@ router.get('/live/:username', async (req, res) => {
     const username = req.params.username?.toLowerCase();
     const headers = { 'Client-ID': CLIENT_ID, Authorization: `Bearer ${token}` };
 
-    // 1️⃣ USER
+    // USER
     const userRes = await fetch(`https://api.twitch.tv/helix/users?login=${username}`, { headers });
     const userData = await userRes.json();
     const user = userData.data?.[0];
     if (!user) return res.json({ status: 'offline', live: false, stream: null, lastStream: null, channel: null, pastStreams: [] });
 
-    // 2️⃣ STREAM
+    // STREAM
     const streamRes = await fetch(`https://api.twitch.tv/helix/streams?user_id=${user.id}`, { headers });
     let streamData = await streamRes.json();
     let stream = streamData.data?.[0] || null;
     const isLive = stream?.type === 'live';
-    if (stream?.thumbnail_url) stream.thumbnail_url = formatTwitchThumbnail(stream.thumbnail_url, 640, 360);
+    if (stream?.thumbnail_url) stream.thumbnail_url = formatTwitchThumbnail(stream.thumbnail_url, 1280, 720);
 
-    // 3️⃣ CHANNEL
+    // CHANNEL
     const channelRes = await fetch(`https://api.twitch.tv/helix/channels?broadcaster_id=${user.id}`, { headers });
     const channelData = await channelRes.json();
     const channelInfo = channelData.data?.[0] || {};
 
-    // 4️⃣ FOLLOWERS
+    // FOLLOWERS
     const followerRes = await fetch(`https://api.twitch.tv/helix/channels/followers?broadcaster_id=${user.id}`, { headers });
     const followerData = await followerRes.json();
     const followerCount = followerData.total || 0;
 
-    // 5️⃣ VODS
+    // VODS
     const vodRes = await fetch(`https://api.twitch.tv/helix/videos?user_id=${user.id}&type=archive&first=5`, { headers });
     const vodData = await vodRes.json();
     let pastStreams = (vodData.data || []).map(v => {
@@ -77,7 +77,7 @@ router.get('/live/:username', async (req, res) => {
         title: v.title,
         url: v.url,
         view_count: v.view_count,
-        thumbnail_url: formatTwitchThumbnail(v.thumbnail_url, 640, 360),
+        thumbnail_url: formatTwitchThumbnail(v.thumbnail_url, 1280, 720),
         created_at: v.created_at,
         ended_at: end ? end.toISOString() : null,
         duration_readable: formatDuration(parsed),
@@ -87,7 +87,7 @@ router.get('/live/:username', async (req, res) => {
     pastStreams.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     const latestStream = pastStreams[0] || null;
 
-    // 6️⃣ RESPONSE
+    // RESPONSE
     res.json({
       status: isLive ? 'live' : 'offline',
       live: isLive,

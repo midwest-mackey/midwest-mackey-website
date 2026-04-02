@@ -23,7 +23,7 @@
         <li class="nav-item ">
           <a class="nav-link link-light rounded-pill position-relative" href="{{twitchURL}}" title="Twitch" target="twitch">
             <fa-icon [icon]="faTwitch"></fa-icon>
-            <mm-pulse-indicator class="position-absolute top-0 end-0" *ngIf="(twitchService.stream$ | async)?.live"></mm-pulse-indicator>
+            <mm-live-indicator *ngIf="(twitchService.stream$ | async)?.live" class="live-badge position-absolute top-0 start-50 translate-middle" label="LIVE"color="text-bg-light"></mm-live-indicator>
           </a>
           
         </li>

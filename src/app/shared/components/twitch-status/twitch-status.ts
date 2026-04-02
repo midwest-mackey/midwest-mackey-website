@@ -19,6 +19,8 @@ export class TwitchStatus implements OnInit {
   pastStreams: any[] = [];
   channel: any = null;
   lastStream: any = null;
+  liveDuration: string = '';
+  intervalId: any;
 
   faTwitch = faTwitch;
   faCircle = faCircle;
@@ -33,13 +35,50 @@ export class TwitchStatus implements OnInit {
       this.channel = data.channel;
       this.lastStream = data.lastStream;
     });
+    if (this.isLive && this.stream?.started_at) {
+      this.startLiveTimer(this.stream.started_at);
+    } else {
+      this.liveDuration = '';
+    }
+  }
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
   
   get twitchUrl(): string | null {
-  // use this.channel directly, since that's what holds the channel info
-  if (this.channel?.login) {
-    return `https://twitch.tv/${this.channel.login}`;
+    if (this.channel?.login) {
+      return `https://twitch.tv/${this.channel.login}`;
+    }
+    return null;
   }
-  return null;
-}
+  formatStreamDuration(startedAt: string): string {
+    const start = new Date(startedAt).getTime();
+    const now = Date.now();
+
+    const diff = now - start;
+
+    const hours = Math.floor(diff / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+
+    if (hours === 0) return `${minutes}m`;
+    return `${hours}h ${minutes}m`;
+  }
+  startLiveTimer(startedAt: string) {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+
+    this.updateDuration(startedAt);
+
+    this.intervalId = setInterval(() => {
+      this.updateDuration(startedAt);
+    }, 60000);
+  }
+
+  updateDuration(startedAt: string) {
+    this.liveDuration = this.formatStreamDuration(startedAt);
+  }
+  
 }
