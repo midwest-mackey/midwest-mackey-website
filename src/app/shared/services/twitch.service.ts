@@ -9,48 +9,79 @@ export interface TwitchStreamData {
   title?: string;
   url: string;
   view_count?: number;
+  view_count_readable?: string;
   thumbnail_url?: string;
+  game_name?: string;
+}
+
+export interface TwitchVOD {
+  id: string;
+  title: string;
+  url: string;
+  view_count: number;
+  thumbnail_url: string;
+  created_at: string;
+  ended_at: string;
+  duration_readable: string;
+  time_ago: string;
+}
+
+export interface TwitchChannel {
+  id: string;
+  login: string;
+  display_name: string;
+  profile_image_url: string;
+  offline_image_url: string;
+  current_game?: string;
+  current_title?: string;
+  followerCount: number;
+  followerCount_readable: string;
+}
+
+export interface TwitchLastStream {
+  title: string;
+  ended_at: string;
+  duration_readable: string;
+  time_ago: string;
+  thumbnail_url: string;
+  url: string;
 }
 
 export interface TwitchStream {
-  stream: TwitchStreamData | null;
+  status: 'live' | 'offline';
   live: boolean;
-  pastStreams: TwitchStreamData[];
+  stream: TwitchStreamData | null;
+  lastStream: TwitchLastStream | null;
+  channel: TwitchChannel;
+  pastStreams: TwitchVOD[];
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class TwitchService {
   private apiUrl: string = environment.apiUrl;
-
   private streamSubject = new BehaviorSubject<TwitchStream>({
-    stream: null,
+    status: 'offline',
     live: false,
+    stream: null,
+    lastStream: null,
+    channel: null as any,
     pastStreams: [],
   });
-
   public stream$ = this.streamSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    this.apiUrl = environment.apiUrl;
     this.startPolling('midwestmackey');
   }
 
-  /** Poll Twitch API every 30s */
   private startPolling(username: string) {
     interval(30000)
       .pipe(
         startWith(0),
         switchMap(() => this.getStream(username))
       )
-      .subscribe((res) => {
-        // Backend already returns fully formatted thumbnails
-        this.streamSubject.next(res);
-      });
+      .subscribe(res => this.streamSubject.next(res));
   }
 
-  /** Fetch Twitch stream data from backend */
   getStream(username: string): Observable<TwitchStream> {
     return this.http.get<TwitchStream>(`${this.apiUrl}/${username}`);
   }

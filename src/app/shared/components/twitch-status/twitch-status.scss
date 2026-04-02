@@ -1,7 +1,17 @@
 @use 'custom' as *;
 
+$last-stream-bg: darken($twitch, 20%);
 .bg-twitch {
     background-color: $twitch !important;
+    &.last-stream {
+        background-color: $last-stream-bg !important;
+    }
+}
+#liveCard {
+  outline: 12px solid rgba($twitch, .15);
+}
+.border-twitch {
+    border-color: $twitch !important;
 }
 .text-bg-purple {
     background-color: #5e1fe4 !important;
@@ -24,4 +34,10 @@
 
 .card:hover .card-img-wrapper img {
   transform: scale(1.1);
+}
+#liveCard:hover {
+  outline-width: 0;
+}
+.card.btn {
+  font-size: 1rem;
 }

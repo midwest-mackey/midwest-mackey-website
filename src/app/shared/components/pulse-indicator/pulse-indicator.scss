@@ -1,12 +1,11 @@
 @use 'custom' as *;
 
-#indicator-container {
-    #indicator {
-        height: 0;
-        width: 0;
-        background-color: $success-color;
-        outline: 3px solid rgba($success-color, .1);
-    }
+#indicator {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  background-color: $success-color;
+  outline: 3px solid rgba($success-color, .1);
 }
 
  @-webkit-keyframes pulse {

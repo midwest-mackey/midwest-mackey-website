@@ -38,13 +38,13 @@ export class HomePage implements OnInit {
   gamerImg = 'assets/me/mm-confetti.png';
   gamerButtons: any[] = [{
     icon: this.faTwitch,
-    text: 'Follow me',
+    text: 'Visit channel',
     link: this.twitchURL,
     iconCss: 'twitch',
   },
   {
     icon: this.faPlaystation,
-    text: 'Join the game',
+    text: 'Check out my PSN',
     link: this.playstationURL,
     iconCss: 'playstation',
   },
