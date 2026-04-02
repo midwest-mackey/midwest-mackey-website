@@ -14,51 +14,38 @@ export class SpotifyListening implements OnInit, OnDestroy {
   nowPlaying: SpotifyNowPlaying | null = null;
   recentTracks: SpotifyTrackHistory[] = [];
 
-  dominantColor: string | null = null;
-  accentColor: string | null = null;
   dominantGradient: string | null = null;
+  lastPlayedGradient: string | null = null;
 
   bars: number[] = Array(5).fill(10); // visualizer bars
-
   faSpotify = faSpotify;
 
   private visualizerInterval: any;
   private nowPlayingSub?: Subscription;
-
-  constructor(
+constructor(
     private spotifyService: SpotifyService,
     private imageColorService: ImageColorService
   ) {}
-
   ngOnInit(): void {
-    // Subscribe to now playing
     this.nowPlayingSub = this.spotifyService.nowPlaying$.subscribe({
-      next: async (data) => {
+      next: (data) => {
         this.nowPlaying = data;
 
         if (data?.albumArtUrl) {
-          // Get colors & gradient from album art
-          const result: ImageGradientResult = await this.imageColorService.getGradientFromImage(
-            data.albumArtUrl
-          );
-          this.dominantColor = result.dominantColor;
-          this.accentColor = result.accentColor;
-          this.dominantGradient = result.gradient;
+          this.imageColorService.getGradientFromImage(data.albumArtUrl)
+            .then((result) => this.dominantGradient = result.gradient)
+            .catch(console.error);
         } else {
-          this.dominantColor = null;
-          this.accentColor = null;
           this.dominantGradient = null;
         }
 
-        // Start/stop visualizer
         if (data?.isPlaying) this.startVisualizer();
         else this.stopVisualizer();
       },
-      error: (err) => console.error('Error fetching now playing', err),
+      error: console.error
     });
 
-    // Fetch last 5 recently played tracks
-    this.spotifyService.getHistory(5).subscribe({
+    this.spotifyService.getHistory(10).subscribe({
       next: (tracks) => {
         if (this.nowPlaying?.songName) {
           this.recentTracks = tracks.filter(
@@ -67,21 +54,44 @@ export class SpotifyListening implements OnInit, OnDestroy {
         } else {
           this.recentTracks = tracks;
         }
+
+        // compute last played gradient if nothing is playing
+        if (!this.nowPlaying?.songName && this.recentTracks.length > 0) {
+          const lastTrack = this.recentTracks[0];
+          if (lastTrack.albumArtUrl) {
+            this.imageColorService.getGradientFromImage(lastTrack.albumArtUrl)
+              .then(res => this.lastPlayedGradient = res.gradient)
+              .catch(console.error);
+          }
+        }
       },
-      error: (err) => console.error('Error fetching history', err),
+      error: console.error
     });
   }
 
-  ngOnDestroy(): void {
-    this.stopVisualizer();
-    this.nowPlayingSub?.unsubscribe();
+  get currentTrack() {
+    // If nowPlaying exists, use it; otherwise fall back to last played
+    if (this.nowPlaying?.songName) return this.nowPlaying;
+    return this.recentTracks[0] || null;
   }
 
-  // ----------------------
-  // Visualizer animation
-  // ----------------------
+  get currentGradient() {
+    if (this.nowPlaying?.songName) return this.dominantGradient;
+    return this.lastPlayedGradient;
+  }
+
+  get currentStatus() {
+    if (this.nowPlaying?.isPlaying) return 'Playing';
+    if (this.nowPlaying?.songName) return 'Paused';
+    return 'Last Played';
+  }
+
+  get isPlaying() {
+    return !!this.nowPlaying?.isPlaying;
+  }
+
   startVisualizer() {
-    this.stopVisualizer(); // clear previous
+    this.stopVisualizer();
     this.visualizerInterval = setInterval(() => {
       this.bars = this.bars.map(() => 5 + Math.random() * 20);
     }, 200);
@@ -91,7 +101,12 @@ export class SpotifyListening implements OnInit, OnDestroy {
     if (this.visualizerInterval) {
       clearInterval(this.visualizerInterval);
       this.visualizerInterval = null;
-      this.bars = Array(this.bars.length).fill(5); // reset
+      this.bars = Array(this.bars.length).fill(5);
     }
+  }
+
+  ngOnDestroy() {
+    this.stopVisualizer();
+    this.nowPlayingSub?.unsubscribe();
   }
 }
