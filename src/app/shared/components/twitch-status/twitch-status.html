@@ -1,54 +1,128 @@
 <!-- LIVE STREAM -->
 <div *ngIf="isLive; else offline">
-  <h1 class="twitch display-0 "><fa-icon class="twitch" [icon]="faTwitch"></fa-icon>{{ stream.title }}</h1>
-  <span class="badge text-bg-warning rounded-pill">🔴 Live Now</span>
-  <div class="row mt-4">
-    <div class="col-md-4 mb-3">
-      <a [href]="'https://twitch.tv/' + stream.user_login" target="_twitch" class="card text-decoration-none bg-twitch text-white position-relative">
-        <div class="card-img-wrapper rounded-4">
-          <img
-          class="card-img-top"
-          [src]="stream.thumbnail_url || '/assets/placeholder/twitch.jpg'"
-          alt="{{ stream.title }}"
-        />
-        </div>
-        <div class="card-body d-flex align-items-center justify-content-between">
-            <div class="d-flex align-items-center justify-content-center">
-              <div class="col-auto me-1">
-                <fa-layers [fixedWidth]="true" size="3x">
-                  <mm-pulse-indicator class="position-absolute top-0 end-0"></mm-pulse-indicator>
-                  <fa-icon class="icon-gray" [icon]="faCircle"></fa-icon>
-                  <fa-icon class="" [icon]="faTwitch" transform="shrink-8"></fa-icon>
-                </fa-layers>
-              </div>
-              <div class="col-auto text-start me-2">
-                <span class="fw-bold">Watch Live</span>
-              </div>
+  <div class="row">
+    <div class="col-12">
+      <a *ngIf="twitchUrl" [href]="'https://twitch.tv/' + channel.login" target="_twitch" id="liveCard" class="card w-100 btn text-start border border-1 border-twitch mb-5 p-0">
+        <div class="card-body p-5 pb-3">
+          <div class="row d-flex align-items-center">
+            <div class="col-auto position-relative">
+              <img [src]="channel.profile_image_url" class="rounded-circle" width="70" height="70"/>
+              <!-- <fa-layers [fixedWidth]="true" size="2x" class="position-absolute bottom-0 end-0">
+                <fa-icon class="text-white" [icon]="faCircle"></fa-icon>
+                <fa-icon class="twitch" [icon]="faTwitch" transform="shrink-8"></fa-icon>
+              </fa-layers> -->
             </div>
-            <small><span class="badge text-bg-purple rounded-pill">{{ stream.viewer_count }} viewers</span></small>
+            <div class="col-auto">
+              <div><span class="badge text-bg-danger">Live Now</span></div>
+              <h4 class="h4 m-0">{{ channel.display_name }}</h4>
+              <small class="twitch">{{ channel.followerCount_readable }} followers</small>
+            </div>
+            <div class="col d-flex align-items-top justify-content-end fw-bold text-danger">
+              WATCH LIVE<mm-pulse-indicator class="ms-3 align-middle d-flex align-items-center"></mm-pulse-indicator>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <h1 class="twitch display-0">
+              <fa-icon [icon]="faTwitch"></fa-icon> {{ stream.title }}
+            </h1>
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge text-bg-purple rounded-pill">{{ stream.viewer_count_readable }} viewers</span>
+              <span class="badge text-bg-purple rounded-pill">{{ stream.game_name }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-img-wrapper rounded-4 position-relative">
+          <img class="card-img-top" [src]="stream.thumbnail_url || '/assets/placeholder/twitch.jpg'" />
         </div>
       </a>
     </div>
   </div>
 </div>
 
-<!-- OFFLINE / PAST STREAMS -->
+<!-- OFFLINE -->
 <ng-template #offline>
-    <p class="badge text-bg-dark">⚫ OFFLINE</p>
-    <p class="small text-muted space-mono-regular">Check back later, view past broadcasts and follow me on Twitch to get notifications when I go live!</p>
-
-    <h1 *ngIf="pastStreams?.length > 0" class="twitch display-0"><fa-icon class="twitch" [icon]="faTwitch"></fa-icon>PAST BROADCASTS</h1>
-    <div class="row mt-4">
-      <div class="col-md-4 mb-3" *ngFor="let vod of pastStreams">
-        <a [href]="vod.url" target="_blank" class="card text-decoration-none bg-twitch text-white">
-          <div class="card-img-wrapper rounded-4">
-            <img class="card-img-top" [src]="vod.thumbnail_url || '/assets/placeholder/twitch.jpg'"/>
+  <div class="row">
+    <div class="col-12">
+      <a *ngIf="twitchUrl" [href]="twitchUrl" target="_twitch" class="card w-100 btn text-start border border-1 border-twitch mb-5">
+        <div class="card-body">
+          <div class="row d-flex align-items-center">
+            <div class="col-auto position-relative">
+              <img [src]="channel.profile_image_url" class="rounded-circle" width="70" height="70"/>
+              <!-- <fa-layers [fixedWidth]="true" size="2x" class="position-absolute bottom-0 end-0">
+                <fa-icon class="text-white" [icon]="faCircle"></fa-icon>
+                <fa-icon class="twitch" [icon]="faTwitch" transform="shrink-8"></fa-icon>
+              </fa-layers> -->
+            </div>
+            <div class="col-auto">
+              <div><span class="badge text-bg-dark">OFFLINE</span></div>
+              <h4 class="h4 m-0">{{ channel.display_name }}</h4>
+              <small class="twitch">{{ channel.followerCount_readable }} followers</small>
+            </div>
+            <div class="col twitch text-end">
+              Visit channel
+            </div>
           </div>
-          <div class="card-body">
-            <h6 class="card-title mb-1">{{ vod.title }}</h6>
-            <small><span class="badge text-bg-purple rounded-pill">{{ vod.view_count }} views</span></small>
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- LAST STREAM -->
+  <div *ngIf="lastStream; else noStreams" class="mb-3">
+    <div class="row mx-sm-5">
+      <div class="col-12">
+        <h1 class="twitch display-0 mb-3">
+          <fa-icon [icon]="faTwitch"></fa-icon> RECENT BROADCASTS
+        </h1>
+        <a [href]="lastStream.url" target="_twitch" class="card btn w-100 p-0 text-decoration-none bg-twitch last-stream text-white border-0 shadow-lg">
+          <div class="card-img-wrapper position-relative">
+            <img class="card-img-top" [src]="lastStream.thumbnail_url || '/assets/placeholder/twitch.jpg'" />
+            <div class="position-absolute top-0 start-0 m-3">
+              <span class="badge text-bg-warning">LAST STREAM</span>
+            </div>
+            <div class="position-absolute top-0 end-0 m-3">
+              <span class="badge text-bg-purple">{{ channel.current_game }}</span>
+            </div>
+            <div class="position-absolute bottom-0 start-0 m-3">
+                  <span class="badge text-bg-purple">{{ lastStream.duration_readable }}</span>
+                </div>
+            <div class="position-absolute bottom-0 end-0 m-3">
+              <span class="badge text-bg-purple">{{ lastStream.view_count }} views</span>
+            </div>
+          </div>
+          <div class="card-body text-start">
+            <h4 class="m-0">{{ lastStream.title }}</h4>
+            <p class="text-white-50">Check out this {{ channel.current_game }} stream from {{ lastStream.time_ago }}.</p>
           </div>
         </a>
       </div>
     </div>
+  </div>
+
+  <!-- PAST STREAMS -->
+  <div *ngIf="pastStreams?.length; else noStreams" class="row mx-sm-5">
+      <ng-container *ngFor="let vod of pastStreams">
+        <div class="col-md-6 col-xl-4 mb-3" *ngIf="!lastStream || vod.id !== lastStream.id">
+          <a [href]="vod.url" target="_twitch" class="card btn p-0 text-decoration-none bg-twitch text-white border-0 shadow-lg">
+            <div class="card-img-wrapper position-relative">
+              <img class="card-img-top" [src]="vod.thumbnail_url || '/assets/placeholder/twitch.jpg'" />
+              <div class="position-absolute bottom-0 start-0 m-3">
+                <span class="badge text-bg-purple">{{ vod.duration_readable }}</span>
+              </div>
+              <div class="position-absolute bottom-0 end-0 m-3">
+                <span class="badge text-bg-purple">{{ vod.view_count }} views</span>
+              </div>
+            </div>
+            <div class="card-body text-start">
+              <h6 class="">{{ vod.title }}</h6>
+              <small class="text-white-50">{{ vod.time_ago }}</small>
+            </div>
+          </a>
+        </div>
+      </ng-container>
+  </div>
+
+  <!-- NO STREAMS FALLBACK -->
+  <ng-template #noStreams>
+    <p class="text-muted small">No streams available. Check back later!</p>
+  </ng-template>
 </ng-template>
