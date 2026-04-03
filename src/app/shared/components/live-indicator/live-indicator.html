@@ -1,5 +1,5 @@
 <span class="indicator badge" [ngClass]="color">
-  <ng-container class="text" *ngIf="label">{{ label }}</ng-container>
   <span class="dot"></span>
-  <ng-container *ngIf="duration">{{ duration }}</ng-container>
+  <ng-container class="text" *ngIf="label">{{ label }}</ng-container>
+  <ng-container *ngIf="duration"> • {{ duration }}</ng-container>
 </span>
