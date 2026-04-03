@@ -121,3 +121,8 @@
        padding-bottom: .5rem;
    }
 }
+::ng-deep mm-live-indicator {
+    &.position-absolute.translate-middle {
+        transform: translate(-50%, -70%) !important;
+    }
+}

@@ -85,4 +85,5 @@ export class TwitchService {
   getStream(username: string): Observable<TwitchStream> {
     return this.http.get<TwitchStream>(`${this.apiUrl}/${username}`);
   }
+  
 }

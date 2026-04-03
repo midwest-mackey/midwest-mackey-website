@@ -7,37 +7,42 @@
   </div>
 </h1>
 <div class="row">
-    <div class="spotify-listening card p-3 col-12 col-md-6 col-lg-4 text-center" *ngIf="data && !data.isPlaying && !data.songName">
-        <p class="mb-0 text-secondary">No track currently playing</p>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4" *ngIf="data?.isPlaying || data.songName">
-        <a class="spotify-listening card d-flex rounded-4 align-items-start" [href]="data?.url" [style.background-image]="dominantGradient">
-            <div class="album-art align-self-center">
-                <img [src]="data.albumArtUrl" alt="Album Art" class="rounded" />
-            </div>
-            <div class="card-body text-start">
-                <div class="song-info">
-                    <small class="text-white-50 space-mono-regular">{{ data.albumName }}</small>
-                    <h2 class="mb-1 text-white sigmar-regular">{{ data.songName }}</h2>
-                    <h5 class="mb-3 text-white space-mono-bold fst-italic">{{ data.artistName }}</h5>
-                </div>
-                <div class="status">
-                    <span class="badge" [ngClass]="data.isPlaying ? 'bg-success' : 'bg-secondary'">{{ data.isPlaying ? 'Playing' : 'Paused' }}</span>
-                </div>
-            </div>
-        </a>
-    </div>
+  <div class="col-12 col-md-6 col-lg-4" *ngIf="currentTrack">
+    <a class="spotify-listening card d-flex rounded-4 align-items-start"
+       [href]="currentTrack.url"
+       [style.background-image]="currentGradient">
+      <div class="album-art align-self-center">
+        <img [src]="currentTrack.albumArtUrl" alt="Album Art" class="rounded" />
+      </div>
+      <div class="card-body text-start">
+        <div class="song-info">
+          <small class="text-white-50 space-mono-regular">{{ currentTrack.albumName }}</small>
+          <h2 class="mb-1 text-white sigmar-regular">{{ currentTrack.songName }}</h2>
+          <h5 class="mb-3 text-white space-mono-bold fst-italic">{{ currentTrack.artistName }}</h5>
+        </div>
 
-    <div class="recent-tracks mt-4 col-12 col-md-6 col-lg-8" *ngIf="recentTracks.length > 0">
-        <h5 class="mb-3">Recently Played</h5>
-        <a class="recent-track d-flex align-items-center p-2 mb-2 rounded-3" *ngFor="let track of recentTracks" [href]="track.url" target="_blank">
-            <img [src]="track.albumArtUrl" alt="album art" class="me-3 rounded" width="50" height="50"/>
-            
-            <div>
-                <p class="small text-body m-0 space-mono-regular">{{ track.songName }}</p>
-                <small class="text-secondary space-mono-regular fst-italic">{{ track.artistName }}</small>
-            </div>
-        </a>
-    </div>
+        <!-- Status badge -->
+        <div class="status">
+          <span class="badge"
+                [ngClass]="isPlaying ? 'bg-success' : 'bg-secondary'">
+            {{ currentStatus }}
+          </span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Recent Tracks List -->
+  <div class="recent-tracks mt-4 col-12 col-md-6 col-lg-8" *ngIf="recentTracks.length > 0">
+    <h5 class="mb-3">Recently Played</h5>
+    <a class="recent-track d-flex align-items-center p-2 mb-2 rounded-3"
+       *ngFor="let track of recentTracks" [href]="track.url" target="_blank">
+      <img [src]="track.albumArtUrl" alt="album art" class="me-3 rounded" width="50" height="50"/>
+      <div>
+        <p class="small text-body m-0 space-mono-regular">{{ track.songName }}</p>
+        <small class="text-secondary space-mono-regular fst-italic">{{ track.artistName }}</small>
+      </div>
+    </a>
+  </div>
 </div>
 </ng-container>
