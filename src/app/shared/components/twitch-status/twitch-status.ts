@@ -28,19 +28,24 @@ export class TwitchStatus implements OnInit {
   constructor(private twitchService: TwitchService) {}
 
   ngOnInit(): void {
-    this.twitchService.stream$.subscribe((data: TwitchStream) => {
-      this.stream = data.stream;
-      this.isLive = data.live;
-      this.pastStreams = data.pastStreams;
-      this.channel = data.channel;
-      this.lastStream = data.lastStream;
-    });
+  this.twitchService.stream$.subscribe((data: TwitchStream) => {
+
+    this.stream = data.stream;
+    this.isLive = data.live;
+    this.pastStreams = data.pastStreams;
+    this.channel = data.channel;
+    this.lastStream = data.lastStream;
+
     if (this.isLive && this.stream?.started_at) {
       this.startLiveTimer(this.stream.started_at);
     } else {
       this.liveDuration = '';
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+      }
     }
-  }
+  });
+}
   ngOnDestroy(): void {
     if (this.intervalId) {
       clearInterval(this.intervalId);

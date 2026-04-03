@@ -12,6 +12,7 @@ export interface TwitchStreamData {
   view_count_readable?: string;
   thumbnail_url?: string;
   game_name?: string;
+  started_at: string;
 }
 
 export interface TwitchVOD {
