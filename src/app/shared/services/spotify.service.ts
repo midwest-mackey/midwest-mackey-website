@@ -29,8 +29,8 @@ export class SpotifyService {
   private nowPlayingSubject = new BehaviorSubject<SpotifyNowPlaying | null>(null);
   nowPlaying$ = this.nowPlayingSubject.asObservable();
 
-  private NOW_PLAYING_URL = 'https://api1.midwestmackey.com/spotify/now-playing';
-  private HISTORY_URL = 'https://api1.midwestmackey.com/spotify/recently-played';
+  private NOW_PLAYING_URL = 'https://api.midwestmackey.com/spotify/now-playing';
+  private HISTORY_URL = 'https://api.midwestmackey.com/spotify/recently-played';
 
   constructor(private http: HttpClient) {
     // Poll every 10s
