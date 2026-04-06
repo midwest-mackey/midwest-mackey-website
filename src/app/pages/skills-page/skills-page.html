@@ -1,6 +1,10 @@
 <div id="appHeaderScrollTarget"></div>
-<div class="container">
-    <h1 class="display-4 section-title">What I do</h1>
-</div>
-<mm-summary-panel [id]="id" [color]="Color" [css]="Css" [title]="Title" [sideText]="SideText" [bodyText]="BodyText" [subText]="SubText" [buttons]="Buttons"></mm-summary-panel>
-<!-- <ux-summary-panel [id]="devID" [color]="devColor" [css]="devCss" [title]="devTitle" [sideText]="devSideText" [bodyText]="devBodyText" [subText]="devSubText" [buttons]="devButtons"></ux-summary-panel> -->
+<mm-what-i-do></mm-what-i-do>
+<section class="container-fluid">
+    <div class="container">
+        <div class="row pt-5">
+            <h2 class="display-0 fs-4 text-warning py-5">Education</h2>
+        </div>
+        <mm-summary-panel [id]="id" [color]="Color" [css]="Css" [title]="Title" [sideText]="SideText" [bodyText]="BodyText" [subText]="SubText" [buttons]="Buttons" ></mm-summary-panel>
+    </div>
+</section>

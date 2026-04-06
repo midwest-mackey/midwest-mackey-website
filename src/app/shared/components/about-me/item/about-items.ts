@@ -94,7 +94,7 @@ export const Items: Item[] = [
         id: 'mm-dabb',
         firstTitle: 'Dad',
         lastTitle: 'Life',
-        subTitle: '2 Kids, 3 cats 🐈‍⬛ a dozen chickens 🐔 and possibly a squirrel... 🐿️',
+        subTitle: '2 Kids 👧👦, 3 cats 🐈‍⬛, a dozen chickens 🐔, and possibly a squirrel 🐿️',
         about: 'Proud dad of 2, trying to squeeze as much time out of life. Attempting to raise 2 well behaved kids and teaching them how to be civilized. We strive to spend as much time as a family, eating dinner together, having movie nights, and showing them the world. Not sure how I am doing, but I am trying my best to show up for them each day.\nNOTE: Pretty sure the chickens are doing better at being civilized so far!',
         link1: '',
         link2: '',

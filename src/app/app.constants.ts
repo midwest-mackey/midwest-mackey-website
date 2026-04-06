@@ -4,6 +4,7 @@ import pkg from '../../package.json';
 export class GlobalConstants {
     // URLs
     public static githubBaseURL: string = 'https://github.com/midwest-mackey';
+    public static githubRAWBaseURL: string = 'https://raw.githubusercontent.com/midwest-mackey';
     public static linkedinURL: string = 'https://www.linkedin.com/in/calebmackey';
     public static twitchURL: string = 'https://m.twitch.tv/midwestmackey/home';
     public static instagramURL: string = 'https://www.instagram.com/midwest.mackey/';

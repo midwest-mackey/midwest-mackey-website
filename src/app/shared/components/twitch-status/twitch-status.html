@@ -54,10 +54,6 @@
           <div class="row d-flex align-items-center">
             <div class="col-auto position-relative">
               <img [src]="channel.profile_image_url" class="rounded-circle" width="70" height="70"/>
-              <!-- <fa-layers [fixedWidth]="true" size="2x" class="position-absolute bottom-0 end-0">
-                <fa-icon class="text-white" [icon]="faCircle"></fa-icon>
-                <fa-icon class="twitch" [icon]="faTwitch" transform="shrink-8"></fa-icon>
-              </fa-layers> -->
             </div>
             <div class="col-auto">
               <div><span class="badge text-bg-dark">OFFLINE</span></div>
@@ -74,7 +70,7 @@
   </div>
   <!-- LAST STREAM -->
   <div *ngIf="lastStream; else noStreams" class="mb-3">
-    <div class="row mx-sm-5">
+    <div class="row mx-md-5">
       <div class="col-12">
         <h1 class="twitch display-0 mb-3">
           <fa-icon [icon]="faTwitch"></fa-icon> RECENT BROADCASTS
@@ -95,9 +91,9 @@
               <span class="badge text-bg-purple">{{ lastStream.view_count }} views</span>
             </div>
           </div>
-          <div class="card-body text-start">
-            <h4 class="m-0">{{ lastStream.title }}</h4>
-            <p class="text-white-50">Check out this {{ channel.current_game }} stream from {{ lastStream.time_ago }}.</p>
+          <div class="card-body p-md-5 text-start">
+            <p class="text-white-50 mb-0">Check out this {{ channel.current_game }} stream from {{ lastStream.time_ago }}!</p>
+            <h4 class="mb-0">{{ lastStream.title }}</h4>
           </div>
         </a>
       </div>
@@ -105,7 +101,7 @@
   </div>
 
   <!-- PAST STREAMS -->
-  <div *ngIf="pastStreams?.length; else noStreams" class="row mx-sm-5">
+  <div *ngIf="pastStreams?.length; else noStreams" class="row mx-md-5">
       <ng-container *ngFor="let vod of pastStreams">
         <div class="col-md-6 col-xl-4 mb-3" *ngIf="!lastStream || vod.id !== lastStream.id">
           <a [href]="vod.url" target="_twitch" class="card btn p-0 text-decoration-none bg-twitch text-white border-0 shadow-lg">
@@ -119,8 +115,8 @@
               </div>
             </div>
             <div class="card-body text-start">
-              <h6 class="">{{ vod.title }}</h6>
               <small class="text-white-50">{{ vod.time_ago }}</small>
+              <h6 class="mb-0">{{ vod.title }}</h6>
             </div>
           </a>
         </div>

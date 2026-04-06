@@ -20,39 +20,20 @@ export class SkillsPage implements OnInit {
   emailAddress = GlobalConstants.emailAddress;
 
 
-  id = 'design';
-  Color = this.currentColor;
+  id = 'education';
+  Color = 'danger';
   Css = 'end';
-  Title = 'Check back later';
-  SideText = "MM";
-  BodyText = 'coming soon';
-  SubText = 'In the meantime, if your interested in anything you have seen or interested in my work, connect with me on Linkedin!';
+  Title = 'Bachelor\'s of Fine Arts • Graphic Design';
+  SideText = "ISU";
+  BodyText = '';
+  SubText = 'Iowa State University • 2013';
   Buttons: any[] = [{
     icon: this.faLinkedin,
     text: 'Linkedin',
     link: this.linkedinURL,
+    iconCss: 'linkedin',
   },
   ];
-
-  // devID = 'dev';
-  // devColor = this.currentColor;
-  // devCss = 'left';
-  // devTitle = 'Website Development, Hosting, ';
-  // devSideText = "</code>";
-  // devBodyText = 'I integrate my passion for design and deep understanding of user interfaces from my nine-to-five, and pair it with just enough understanding of the code side to build, maintain, and host websites and services.';
-  // devSubText = 'Interested in my web services? Connect with me to discuss your needs.';
-  // devButtons: any[] = [{
-  //   icon: this.faLinkedin,
-  //   text: 'Linkedin',
-  //   link: this.linkedinURL,
-  // },
-  // {
-  //   icon: this.faPaperPlane,
-  //   text: 'Email',
-  //   link: this.emailAddress,
-  // },
-  // ];
-
   
 
   ngOnInit(): void {
