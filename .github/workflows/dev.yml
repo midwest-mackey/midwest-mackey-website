@@ -9,6 +9,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Detect Changes
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+            frontend:
+              - 'src/**'
+              - 'angular.json'
+              - 'package*.json'
+              - 'tsconfig*.json'
+              - 'Dockerfile'
       - name: Checkout Repo
         uses: actions/checkout@v4
 
@@ -23,16 +36,24 @@ jobs:
           
       # Build and push Angular frontend
       - name: Build and Push Frontend
+        if: steps.changes.outputs.frontend == 'true'
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./Dockerfile
           push: true
           tags: midwestmackey/midwestmackey.com:dev
+        cache-from: type=registry,ref=midwestmackey/midwestmackey.com:buildcache
+        cache-to: type=registry,ref=midwestmackey/midwestmackey.com:buildcache,mode=max
 
       # Build and push Twitch backend
       - name: Build and Push Twitch Backend
+        if: steps.changes.outputs.backend == 'true'
         uses: docker/build-push-action@v5
         with:
           context: ./backend
+          file: ./backend/Dockerfile
           push: true
           tags: midwestmackey/backend:dev
+        cache-from: type=registry,ref=midwestmackey/backend:buildcache
+        cache-to: type=registry,ref=midwestmackey/backend:buildcache,mode=max
