@@ -43,8 +43,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: midwestmackey/midwestmackey.com:dev
-        cache-from: type=registry,ref=midwestmackey/midwestmackey.com:buildcache
-        cache-to: type=registry,ref=midwestmackey/midwestmackey.com:buildcache,mode=max
+          cache-from: type=registry,ref=midwestmackey/midwestmackey.com:buildcache
+          cache-to: type=registry,ref=midwestmackey/midwestmackey.com:buildcache,mode=max
 
       # Build and push Twitch backend
       - name: Build and Push Twitch Backend
@@ -55,5 +55,5 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: midwestmackey/backend:dev
-        cache-from: type=registry,ref=midwestmackey/backend:buildcache
-        cache-to: type=registry,ref=midwestmackey/backend:buildcache,mode=max
+          cache-from: type=registry,ref=midwestmackey/backend:buildcache
+          cache-to: type=registry,ref=midwestmackey/backend:buildcache,mode=max
