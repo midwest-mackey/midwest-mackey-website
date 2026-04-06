@@ -41,18 +41,21 @@ export class HomePage implements OnInit {
     text: 'Visit channel',
     link: this.twitchURL,
     iconCss: 'twitch',
+    buttonID: 'twitch'
   },
   {
     icon: this.faPlaystation,
     text: 'Check out my PSN',
     link: this.playstationURL,
     iconCss: 'playstation',
+    buttonID: 'playstation'
   },
   {
     icon: this.faFortnite,
     text: 'Check my stats',
     link: this.fortniteURL,
     iconCss: 'fortnite',
+    buttonID: 'fortniteTracker'
   },
   ];
 
@@ -69,6 +72,7 @@ musicButtons: any[] = [{
     text: 'Check out my Spotify',
     link: this.spotifyURL,
     iconCss: 'spotify',
+    buttonID: 'spotify'
   },
   ];
 

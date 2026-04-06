@@ -26,7 +26,7 @@
             <div id="summary-buttons" class="row d-flex justify-content-md-{{css}} order-xxl-2">
                 <div class="col-11 col-offset-md-1 col-md-auto d-grid gap-2 gap-lg-4 d-md-flex">
                     @for (button of buttons; track $index) {
-                    <a href="{{button.link}}" target="_blank"
+                    <a href="{{button.link}}" [target]="'_' + button.buttonID.toLowerCase()"
                     class="btn btn-light card shadow p-0">
                         <div class="card-body">
                             <div class="row">

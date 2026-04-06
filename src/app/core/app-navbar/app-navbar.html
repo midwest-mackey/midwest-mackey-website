@@ -6,26 +6,25 @@
     <div id="social-links" class="d-flex order-lg-2 rounded-pill">
       <ul class="nav col gap-2">
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" href="{{githubBaseURL}}"  title="Github" target="github">
+          <a class="nav-link link-light rounded-pill" href="{{githubBaseURL}}"  title="Github" target="_github">
             <fa-icon [icon]="faGithub"></fa-icon>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" href="{{linkedinURL}}" title="linkedin" target="linkedin">
+          <a class="nav-link link-light rounded-pill" href="{{linkedinURL}}" title="linkedin" target="_linkedin">
             <fa-icon [icon]="faLinkedinIn"></fa-icon>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-light rounded-pill" href="{{instagramURL}}" title="Instagram" target="instagram">
+          <a class="nav-link link-light rounded-pill" href="{{instagramURL}}" title="Instagram" target="_instagram">
             <fa-icon [icon]="faInstagram"></fa-icon>
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link link-light rounded-pill position-relative" href="{{twitchURL}}" title="Twitch" target="twitch">
+          <a class="nav-link link-light rounded-pill position-relative" href="{{twitchURL}}" title="Twitch" target="_twitch">
             <fa-icon [icon]="faTwitch"></fa-icon>
             <mm-live-indicator *ngIf="(twitchService.stream$ | async)?.live" class="live-badge position-absolute top-0 start-50 translate-middle" label="LIVE"color="text-bg-light"></mm-live-indicator>
           </a>
-          
         </li>
       </ul>
     </div>

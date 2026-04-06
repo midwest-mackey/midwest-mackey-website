@@ -72,7 +72,7 @@
             }
         }
 
-        &:hover, &:focus, &:focus-within, &.active {
+        &:hover, &:focus, &:focus-within, &:active, &.touch {
             box-shadow: $box-shadow-lg;
             background-image:linear-gradient(180deg,rgba(var(--bs-body-bg-rgb),.01),
         rgba(var(--bs-body-bg-rgb),1) 85%),
