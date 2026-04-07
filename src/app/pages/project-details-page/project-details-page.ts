@@ -27,6 +27,7 @@ export class ProjectDetailsPage {
     icon: this.faList,
     text: 'Linktree',
     link: this.linkstackURL,
+    buttonID: 'linkstack',
   },
   ];
 

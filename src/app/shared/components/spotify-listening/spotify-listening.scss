@@ -49,13 +49,15 @@
   }
 
   // Hover zoom for album art
-  &.card:hover {
-    .album-art {
-      padding: 0; // smooth padding shrink
+  &.card {
+    &:hover, &:active, &:focus, &.touch {
+      .album-art {
+        padding: 0; // smooth padding shrink
 
-      img {
-        border-radius: 16px !important;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        img {
+          border-radius: 16px !important;
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
       }
     }
   }
@@ -91,7 +93,7 @@
       transition: transform 0.25s ease;
     }
 
-    &:hover {
+    &:hover, &:active, &:focus, &.touch {
       background: rgba(255, 255, 255, 0.1);
       transform: translateX(4px);
 

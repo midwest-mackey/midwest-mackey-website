@@ -32,6 +32,7 @@ export class SkillsPage implements OnInit {
     text: 'Linkedin',
     link: this.linkedinURL,
     iconCss: 'linkedin',
+    buttonID: 'linkedin'
   },
   ];
   

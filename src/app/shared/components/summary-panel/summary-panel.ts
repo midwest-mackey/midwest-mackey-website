@@ -18,6 +18,7 @@ export class SummaryPanel implements OnInit {
   @Input() img: string;
   @Input() buttons: any[];
   @Input() iconCss: any;
+  @Input() buttonID: any;
 
   faCircle = faCircle;
   faArrowRight = faArrowRight;

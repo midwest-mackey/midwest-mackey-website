@@ -33,7 +33,7 @@
             <div class="row row-cols-1 row-cols-md-2 p-0 pt-5 p-sm-5">
             <ng-container *ngFor="let certificate of certifications">
                 <div class="mb-3">
-                    <a [href]="certificate.url" target="_blank" class="card btn p-0 text-decoration-none shadow-lg">
+                    <a [href]="certificate.url" [target]="'_' + certificate.name.toLowerCase()" class="card btn p-0 text-decoration-none shadow-lg" appTouchHover>
                         <div class="card-img-wrapper rounded-4 position-relative">
                             <img class="card-img-top " [src]="certificate.image" />
                         </div>
@@ -46,7 +46,7 @@
                                     <small class="text-cyan">{{certificate.issuer}}</small>
                                     <h6 class="fw-bold">{{certificate.name}}</h6>
                                     <div><small class="text-secondary"><fa-icon class="text-disabled me-2" [icon]="faCalendar"></fa-icon>{{certificate.issueDate}}</small></div>
-                                    <small><a [href]="certificate.certURL" class="text-cyan " target="_{{ certificate.name }}"><fa-icon class="me-2" [icon]="faGithub"></fa-icon>Certificate</a></small>
+                                    <small><a [href]="certificate.certURL" class="text-cyan " target="_github"><fa-icon class="me-2" [icon]="faGithub"></fa-icon>Certificate</a></small>
                                 </div>
                             </div>
                         </div>

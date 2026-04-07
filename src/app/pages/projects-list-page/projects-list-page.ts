@@ -25,6 +25,7 @@ export class ProjectsListPage implements OnInit {
     icon: this.faList,
     text: 'Linkstack',
     link: this.linkstackURL,
+    buttonID: 'linkstack',
   },
   ];
 
