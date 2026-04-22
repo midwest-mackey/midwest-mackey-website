@@ -1,4 +1,5 @@
-import pkg from '../../package.json';
+import { APP_VERSION } from '../environments/version';
+
 
 
 export class GlobalConstants {
@@ -25,4 +26,5 @@ export class GlobalConstants {
     public static emailAddress: string = 'midwestmackey@gmail.com';
 
     // Versions
-    public static appVersion: string = 'v'+pkg.version;}
+    public static readonly appVersion: string = APP_VERSION;
+}
