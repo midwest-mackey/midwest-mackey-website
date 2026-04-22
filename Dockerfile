@@ -8,6 +8,9 @@ FROM dhi.io/node:24-alpine3.22-dev AS builder
 # Set the working directory inside the container
 WORKDIR /app
 
+ARG APP_VERSION
+ENV APP_VERSION=$APP_VERSION
+
 # Copy package-related files first to leverage Docker's caching mechanism
 COPY package.json package-lock.json* ./
 
