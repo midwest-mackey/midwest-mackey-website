@@ -4,7 +4,7 @@
   "description": "Midwest Mackey",
   "repository": {
     "type": "git",
-    "url": "https://midwestmackey.com"
+    "url": "https://github.com/midwest-mackey/midwest-mackey-website.git"
   },
   "main": "index.html",
   "scripts": {
