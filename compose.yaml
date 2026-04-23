@@ -9,33 +9,35 @@ secrets:
     file: ./secrets/spotify_client_secret.txt
   spotify_refresh_token:
     file: ./secrets/spotify_refresh_token.txt
+  fortnite_api_key:
+    file: ./secrets/fortnite_api_key.txt
 
 services:
-  angular-prod:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: angular-website
-    ports:
-      - "8080:8080"
+  # angular-prod:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   image: angular-website
+  #   ports:
+  #     - "8080:8080"
 
-  angular-dev:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    ports:
-      - "4200:4200"
-    develop:
-      watch:
-        - action: sync
-          path: .
-          target: /app
+  # angular-dev:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   ports:
+  #     - "4200:4200"
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: .
+  #         target: /app
 
-  angular-test:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    command: ["npm", "run", "test"]
+  # angular-test:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   command: ["npm", "run", "test"]
 
   mm-api:
     build: ./backend
@@ -47,4 +49,7 @@ services:
       - spotify_client_id
       - spotify_client_secret
       - spotify_refresh_token
+      - fortnite_api_key
     restart: unless-stopped
+    volumes:
+      - ./backend/config/config.json:/app/config/config.json

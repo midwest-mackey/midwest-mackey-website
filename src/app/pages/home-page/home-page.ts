@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faPlaystation, faSpotify, faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faFortniteF } from 'src/app/shared/custom-icons/custom-icons.module';
 import { GlobalConstants } from 'src/app/app.constants';
-import { icon } from '@fortawesome/fontawesome-svg-core';
-
+import { FortniteService, FortniteProfile } from 'src/app/shared/services/fortnite.service';
 
 @Component({
   selector: 'mm-home-page',
@@ -27,6 +26,27 @@ export class HomePage implements OnInit {
   playstationURL = GlobalConstants.playstationURL;
   fortniteURL = GlobalConstants.fortniteTrackerURL;
   spotifyURL = GlobalConstants.spotifyURL;
+
+  profile?: FortniteProfile;
+  cosmetic?: FortniteProfile['cosmetic'];
+  error?: string;
+  loading = true;
+  
+  constructor(private fortniteService: FortniteService) {}
+
+  ngOnInit() {
+    this.fortniteService.getFortniteProfile().subscribe({
+      next: data => {
+       this.profile = data;
+        this.cosmetic = data.cosmetic;
+        this.loading = false;
+      },
+      error: err => {
+        this.error = err.message;
+        this.loading = false;
+      }
+    });
+  }
 
   gamerID = 'gamer';
   gamerColor = 'purple';
@@ -76,6 +96,4 @@ musicButtons: any[] = [{
   },
   ];
 
-  ngOnInit(): void {
-  }
 }

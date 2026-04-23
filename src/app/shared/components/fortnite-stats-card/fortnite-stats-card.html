@@ -1,0 +1,110 @@
+<div class="stats-card rounded-4 border-1 p-5 pb-0" [ngClass]="getRarityClass()" [ngStyle]="getCardStyle()">
+  <div class="card-bg">
+    <img *ngIf="getSeriesBackground()" [src]="getSeriesBackground()"/>
+    <div class="gradient" [ngStyle]="getCardStyle()"></div>
+  </div>
+
+  <div class="card-content">
+      <!-- HEADER -->
+    <div class="header position-relative z-1">
+      <div class="avatar rounded-4">
+        <img
+          *ngIf="getAvatarImage(); else fallbackAvatar"
+          [src]="getAvatarImage()"
+          [alt]="cosmetic?.name || 'Avatar'"
+        />
+
+        <ng-template #fallbackAvatar>
+          {{ playerName?.charAt(0)?.toUpperCase() }}
+        </ng-template>
+      </div>
+
+      <div class="player-info">
+        <h4 class="name sigmar-regular">{{ playerName }}</h4>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <ul class="nav nav-pills gap-2 mb-3 position-relative z-1">
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          [class.active]="activeTab === 'overview'"
+          (click)="setTab('overview')"
+        >
+          Overview
+        </button>
+      </li>
+
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          [class.active]="activeTab === 'solo'"
+          (click)="setTab('solo')"
+        >
+          Solo
+        </button>
+      </li>
+
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          [class.active]="activeTab === 'duo'"
+          (click)="setTab('duo')"
+        >
+          Duos
+        </button>
+      </li>
+
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          [class.active]="activeTab === 'squad'"
+          (click)="setTab('squad')"
+        >
+          Squads
+        </button>
+      </li>
+    </ul>
+
+    <!-- BODY -->
+    <div class="card-layout d-flex">
+      <div class="left col-auto pb-5">
+        <div class="stats-grid">
+          <div class="stat">
+            <div class="label">Wins</div>
+            <div class="value">{{ activeStats.wins }}</div>
+          </div>
+
+          <div class="stat">
+            <div class="label">Kills</div>
+            <div class="value">{{ activeStats.kills }}</div>
+          </div>
+
+          <div class="stat">
+            <div class="label">Matches</div>
+            <div class="value">{{ activeStats.matches }}</div>
+          </div>
+
+          <div class="stat">
+            <div class="label">K/D</div>
+            <div class="value">{{ activeStats.kd | number:'1.2-2' }}</div>
+          </div>
+
+          <div class="stat highlight">
+            <div class="label">Win Rate</div>
+            <div class="value">{{ activeStats.winRate }}%</div>
+          </div>
+        </div>
+      </div>
+      <div class="right align-self-end z-0" *ngIf="getShowcaseImage() as img">
+        <img
+          [src]="img"
+          [alt]="cosmetic?.name"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</div>

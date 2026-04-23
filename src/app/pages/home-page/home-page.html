@@ -15,6 +15,14 @@
     <mm-summary-panel [id]="gamerID" [color]="gamerColor" [css]="gamerCss" [title]="gamerTitle" [sideText]="gamerSideText" [bodyText]="gamerBodyText" [subText]="gamerSubText" [img]="gamerImg" [buttons]="gamerButtons"></mm-summary-panel>
     <div class="container">
         <twitch-status></twitch-status>
+        <div class="row my-5">
+            <div class="col-12">
+                <h1 class="twitch display-0 mb-3">
+                    <fa-icon [icon]="faFortnite"></fa-icon> FORTNITE STATS
+                </h1>
+                <fortnite-stats-card *ngIf="profile as p" [playerName]="profile.username" [stats]="profile.stats" [cosmetic]="profile.cosmetic"></fortnite-stats-card>
+            </div>
+        </div>
     </div>
     <mm-summary-panel id="spotify" [id]="musicID" [color]="musicColor" [css]="musicCss" [title]="musicTitle" [sideText]="musicSideText" [bodyText]="musicBodyText" [subText]="musicSubText" [img]="musicImg" [buttons]="musicButtons"></mm-summary-panel>
     <div class="container">
