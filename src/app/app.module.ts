@@ -40,6 +40,7 @@ import { PulseIndicator } from './shared/components/pulse-indicator/pulse-indica
 import { TwitchStatus } from './shared/components/twitch-status/twitch-status';
 import { SpotifyListening } from './shared/components/spotify-listening/spotify-listening';
 import { LiveIndicator } from './shared/components/live-indicator/live-indicator';
+import { FortniteStatsCard } from './shared/components/fortnite-stats-card/fortnite-stats-card';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { LiveIndicator } from './shared/components/live-indicator/live-indicator
     PulseIndicator,
     LiveIndicator,
     TwitchStatus,
-    SpotifyListening
+    SpotifyListening,
+    FortniteStatsCard
     ],
   imports: [
     BrowserModule,

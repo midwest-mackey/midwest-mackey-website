@@ -1,0 +1,186 @@
+@use 'custom' as *;
+
+.stats-card {
+  background: linear-gradient(180deg, #14161c, #0d0f14);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  color: #fff;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.card-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.left {
+  flex: 1;
+}
+
+/* RIGHT SIDE IMAGE */
+.right {
+  width: 100px;
+  height: 243px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+
+  img {
+    width: 450px;
+    margin-right: -100px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.6));
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: #2a2f3a;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+  margin-right: 12px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* =========================
+   PLAYER INFO
+========================= */
+.player-info {
+  .name {
+  }
+}
+
+/* =========================
+   TABS
+========================= */
+.nav-pills {
+  .nav-link {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 12px;
+    transition: 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background: $twitch;
+      border-color: transparent;
+      color: #fff;
+    }
+  }
+}
+
+/* =========================
+   STATS GRID
+========================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  .label {
+    font-size: 11px;
+    opacity: 0.6;
+  }
+
+  .value {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+}
+
+.stat.highlight {
+  grid-column: span 2;
+  background: linear-gradient(90deg, $twitch, #000);
+  border: none;
+}
+
+/* =========================
+   RARITY SHADOWS
+========================= */
+.stats-card.shadow {
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.3);
+}
+
+.stats-card.epic {
+  box-shadow: 0 0 20px rgba(163, 53, 238, 0.4);
+}
+
+.stats-card.legendary {
+  box-shadow: 0 0 20px rgba(255, 170, 0, 0.4);
+}
+
+/* =========================
+   BACKGROUND LAYER
+========================= */
+.card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    transform: scale(1.1);
+    filter: saturate(1.2) contrast(1.1);
+  }
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+}
+
+// Media Breakpoints
+@include media-breakpoint-down(md) {
+  .right {
+    width: 0;
+    justify-content: center;
+    img {
+      margin-right: 0px;
+    }
+  }
+ }
