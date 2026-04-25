@@ -27,7 +27,7 @@ export class FortniteStatsCard {
 
   @Input() playerName?: string;
   @Input() stats!: FortniteProfileStats;
-  @Input() cosmetic?: FortniteCosmetic;
+  @Input() cosmetic!: FortniteCosmetic;
 
   faFortnite = faFortniteF;
 
@@ -37,8 +37,10 @@ export class FortniteStatsCard {
     this.activeTab = tab;
   }
 
-  get activeStats(): StatsBlock | null {
-    if (!this.stats) return null;
+  get activeStats(): StatsBlock {
+    if (!this.stats) {
+      return { wins: 0, kills: 0, matches: 0, kd: 0, winRate: 0 };
+    }
 
     switch (this.activeTab) {
       case 'solo': return this.stats.solo;
