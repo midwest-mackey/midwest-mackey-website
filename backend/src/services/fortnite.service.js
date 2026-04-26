@@ -2,21 +2,27 @@ import fetch from 'node-fetch';
 import fs from 'fs';
 import { getConfig } from './config.service.js';
 
-// 🔐 API KEY (Docker Secret)
+let initialized = false;
 let FORTNITE_API_KEY = '';
 
-try {
-  FORTNITE_API_KEY = fs
-    .readFileSync('/run/secrets/fortnite_api_key', 'utf-8')
-    .trim();
+// 🔐 LAZY INIT (Docker-safe)
+function initFortniteSecret() {
+  if (initialized) return;
+  initialized = true;
 
-  console.log('✅ Fortnite secret loaded');
-} catch (err) {
-  console.error('❌ Fortnite secret missing — check Docker secrets mount');
-}
+  try {
+    FORTNITE_API_KEY = fs
+      .readFileSync('/run/secrets/fortnite_api_key', 'utf-8')
+      .trim();
 
-if (!FORTNITE_API_KEY) {
-  throw new Error('Fortnite API key missing');
+    console.log('✅ Fortnite secret loaded');
+  } catch (err) {
+    throw new Error('❌ Fortnite secret missing — check Docker secrets mount');
+  }
+
+  if (!FORTNITE_API_KEY) {
+    throw new Error('❌ Fortnite API key is empty after loading secret');
+  }
 }
 
 // ⚙️ CONFIG
@@ -28,7 +34,9 @@ export function getConfigValue(path, fallback = null) {
     .reduce((obj, key) => obj?.[key], config) ?? fallback;
 }
 
+// --------------------
 // 🌐 BASE URL
+// --------------------
 const BASE_URL_PUBLIC = getConfigValue(
   'server.publicUrl',
   'http://localhost:3000'
@@ -58,10 +66,10 @@ const COSMETIC_TTL = 1000 * 60 * 60;
 
 const STATS_URL = 'https://fortnite-api.com/v2/stats/br/v2';
 
-// --------------------
 // 📊 STATS
-// --------------------
 export async function getFortniteStats(username) {
+  initFortniteSecret();
+
   const key = username.toLowerCase();
   const cached = statsCache.get(key);
 
@@ -107,10 +115,10 @@ export async function getFortniteStats(username) {
   return result;
 }
 
-// --------------------
 // 🎭 COSMETIC
-// --------------------
 export async function getFortniteCosmeticById(cosmeticId) {
+  initFortniteSecret();
+
   const idToUse = cosmeticId || getFeaturedCosmeticId();
 
   if (!idToUse) {
@@ -182,9 +190,7 @@ export async function getFortniteCosmeticById(cosmeticId) {
   return result;
 }
 
-// --------------------
-// 🧠 NEW: FULL PROFILE (IMPORTANT FIX)
-// --------------------
+// 🧠 PROFILE (SAFE)
 export async function getFortniteProfile(username) {
   const [statsResult, cosmeticResult] = await Promise.allSettled([
     getFortniteStats(username),

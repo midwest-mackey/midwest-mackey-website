@@ -5,12 +5,12 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# required for HEALTHCHECK
+# needed for healthcheck
 RUN apk add --no-cache curl
 
-RUN mkdir -p /app/public/images
-
 COPY src ./src
+
+RUN mkdir -p /app/public/images
 
 EXPOSE 3000
 
