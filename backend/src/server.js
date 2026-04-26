@@ -15,7 +15,7 @@ app.use('/twitch', twitchRoutes);
 app.use('/spotify', spotifyRoutes);
 app.use('/fortnite', fortniteRoutes);
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
-
+app.get('/health', (req, res) => { res.json({ status: 'ok', uptime: process.uptime(), timestamp: Date.now() }); });
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
   console.log('📁 Static images path:', path.join(__dirname, '../public/images'));
