@@ -15,22 +15,12 @@
     <mm-summary-panel [id]="gamerID" [color]="gamerColor" [css]="gamerCss" [title]="gamerTitle" [sideText]="gamerSideText" [bodyText]="gamerBodyText" [subText]="gamerSubText" [img]="gamerImg" [buttons]="gamerButtons"></mm-summary-panel>
     <div class="container">
         <twitch-status></twitch-status>
-        <div class="row my-5">
+        <div class="row my-5 pb-5">
             <div class="col-12">
                 <h1 class="twitch display-0 mb-3">
                     <fa-icon [icon]="faFortnite"></fa-icon> FORTNITE STATS
                 </h1>
-                <div style="position:fixed;top:0;z-index:9999;background:black;color:white;">
-  username: {{ profile?.username }} |
-  stats: {{ profile?.stats | json }} |
-  cosmetic: {{ profile?.cosmetic | json }}
-</div>
-                <fortnite-stats-card
-  *ngIf="profile"
-  [playerName]="profile.username"
-  [stats]="profile.stats"
-  [cosmetic]="profile.cosmetic">
-</fortnite-stats-card>
+                <fortnite-stats-card *ngIf="profile" [playerName]="profile.username" [stats]="profile.stats" [cosmetic]="profile.cosmetic"></fortnite-stats-card>
             </div>
         </div>
     </div>
