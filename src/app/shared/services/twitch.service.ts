@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, interval, Observable } from 'rxjs';
-import { startWith, switchMap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { BehaviorSubject, interval, Observable, of } from 'rxjs';
+import { startWith, switchMap, catchError } from 'rxjs/operators';
+import { API } from './api-endpoints';
 
 export interface TwitchStreamData {
   id: string;
@@ -59,7 +59,6 @@ export interface TwitchStream {
 
 @Injectable({ providedIn: 'root' })
 export class TwitchService {
-  private apiUrl: string = environment.apiUrl;
   private streamSubject = new BehaviorSubject<TwitchStream>({
     status: 'offline',
     live: false,
@@ -68,6 +67,7 @@ export class TwitchService {
     channel: null as any,
     pastStreams: [],
   });
+
   public stream$ = this.streamSubject.asObservable();
 
   constructor(private http: HttpClient) {
@@ -78,13 +78,25 @@ export class TwitchService {
     interval(30000)
       .pipe(
         startWith(0),
-        switchMap(() => this.getStream(username))
+        switchMap(() =>
+          this.getStream(username).pipe(
+            catchError(err => {
+              console.error('Twitch fetch error', err);
+
+              // keep stream alive instead of breaking
+              return of(this.streamSubject.value);
+            })
+          )
+        )
       )
-      .subscribe(res => this.streamSubject.next(res));
+      .subscribe(data => {
+        requestAnimationFrame(() => {
+          this.streamSubject.next(data);
+        });
+      });
   }
 
   getStream(username: string): Observable<TwitchStream> {
-    return this.http.get<TwitchStream>(`${this.apiUrl}/${username}`);
+    return this.http.get<TwitchStream>(API.twitch.live(username));
   }
-  
 }

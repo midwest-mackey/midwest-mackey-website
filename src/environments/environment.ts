@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/twitch/live',
+  apiUrl: 'http://192.168.1.165:3000'
 };

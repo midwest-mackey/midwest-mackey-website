@@ -1,8 +1,10 @@
 // src/app/services/spotify.service.ts
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, interval } from 'rxjs';
-import { switchMap, map } from 'rxjs/operators';
+import { BehaviorSubject, interval, of } from 'rxjs';
+import { switchMap, map, catchError, startWith } from 'rxjs/operators';
+import { API } from './api-endpoints';
 
 export interface SpotifyNowPlaying {
   isPlaying: boolean;
@@ -29,40 +31,43 @@ export class SpotifyService {
   private nowPlayingSubject = new BehaviorSubject<SpotifyNowPlaying | null>(null);
   nowPlaying$ = this.nowPlayingSubject.asObservable();
 
-  private NOW_PLAYING_URL = 'https://api.midwestmackey.com/spotify/now-playing';
-  private HISTORY_URL = 'https://api.midwestmackey.com/spotify/recently-played';
-
   constructor(private http: HttpClient) {
-    // Poll every 10s
     interval(10000)
-      .pipe(switchMap(() => this.getNowPlaying()))
-      .subscribe({
-        next: (data) => this.nowPlayingSubject.next(data),
-        error: (err) => console.error('Spotify fetch error', err),
+      .pipe(
+        startWith(0), // 🔥 run immediately on load
+        switchMap(() =>
+          this.getNowPlaying().pipe(
+            catchError(err => {
+              console.error('Spotify fetch error', err);
+              return of(null); // 🔥 prevents stream from dying (Safari fix)
+            })
+          )
+        )
+      )
+      .subscribe(data => {
+        // 🔥 smoother UI updates (helps mobile Safari)
+        requestAnimationFrame(() => {
+          this.nowPlayingSubject.next(data);
+        });
       });
-
-    // Fire immediately on load
-    this.getNowPlaying().subscribe(data => this.nowPlayingSubject.next(data));
   }
 
   getNowPlaying() {
-  return this.http.get<any>(this.NOW_PLAYING_URL).pipe(
-    map(res => {
-      if (!res) return null;
-
-      return {
-        isPlaying: res.isPlaying ?? false, // always true/false
-        songName: res.songName ?? '',
-        artistName: res.artistName ?? '',
-        albumName: res.albumName ?? '',
-        albumArtUrl: res.albumArtUrl ?? '',
-        url: res.url ?? ''
-      };
-    })
-  );
-}
+    return this.http.get<SpotifyNowPlaying>(API.spotify.nowPlaying()).pipe(
+      map(res => ({
+        isPlaying: res?.isPlaying ?? false,
+        songName: res?.songName ?? '',
+        artistName: res?.artistName ?? '',
+        albumName: res?.albumName ?? '',
+        albumArtUrl: res?.albumArtUrl ?? '',
+        url: res?.url ?? ''
+      }))
+    );
+  }
 
   getHistory(limit = 10) {
-    return this.http.get<SpotifyTrackHistory[]>(`${this.HISTORY_URL}?limit=${limit}`);
+    return this.http.get<SpotifyTrackHistory[]>(
+      API.spotify.history(limit)
+    );
   }
 }

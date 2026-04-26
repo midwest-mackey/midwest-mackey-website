@@ -19,7 +19,7 @@ if (!FORTNITE_API_KEY) {
   throw new Error('Fortnite API key missing');
 }
 
-// ⚙️ CONFIG HELPERS
+// ⚙️ CONFIG
 export function getConfigValue(path, fallback = null) {
   const config = getConfig();
 
@@ -28,7 +28,7 @@ export function getConfigValue(path, fallback = null) {
     .reduce((obj, key) => obj?.[key], config) ?? fallback;
 }
 
-// 🌐 PUBLIC BASE URL (IMPORTANT)
+// 🌐 BASE URL
 const BASE_URL_PUBLIC = getConfigValue(
   'server.publicUrl',
   'http://localhost:3000'
@@ -44,7 +44,6 @@ function getFeaturedCosmeticId() {
   return getConfigValue('fortnite.featuredCosmeticId');
 }
 
-// Fallback Helper
 function getCosmeticFallbackImage(cosmeticId) {
   const fallbacks = getConfigValue('fortnite.cosmeticImageFallbacks', {});
   return fallbacks?.[cosmeticId] || null;
@@ -57,9 +56,11 @@ const cosmeticCache = new Map();
 const STATS_TTL = 1000 * 60 * 5;
 const COSMETIC_TTL = 1000 * 60 * 60;
 
-const BASE_URL = 'https://fortnite-api.com/v2/stats/br/v2';
+const STATS_URL = 'https://fortnite-api.com/v2/stats/br/v2';
 
+// --------------------
 // 📊 STATS
+// --------------------
 export async function getFortniteStats(username) {
   const key = username.toLowerCase();
   const cached = statsCache.get(key);
@@ -68,7 +69,7 @@ export async function getFortniteStats(username) {
     return cached.data;
   }
 
-  const res = await fetch(`${BASE_URL}?name=${username}`, {
+  const res = await fetch(`${STATS_URL}?name=${username}`, {
     headers: {
       Authorization: FORTNITE_API_KEY
     }
@@ -82,10 +83,6 @@ export async function getFortniteStats(username) {
 
   const all = data?.data?.stats?.all;
 
-  if (!all) {
-    throw new Error('No stats found for player');
-  }
-
   const buildBlock = (src = {}) => ({
     wins: src.wins ?? 0,
     kills: src.kills ?? 0,
@@ -96,10 +93,10 @@ export async function getFortniteStats(username) {
 
   const result = {
     playerName: data.data.account.name,
-    overall: buildBlock(all.overall),
-    solo: buildBlock(all.solo),
-    duo: buildBlock(all.duo),
-    squad: buildBlock(all.squad)
+    overall: buildBlock(all?.overall),
+    solo: buildBlock(all?.solo),
+    duo: buildBlock(all?.duo),
+    squad: buildBlock(all?.squad)
   };
 
   statsCache.set(key, {
@@ -110,7 +107,9 @@ export async function getFortniteStats(username) {
   return result;
 }
 
+// --------------------
 // 🎭 COSMETIC
+// --------------------
 export async function getFortniteCosmeticById(cosmeticId) {
   const idToUse = cosmeticId || getFeaturedCosmeticId();
 
@@ -140,7 +139,6 @@ export async function getFortniteCosmeticById(cosmeticId) {
     throw new Error('Cosmetic not found');
   }
 
-  // fallback from config
   const fallbackImage = getCosmeticFallbackImage(item.id);
 
   const result = {
@@ -171,10 +169,7 @@ export async function getFortniteCosmeticById(cosmeticId) {
     images: {
       icon: resolveImage(item.images?.icon),
       smallIcon: resolveImage(item.images?.smallIcon),
-
-      // ONLY featured uses fallback logic
       featured: resolveImage(item.images?.featured || fallbackImage),
-
       background: resolveImage(item.images?.background)
     }
   };
@@ -185,4 +180,36 @@ export async function getFortniteCosmeticById(cosmeticId) {
   });
 
   return result;
+}
+
+// --------------------
+// 🧠 NEW: FULL PROFILE (IMPORTANT FIX)
+// --------------------
+export async function getFortniteProfile(username) {
+  const [statsResult, cosmeticResult] = await Promise.allSettled([
+    getFortniteStats(username),
+    getFortniteCosmeticById()
+  ]);
+
+  const stats =
+    statsResult.status === 'fulfilled'
+      ? statsResult.value
+      : {
+          playerName: username,
+          overall: { wins: 0, kills: 0, matches: 0, kd: 0, winRate: 0 },
+          solo: { wins: 0, kills: 0, matches: 0, kd: 0, winRate: 0 },
+          duo: { wins: 0, kills: 0, matches: 0, kd: 0, winRate: 0 },
+          squad: { wins: 0, kills: 0, matches: 0, kd: 0, winRate: 0 }
+        };
+
+  const cosmetic =
+    cosmeticResult.status === 'fulfilled'
+      ? cosmeticResult.value
+      : null;
+
+  return {
+    username,
+    stats,
+    cosmetic
+  };
 }
