@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.midwestmackey.com/twitch/live',
+  apiUrl: 'https://api.midwestmackey.com',
 };

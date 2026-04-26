@@ -27,7 +27,7 @@ export class HomePage implements OnInit {
   fortniteURL = GlobalConstants.fortniteTrackerURL;
   spotifyURL = GlobalConstants.spotifyURL;
 
-  profile?: FortniteProfile;
+  profile: FortniteProfile | null = null;
   cosmetic?: FortniteProfile['cosmetic'];
   error?: string;
   loading = true;
@@ -35,17 +35,15 @@ export class HomePage implements OnInit {
   constructor(private fortniteService: FortniteService) {}
 
   ngOnInit() {
-    this.fortniteService.getFortniteProfile().subscribe({
-      next: data => {
-       this.profile = data;
-        this.cosmetic = data.cosmetic;
-        this.loading = false;
-      },
-      error: err => {
-        this.error = err.message;
-        this.loading = false;
-      }
-    });
+      this.fortniteService.getFortniteProfile().subscribe({
+    next: (res) => {
+      console.log('FORTNITE SUCCESS', res);
+      this.profile = res;
+    },
+    error: (err) => {
+      console.error('FORTNITE ERROR', err);
+    }
+  });
   }
 
   gamerID = 'gamer';

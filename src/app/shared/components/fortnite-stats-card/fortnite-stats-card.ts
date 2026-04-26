@@ -17,6 +17,14 @@ export interface FortniteProfileStats {
   squad: StatsBlock;
 }
 
+const EMPTY_STATS: StatsBlock = {
+  wins: 0,
+  kills: 0,
+  matches: 0,
+  kd: 0,
+  winRate: 0
+};
+
 @Component({
   selector: 'fortnite-stats-card',
   templateUrl: './fortnite-stats-card.html',
@@ -25,9 +33,9 @@ export interface FortniteProfileStats {
 })
 export class FortniteStatsCard {
 
-  @Input() playerName?: string;
-  @Input() stats!: FortniteProfileStats;
-  @Input() cosmetic!: FortniteCosmetic;
+  @Input() playerName: string | null = null;
+  @Input() stats: FortniteProfileStats | null = null;
+  @Input() cosmetic: FortniteCosmetic | null = null;
 
   faFortnite = faFortniteF;
 
@@ -38,37 +46,32 @@ export class FortniteStatsCard {
   }
 
   get activeStats(): StatsBlock {
-    if (!this.stats) {
-      return { wins: 0, kills: 0, matches: 0, kd: 0, winRate: 0 };
-    }
+    const s = this.stats;
+
+    if (!s) return EMPTY_STATS;
 
     switch (this.activeTab) {
-      case 'solo': return this.stats.solo;
-      case 'duo': return this.stats.duo;
-      case 'squad': return this.stats.squad;
-      default: return this.stats.overall;
+      case 'solo': return s.solo || EMPTY_STATS;
+      case 'duo': return s.duo || EMPTY_STATS;
+      case 'squad': return s.squad || EMPTY_STATS;
+      default: return s.overall || EMPTY_STATS;
     }
   }
 
   getAvatarImage(): string | null {
-    return (
-      this.cosmetic?.images?.icon ||
-      this.cosmetic?.images?.smallIcon ||
-      null
-    );
+    return this.cosmetic?.images?.icon
+      || this.cosmetic?.images?.smallIcon
+      || null;
   }
 
   getShowcaseImage(): string | null {
-    return (
-      this.cosmetic?.images?.featured ||
-      this.cosmetic?.images?.background ||
-      this.cosmetic?.fallbackImage ||
-      null
-    );
+    return this.cosmetic?.images?.featured
+      || this.cosmetic?.images?.background
+      || null;
   }
 
   getSeriesBackground(): string | null {
-    return this.cosmetic?.series?.image || null;
+    return this.cosmetic?.series?.image ?? null;
   }
 
   getThemeColors(): string[] {
@@ -81,12 +84,17 @@ export class FortniteStatsCard {
     const colors = this.getThemeColors();
 
     return {
-      'background': `linear-gradient(135deg, ${colors[0] || '#111'}, ${colors[1] || colors[0] || '#222'})`,
-      'border-color': colors[1] || '#333'
+      background: `linear-gradient(135deg, ${colors[0]}, ${colors[1] || colors[0]})`,
+      borderColor: colors[1] || '#333'
     };
   }
 
   getRarityClass(): string {
     return this.cosmetic?.rarity?.value || 'common';
+  }
+
+  onImageError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    if (img) img.style.display = 'none';
   }
 }

@@ -1,76 +1,87 @@
-<div class="stats-card rounded-4 border-1 p-5 pb-0" [ngClass]="getRarityClass()" [ngStyle]="getCardStyle()">
+<div class="stats-card rounded-4 border-1 p-5 pb-0"
+     [ngClass]="getRarityClass()"
+     [ngStyle]="getCardStyle()">
+
   <div class="card-bg">
-    <img *ngIf="getSeriesBackground()" [src]="getSeriesBackground()"/>
+
+    <img *ngIf="getSeriesBackground() as bg"
+         [src]="bg"
+         alt="series background"
+         (error)="onImageError($event)" />
+
     <div class="gradient" [ngStyle]="getCardStyle()"></div>
   </div>
 
   <div class="card-content">
-      <!-- HEADER -->
+
+    <!-- HEADER -->
     <div class="header position-relative z-1">
+
       <div class="avatar rounded-4">
-        <img
-          *ngIf="getAvatarImage(); else fallbackAvatar"
-          [src]="getAvatarImage()"
-          [alt]="cosmetic?.name || 'Avatar'"
-        />
+
+        <img *ngIf="getAvatarImage() as avatar; else fallbackAvatar"
+             [src]="avatar"
+             [alt]="cosmetic?.name || 'Avatar'"
+             (error)="onImageError($event)" />
 
         <ng-template #fallbackAvatar>
-          {{ playerName?.charAt(0)?.toUpperCase() }}
+          {{ playerName?.charAt(0)?.toUpperCase() || '?' }}
         </ng-template>
+
       </div>
 
       <div class="player-info">
-        <h4 class="name sigmar-regular">{{ playerName }}</h4>
+        <h4 class="name sigmar-regular">
+          {{ playerName || 'Unknown' }}
+        </h4>
       </div>
+
     </div>
 
     <!-- TABS -->
     <ul class="nav nav-pills gap-2 mb-3 position-relative z-1">
+
       <li class="nav-item">
-        <button
-          class="nav-link"
-          [class.active]="activeTab === 'overview'"
-          (click)="setTab('overview')"
-        >
+        <button class="nav-link"
+                [class.active]="activeTab === 'overview'"
+                (click)="setTab('overview')">
           Overview
         </button>
       </li>
 
       <li class="nav-item">
-        <button
-          class="nav-link"
-          [class.active]="activeTab === 'solo'"
-          (click)="setTab('solo')"
-        >
+        <button class="nav-link"
+                [class.active]="activeTab === 'solo'"
+                (click)="setTab('solo')">
           Solo
         </button>
       </li>
 
       <li class="nav-item">
-        <button
-          class="nav-link"
-          [class.active]="activeTab === 'duo'"
-          (click)="setTab('duo')"
-        >
+        <button class="nav-link"
+                [class.active]="activeTab === 'duo'"
+                (click)="setTab('duo')">
           Duos
         </button>
       </li>
 
       <li class="nav-item">
-        <button
-          class="nav-link"
-          [class.active]="activeTab === 'squad'"
-          (click)="setTab('squad')"
-        >
+        <button class="nav-link"
+                [class.active]="activeTab === 'squad'"
+                (click)="setTab('squad')">
           Squads
         </button>
       </li>
+
     </ul>
 
     <!-- BODY -->
     <div class="card-layout d-flex">
+
       <div class="left col-auto pb-5">
+
         <div class="stats-grid">
+
           <div class="stat">
             <div class="label">Wins</div>
             <div class="value">{{ activeStats.wins }}</div>
@@ -95,13 +106,18 @@
             <div class="label">Win Rate</div>
             <div class="value">{{ activeStats.winRate }}%</div>
           </div>
+
         </div>
+
       </div>
-      <div class="right align-self-end z-0" *ngIf="getShowcaseImage() as img">
-        <img
-          [src]="img"
-          [alt]="cosmetic?.name"
-        />
+
+      <div class="right align-self-end z-0"
+           *ngIf="getShowcaseImage() as img">
+
+        <img [src]="img"
+             alt="showcase"
+             (error)="onImageError($event)" />
+
       </div>
 
     </div>
