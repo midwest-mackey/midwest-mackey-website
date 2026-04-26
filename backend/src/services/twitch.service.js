@@ -1,27 +1,33 @@
 import fetch from 'node-fetch';
 import fs from 'fs';
 
-let CLIENT_ID = '';
-let CLIENT_SECRET = '';
+let initialized = false;
 
-try {
-  CLIENT_ID = fs.readFileSync('/run/secrets/twitch_client_id', 'utf-8').trim();
-  CLIENT_SECRET = fs.readFileSync('/run/secrets/twitch_client_secret', 'utf-8').trim();
-  console.log('✅ Twitch secrets loaded');
-} catch (err) {
-  console.error('❌ Twitch secrets missing — check Docker secrets mount');
+let CLIENT_ID;
+let CLIENT_SECRET;
+
+function initTwitchSecrets() {
+  if (initialized) return;
+  initialized = true;
+
+  try {
+    CLIENT_ID = fs.readFileSync('/run/secrets/twitch_client_id', 'utf-8').trim();
+    CLIENT_SECRET = fs.readFileSync('/run/secrets/twitch_client_secret', 'utf-8').trim();
+
+    console.log('✅ Twitch secrets loaded');
+  } catch (err) {
+    throw new Error('Twitch secrets missing — check Docker secrets');
+  }
 }
 
-if (!CLIENT_ID || !CLIENT_SECRET) {
-  throw new Error('Twitch CLIENT_ID or CLIENT_SECRET missing');
-}
-
-export { CLIENT_ID, CLIENT_SECRET };
+export { CLIENT_ID };
 
 let accessToken = null;
 let tokenExpiry = 0;
 
 export async function getTwitchAccessToken() {
+  initTwitchSecrets();
+
   const now = Date.now();
   if (accessToken && now < tokenExpiry) return accessToken;
 
@@ -35,12 +41,16 @@ export async function getTwitchAccessToken() {
   });
 
   const data = await res.json();
-  if (!data.access_token) throw new Error('Failed to get access token: ' + JSON.stringify(data));
+
+  if (!data.access_token) {
+    throw new Error('Twitch token failed: ' + JSON.stringify(data));
+  }
 
   accessToken = data.access_token;
-  tokenExpiry = now + (data.expires_in * 1000) - 60000;
+  tokenExpiry = now + data.expires_in * 1000 - 60000;
 
   console.log('Twitch token refreshed');
+
   return accessToken;
 }
 
