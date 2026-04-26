@@ -8,6 +8,11 @@ import fortniteRoutes from './routes/fortnite.routes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const PORT = process.env.PORT || 3000;
+
+let isReady = false;
+
 const app = express();
 app.use(cors());
 
@@ -15,9 +20,25 @@ app.use('/twitch', twitchRoutes);
 app.use('/spotify', spotifyRoutes);
 app.use('/fortnite', fortniteRoutes);
 app.use('/images', express.static(path.join(__dirname, '../public/images')));
-app.get('/health', (req, res) => { res.json({ status: 'ok', uptime: process.uptime(), timestamp: Date.now() }); });
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log('📁 Static images path:', path.join(__dirname, '../public/images'));
-  console.log(`✅ Backend API running on port ${PORT}`);
+app.get('/health', (req, res) => {
+  if (!isReady) {
+    return res.status(503).json({ status: 'starting' });
+  }
+
+  res.json({
+    status: 'ok',
+    uptime: process.uptime(),
+    timestamp: Date.now()
+  });
+});
+
+app.listen(PORT, '0.0.0.0', async () => {
+  console.log('Backend API running on port', PORT);
+
+  // wait for all startup tasks here
+  await initializeSecrets();
+  await initializeSpotify();
+  await initializeTwitch();
+
+  isReady = true;
 });
