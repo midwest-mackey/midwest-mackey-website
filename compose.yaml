@@ -53,3 +53,4 @@ services:
     restart: unless-stopped
     volumes:
       - ./backend/config/config.json:/app/config/config.json
+      - ./db:/app/db

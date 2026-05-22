@@ -9,5 +9,11 @@
   },
   "server": {
     "publicUrl": "https://api.midwestmackey.com"
+  },
+    "pricing": {
+    "unitEggPrice": 4
+  },
+  "availability": {
+    "eggs": true
   }
 }

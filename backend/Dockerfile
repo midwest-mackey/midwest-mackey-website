@@ -11,6 +11,8 @@ RUN apk add --no-cache curl
 COPY src ./src
 
 RUN mkdir -p /app/public/images
+RUN mkdir -p /app/db
+
 COPY public /app/public
 
 EXPOSE 3000
