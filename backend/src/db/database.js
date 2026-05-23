@@ -25,17 +25,30 @@ export async function initDb() {
     await db.exec(`
     CREATE TABLE IF NOT EXISTS egg_orders (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+
         name TEXT NOT NULL,
         phoneNumber TEXT NOT NULL,
         paymentType TEXT NOT NULL,
         pickupDate TEXT NOT NULL,
+
         dozenCount INTEGER NOT NULL,
         deviceId TEXT,
+
         unitPrice INTEGER NOT NULL,
         totalPrice INTEGER NOT NULL,
-        status TEXT NOT NULL,
-        createdAt TEXT NOT NULL
-    )
+
+        status TEXT NOT NULL DEFAULT 'requested',
+
+        createdAt TEXT NOT NULL,
+
+        -- 📩 per-status notification tracking
+        requestedNotifiedAt TEXT,
+        approvedNotifiedAt TEXT,
+        modifiedNotifiedAt TEXT,
+        readyNotifiedAt TEXT,
+        completedNotifiedAt TEXT,
+        cancelledNotifiedAt TEXT
+    );
     `);
 
     console.log('🗄️ SQLite ready at:', dbPath);

@@ -2,18 +2,11 @@
   "fortnite": {
     "username": "midwest.mackey",
     "featuredCosmeticId": "CID_A_007_Athena_Commando_F_StreetFashionEclipse",
-
     "cosmeticImageFallbacks": {
       "CID_A_007_Athena_Commando_F_StreetFashionEclipse": "/images/fortnite/CID_A_007_Athena_Commando_F_StreetFashionEclipse.png"
     }
   },
   "server": {
     "publicUrl": "https://api.midwestmackey.com"
-  },
-    "pricing": {
-    "unitEggPrice": 4
-  },
-  "availability": {
-    "eggs": true
   }
 }
