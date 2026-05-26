@@ -2,19 +2,55 @@ import express from 'express';
 import { getDb } from '../db/database.js';
 import fs from 'fs';
 
-const SETTINGS_PATH = '/app/config/settings.json';
 const router = express.Router();
 
+const SETTINGS_PATH = '/app/config/settings.json';
+
 //
 // =====================================================
-// 🧠 RUNTIME SETTINGS (replaces config.json)
+// 🧠 SETTINGS PERSISTENCE
 // =====================================================
 //
 
-let settings = {
-  eggsAvailable: true,
-  unitEggPrice: 5
-};
+function loadSettings() {
+  try {
+    if (fs.existsSync(SETTINGS_PATH)) {
+      const raw = fs.readFileSync(
+        SETTINGS_PATH,
+        'utf-8'
+      );
+
+      return JSON.parse(raw);
+    }
+  } catch (err) {
+    console.error(
+      '❌ Failed to load settings.json',
+      err
+    );
+  }
+
+  return {
+    eggsAvailable: true,
+    unitEggPrice: 5
+  };
+}
+
+function saveSettings(settings) {
+  try {
+    fs.writeFileSync(
+      SETTINGS_PATH,
+      JSON.stringify(settings, null, 2),
+      'utf-8'
+    );
+
+    console.log('✅ Settings saved');
+  } catch (err) {
+    console.error(
+      '❌ Failed to save settings.json',
+      err
+    );
+  }
+}
 
 //
 // =====================================================
@@ -33,23 +69,30 @@ function getNotificationColumn(status) {
 //
 
 router.get('/settings', (req, res) => {
-  res.json(settings);
+  res.json(loadSettings());
 });
 
 router.patch('/settings', (req, res) => {
-  const { eggsAvailable, unitEggPrice } = req.body;
+  const current = loadSettings();
 
-  if (typeof eggsAvailable === 'boolean') {
-    settings.eggsAvailable = eggsAvailable;
-  }
+  const updated = {
+    ...current,
+    eggsAvailable:
+      typeof req.body.eggsAvailable === 'boolean'
+        ? req.body.eggsAvailable
+        : current.eggsAvailable,
 
-  if (unitEggPrice !== undefined) {
-    settings.unitEggPrice = Number(unitEggPrice);
-  }
+    unitEggPrice:
+      req.body.unitEggPrice !== undefined && !isNaN(Number(req.body.unitEggPrice))
+        ? Number(req.body.unitEggPrice)
+        : current.unitEggPrice
+  };
+
+  saveSettings(updated);
 
   res.json({
     success: true,
-    settings
+    settings: updated
   });
 });
 
@@ -82,7 +125,7 @@ router.post('/all', async (req, res) => {
 
   const db = getDb();
 
-  const unitEggPrice = settings.unitEggPrice ?? 5;
+  const unitEggPrice = loadSettings().unitEggPrice ?? 5;
   const expectedTotal = dozenCount * unitEggPrice;
 
   const status = 'requested';
