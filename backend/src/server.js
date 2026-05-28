@@ -27,18 +27,18 @@ const app = express();
 
 dotenv.config();
 
-const allowedOriginRegex = /^https:\/\/([a-z0-9-]+\.)*midwestmackey\.com$/;
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [];
 
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
+  origin: (origin, cb) => {
+    if (!origin) return cb(null, true);
 
-    if (allowedOriginRegex.test(origin)) {
-      return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return cb(null, true);
     }
 
     console.log("❌ Blocked CORS:", origin);
-    return callback(new Error("Not allowed by CORS"));
+    return cb(new Error("Not allowed by CORS"));
   },
   credentials: true
 }));
