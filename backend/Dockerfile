@@ -5,19 +5,21 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# needed for healthcheck
 RUN apk add --no-cache curl
 
 COPY src ./src
+COPY public /app/public
+
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
+
+RUN chmod +x /app/docker-entrypoint.sh
 
 RUN mkdir -p /app/public/images
 RUN mkdir -p /app/db
-
-COPY public /app/public
 
 EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=3s --retries=3 \
   CMD curl -f http://localhost:3000/health || exit 1
 
-CMD ["/app/docker-entrypoint.sh"]
+CMD ["/bin/sh", "/app/docker-entrypoint.sh"]
