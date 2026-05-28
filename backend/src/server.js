@@ -27,20 +27,18 @@ const app = express();
 
 dotenv.config();
 
+const allowedOriginRegex = /^https:\/\/([a-z0-9-]+\.)*midwestmackey\.com$/;
+
 app.use(cors({
-  origin: function (origin, callback) {
+  origin: (origin, callback) => {
     if (!origin) return callback(null, true);
 
-    if (
-      origin === "http://localhost:4200" ||
-      origin === "http://192.168.1.165:4200" ||
-      origin === "https://midwestmackey.com"
-    ) {
+    if (allowedOriginRegex.test(origin)) {
       return callback(null, true);
     }
 
     console.log("❌ Blocked CORS:", origin);
-    return callback(null, true); // <-- IMPORTANT: do NOT hard-fail in dev
+    return callback(new Error("Not allowed by CORS"));
   },
   credentials: true
 }));
