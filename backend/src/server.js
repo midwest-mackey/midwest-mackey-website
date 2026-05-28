@@ -28,24 +28,49 @@ const app = express();
 dotenv.config();
 
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
+const allowedOrigins = [
+  // local development
+  "http://localhost:4200",
+  "http://192.168.1.165:4200",
 
-    if (
-      origin === "http://localhost:4200" ||
-      origin === "http://192.168.1.165:4200" ||
-      origin === "https://midwestmackey.com" ||
-      origin === "https://eggs.midwestmackey.com"
-    ) {
+  // production sites
+  "https://midwestmackey.com",
+  "https://eggs.midwestmackey.com"
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // allow curl/postman/server-to-server
+    if (!origin) {
+      return callback(null, true);
+    }
+
+    if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
 
     console.log("❌ Blocked CORS:", origin);
-    return callback(null, true); // <-- IMPORTANT: do NOT hard-fail in dev
+    return callback(new Error(`CORS blocked for ${origin}`));
   },
-  credentials: true
+
+  credentials: true,
+
+  methods: [
+    "GET",
+    "POST",
+    "PUT",
+    "DELETE",
+    "OPTIONS"
+  ],
+
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization"
+  ]
 }));
+
+// explicitly handle preflight
+app.options("*", cors());
 app.use(cookieParser());
 app.use(express.json());
 
