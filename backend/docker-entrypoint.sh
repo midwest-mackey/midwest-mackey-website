@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-echo "Running admin bootstrap..."
+echo "Bootstrapping admin..."
 node src/scripts/createAdmin.js
 
 echo "Starting server..."
-node src/server.js
+exec node src/server.js
