@@ -29,6 +29,7 @@ dotenv.config();
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [];
 
+
 app.use(cors({
   origin: (origin, cb) => {
     if (!origin) return cb(null, true);
