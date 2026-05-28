@@ -30,17 +30,14 @@ export async function initDb() {
         phoneNumber TEXT NOT NULL,
         paymentType TEXT NOT NULL,
         pickupDate TEXT NOT NULL,
-
         dozenCount INTEGER NOT NULL,
+        eggCondition TEXT NOT NULL,
+        orderNotes TEXT,
         deviceId TEXT,
-
         unitPrice INTEGER NOT NULL,
         totalPrice INTEGER NOT NULL,
-
         status TEXT NOT NULL DEFAULT 'requested',
-
         createdAt TEXT NOT NULL,
-
         -- 📩 per-status notification tracking
         requestedNotifiedAt TEXT,
         approvedNotifiedAt TEXT,
@@ -49,9 +46,18 @@ export async function initDb() {
         completedNotifiedAt TEXT,
         cancelledNotifiedAt TEXT
     );
+
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL UNIQUE,
+        password_hash TEXT NOT NULL,
+        role TEXT NOT NULL DEFAULT 'user',
+        createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
     `);
 
     console.log('🗄️ SQLite ready at:', dbPath);
+    console.log("🗄️ DB PATH IN USE:", dbPath);
   } catch (err) {
     console.error('❌ SQLite init failed:', err);
     throw err;

@@ -51,7 +51,9 @@ services:
       - spotify_refresh_token
       - fortnite_api_key
     restart: unless-stopped
+    env_file:
+      - ./backend/.env
     volumes:
       - ./backend/config/config.json:/app/config/config.json
       - ./backend/config/settings.json:/app/config/settings.json
-      - ./db:/app/db
+      - ./backend/db:/app/db
