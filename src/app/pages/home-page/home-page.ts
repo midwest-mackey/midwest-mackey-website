@@ -37,7 +37,6 @@ export class HomePage implements OnInit {
   ngOnInit() {
       this.fortniteService.getFortniteProfile().subscribe({
     next: (res) => {
-      console.log('FORTNITE SUCCESS', res);
       this.profile = res;
     },
     error: (err) => {

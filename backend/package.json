@@ -4,20 +4,22 @@
   "main": "src/server.js",
   "dependencies": {
     "axios": "^1.6.0",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
     "express": "^4.22.1",
-    "node-fetch": "^3.3.2"
+    "jsonwebtoken": "^9.0.3",
+    "node-fetch": "^3.3.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1"
   },
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
-  "scripts": {
-    "start": "node src/server.js"
-  }
+  "type": "module"
 }
