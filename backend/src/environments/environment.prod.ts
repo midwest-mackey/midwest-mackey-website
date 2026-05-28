@@ -1,2 +1,2 @@
 NODE_ENV=production
-CLIENT_ORIGIN=https://midwestmackey.com
+ALLOWED_ORIGINS=https://eggs.midwestmackey.com,https://midwestmackey.com
