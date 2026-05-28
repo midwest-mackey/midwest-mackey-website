@@ -27,19 +27,22 @@ const app = express();
 
 dotenv.config();
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [];
-
 
 app.use(cors({
-  origin: (origin, cb) => {
-    if (!origin) return cb(null, true);
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
-      return cb(null, true);
+    if (
+      origin === "http://localhost:4200" ||
+      origin === "http://192.168.1.165:4200" ||
+      origin === "https://midwestmackey.com" ||
+      origin === "https://eggs.midwestmackey.com"
+    ) {
+      return callback(null, true);
     }
 
     console.log("❌ Blocked CORS:", origin);
-    return cb(new Error("Not allowed by CORS"));
+    return callback(null, true); // <-- IMPORTANT: do NOT hard-fail in dev
   },
   credentials: true
 }));
