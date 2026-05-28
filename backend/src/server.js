@@ -38,9 +38,8 @@ const allowedOrigins = [
   "https://eggs.midwestmackey.com"
 ];
 
-app.use(cors({
-  origin: (origin, callback) => {
-    // allow curl/postman/server-to-server
+const corsOptions = {
+  origin(origin, callback) {
     if (!origin) {
       return callback(null, true);
     }
@@ -50,7 +49,7 @@ app.use(cors({
     }
 
     console.log("❌ Blocked CORS:", origin);
-    return callback(new Error(`CORS blocked for ${origin}`));
+    return callback(new Error(`Blocked by CORS: ${origin}`));
   },
 
   credentials: true,
@@ -59,6 +58,7 @@ app.use(cors({
     "GET",
     "POST",
     "PUT",
+    "PATCH",
     "DELETE",
     "OPTIONS"
   ],
@@ -67,10 +67,10 @@ app.use(cors({
     "Content-Type",
     "Authorization"
   ]
-}));
+};
 
-// explicitly handle preflight
-app.options("*", cors());
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
