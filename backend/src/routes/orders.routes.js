@@ -4,7 +4,8 @@ import fs from "fs";
 import {
   createOrder,
   getOrdersByDevice,
-  getOrderById
+  getOrderById,
+  cancelOrder
 } from "../db/orders.repo.js";
 
 const router = express.Router();
@@ -77,6 +78,31 @@ router.post("/all", async (req, res) => {
     success: true,
     totalPrice: order.totalPrice
   });
+});
+
+// =====================================================
+// 🥚 CANCEL ORDER (CUSTOMER)
+// =====================================================
+router.post("/cancel/:id", async (req, res) => {
+  const { deviceId } = req.body;
+
+  const order = await getOrderById(req.params.id);
+
+  if (!order) {
+    return res.status(404).json({ error: "Order not found" });
+  }
+
+  if (order.deviceId !== deviceId) {
+    return res.status(403).json({ error: "Not allowed" });
+  }
+
+  if (order.status === "completed" || order.status === "cancelled") {
+    return res.status(400).json({ error: "Order cannot be cancelled" });
+  }
+
+  await cancelOrder(req.params.id);
+
+  res.json({ success: true });
 });
 
 // =====================================================

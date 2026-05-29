@@ -83,23 +83,41 @@ export async function getOrderById(id) {
 // ===============================
 // UPDATE ORDER
 // ===============================
-export async function updateOrder(id, fields) {
+export async function patchOrder(id, fields) {
   const db = getDb();
+
+  const allowed = [
+    "status",
+    "dozenCount",
+    "totalPrice",
+    "cancelledAt",
+    "approvedAt",
+    "completedAt"
+  ];
+
+  const safeFields = Object.keys(fields).reduce((acc, key) => {
+    if (allowed.includes(key)) {
+      acc[key] = fields[key];
+    }
+    return acc;
+  }, {});
+
+  const keys = Object.keys(safeFields);
+
+  if (keys.length === 0) {
+    return; // nothing to update
+  }
+
+  const values = Object.values(safeFields);
+  const setClause = keys.map(k => `${k} = ?`).join(", ");
 
   return db.run(
     `
     UPDATE egg_orders
-    SET status = ?,
-        dozenCount = ?,
-        totalPrice = ?
+    SET ${setClause}
     WHERE id = ?
     `,
-    [
-      fields.status,
-      fields.dozenCount,
-      fields.totalPrice,
-      id
-    ]
+    [...values, id]
   );
 }
 
@@ -116,5 +134,24 @@ export async function markNotified(id, column) {
     WHERE id = ?
     `,
     [new Date().toISOString(), id]
+  );
+}
+
+// ===============================
+// PUBLIC CANCEL ORDER
+// ===============================
+export async function cancelOrder(id) {
+  const db = getDb();
+
+  return db.run(
+    `
+    UPDATE egg_orders
+    SET status = ?
+    WHERE id = ?
+    `,
+    [
+      "cancelled",
+      id
+    ]
   );
 }
