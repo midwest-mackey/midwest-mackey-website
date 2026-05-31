@@ -121,4 +121,32 @@ router.get(
   }
 );
 
+// TOGGLE GLOBAL PUSH
+router.post(
+  "/toggle",
+  requireAuth,
+  requireAdmin,
+  async (req, res) => {
+
+    const db = getDb();
+
+    const { enabled } = req.body;
+
+    await db.run(
+      `
+      UPDATE push_subscriptions
+      SET enabled = ?
+      WHERE userId = ?
+      `,
+      [
+        enabled ? 1 : 0,
+        req.user.sub
+      ]
+    );
+
+    res.json({
+      success: true
+    });
+  }
+);
 export default router;
