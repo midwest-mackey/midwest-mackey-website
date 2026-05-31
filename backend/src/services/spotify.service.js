@@ -25,6 +25,7 @@ function initSpotifySecrets() {
 let accessToken = null;
 let tokenExpiry = 0;
 
+// GET SPOTIFY ACCESS TOKEN
 export async function getSpotifyAccessToken() {
   initSpotifySecrets();
 

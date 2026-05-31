@@ -3,13 +3,14 @@ import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
 import cookieParser from "cookie-parser";
-
+import webpush from "web-push";
 import { fileURLToPath } from 'url';
+
+import { getDb } from "./db/database.js";
 import { initDb } from './db/database.js';
+
 import { requireAuth } from './middleware/auth.middleware.js';
 import { requireAdmin } from "./middleware/roles.middleware.js";
-
-
 
 import twitchRoutes from './routes/twitch.routes.js';
 import spotifyRoutes from './routes/spotify.routes.js';
@@ -19,6 +20,7 @@ import adminOrdersRoutes from './routes/admin.orders.routes.js';
 import adminRoutes from './routes/admin.routes.js';
 import loginRoutes from './routes/auth.routes.js';
 import protectedRoutes from './routes/protected.routes.js'
+import pushRoutes from "./routes/push.routes.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -27,11 +29,14 @@ const app = express();
 
 dotenv.config();
 
-
+// CORS CONFIG
 const allowedOrigins = [
   // local development
   "http://localhost:4200",
+  // local network testing
   "http://192.168.1.165:4200",
+  // travel network testing (adjust IP as needed)
+  "http://192.168.86.60:4200",
 
   // production sites
   "https://midwestmackey.com",
@@ -68,10 +73,10 @@ const corsOptions = {
     "Authorization"
   ]
 };
-
+// CORS & Preflight
 app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
-
+// BODY PARSING & COOKIES
 app.use(cookieParser());
 app.use(express.json());
 
@@ -86,6 +91,7 @@ app.use('/admin/orders', adminOrdersRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', loginRoutes);
 app.use("/api", requireAuth, protectedRoutes);
+app.use("/push", pushRoutes);
 
 
 // Static
@@ -106,12 +112,16 @@ app.get('/health', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
+// START SERVER
 async function start() {
   try {
     // 1. Initialize DB first
     await initDb();
 
-    // 2. Start server only AFTER DB is ready
+    // 2. Configure push after DB ready
+    await configurePush();
+
+    // 3. Start server only AFTER DB is ready
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`✅ Backend API running on port ${PORT}`);
       console.log(`📁 Static images path ready`);
@@ -125,4 +135,23 @@ async function start() {
   }
 }
 
+// CONFIGURE WEB PUSH
+async function configurePush() {
+  const db = getDb();
+
+  const settings = await db.get(`
+    SELECT vapidPublicKey, vapidPrivateKey
+    FROM settings
+    LIMIT 1
+  `);
+
+  webpush.setVapidDetails(
+    "mailto:midwest.mackey@gmail.com",
+    settings.vapidPublicKey,
+    settings.vapidPrivateKey
+  );
+
+  console.log("✅ Push notifications configured");
+}
+// START THE SERVER
 start();

@@ -28,17 +28,12 @@ function loadSettings() {
   };
 }
 
-// =====================================================
 // 💰 PUBLIC SETTINGS
-// =====================================================
-
 router.get("/settings", (req, res) => {
   res.json(loadSettings());
 });
 
-// =====================================================
 // 🥚 CREATE ORDER (CUSTOMER)
-// =====================================================
 router.post("/all", async (req, res) => {
   const {
     name,
@@ -51,12 +46,21 @@ router.post("/all", async (req, res) => {
     deviceId
   } = req.body;
 
-  if (!name || !phoneNumber || !paymentType || !pickupDate || !dozenCount || !eggCondition || !deviceId) {
+  if (
+    !name ||
+    !phoneNumber ||
+    !paymentType ||
+    !pickupDate ||
+    !dozenCount ||
+    !eggCondition ||
+    !deviceId
+  ) {
     return res.status(400).json({ error: "Missing fields" });
   }
 
   const unitEggPrice = loadSettings().unitEggPrice ?? 5;
 
+  // 1. build order FIRST
   const order = {
     name,
     phoneNumber,
@@ -72,17 +76,25 @@ router.post("/all", async (req, res) => {
     createdAt: new Date().toISOString()
   };
 
-  await createOrder(order);
+  // 2. save ONCE
+  const savedOrder = await createOrder(order);
 
+  // 3. PUSH NOTIFICATION (ADMIN)
+  await emitEvent("order_created", {
+    orderId: savedOrder.id,
+    name: savedOrder.name,
+    dozenCount: savedOrder.dozenCount
+  });
+
+  // 4. response
   res.json({
     success: true,
-    totalPrice: order.totalPrice
+    totalPrice: order.totalPrice,
+    orderId: savedOrder.id
   });
 });
 
-// =====================================================
 // 🥚 CANCEL ORDER (CUSTOMER)
-// =====================================================
 router.post("/cancel/:id", async (req, res) => {
   const { deviceId } = req.body;
 
@@ -92,22 +104,32 @@ router.post("/cancel/:id", async (req, res) => {
     return res.status(404).json({ error: "Order not found" });
   }
 
-  if (order.deviceId !== deviceId) {
+  if (!deviceId || order.deviceId !== deviceId) {
     return res.status(403).json({ error: "Not allowed" });
   }
 
-  if (order.status === "completed" || order.status === "cancelled") {
-    return res.status(400).json({ error: "Order cannot be cancelled" });
+  if (
+    order.status === "completed" ||
+    order.status === "cancelled"
+  ) {
+    return res.status(400).json({
+      error: "Order cannot be cancelled"
+    });
   }
 
-  await cancelOrder(req.params.id);
+ 
+  await cancelOrder(order.id);
+  
+   // PUSH NOTIFICATION (ADMIN)
+  await emitEvent("order_cancelled", {
+    orderId: order.id,
+    name: order.name
+  });
 
   res.json({ success: true });
 });
 
-// =====================================================
 // 📱 DEVICE HISTORY (CUSTOMER)
-// =====================================================
 router.get("/history", async (req, res) => {
   const { deviceId } = req.query;
 
@@ -119,9 +141,7 @@ router.get("/history", async (req, res) => {
   res.json(orders);
 });
 
-// =====================================================
 // 🔁 REORDER (CUSTOMER)
-// =====================================================
 router.post("/reorder/:id", async (req, res) => {
   const original = await getOrderById(req.params.id);
 

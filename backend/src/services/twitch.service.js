@@ -6,6 +6,7 @@ let initialized = false;
 let CLIENT_ID;
 let CLIENT_SECRET;
 
+// LAZY INIT (Docker-safe)
 function initTwitchSecrets() {
   if (initialized) return;
   initialized = true;
@@ -25,6 +26,7 @@ export { CLIENT_ID };
 let accessToken = null;
 let tokenExpiry = 0;
 
+// GET TWITCH ACCESS TOKEN
 export async function getTwitchAccessToken() {
   initTwitchSecrets();
 
@@ -54,6 +56,7 @@ export async function getTwitchAccessToken() {
   return accessToken;
 }
 
+// FORMAT TWITCH THUMBNAIL URL
 export function formatTwitchThumbnail(url, width = 340, height = 360) {
   if (!url) return null;
   let clean = url;

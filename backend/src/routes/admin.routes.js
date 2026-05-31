@@ -5,7 +5,8 @@ import { getDb } from "../db/database.js";
 import bcrypt from "bcrypt";
 
 const router = express.Router();
-
+// 🔐 ALL ADMIN ROUTES PROTECTED
+// GET ALL ADMINS
 router.get("/admins", requireAuth, requireAdmin, async (req, res) => {
   try {
     const db = getDb();
@@ -25,6 +26,7 @@ router.get("/admins", requireAuth, requireAdmin, async (req, res) => {
   }
 });
 
+// CREATE NEW ADMIN
 router.post("/admins", requireAuth, requireAdmin, async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -63,32 +65,43 @@ router.post("/admins", requireAuth, requireAdmin, async (req, res) => {
   }
 });
 
+// DELETE ADMIN
 router.delete("/admins/:id", requireAuth, requireAdmin, async (req, res) => {
   const db = getDb();
 
   const adminId = Number(req.params.id);
   const requesterId = req.user.sub;
 
-  // 🚫 block default root admin
+  // 🚫 block root/system admin
   if (adminId === 1) {
-    return res.status(400).json({ error: "Cannot delete root admin" });
+    return res.status(400).json({
+      error: "Cannot delete system admin"
+    });
   }
 
   // 🚫 prevent self-delete
   if (adminId === requesterId) {
-    return res.status(400).json({ error: "You cannot delete yourself" });
+    return res.status(400).json({
+      error: "You cannot delete yourself"
+    });
   }
 
-  // 🚫 prevent deleting last admin
-  const count = await db.get(
-    "SELECT COUNT(*) as total FROM users WHERE role = 'admin'"
+  // 🚫 ensure target is actually an admin
+  const target = await db.get(
+    "SELECT id FROM users WHERE id = ? AND role = 'admin'",
+    [adminId]
   );
 
-  if (count.total <= 1) {
-    return res.status(400).json({ error: "Cannot delete last admin" });
+  if (!target) {
+    return res.status(404).json({
+      error: "Admin not found"
+    });
   }
 
-  await db.run("DELETE FROM users WHERE id = ?", [adminId]);
+  await db.run(
+    "DELETE FROM users WHERE id = ?",
+    [adminId]
+  );
 
   return res.json({ success: true });
 });

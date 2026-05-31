@@ -14,9 +14,7 @@ import { requireAdmin } from "../middleware/roles.middleware.js";
 const router = express.Router();
 const SETTINGS_PATH = "/app/config/settings.json";
 
-// =====================================================
 // 🔐 ALL ADMIN ROUTES PROTECTED
-// =====================================================
 router.use(requireAuth);
 router.use(requireAdmin);
 
@@ -60,11 +58,7 @@ function saveSettings(settings) {
   }
 }
 
-//
-// =====================================================
 // 📦 GET ALL ORDERS (ADMIN DASHBOARD)
-// =====================================================
-//
 router.get("/all", async (req, res) => {
   const db = getDb();
 
@@ -75,11 +69,8 @@ router.get("/all", async (req, res) => {
   res.json(orders);
 });
 
-//
-// =====================================================
+
 // 🔁 UPDATE ORDER (STATUS / QUANTITY)
-// =====================================================
-//
 router.patch("/:id/update", async (req, res) => {
   const db = getDb();
 
@@ -138,11 +129,7 @@ router.patch("/:id/update", async (req, res) => {
   });
 });
 
-//
-// =====================================================
 // 📩 MARK NOTIFIED (ADMIN INTERNAL TRACKING)
-// =====================================================
-//
 router.patch("/:id/notified", async (req, res) => {
   const db = getDb();
 
@@ -163,11 +150,7 @@ router.patch("/:id/notified", async (req, res) => {
   res.json({ success: true });
 });
 
-//
-// =====================================================
 // 🔁 FORCE RECREATE ORDER (ADMIN TOOL)
-// =====================================================
-//
 router.post("/recreate/:id", async (req, res) => {
   const original = await getOrderById(req.params.id);
 
@@ -184,11 +167,7 @@ router.post("/recreate/:id", async (req, res) => {
   res.json({ success: true });
 });
 
-//
-// =====================================================
 // 📱 OPTIONAL: GET ORDERS BY DEVICE (ADMIN VIEW)
-// =====================================================
-//
 router.get("/device/:deviceId", async (req, res) => {
   const db = getDb();
 
@@ -204,10 +183,7 @@ router.get("/device/:deviceId", async (req, res) => {
   res.json(orders);
 });
 
-// =====================================================
 // ⚙️ UPDATE SETTINGS (ADMIN)
-// =====================================================
-
 router.patch("/settings", (req, res) => {
   const current = loadSettings();
 

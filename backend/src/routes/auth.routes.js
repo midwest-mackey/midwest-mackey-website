@@ -8,6 +8,7 @@ import { getDb } from "../db/database.js";
 
 const router = express.Router();
 
+// LOGIN
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -33,12 +34,14 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// GET CURRENT USER
 router.get("/me", requireAuth, (req, res) => {
   res.json({
     user: req.user
   });
 });
 
+// LOGOUT
 router.post("/logout", (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
@@ -65,7 +68,6 @@ router.post("/register", async (req, res) => {
 // =====================================================
 // 🧱 PLACEHOLDER: ADMIN REGISTRATION (DISABLED)
 // =====================================================
-
 router.post("/register-admin", async (req, res) => {
   return res.status(403).json({
     error: "Disabled",
@@ -73,9 +75,7 @@ router.post("/register-admin", async (req, res) => {
   });
 });
 
-/**
- * Update admin account
- */
+// UPDATE ADMIN ACCOUNT
 router.put("/account", requireAuth, async (req, res) => {
   try {
     const { email, currentPassword, newPassword } = req.body;

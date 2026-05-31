@@ -34,9 +34,7 @@ export function getConfigValue(path, fallback = null) {
     .reduce((obj, key) => obj?.[key], config) ?? fallback;
 }
 
-// --------------------
 // 🌐 BASE URL
-// --------------------
 const BASE_URL_PUBLIC = getConfigValue(
   'server.publicUrl',
   'http://localhost:3000'

@@ -3,7 +3,7 @@ import { getSpotifyNowPlaying, getSpotifyHistory } from '../services/spotify.ser
 
 const router = Router();
 
-// Current playing track
+// CURRENT PLAYING TRACK
 router.get('/now-playing', async (req, res) => {
   try {
     const track = await getSpotifyNowPlaying();
@@ -14,7 +14,7 @@ router.get('/now-playing', async (req, res) => {
   }
 });
 
-// Recently played tracks
+// RECENTLY PLAYED TRACKS
 router.get('/recently-played', async (req, res) => {
   try {
     const recentTracks = await getSpotifyHistory();
@@ -25,7 +25,7 @@ router.get('/recently-played', async (req, res) => {
   }
 });
 
-// OAuth redirect callback
+// OAUTH REDIRECT CALLBACK
 router.get('/callback', (req, res) => {
   const code = req.query.code;
   if (!code) return res.status(400).send('No code returned by Spotify');

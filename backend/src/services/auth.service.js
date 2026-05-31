@@ -3,6 +3,7 @@ import { getDb } from "../db/database.js";
 import { signToken } from "../utils/jwt.js";
 import { findUserByEmail } from "../db/users.repo.js";
 
+// LOGIN USER
 export async function loginUser(email, password) {
   console.log("🔐 LOGIN INPUT:", { email, password });
 
