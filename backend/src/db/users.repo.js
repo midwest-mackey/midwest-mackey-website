@@ -1,5 +1,6 @@
 import { getDb } from "./database.js";
 
+// FIND USER BY EMAIL
 export async function findUserByEmail(email) {
   const db = getDb();
 
@@ -17,6 +18,7 @@ export async function findUserByEmail(email) {
   return user;
 }
 
+// FIND USER BY ID
 export async function findUserById(id) {
   const db = getDb();
 
@@ -26,6 +28,7 @@ export async function findUserById(id) {
   );
 }
 
+// UPDATE USER ACCOUNT
 export async function updateUserAccount(
   id,
   email,

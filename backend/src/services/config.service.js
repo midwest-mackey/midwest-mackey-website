@@ -2,6 +2,7 @@ import fs from 'fs';
 
 let cachedConfig = null;
 
+// LOAD CONFIG
 export function getConfig() {
   if (cachedConfig) return cachedConfig;
 

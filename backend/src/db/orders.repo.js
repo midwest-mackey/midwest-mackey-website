@@ -1,12 +1,10 @@
 import { getDb } from "./database.js";
 
-// ===============================
 // CREATE ORDER
-// ===============================
 export async function createOrder(order) {
   const db = getDb();
 
-  return db.run(
+  const result = await db.run(
     `
     INSERT INTO egg_orders (
       name,
@@ -19,10 +17,9 @@ export async function createOrder(order) {
       deviceId,
       unitPrice,
       totalPrice,
-      status,
-      createdAt
+      status
     )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `,
     [
       order.name,
@@ -35,15 +32,17 @@ export async function createOrder(order) {
       order.deviceId,
       order.unitPrice,
       order.totalPrice,
-      order.status,
-      order.createdAt
+      order.status
     ]
+  );
+
+  return db.get(
+    `SELECT * FROM egg_orders WHERE id = ?`,
+    [result.lastID]
   );
 }
 
-// ===============================
 // GET ORDERS BY DEVICE
-// ===============================
 export async function getOrdersByDevice(deviceId) {
   const db = getDb();
 
@@ -57,9 +56,7 @@ export async function getOrdersByDevice(deviceId) {
   );
 }
 
-// ===============================
 // GET ALL ORDERS (ADMIN)
-// ===============================
 export async function getAllOrders() {
   const db = getDb();
 
@@ -68,9 +65,7 @@ export async function getAllOrders() {
   );
 }
 
-// ===============================
 // GET ORDER BY ID
-// ===============================
 export async function getOrderById(id) {
   const db = getDb();
 
@@ -80,32 +75,46 @@ export async function getOrderById(id) {
   );
 }
 
-// ===============================
 // UPDATE ORDER
-// ===============================
-export async function updateOrder(id, fields) {
+export async function patchOrder(id, fields) {
   const db = getDb();
+
+  const allowed = [
+    "status",
+    "dozenCount",
+    "totalPrice",
+    "cancelledAt",
+    "approvedAt",
+    "completedAt"
+  ];
+
+  const safeFields = Object.keys(fields).reduce((acc, key) => {
+    if (allowed.includes(key)) {
+      acc[key] = fields[key];
+    }
+    return acc;
+  }, {});
+
+  const keys = Object.keys(safeFields);
+
+  if (keys.length === 0) {
+    return;
+  }
+
+  const values = Object.values(safeFields);
+  const setClause = keys.map(k => `${k} = ?`).join(", ");
 
   return db.run(
     `
     UPDATE egg_orders
-    SET status = ?,
-        dozenCount = ?,
-        totalPrice = ?
+    SET ${setClause}
     WHERE id = ?
     `,
-    [
-      fields.status,
-      fields.dozenCount,
-      fields.totalPrice,
-      id
-    ]
+    [...values, id]
   );
 }
 
-// ===============================
 // MARK NOTIFIED
-// ===============================
 export async function markNotified(id, column) {
   const db = getDb();
 
@@ -116,5 +125,19 @@ export async function markNotified(id, column) {
     WHERE id = ?
     `,
     [new Date().toISOString(), id]
+  );
+}
+
+// PUBLIC CANCEL ORDER
+export async function cancelOrder(id) {
+  const db = getDb();
+
+  return db.run(
+    `
+    UPDATE egg_orders
+    SET status = ?
+    WHERE id = ?
+    `,
+    ["cancelled", id]
   );
 }
