@@ -3,8 +3,51 @@ import { requireAuth } from "../middleware/auth.middleware.js";
 import { requireAdmin } from "../middleware/roles.middleware.js";
 import { getDb } from "../db/database.js";
 import bcrypt from "bcrypt";
+import fs from "fs";
 
 const router = express.Router();
+const SETTINGS_PATH = "/app/config/settings.json";
+
+function loadSettings() {
+  try {
+    if (fs.existsSync(SETTINGS_PATH)) {
+      const raw = fs.readFileSync(
+        SETTINGS_PATH,
+        "utf-8"
+      );
+
+      return JSON.parse(raw);
+    }
+  } catch (err) {
+    console.error(
+      "❌ Failed to load settings.json",
+      err
+    );
+  }
+
+  return {
+    eggsAvailable: true,
+    unitEggPrice: 5
+  };
+}
+
+function saveSettings(settings) {
+  try {
+    fs.writeFileSync(
+      SETTINGS_PATH,
+      JSON.stringify(settings, null, 2),
+      "utf-8"
+    );
+
+    console.log("✅ Settings saved");
+  } catch (err) {
+    console.error(
+      "❌ Failed to save settings.json",
+      err
+    );
+  }
+}
+
 // 🔐 ALL ADMIN ROUTES PROTECTED
 // GET ALL ADMINS
 router.get("/admins", requireAuth, requireAdmin, async (req, res) => {
@@ -104,6 +147,38 @@ router.delete("/admins/:id", requireAuth, requireAdmin, async (req, res) => {
   );
 
   return res.json({ success: true });
+});
+
+// GET SETTINGS
+router.get("/settings", requireAuth, requireAdmin, (req, res) => {
+  const current = loadSettings();
+  res.json(current);
+});
+
+// UPDATE SETTINGS
+router.patch("/settings", requireAuth, requireAdmin, (req, res) => {
+  const current = loadSettings();
+
+  const updated = {
+    ...current,
+    eggsAvailable:
+      typeof req.body.eggsAvailable === "boolean"
+        ? req.body.eggsAvailable
+        : current.eggsAvailable,
+
+    unitEggPrice:
+      req.body.unitEggPrice !== undefined &&
+      !isNaN(Number(req.body.unitEggPrice))
+        ? Number(req.body.unitEggPrice)
+        : current.unitEggPrice
+  };
+
+  saveSettings(updated);
+
+  res.json({
+    success: true,
+    settings: updated
+  });
 });
 
 export default router;

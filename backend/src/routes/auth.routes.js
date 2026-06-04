@@ -35,10 +35,29 @@ router.post("/login", async (req, res) => {
 });
 
 // GET CURRENT USER
-router.get("/me", requireAuth, (req, res) => {
-  res.json({
-    user: req.user
-  });
+router.get("/me", requireAuth, async (req, res) => {
+  try {
+    const db = getDb();
+
+    const user = await db.get(
+      `
+      SELECT id, email, role, smsEnabled, smsPhoneNumber, pushEnabled
+      FROM users
+      WHERE id = ?
+      `,
+      [req.user.sub]
+    );
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ user });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 // LOGOUT
@@ -78,7 +97,7 @@ router.post("/register-admin", async (req, res) => {
 // UPDATE ADMIN ACCOUNT
 router.put("/account", requireAuth, async (req, res) => {
   try {
-    const { email, currentPassword, newPassword } = req.body;
+    const { email, currentPassword, newPassword, smsEnabled, smsPhoneNumber } = req.body;
 
     const db = getDb();
 
@@ -112,10 +131,18 @@ router.put("/account", requireAuth, async (req, res) => {
       `
       UPDATE users
       SET email = ?,
-          password_hash = ?
+          password_hash = ?,
+          smsEnabled = ?,
+          smsPhoneNumber = ?
       WHERE id = ?
       `,
-      [email.trim(), finalPassword, req.user.sub]
+      [
+        email.trim(),
+        finalPassword,
+        smsEnabled ? 1 : 0,
+        smsPhoneNumber?.trim() || null,
+        req.user.sub
+      ]
     );
 
     res.json({
@@ -126,6 +153,48 @@ router.put("/account", requireAuth, async (req, res) => {
   } catch (err) {
     console.error("Account update error:", err);
     res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.patch("/notifications", requireAuth, async (req, res) => {
+  try {
+    console.log("PATCH /notifications");
+    console.log(req.body);
+
+    const db = getDb();
+
+    const userId = req.user.sub;
+
+    const {
+      smsEnabled,
+      smsPhoneNumber,
+      pushEnabled
+    } = req.body;
+
+    await db.run(
+      `
+      UPDATE users
+      SET smsEnabled = ?,
+          smsPhoneNumber = ?,
+          pushEnabled = ?
+      WHERE id = ?
+      `,
+      [
+        smsEnabled ? 1 : 0,
+        smsPhoneNumber,
+        pushEnabled ? 1 : 0,
+        userId
+      ]
+    );
+
+    res.json({ success: true });
+
+  } catch (err) {
+    console.error("NOTIFICATION UPDATE ERROR:", err);
+
+    res.status(500).json({
+      error: err.message
+    });
   }
 });
 

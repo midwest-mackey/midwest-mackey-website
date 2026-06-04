@@ -17,9 +17,10 @@ export async function createOrder(order) {
       deviceId,
       unitPrice,
       totalPrice,
-      status
+      status,
+      createdAt
     )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `,
     [
       order.name,
@@ -32,7 +33,8 @@ export async function createOrder(order) {
       order.deviceId,
       order.unitPrice,
       order.totalPrice,
-      order.status
+      order.status,
+      order.createdAt
     ]
   );
 

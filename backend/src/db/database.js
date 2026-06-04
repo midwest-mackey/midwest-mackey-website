@@ -55,6 +55,9 @@ export async function initDb() {
         email TEXT NOT NULL UNIQUE,
         password_hash TEXT NOT NULL,
         role TEXT NOT NULL DEFAULT 'user',
+        pushEnabled INTEGER NOT NULL DEFAULT 0,
+        smsEnabled INTEGER NOT NULL DEFAULT 0,
+        smsPhoneNumber TEXT DEFAULT NULL,
         createdAt TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
     

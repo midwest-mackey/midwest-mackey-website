@@ -30,56 +30,42 @@ router.get("/public-key", async (req, res) => {
   }
 });
 
-// SUBSCRIBE TO PUSH NOTIFICATIONS
+// SUBSCRIBE
 router.post("/subscribe", requireAuth, requireAdmin, async (req, res) => {
-    try {
-      const db = getDb();
+  try {
+    const db = getDb();
 
-      const { endpoint, keys } = req.body.subscription;
+    const { endpoint, keys } = req.body.subscription;
 
-      const existing = await db.get(
-        `
-        SELECT id FROM push_subscriptions
-        WHERE endpoint = ?
-        `,
-        [endpoint]
-      );
+    await db.run(
+      `
+      INSERT OR IGNORE INTO push_subscriptions
+      (userId, endpoint, p256dh, auth, enabled, createdAt)
+      VALUES (?, ?, ?, ?, 1, ?)
+      `,
+      [
+        req.user.sub,
+        endpoint,
+        keys.p256dh,
+        keys.auth,
+        new Date().toISOString()
+      ]
+    );
 
-      if (!existing) {
-        await db.run(
-          `
-          INSERT INTO push_subscriptions
-          (userId, endpoint, p256dh, auth, enabled, createdAt)
-          VALUES (?, ?, ?, ?, ?, ?)
-          `,
-          [
-            req.user.sub,
-            endpoint,
-            keys.p256dh,
-            keys.auth,
-            1,
-            new Date().toISOString()
-          ]
-        );
-      }
+    return res.json({
+      success: true
+    });
 
-      return res.json({
-        success: true
-      });
+  } catch (err) {
+    console.error("❌ Push subscription failed:", err);
 
-    } catch (err) {
-      console.error(
-        "❌ Push subscription failed:",
-        err
-      );
-
-      return res.status(500).json({
-        error: "Subscription failed"
-      });
-    }
+    return res.status(500).json({
+      error: "Subscription failed"
+    });
   }
-);
+});
 
+// UNSUBSCRIBE ONE DEVICE
 router.post("/unsubscribe", requireAuth, requireAdmin, async (req, res) => {
   const db = getDb();
   const { endpoint } = req.body;
@@ -96,57 +82,58 @@ router.post("/unsubscribe", requireAuth, requireAdmin, async (req, res) => {
   res.json({ success: true });
 });
 
-// CHECK PUSH STATUS
-router.get(
-  "/status",
-  requireAuth,
-  requireAdmin,
-  async (req, res) => {
+// UNSUBSCRIBE ALL DEVICES
+router.post("/unsubscribe-all", requireAuth, requireAdmin, async (req, res) => {
+  const db = getDb();
 
-    const db = getDb();
+  await db.run(
+    `
+    UPDATE push_subscriptions
+    SET enabled = 0
+    WHERE userId = ?
+    `,
+    [req.user.sub]
+  );
 
-    const subscription = await db.get(
-      `
-      SELECT enabled
-      FROM push_subscriptions
-      WHERE userId = ?
-      LIMIT 1
-      `,
-      [req.user.sub]
-    );
+  res.json({ success: true });
+});
 
-    res.json({
-      enabled: !!subscription?.enabled
-    });
-  }
-);
+// PUSH STATUS
+router.get("/status", requireAuth, requireAdmin, async (req, res) => {
+  const db = getDb();
 
-// TOGGLE GLOBAL PUSH
-router.post(
-  "/toggle",
-  requireAuth,
-  requireAdmin,
-  async (req, res) => {
+  const subscription = await db.get(
+    `
+    SELECT COUNT(*) as count
+    FROM push_subscriptions
+    WHERE userId = ?
+      AND enabled = 1
+    `,
+    [req.user.sub]
+  );
 
-    const db = getDb();
+  res.json({
+    enabled: subscription.count > 0
+  });
+});
 
-    const { enabled } = req.body;
+// TOGGLE DEVICE
+router.post("/toggle", requireAuth, requireAdmin, async (req, res) => {
+  const db = getDb();
 
-    await db.run(
-      `
-      UPDATE push_subscriptions
-      SET enabled = ?
-      WHERE userId = ?
-      `,
-      [
-        enabled ? 1 : 0,
-        req.user.sub
-      ]
-    );
+  const { endpoint, enabled } = req.body;
 
-    res.json({
-      success: true
-    });
-  }
-);
+  await db.run(
+    `
+    UPDATE push_subscriptions
+    SET enabled = ?
+    WHERE userId = ?
+      AND endpoint = ?
+    `,
+    [enabled ? 1 : 0, req.user.sub, endpoint]
+  );
+
+  res.json({ success: true });
+});
+
 export default router;
