@@ -1,21 +1,27 @@
 import express from "express";
 import { requireAuth } from "../middleware/auth.middleware.js";
+import { getDb } from "../db/database.js";
 
 const router = express.Router();
 
-// STOREFRONT SETTINGS
-router.get("/settings", (req, res) => {
-  res.json({
-    userId: req.user.sub,
-    settings: {}
-  });
-});
+// GET CURRENT USER INFO (HYDRATED)
+router.get("/me", requireAuth, async (req, res) => {
+  const db = getDb();
 
-// GET CURRENT USER INFO
-router.get("/me", (req, res) => {
-  res.json({
-    user: req.user
-  });
+  const user = await db.get(
+    `
+    SELECT id, email, role, smsEnabled, smsPhoneNumber
+    FROM users
+    WHERE id = ?
+    `,
+    [req.user.sub]
+  );
+
+  if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  res.json({ user });
 });
 
 export default router;

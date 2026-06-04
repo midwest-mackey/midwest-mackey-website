@@ -1,6 +1,5 @@
 import express from "express";
 import { getDb } from "../db/database.js";
-import fs from "fs";
 
 import {
   getOrderById,
@@ -12,51 +11,10 @@ import { requireAuth } from "../middleware/auth.middleware.js";
 import { requireAdmin } from "../middleware/roles.middleware.js";
 
 const router = express.Router();
-const SETTINGS_PATH = "/app/config/settings.json";
 
 // 🔐 ALL ADMIN ROUTES PROTECTED
 router.use(requireAuth);
 router.use(requireAdmin);
-
-function loadSettings() {
-  try {
-    if (fs.existsSync(SETTINGS_PATH)) {
-      const raw = fs.readFileSync(
-        SETTINGS_PATH,
-        "utf-8"
-      );
-
-      return JSON.parse(raw);
-    }
-  } catch (err) {
-    console.error(
-      "❌ Failed to load settings.json",
-      err
-    );
-  }
-
-  return {
-    eggsAvailable: true,
-    unitEggPrice: 5
-  };
-}
-
-function saveSettings(settings) {
-  try {
-    fs.writeFileSync(
-      SETTINGS_PATH,
-      JSON.stringify(settings, null, 2),
-      "utf-8"
-    );
-
-    console.log("✅ Settings saved");
-  } catch (err) {
-    console.error(
-      "❌ Failed to save settings.json",
-      err
-    );
-  }
-}
 
 // 📦 GET ALL ORDERS (ADMIN DASHBOARD)
 router.get("/all", async (req, res) => {
@@ -181,33 +139,6 @@ router.get("/device/:deviceId", async (req, res) => {
   );
 
   res.json(orders);
-});
-
-// ⚙️ UPDATE SETTINGS (ADMIN)
-router.patch("/settings", (req, res) => {
-  const current = loadSettings();
-
-  const updated = {
-    ...current,
-
-    eggsAvailable:
-      typeof req.body.eggsAvailable === "boolean"
-        ? req.body.eggsAvailable
-        : current.eggsAvailable,
-
-    unitEggPrice:
-      req.body.unitEggPrice !== undefined &&
-      !isNaN(Number(req.body.unitEggPrice))
-        ? Number(req.body.unitEggPrice)
-        : current.unitEggPrice
-  };
-
-  saveSettings(updated);
-
-  res.json({
-    success: true,
-    settings: updated
-  });
 });
 
 export default router;

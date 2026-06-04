@@ -33,10 +33,10 @@ dotenv.config();
 const allowedOrigins = [
   // local development
   "http://localhost:4200",
-  // local network testing
+  // local network testing (home, adjust as needed)
   "http://192.168.1.165:4200",
-  // travel network testing (adjust IP as needed)
-  "http://192.168.86.60:4200",
+  // local network testing (travel, adjust IP as needed)
+  "http://192.168.1.76:4200",
 
   // production sites
   "https://midwestmackey.com",

@@ -2,18 +2,7 @@ import webpush from "web-push";
 import { getDb } from "../db/database.js";
 
 export async function notifyAdmins(type, payload) {
-
   const db = getDb();
-
-  const settings = await db.get(`
-    SELECT pushEnabled
-    FROM settings
-    LIMIT 1
-  `);
-
-  if (!settings?.pushEnabled) {
-    return;
-  }
 
   const subscriptions = await db.all(`
     SELECT *
@@ -21,17 +10,16 @@ export async function notifyAdmins(type, payload) {
     WHERE enabled = 1
   `);
 
+  if (!subscriptions.length) return;
+
   const pushPayload = JSON.stringify({
     type,
     ...payload
   });
 
   await Promise.allSettled(
-
     subscriptions.map(async (sub) => {
-
       try {
-
         await webpush.sendNotification(
           {
             endpoint: sub.endpoint,
@@ -55,11 +43,11 @@ export async function notifyAdmins(type, payload) {
 
       } catch (err) {
 
-        console.error(
-          "❌ Push failed:",
-          err.statusCode,
-          sub.endpoint
-        );
+        console.error("❌ Push failed:", {
+          statusCode: err.statusCode,
+          endpoint: sub.endpoint,
+          message: err.message
+        });
 
         await db.run(
           `
@@ -68,17 +56,10 @@ export async function notifyAdmins(type, payload) {
               lastFailureAt = ?
           WHERE id = ?
           `,
-          [
-            new Date().toISOString(),
-            sub.id
-          ]
+          [new Date().toISOString(), sub.id]
         );
 
-        if (
-          err.statusCode === 404 ||
-          err.statusCode === 410
-        ) {
-
+        if (err.statusCode === 404 || err.statusCode === 410) {
           await db.run(
             `
             DELETE FROM push_subscriptions
