@@ -30,4 +30,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # Secrets
-secrets/
+/secrets/
+
+# Database
+/db/
+/backend/db
+
