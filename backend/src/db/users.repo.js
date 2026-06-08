@@ -6,14 +6,14 @@ export async function findUserByEmail(email) {
 
   const cleanEmail = email?.trim();
 
-  console.log("🔍 findUserByEmail input:", cleanEmail);
+  // console.log("🔍 findUserByEmail input:", cleanEmail);
 
   const user = await db.get(
     "SELECT * FROM users WHERE email = ?",
     [cleanEmail]
   );
 
-  console.log("🔎 findUserByEmail result:", user);
+  // console.log("🔎 findUserByEmail result:", user);
 
   return user;
 }

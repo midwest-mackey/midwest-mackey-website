@@ -104,7 +104,7 @@ export async function initDb() {
     `);
 
     console.log('🗄️ SQLite ready at:', dbPath);
-    console.log("🗄️ DB PATH IN USE:", dbPath);
+    // console.log("🗄️ DB PATH IN USE:", dbPath);
   } catch (err) {
     console.error('❌ SQLite init failed:', err);
     throw err;
