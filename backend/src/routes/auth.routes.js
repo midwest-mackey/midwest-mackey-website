@@ -158,8 +158,8 @@ router.put("/account", requireAuth, async (req, res) => {
 
 router.patch("/notifications", requireAuth, async (req, res) => {
   try {
-    console.log("PATCH /notifications");
-    console.log(req.body);
+    // console.log("PATCH /notifications");
+    // console.log(req.body);
 
     const db = getDb();
 

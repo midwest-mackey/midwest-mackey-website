@@ -5,23 +5,23 @@ import { findUserByEmail } from "../db/users.repo.js";
 
 // LOGIN USER
 export async function loginUser(email, password) {
-  console.log("🔐 LOGIN INPUT:", { email, password });
+  console.log("🔐 LOGIN:", { email });
 
   const user = await findUserByEmail(email);
 
-  console.log("👤 DB USER:", user);
+  // console.log("👤 DB USER:", user);
 
   if (!user) {
     console.log("❌ USER NOT FOUND");
     throw new Error("INVALID_CREDENTIALS");
   }
 
-  console.log("🔑 PASSWORD ENTERED:", password);
-  console.log("🔑 HASH FROM DB:", user.password_hash);
+  // console.log("🔑 PASSWORD ENTERED:", password);
+  // console.log("🔑 HASH FROM DB:", user.password_hash);
 
   const valid = await bcrypt.compare(password, user.password_hash);
 
-  console.log("🧪 BCRYPT VALID:", valid);
+  // console.log("🧪 BCRYPT VALID:", valid);
 
   if (!valid) {
     console.log("❌ PASSWORD FAIL");
