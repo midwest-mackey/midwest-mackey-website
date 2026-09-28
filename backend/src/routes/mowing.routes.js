@@ -60,19 +60,19 @@ router.post('/inquiries', async (req, res) => {
     return res.status(500).json({ error: 'We could not save your request. Please try again.' });
   }
 
-  // The saved inquiry remains available if email delivery is temporarily unavailable.
+  // The saved inquiry remains available if notifications are temporarily unavailable.
   if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-    try {
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
-        connectionTimeout: 10000,
-        socketTimeout: 10000
-      });
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+      connectionTimeout: 10000,
+      socketTimeout: 10000
+    });
 
+    try {
       await transporter.sendMail({
         from: process.env.EMAIL_USER,
-        to: process.env.MOWING_INQUIRIES_TO || process.env.EMAIL_USER,
+        to: 'midwestmackey@gmail.com',
         replyTo: inquiry.email,
         subject: `Mackey's Mowing inquiry from ${inquiry.name.replace(/[\r\n]/g, ' ')}`,
         text: isLegacyInquiry
@@ -82,8 +82,19 @@ router.post('/inquiries', async (req, res) => {
     } catch (error) {
       console.error('Mowing inquiry saved, but email notification failed:', error);
     }
+
+    try {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: '5152031974@vtext.com',
+        subject: '',
+        text: `Mowing request from ${inquiry.name.slice(0, 40)}${inquiry.phone ? ` (${inquiry.phone})` : ''}. Details sent to midwestmackey@gmail.com.`
+      });
+    } catch (error) {
+      console.error('Mowing inquiry saved, but Verizon text notification failed:', error);
+    }
   } else {
-    console.warn('Mowing inquiry saved without email notification: EMAIL_USER or EMAIL_PASS is missing.');
+    console.warn('Mowing inquiry saved without email or text notification: EMAIL_USER or EMAIL_PASS is missing.');
   }
 
   return res.status(201).json({ success: true });
