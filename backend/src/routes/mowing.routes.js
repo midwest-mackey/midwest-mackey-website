@@ -4,41 +4,54 @@ import { getDb } from '../db/database.js';
 
 const router = Router();
 const MAX_NAME = 100;
+const MAX_PHONE = 30;
 const MAX_EMAIL = 254;
+const MAX_ADDRESS = 250;
 const MAX_MESSAGE = 3000;
 
 router.post('/inquiries', async (req, res) => {
-  const { name, email, message } = req.body ?? {};
+  const { name, phone, email, address, message } = req.body ?? {};
+  const isLegacyInquiry = typeof message === 'string' && phone === undefined && address === undefined;
 
   if (
     typeof name !== 'string' ||
     typeof email !== 'string' ||
-    typeof message !== 'string'
+    (!isLegacyInquiry && (typeof phone !== 'string' || typeof address !== 'string'))
   ) {
-    return res.status(400).json({ error: 'Please provide your name, email, and lawn details.' });
+    return res.status(400).json({ error: 'Please provide your name, phone, email, and address.' });
   }
 
   const inquiry = {
     name: name.trim(),
+    phone: isLegacyInquiry ? null : phone.trim(),
     email: email.trim(),
-    message: message.trim()
+    address: isLegacyInquiry ? null : address.trim(),
+    message: isLegacyInquiry ? message.trim() : ''
   };
 
   if (
     !inquiry.name || inquiry.name.length > MAX_NAME ||
     !inquiry.email || inquiry.email.length > MAX_EMAIL ||
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inquiry.email) ||
-    !inquiry.message || inquiry.message.length > MAX_MESSAGE
+    (isLegacyInquiry
+      ? !inquiry.message || inquiry.message.length > MAX_MESSAGE
+      : !inquiry.phone || inquiry.phone.length > MAX_PHONE ||
+        !/^[+()\d.\s-]+$/.test(inquiry.phone) ||
+        inquiry.phone.replace(/\D/g, '').length < 7 ||
+        inquiry.phone.replace(/\D/g, '').length > 15 ||
+        !inquiry.address || inquiry.address.length > MAX_ADDRESS)
   ) {
     return res.status(400).json({ error: 'Please check your details and try again.' });
   }
 
   try {
     await getDb().run(
-      `INSERT INTO mowing_inquiries (name, email, message, createdAt)
-       VALUES (?, ?, ?, ?)`,
+      `INSERT INTO mowing_inquiries (name, phone, email, address, message, createdAt)
+       VALUES (?, ?, ?, ?, ?, ?)`,
       inquiry.name,
+      inquiry.phone,
       inquiry.email,
+      inquiry.address,
       inquiry.message,
       new Date().toISOString()
     );
@@ -62,7 +75,9 @@ router.post('/inquiries', async (req, res) => {
         to: process.env.MOWING_INQUIRIES_TO || process.env.EMAIL_USER,
         replyTo: inquiry.email,
         subject: `Mackey's Mowing inquiry from ${inquiry.name.replace(/[\r\n]/g, ' ')}`,
-        text: `Name: ${inquiry.name}\nEmail: ${inquiry.email}\n\nProperty and service details:\n${inquiry.message}`
+        text: isLegacyInquiry
+          ? `Name: ${inquiry.name}\nEmail: ${inquiry.email}\n\nProperty and service details:\n${inquiry.message}`
+          : `Name: ${inquiry.name}\nPhone: ${inquiry.phone}\nEmail: ${inquiry.email}\nProperty address: ${inquiry.address}`
       });
     } catch (error) {
       console.error('Mowing inquiry saved, but email notification failed:', error);
