@@ -1,3 +1,4 @@
+import { ApplicationTestingModule } from '../../../testing/application-testing.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppNavbar } from './app-navbar';
@@ -8,7 +9,9 @@ describe('AppNavbar', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppNavbar ]
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
+      imports: [ApplicationTestingModule]
     })
     .compileComponents();
   });

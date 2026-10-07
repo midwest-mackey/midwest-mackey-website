@@ -1,3 +1,4 @@
+import { ApplicationTestingModule } from '../../../../testing/application-testing.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ThemeToggle } from './theme-toggle';
@@ -8,7 +9,9 @@ describe('ThemeToggle', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ThemeToggle]
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
+      imports: [ApplicationTestingModule]
     })
     .compileComponents();
 

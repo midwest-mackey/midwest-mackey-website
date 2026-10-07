@@ -1,3 +1,4 @@
+import { ApplicationTestingModule } from '../../../../testing/application-testing.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LiveIndicator } from './live-indicator';
@@ -8,7 +9,9 @@ describe('LiveIndicator', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LiveIndicator]
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
+      imports: [ApplicationTestingModule]
     })
     .compileComponents();
 
