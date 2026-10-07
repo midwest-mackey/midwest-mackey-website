@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FastAverageColor } from 'fast-average-color';
-import Vibrant from '@oscarbarrett/node-vibrant';
+import { Vibrant } from 'node-vibrant/browser';
 
 export interface ImageGradientResult {
   dominantColor: string;   // from FastAverageColor
@@ -34,9 +34,9 @@ export class ImageColorService {
           // 2️⃣ Get vibrant palette from Vibrant
           const palette = await Vibrant.from(img).getPalette();
           const accentColor =
-            palette.Vibrant?.getHex?.() ??
-            palette.LightVibrant?.getHex?.() ??
-            palette.DarkVibrant?.getHex?.() ??
+            palette.Vibrant?.hex ??
+            palette.LightVibrant?.hex ??
+            palette.DarkVibrant?.hex ??
             dominantColor;
 
           // 3️⃣ Convert hex to rgba for radial overlays

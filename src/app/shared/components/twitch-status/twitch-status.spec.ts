@@ -1,3 +1,4 @@
+import { ApplicationTestingModule } from '../../../../testing/application-testing.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TwitchStatus } from './twitch-status';
@@ -8,7 +9,9 @@ describe('TwitchStatus', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TwitchStatus]
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
+      imports: [ApplicationTestingModule]
     })
     .compileComponents();
 

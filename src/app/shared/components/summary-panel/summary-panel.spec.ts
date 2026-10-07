@@ -1,3 +1,4 @@
+import { ApplicationTestingModule } from '../../../../testing/application-testing.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SummaryPanel } from './summary-panel';
@@ -8,7 +9,9 @@ describe('SummaryPanel', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SummaryPanel ]
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
+      imports: [ApplicationTestingModule]
     })
     .compileComponents();
   });

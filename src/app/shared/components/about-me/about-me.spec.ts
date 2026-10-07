@@ -1,3 +1,4 @@
+import { ApplicationTestingModule } from '../../../../testing/application-testing.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutMe } from './about-me';
@@ -8,7 +9,9 @@ describe('AboutMe', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AboutMe ]
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
+      imports: [ApplicationTestingModule]
     })
     .compileComponents();
   });
