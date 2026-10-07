@@ -42,7 +42,7 @@ const allowedOrigins = [
 
   // production sites
   "https://midwestmackey.com",
-  "https://dev.midwestmackey.com"
+  "https://dev.midwestmackey.com",
   "https://eggs.midwestmackey.com",
   "https://mowing.midwestmackey.com",
   "https://webworks.midwestmackey.com"
