@@ -1,3 +1,4 @@
+import { ApplicationTestingModule } from '../../../testing/application-testing.module';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppFooter } from './app-footer';
 
@@ -7,7 +8,9 @@ describe('AppFooter', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppFooter ]
+      errorOnUnknownElements: true,
+      errorOnUnknownProperties: true,
+      imports: [ApplicationTestingModule]
     })
     .compileComponents();
   });

@@ -3,6 +3,7 @@ export default {
   preset: 'jest-preset-angular',
 
   testEnvironment: 'jsdom',
+  roots: ['<rootDir>/src'],
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
 
   transform: {
@@ -25,5 +26,5 @@ export default {
   transformIgnorePatterns: ['node_modules/(?!.*\\.mjs$)'],
   moduleFileExtensions: ['ts', 'html', 'js', 'json', 'mjs'],
   extensionsToTreatAsEsm: ['.ts'],
-  cacheDirectory: '.jest',
+  cacheDirectory: 'node_modules/.cache/jest',
 };

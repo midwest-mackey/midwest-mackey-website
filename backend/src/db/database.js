@@ -49,6 +49,17 @@ export async function initDb() {
         cancelledNotifiedAt TEXT
     );
     
+    -- MOWING INQUIRIES TABLE
+    CREATE TABLE IF NOT EXISTS mowing_inquiries (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        phone TEXT,
+        email TEXT NOT NULL,
+        address TEXT,
+        message TEXT NOT NULL,
+        createdAt TEXT NOT NULL
+    );
+
     -- USERS TABLE
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -102,6 +113,15 @@ export async function initDb() {
     );
 
     `);
+
+    // Keep previously saved inquiries; add the new fields to existing databases.
+    const mowingColumns = await db.all('PRAGMA table_info(mowing_inquiries)');
+    if (!mowingColumns.some(({ name }) => name === 'phone')) {
+      await db.exec('ALTER TABLE mowing_inquiries ADD COLUMN phone TEXT');
+    }
+    if (!mowingColumns.some(({ name }) => name === 'address')) {
+      await db.exec('ALTER TABLE mowing_inquiries ADD COLUMN address TEXT');
+    }
 
     console.log('🗄️ SQLite ready at:', dbPath);
     // console.log("🗄️ DB PATH IN USE:", dbPath);

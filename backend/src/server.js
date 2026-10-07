@@ -16,6 +16,8 @@ import twitchRoutes from './routes/twitch.routes.js';
 import spotifyRoutes from './routes/spotify.routes.js';
 import fortniteRoutes from './routes/fortnite.routes.js';
 import ordersRoutes from './routes/orders.routes.js';
+import mowingRoutes from './routes/mowing.routes.js';
+import webworksRoutes from './routes/webworks.routes.js';
 import adminOrdersRoutes from './routes/admin.orders.routes.js';
 import adminRoutes from './routes/admin.routes.js';
 import loginRoutes from './routes/auth.routes.js';
@@ -40,7 +42,10 @@ const allowedOrigins = [
 
   // production sites
   "https://midwestmackey.com",
-  "https://eggs.midwestmackey.com"
+  "https://eggs.midwestmackey.com",
+  "https://mowing.midwestmackey.com",
+  "https://webworks.midwestmackey.com",
+  "https://midwest-mackey-webworks-studio.midwest-mackey.chatgpt.site"
 ];
 
 const corsOptions = {
@@ -87,6 +92,8 @@ app.use('/twitch', twitchRoutes);
 app.use('/spotify', spotifyRoutes);
 app.use('/fortnite', fortniteRoutes);
 app.use('/orders', ordersRoutes);
+app.use('/mowing', mowingRoutes);
+app.use('/webworks', webworksRoutes);
 app.use('/admin/orders', adminOrdersRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', loginRoutes);
