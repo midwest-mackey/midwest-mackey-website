@@ -33,27 +33,27 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-      <div id="navbar-links" class="mt-4 mt-lg-0">
-        <ul class="nav nav-pills col gap-2 flex-column flex-lg-row align-items-start text-start">
-          <li class="nav-item">
-            <a class="nav-link link-light rounded-pill" routerLink="/" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">midwest mackey</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light rounded-pill" routerLink="/skills" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light rounded-pill" routerLink="/projects" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">projects</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-      <div id="theme-toggle" class="d-flex ms-auto me-2 rounded-pill float-end">
-        <ul class="nav">
-          <li class="nav-item">
-            <mm-theme-toggle></mm-theme-toggle>
-          </li>
-        </ul>
+      <div class="d-flex align-items-start align-items-lg-center w-100 mt-4 mt-lg-0">
+        <div id="navbar-links">
+          <ul class="nav nav-pills col gap-2 flex-column flex-lg-row align-items-start text-start">
+            <li class="nav-item">
+              <a class="nav-link link-light rounded-pill" routerLink="/" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">midwest mackey</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light rounded-pill" routerLink="/skills" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light rounded-pill" routerLink="/projects" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">projects</a>
+            </li>
+          </ul>
+        </div>
+        <div id="theme-toggle" class="d-flex ms-auto me-2 rounded-pill flex-shrink-0">
+          <ul class="nav">
+            <li class="nav-item">
+              <mm-theme-toggle></mm-theme-toggle>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
