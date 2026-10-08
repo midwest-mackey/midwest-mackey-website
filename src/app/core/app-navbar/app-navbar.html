@@ -34,7 +34,7 @@
     </button>
     <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
       <div id="navbar-links" class="mt-4 mt-lg-0">
-        <ul class="nav nav-pills col gap-2">
+        <ul class="nav nav-pills col gap-2 flex-column flex-lg-row align-items-start text-start">
           <li class="nav-item">
             <a class="nav-link link-light rounded-pill" routerLink="/" (click)="isMenuCollapsed = true" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">midwest mackey</a>
           </li>
