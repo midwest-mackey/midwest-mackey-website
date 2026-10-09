@@ -1,6 +1,7 @@
 name: MAIN - Build and Push Docker Image to PRODUCTION
 
 permissions:
+  packages: write
   contents: write
   issues: write
   pull-requests: write
@@ -8,6 +9,7 @@ permissions:
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -52,8 +54,10 @@ jobs:
         with:
           filters: |
             backend:
+              - '.github/workflows/main.yml'
               - 'backend/**'
             frontend:
+              - '.github/workflows/main.yml'
               - 'src/**'
               - 'angular.json'
               - 'package*.json'
@@ -64,34 +68,39 @@ jobs:
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Login to Docker Hub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       # 8. Frontend build
       - name: Build and Push Frontend
-        if: steps.changes.outputs.frontend == 'true'
+        if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.frontend == 'true'
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
           push: true
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
           build-args: |
             APP_VERSION=${{ steps.version.outputs.VERSION }}
           tags: |
-            midwestmackey/midwestmackey.com:latest
-            midwestmackey/midwestmackey.com:${{ steps.version.outputs.VERSION }}
+            ghcr.io/midwest-mackey/midwestmackey.com:latest
+            ghcr.io/midwest-mackey/midwestmackey.com:${{ steps.version.outputs.VERSION }}
 
       # 9. Backend build
       - name: Build and Push Backend
-        if: steps.changes.outputs.backend == 'true'
+        if: github.event_name == 'workflow_dispatch' || steps.changes.outputs.backend == 'true'
         uses: docker/build-push-action@v5
         with:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
+          labels: |
+            org.opencontainers.image.source=https://github.com/${{ github.repository }}
           tags: |
-            midwestmackey/backend:latest
-            midwestmackey/backend:${{ steps.version.outputs.VERSION }}
+            ghcr.io/midwest-mackey/backend:latest
+            ghcr.io/midwest-mackey/backend:${{ steps.version.outputs.VERSION }}
